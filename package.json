@@ -1,0 +1,23 @@
+{
+  "name": "@mwm/functional",
+  "version": "1.0.0",
+  "description": "Extremely minimal functional library with a focus on source-code clarity.",
+  "main": "source/index.js",
+  "scripts": {
+    "test": "tape source/**/*.test.js | tap-spec"
+  },
+  "keywords": [
+    "functional"
+  ],
+  "author": "Matt McMahon <email@matt-mcmahon.com> (http://matt-mcmahon.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^11.0.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matt-mcmahon/functional.git"
+  }
+}
