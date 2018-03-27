@@ -7,9 +7,13 @@
     "test": "tape source/**/*.test.js | tap-spec"
   },
   "keywords": [
-    "functional"
+    "functional",
+    "experimental",
+    "tutorial",
+    "learning"
   ],
-  "author": "Matt McMahon <email@matt-mcmahon.com> (http://matt-mcmahon.com/)",
+  "author": "Matt McMahon <contact@matt-mcmahon.com> (http://matt-mcmahon.com/)",
+  "contributors": [],
   "license": "MIT",
   "devDependencies": {
     "standard": "^11.0.1",
