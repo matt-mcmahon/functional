@@ -4,6 +4,16 @@ const assert = require('assert').strict
 const { clone } = require('./clone.js')
 const test = require('tape')
 
+test('clone module', t => {
+  t.equal(typeof clone, 'function', 'clone should be a function')
+  t.equal(
+    typeof clone.signature,
+    'string',
+    'clone should have a signature field'
+  )
+  t.end()
+})
+
 test('clone flat objects', t => {
   const expected = { foo: 'foo', bar: 'bar' }
   const actual = clone(expected)

@@ -1,7 +1,7 @@
 'use strict'
 
-const compose = (...functions) => value =>
-  functions.reduceRight((v, f) => f(v), value)
-compose.signature = `compose :: [a -> a] -> (a -> a)`
+const reducer = (value, fun) => fun(value)
+const compose = (...functions) => value => functions.reduceRight(reducer, value)
+compose.signature = 'compose :: [(y -> z), ..., (b -> c), (a -> b)] -> (a -> z)'
 
 module.exports = { compose }

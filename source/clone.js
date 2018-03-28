@@ -1,7 +1,7 @@
 'use strict'
 
 const clone = value => recursiveClone(new WeakMap())(value)
-clone.signature = `clone :: a -> a`
+clone.signature = 'clone :: a -> a'
 
 const recursiveClone = map => value => {
   const existingClone = map.get(value)
