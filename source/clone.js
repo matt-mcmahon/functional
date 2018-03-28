@@ -1,19 +1,22 @@
 'use strict'
 
-const recursiveClone = (value, map) => {
+const clone = value => recursiveClone(new WeakMap())(value)
+clone.signature = `clone :: a -> a`
+
+const recursiveClone = map => value => {
   const existingClone = map.get(value)
   if (existingClone) return existingClone
-  if (Array.isArray(value)) return cloneArray(value, map)
+  if (Array.isArray(value)) return cloneArray(map)(value)
   if (value instanceof Date) return cloneDate(value)
-  if (value instanceof Object) return cloneObject(value, map)
+  if (value instanceof Object) return cloneObject(map)(value)
   return value
 }
 
-const cloneArray = (arr, map) => {
+const cloneArray = map => arr => {
   const copy = []
   map.set(arr, copy)
   arr.reduce((copy, value) => {
-    copy.push(recursiveClone(value, map))
+    copy.push(recursiveClone(map)(value))
     return copy
   }, copy)
   return copy
@@ -21,26 +24,27 @@ const cloneArray = (arr, map) => {
 
 const cloneDate = date => new Date(date.valueOf())
 
-const cloneObject = (obj, map) => {
+const cloneObject = map => obj => {
   const copy = {}
   map.set(obj, copy)
   const keys = Object.keys(obj)
   keys.reduce((copy, key) => {
-    copy[key] = recursiveClone(obj[key], map)
+    copy[key] = recursiveClone(map)(obj[key])
     return copy
   }, copy)
   return copy
 }
-
-const clone = value => recursiveClone(value, new WeakMap())
-clone.signature = `clone :: a -> a`
 
 module.exports = { clone }
 
 /**
  * Adapted from:
  *
- *   https://github.com/thebearingedge/deep-clone
+ *   https://github.com/thebearingedge/deep-clone/blob/master/src/index.js
+ *
+ *
+ * Original License:
+ * ============================================================================
  *
  * The MIT License (MIT)
  *
@@ -63,4 +67,6 @@ module.exports = { clone }
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
+ *
+ * ============================================================================
  */
