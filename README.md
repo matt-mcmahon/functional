@@ -31,6 +31,11 @@ and (with permission) I'll give credit both here and in _package.json_'s `contri
 Programming is hard work, and I can't thank the open-source community enough for the enormity of their multitudinous efforts!
 
 
+## Special Thanks To:
+
+- [Tim Davis][5], `clone` was based heavily on his [deep-clone][4] implementation.
+
+
 [1]: http://matt-mcmahon.com/
 [2]: https://github.com/matt-mcmahon
 [3]: https://www.holger-peters.de/haskell-by-types.html
@@ -38,4 +43,4 @@ Programming is hard work, and I can't thank the open-source community enough for
 [5]: https://www.npmjs.com/~thebearingedge
 [6]: https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0
 [7]: https://github.com/lodash/lodash/wiki/FP-Guide
-[8]: http://ramdajs.com/
+[8]: https://ramdajs.com/

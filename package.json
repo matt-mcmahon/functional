@@ -13,7 +13,17 @@
     "learning"
   ],
   "author": "Matt McMahon <contact@matt-mcmahon.com> (http://matt-mcmahon.com/)",
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "Tim Davis <thebearingedge>",
+      "email": "contact@timdav.is",
+      "url": "https://www.npmjs.com/~thebearingedge",
+      "files": [
+        "./source/clone.js",
+        "./source/cone.test.js"
+      ]
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "standard": "^11.0.1",
