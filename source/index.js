@@ -6,5 +6,6 @@ module.exports = Object.assign(
   require('./tap'),
   require('./compose'),
   require('./clone'),
-  require('./bind')
+  require('./bind'),
+  require('./merge')
 )
