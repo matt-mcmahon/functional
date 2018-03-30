@@ -4,6 +4,11 @@
   "description": "Extremely minimal functional library with a focus on source-code clarity.",
   "main": "source/index.js",
   "scripts": {
+    "prepublishOnly": "npm run test",
+    "preversion": "npm run test",
+    "postpublish": "git push origin master",
+    "lint": "standard source/**/*.js",
+    "pretest": "npm run lint",
     "test": "tape source/**/*.test.js | tap-spec"
   },
   "keywords": [
