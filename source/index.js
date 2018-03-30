@@ -5,5 +5,6 @@ module.exports = Object.assign(
   require('./pipe'),
   require('./tap'),
   require('./compose'),
-  require('./clone')
+  require('./clone'),
+  require('./bind')
 )
