@@ -2,10 +2,14 @@
 
 module.exports = Object.assign(
   {},
-  require('./pipe'),
-  require('./tap'),
-  require('./compose'),
-  require('./clone'),
   require('./bind'),
-  require('./merge')
+  require('./clone'),
+  require('./compose'),
+  require('./equals'),
+  require('./F'),
+  require('./id'),
+  require('./merge'),
+  require('./pipe'),
+  require('./T'),
+  require('./tap')
 )
