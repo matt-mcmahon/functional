@@ -1,7 +1,5 @@
-'use strict'
-
-const test = require('tape')
-const { compose } = require('./compose')
+import test from 'tape'
+import { compose } from './compose.mjs'
 
 test('compose module', t => {
   t.equal(typeof compose, 'function', 'compose should be a function')

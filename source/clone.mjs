@@ -1,5 +1,3 @@
-'use strict'
-
 const clone = value => recursiveClone(new WeakMap())(value)
 clone.signature = 'clone :: a -> a'
 
@@ -35,7 +33,7 @@ const cloneObject = map => obj => {
   return copy
 }
 
-module.exports = { clone }
+export default { clone }
 
 /**
  * Adapted from:

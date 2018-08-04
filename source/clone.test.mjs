@@ -1,8 +1,6 @@
-'use strict'
-
-const assert = require('assert').strict
-const { clone } = require('./clone.js')
-const test = require('tape')
+import { strict as assert } from 'assert'
+import { clone } from './clone.mjs'
+import test from 'tape'
 
 test('clone module', t => {
   t.equal(typeof clone, 'function', 'clone should be a function')

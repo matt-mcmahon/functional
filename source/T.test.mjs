@@ -1,7 +1,5 @@
-'use strict'
-
-const test = require('tape')
-const { T } = require('./T')
+import test from 'tape'
+import { T } from './T.mjs'
 
 test('T function', t => {
   t.equal(typeof T, 'function', 'T should be a function')

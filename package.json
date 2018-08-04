@@ -2,14 +2,14 @@
   "name": "@mwm/functional",
   "version": "1.2.0",
   "description": "Extremely minimal functional library with a focus on source-code clarity.",
-  "main": "source/index.js",
+  "main": "index.js",
   "scripts": {
     "prepublishOnly": "npm run test",
     "preversion": "npm run test",
     "postpublish": "git push origin master",
-    "lint": "standard source/**/*.js",
+    "lint": "standard source/**/*.mjs",
     "pretest": "npm run lint",
-    "test": "tape source/**/*.test.js | tap-spec"
+    "test": "tape source/**/*.test.mjs | tap-spec"
   },
   "keywords": [
     "functional",
@@ -24,8 +24,8 @@
       "email": "contact@timdav.is",
       "url": "https://www.npmjs.com/~thebearingedge",
       "files": [
-        "./source/clone.js",
-        "./source/cone.test.js"
+        "./source/clone.mjs",
+        "./source/cone.test.mjs"
       ]
     }
   ],

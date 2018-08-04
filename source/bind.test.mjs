@@ -1,7 +1,5 @@
-'use strict'
-
-const { bind } = require('./bind')
-const test = require('tape')
+import { bind } from './bind.mjs'
+import test from 'tape'
 
 test('bind module', t => {
   t.equal(typeof bind, 'function', 'bind should be a function')

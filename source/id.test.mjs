@@ -1,15 +1,9 @@
-'use strict'
-
-const test = require('tape')
-const { id } = require('./id')
+import test from 'tape'
+import { id } from './id.mjs'
 
 test('id function', t => {
   t.equal(typeof id, 'function', 'id should be a function')
-  t.equal(
-    typeof id.signature,
-    'string',
-    'id.signature should be a string'
-  )
+  t.equal(typeof id.signature, 'string', 'id.signature should be a string')
   const foo = {}
   const idOfFoo = id(foo)
   {

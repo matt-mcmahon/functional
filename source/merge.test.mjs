@@ -1,7 +1,5 @@
-'use strict'
-
-const { merge } = require('./merge')
-const test = require('tape')
+import { merge } from './merge.mjs'
+import test from 'tape'
 
 test('merge module', t => {
   t.equal(typeof merge, 'function', 'merge should be a function')

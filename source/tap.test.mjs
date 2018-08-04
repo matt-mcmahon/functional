@@ -1,7 +1,5 @@
-'use strict'
-
-const { tap } = require('./tap')
-const test = require('tape')
+import { tap } from './tap.mjs'
+import test from 'tape'
 
 test('tap module', t => {
   t.equal(typeof tap, 'function', 'tap should be a function')
