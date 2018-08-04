@@ -32,11 +32,14 @@
   "license": "MIT",
   "devDependencies": {
     "standard": "^11.0.1",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.9.0"
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/matt-mcmahon/functional.git"
+  },
+  "dependencies": {
+    "esm": "^3.0.74"
   }
 }
