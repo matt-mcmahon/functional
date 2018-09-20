@@ -4,4 +4,4 @@ const tap = fun => value => {
 }
 tap.signature = 'tap :: (a -> *) -> a -> a'
 
-export default { tap }
+export { tap, tap as default }

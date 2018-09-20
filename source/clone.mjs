@@ -33,7 +33,7 @@ const cloneObject = map => obj => {
   return copy
 }
 
-export default { clone }
+export { clone, clone as default }
 
 /**
  * Adapted from:

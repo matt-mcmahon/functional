@@ -1,4 +1,4 @@
 const F = () => false
 F.signature = 'F :: a => false'
 
-export default { F }
+export { F, F as default }
