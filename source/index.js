@@ -7,6 +7,7 @@ import id from './id'
 import map from './map'
 import merge from './merge'
 import pipe from './pipe'
+import sort from './sort'
 import T from './T'
 import tap from './tap'
 
@@ -20,6 +21,7 @@ export default {
   map,
   merge,
   pipe,
+  sort,
   T,
   tap
 }
