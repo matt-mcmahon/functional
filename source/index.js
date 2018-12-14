@@ -7,8 +7,23 @@ import id from './id'
 import map from './map'
 import merge from './merge'
 import pipe from './pipe'
+import prop from './prop'
 import sort from './sort'
 import T from './T'
 import tap from './tap'
 
-export { bind, clone, compose, equal, F, id, map, merge, pipe, sort, T, tap }
+export {
+  bind,
+  clone,
+  compose,
+  equal,
+  F,
+  id,
+  map,
+  merge,
+  pipe,
+  prop,
+  sort,
+  T,
+  tap
+}
