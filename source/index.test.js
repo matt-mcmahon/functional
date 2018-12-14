@@ -9,6 +9,7 @@ test('functional exports expected methods', t => {
     'equal',
     'F',
     'id',
+    'map',
     'merge',
     'pipe',
     'T',

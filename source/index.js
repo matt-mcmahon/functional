@@ -4,6 +4,7 @@ import compose from './compose'
 import equal from './equal'
 import F from './F'
 import id from './id'
+import map from './map'
 import merge from './merge'
 import pipe from './pipe'
 import T from './T'
@@ -16,6 +17,7 @@ export default {
   equal,
   F,
   id,
+  map,
   merge,
   pipe,
   T,
