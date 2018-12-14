@@ -11,17 +11,4 @@ import sort from './sort'
 import T from './T'
 import tap from './tap'
 
-export default {
-  bind,
-  clone,
-  compose,
-  equal,
-  F,
-  id,
-  map,
-  merge,
-  pipe,
-  sort,
-  T,
-  tap
-}
+export { bind, clone, compose, equal, F, id, map, merge, pipe, sort, T, tap }

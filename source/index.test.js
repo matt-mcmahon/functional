@@ -1,5 +1,5 @@
 import test from 'tape'
-import functional from './index'
+import * as functional from './index'
 
 test('functional exports expected methods', t => {
   const expected = [
