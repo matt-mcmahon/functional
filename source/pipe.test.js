@@ -10,7 +10,10 @@ test('pipe module', t => {
 test('pipe applies left to right', t => {
   const f = x => x + 1
   const g = x => 2 * x
-  const actual = pipe(f, g)(3)
+  const actual = pipe(
+    f,
+    g
+  )(3)
   t.equal(actual, 8, '2 * (3 + 1) == 8')
   t.notEqual(actual, 7, '2 * (3 + 1) != 7')
   t.end()

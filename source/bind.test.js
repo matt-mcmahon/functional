@@ -5,7 +5,7 @@ test('bind module', t => {
   t.equal(typeof bind, 'function', 'bind should be a function')
 
   const objectWith = {
-    method (value) {
+    method(value) {
       this.foo = value
       return 'method called'
     }
