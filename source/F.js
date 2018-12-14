@@ -1,4 +1,7 @@
+import { sign } from './util'
+
 const F = () => false
-F.signature = 'F :: a => false'
+
+sign('F :: a => false')(F)
 
 export { F, F as default }

@@ -1,4 +1,7 @@
+import { sign } from './util'
+
 const id = value => () => value
-id.signature = 'id :: a => a'
+
+sign('id :: a => a')(id)
 
 export { id, id as default }

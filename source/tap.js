@@ -1,7 +1,10 @@
+import { sign } from './util'
+
 const tap = fun => value => {
   fun(value)
   return value
 }
-tap.signature = 'tap :: (a -> *) -> a -> a'
+
+sign('tap :: (a -> *) -> a -> a')(tap)
 
 export { tap, tap as default }

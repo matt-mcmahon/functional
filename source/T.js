@@ -1,4 +1,7 @@
+import { sign } from './util'
+
 const T = () => true
-T.signature = 'T :: a => true'
+
+sign('T :: a => true')(T)
 
 export { T, T as default }

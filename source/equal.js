@@ -1,4 +1,7 @@
+import { sign } from './util'
+
 const equal = a => b => a === b
-equal.signature = 'equal :: a => b => boolean'
+
+sign('equal :: a => b => boolean')(equal)
 
 export { equal, equal as default }
