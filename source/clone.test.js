@@ -1,5 +1,5 @@
 import { strict as assert } from 'assert'
-import clone from './clone.mjs'
+import clone from './clone'
 import test from 'tape'
 
 test('clone module', t => {

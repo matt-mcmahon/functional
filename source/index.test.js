@@ -1,12 +1,12 @@
 import test from 'tape'
-import functional from './index.mjs'
+import functional from './index'
 
 test('functional exports expected methods', t => {
   const expected = [
     'bind',
     'clone',
     'compose',
-    // 'equal',
+    'equal',
     'F',
     'id',
     'merge',

@@ -1,4 +1,4 @@
-import { merge } from './merge.mjs'
+import { merge } from './merge'
 import test from 'tape'
 
 test('merge module', t => {

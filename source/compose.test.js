@@ -1,5 +1,5 @@
 import test from 'tape'
-import compose from './compose.mjs'
+import compose from './compose'
 
 test('compose module', t => {
   t.equal(typeof compose, 'function', 'compose should be a function')

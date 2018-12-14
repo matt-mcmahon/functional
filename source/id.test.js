@@ -1,5 +1,5 @@
 import test from 'tape'
-import id from './id.mjs'
+import id from './id'
 
 test('id function', t => {
   t.equal(typeof id, 'function', 'id should be a function')

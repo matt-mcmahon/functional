@@ -3,13 +3,14 @@
   "version": "1.2.0",
   "description": "Extremely minimal functional library with a focus on source-code clarity.",
   "main": "index.js",
+  "module": "source/index.js",
   "scripts": {
     "prepublishOnly": "npm run test",
     "preversion": "npm run test",
     "postpublish": "git push origin master",
-    "lint": "standard source/**/*.mjs",
+    "lint": "standard source/**/*.js",
     "pretest": "npm run lint",
-    "test": "tape source/**/*.test.mjs | tap-spec"
+    "test": "tape -r esm ./source/**/*.test.js | tap-spec"
   },
   "keywords": [
     "functional",
@@ -24,14 +25,15 @@
       "email": "contact@timdav.is",
       "url": "https://www.npmjs.com/~thebearingedge",
       "files": [
-        "./source/clone.mjs",
-        "./source/cone.test.mjs"
+        "./source/clone.js",
+        "./source/cone.test.js"
       ]
     }
   ],
   "license": "MIT",
   "devDependencies": {
-    "standard": "^11.0.1",
+    "husky": "^1.2.1",
+    "standard": "^12.0.1",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
   },
@@ -41,5 +43,10 @@
   },
   "dependencies": {
     "esm": "^3.0.74"
+  },
+  "esm": "auto",
+  "husky": {
+    "pre-commit": "npm test",
+    "pre-push": "npm test"
   }
 }

@@ -1,5 +1,5 @@
 import test from 'tape'
-import { pipe } from './pipe.mjs'
+import { pipe } from './pipe'
 
 test('pipe module', t => {
   t.equal(typeof pipe, 'function', 'pipe should be a function')

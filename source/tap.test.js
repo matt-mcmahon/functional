@@ -1,4 +1,4 @@
-import { tap } from './tap.mjs'
+import { tap } from './tap'
 import test from 'tape'
 
 test('tap module', t => {

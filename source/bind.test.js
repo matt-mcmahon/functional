@@ -1,4 +1,4 @@
-import bind from './bind.mjs'
+import bind from './bind'
 import test from 'tape'
 
 test('bind module', t => {

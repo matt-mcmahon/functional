@@ -1,5 +1,5 @@
 import test from 'tape'
-import F from './F.mjs'
+import F from './F'
 
 test('F function', t => {
   t.equal(typeof F, 'function', 'F should be a function')
