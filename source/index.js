@@ -6,6 +6,7 @@ import F from './F'
 import head from './head'
 import id from './id'
 import iffe from './iffe'
+import init from './init'
 import last from './last'
 import map from './map'
 import merge from './merge'
@@ -26,6 +27,7 @@ export {
   head,
   id,
   iffe,
+  init,
   last,
   map,
   merge,
