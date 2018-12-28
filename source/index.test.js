@@ -11,6 +11,7 @@ test('functional exports expected methods', t => {
     'head',
     'id',
     'iffe',
+    'last',
     'map',
     'merge',
     'pipe',
