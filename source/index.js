@@ -4,6 +4,7 @@ import compose from './compose'
 import equal from './equal'
 import F from './F'
 import id from './id'
+import iffe from './iffe'
 import map from './map'
 import merge from './merge'
 import pipe from './pipe'
@@ -19,6 +20,7 @@ export {
   equal,
   F,
   id,
+  iffe,
   map,
   merge,
   pipe,
