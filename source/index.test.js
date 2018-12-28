@@ -8,6 +8,7 @@ test('functional exports expected methods', t => {
     'compose',
     'equal',
     'F',
+    'head',
     'id',
     'iffe',
     'map',

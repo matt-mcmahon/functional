@@ -3,6 +3,7 @@ import clone from './clone'
 import compose from './compose'
 import equal from './equal'
 import F from './F'
+import head from './head'
 import id from './id'
 import iffe from './iffe'
 import map from './map'
@@ -19,6 +20,7 @@ export {
   compose,
   equal,
   F,
+  head,
   id,
   iffe,
   map,
