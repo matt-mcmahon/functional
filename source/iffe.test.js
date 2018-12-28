@@ -9,7 +9,7 @@ test('iffe function', t => {
 
   {
     const fun = (a, b, c) => a + b + c
-    const actual = iffe(fun, 1, 3, 5)
+    const actual = iffe(fun)(1, 3, 5)
     const expected = 9
     const message =
       'iffe(fun, ...args) should contain the result of calling fun'
@@ -21,7 +21,7 @@ test('iffe function', t => {
       const c = a + b
       return d => c + d
     }
-    const add4 = iffe(fun, 1, 3)
+    const add4 = iffe(fun)(1, 3)
 
     {
       const actual = typeof add4

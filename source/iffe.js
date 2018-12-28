@@ -1,7 +1,7 @@
 import { sign } from './util'
 
-const iffe = (fun, ...args) => fun(...args)
+const iffe = fun => (...args) => fun(...args)
 
-sign('iffe :: f, [a] => f')(iffe)
+sign('iffe :: (as -> (* -> *)) -> as -> (* -> *)')(iffe)
 
 export { iffe, iffe as default }
