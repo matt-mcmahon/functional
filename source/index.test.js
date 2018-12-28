@@ -17,6 +17,7 @@ test('functional exports expected methods', t => {
     'prop',
     'sort',
     'T',
+    'tail',
     'tap'
   ].sort()
   const actual = Object.keys(functional).sort()

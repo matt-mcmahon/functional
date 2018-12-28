@@ -12,6 +12,7 @@ import pipe from './pipe'
 import prop from './prop'
 import sort from './sort'
 import T from './T'
+import tail from './tail'
 import tap from './tap'
 
 export {
@@ -29,5 +30,6 @@ export {
   prop,
   sort,
   T,
+  tail,
   tap
 }
