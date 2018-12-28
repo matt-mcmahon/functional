@@ -15,6 +15,7 @@ test('functional exports expected methods', t => {
     'merge',
     'pipe',
     'prop',
+    'reduce',
     'sort',
     'T',
     'tail',
