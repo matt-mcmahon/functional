@@ -18,6 +18,7 @@ test('functional exports expected methods', t => {
     'pipe',
     'prop',
     'reduce',
+    'reduceRight',
     'sort',
     'T',
     'tail',

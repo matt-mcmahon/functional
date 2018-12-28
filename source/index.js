@@ -13,6 +13,7 @@ import merge from './merge'
 import pipe from './pipe'
 import prop from './prop'
 import reduce from './reduce'
+import reduceRight from './reduceRight'
 import sort from './sort'
 import T from './T'
 import tail from './tail'
@@ -34,6 +35,7 @@ export {
   pipe,
   prop,
   reduce,
+  reduceRight,
   sort,
   T,
   tail,
