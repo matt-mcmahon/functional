@@ -61,5 +61,33 @@ test('reduceRight module', assert => {
     assert.deepEqual(actual, expected, message)
   }
 
+  const thrower = () => {
+    throw Error('I should not be called')
+  }
+
+  {
+    const accumulator = 'original accumulator'
+    const expected = accumulator
+    const actual = reduceRight(thrower)(accumulator)([])
+    const message = `reducing an empty array should yield the original accumulator`
+    assert.strictEqual(actual, expected, message)
+  }
+
+  {
+    const accumulator = 'original accumulator'
+    const expected = accumulator
+    const actual = reduceRight(thrower)(accumulator)(456)
+    const message = `reducing number should yield the original accumulator`
+    assert.strictEqual(actual, expected, message)
+  }
+
+  {
+    const accumulator = 'original accumulator'
+    const expected = accumulator
+    const actual = reduceRight(thrower)(accumulator)({ value: 'not reducable' })
+    const message = `reducing object should yield the original accumulator`
+    assert.strictEqual(actual, expected, message)
+  }
+
   assert.end()
 })

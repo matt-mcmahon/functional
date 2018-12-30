@@ -3,13 +3,14 @@ import { init, last } from '.'
 
 const reduceRight = reducer => accumulator => (array = []) => {
   const value = last(array)
-  const contuinuingCondition = array.length > 1
+  const contuinuingCondition = array.length > 0
+
   if (contuinuingCondition === true) {
     const reducedArray = init(array)
     const reducedAccumulator = reducer(accumulator, value)
     return reduceRight(reducer)(reducedAccumulator)(reducedArray)
   } else {
-    return reducer(accumulator, value)
+    return accumulator
   }
 }
 

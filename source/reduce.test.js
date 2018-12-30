@@ -1,5 +1,5 @@
 import reduce from './reduce'
-import { reduce as namedExport } from './index.js'
+import { reduce as namedExport } from './index'
 import test from 'tape'
 
 test('reduce module', assert => {
@@ -38,14 +38,55 @@ test('reduce module', assert => {
     assert.deepEqual(actual, expected, message)
   }
 
+  const a = 'a'
+  const b = 'b'
+  const c = 'c'
+  const concat = (x = '', y = '') => x + y
+
   {
-    const subtract = (x, y) => x - y
-    const expected = 0
-    const actual = reduce(subtract)(9)([5, 3, 1])
-    const message = `reducing [1, 3, 5]
+    const expected = 'abc'
+    const actual = reduce(concat)(a)([b, c])
+    const message = `reducing "a", ["b", "c"]
       is "${actual}",
       expected "${expected}"`
     assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = 'a'
+    const actual = reduce(concat)(a)([])
+    const message = `reducing a, []
+      is "${actual}",
+      expected "${expected}"`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  const thrower = () => {
+    throw Error('I should not be called')
+  }
+
+  {
+    const accumulator = 'original accumulator'
+    const expected = accumulator
+    const actual = reduce(thrower)(accumulator)([])
+    const message = `reducing an empty array should yield the original accumulator`
+    assert.strictEqual(actual, expected, message)
+  }
+
+  {
+    const accumulator = 'original accumulator'
+    const expected = accumulator
+    const actual = reduce(thrower)(accumulator)(456)
+    const message = `reducing number should yield the original accumulator`
+    assert.strictEqual(actual, expected, message)
+  }
+
+  {
+    const accumulator = 'original accumulator'
+    const expected = accumulator
+    const actual = reduce(thrower)(accumulator)({ value: 'not reducable' })
+    const message = `reducing object should yield the original accumulator`
+    assert.strictEqual(actual, expected, message)
   }
 
   assert.end()
