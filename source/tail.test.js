@@ -39,6 +39,15 @@ test('tail module', assert => {
 
   {
     const expected = []
+    const actual = tail(['a'])
+    const message = `tail(["a")
+      is [${actual.map(v => `"${v}"`).join(', ')}],
+      expected [${expected.map(v => `"${v}"`).join(', ')}]`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = []
     const actual = tail([])
     const message = `tail([])
       is [${actual.map(v => `"${v}"`).join(', ')}],

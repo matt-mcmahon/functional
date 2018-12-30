@@ -39,6 +39,15 @@ test('init module', assert => {
 
   {
     const expected = []
+    const actual = init(['a'])
+    const message = `init(["a"])
+      is [${actual.map(v => `"${v}"`).join(', ')}],
+      expected [${expected.map(v => `"${v}"`).join(', ')}]`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = []
     const actual = init([])
     const message = `init([])
       is [${actual.map(v => `"${v}"`).join(', ')}],
