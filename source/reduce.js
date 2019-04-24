@@ -16,4 +16,4 @@ const reduce = reducer => accumulator => (array = []) => {
 
 sign('reduceRight :: ((a, b) -> a) -> a -> [b] -> a')(reduce)
 
-export default reduce
+export { reduce, reduce as default }

@@ -1,8 +1,31 @@
-import bind from './bind'
+import { bind as namedExport, default as bind } from './bind.js'
 import test from 'tape'
 
-test('bind module', t => {
-  t.equal(typeof bind, 'function', 'bind should be a function')
+test('bind module', assert => {
+  {
+    const expected = 'function'
+    const actual = typeof bind
+    const message = `bind
+      is a "${actual}",
+      expected "${expected}"`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = 'function'
+    const actual = typeof namedExport
+    const message = `namedExport
+      is a "${actual}",
+      expected "${expected}"`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = true
+    const actual = bind === namedExport
+    const message = `Named and Default exports should be identical`
+    assert.deepEqual(actual, expected, message)
+  }
 
   const objectWith = {
     method(value) {
@@ -13,7 +36,7 @@ test('bind module', t => {
 
   const bind1 = bind(objectWith.method)
 
-  t.equal(
+  assert.equal(
     typeof bind1,
     'function',
     'bind1 should be a function (1 applied arguments)'
@@ -25,7 +48,7 @@ test('bind module', t => {
 
   const bind2 = bind1(boundTarget)
 
-  t.equal(
+  assert.equal(
     typeof bind2,
     'function',
     'bind2 should be a function (2 applied arguments)'
@@ -33,14 +56,18 @@ test('bind module', t => {
 
   const bind3 = bind2('foo')
 
-  t.equal(bind3, 'method called', 'bind3 should be a string (final result)')
+  assert.equal(
+    bind3,
+    'method called',
+    'bind3 should be a string (final result)'
+  )
 
   const expected = {
     foo: 'foo',
     bar: 'bar'
   }
 
-  t.deepEqual(
+  assert.deepEqual(
     boundTarget,
     expected,
     'boundTarget object should have property "foo"'
@@ -50,7 +77,7 @@ test('bind module', t => {
     bind1
   }
 
-  t.deepEqual(
+  assert.deepEqual(
     misdirection,
     {
       bind1
@@ -58,5 +85,5 @@ test('bind module', t => {
     'misdirected object should NOT have a "baz" property'
   )
 
-  t.end()
+  assert.end()
 })

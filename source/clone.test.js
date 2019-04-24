@@ -1,103 +1,163 @@
-import { strict as assert } from 'assert'
-import clone from './clone'
+import { strict } from 'assert'
+import { clone as namedExport, default as clone } from './clone.js'
 import test from 'tape'
 
-test('clone module', t => {
-  t.equal(typeof clone, 'function', 'clone should be a function')
-  t.equal(
-    typeof clone.signature,
-    'string',
-    'clone should have a signature field'
-  )
-  t.end()
-})
+test('clone module', assert => {
+  {
+    const expected = 'function'
+    const actual = typeof clone
+    const message = `clone
+      is a "${actual}",
+      expected "${expected}"`
+    assert.deepEqual(actual, expected, message)
+  }
 
-test('clone flat objects', t => {
-  const expected = { foo: 'foo', bar: 'bar' }
-  const actual = clone(expected)
-  t.deepEqual(actual, expected)
-  t.notEqual(actual, expected)
-  t.end()
-})
+  {
+    const expected = 'function'
+    const actual = typeof namedExport
+    const message = `namedExport
+      is a "${actual}",
+      expected "${expected}"`
+    assert.deepEqual(actual, expected, message)
+  }
 
-test('clone nested objects', t => {
-  const obj = {
-    foo: 'foo',
-    bar: {
-      baz: 'baz'
+  {
+    const expected = true
+    const actual = clone === namedExport
+    const message = `namedExport and default export should be identical`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = { foo: 'foo', bar: 'bar' }
+    const actual = clone(expected)
+    const message = `clone flat objects`
+    assert.deepEqual(actual, expected, message)
+    assert.notEqual(actual, expected, `cloned object should be a new object`)
+  }
+
+  {
+    const expected = {
+      foo: 'foo',
+      bar: {
+        baz: 'baz'
+      }
     }
+    const actual = clone(expected)
+    assert.deepEqual(
+      actual,
+      expected,
+      `clone's nested properties should be equivelent`
+    )
+    assert.notEqual(
+      actual.bar,
+      expected.bar,
+      `clone's nested object should be a new object`
+    )
   }
-  const copy = clone(obj)
-  t.deepEqual(copy.bar, obj.bar)
-  t.notEqual(copy.bar, obj.bar)
-  t.end()
-})
 
-test('clone flat arrays', t => {
-  const arr = ['foo', 'bar', 'baz']
-  const copy = clone(arr)
-  t.deepEqual(copy, arr)
-  t.notEqual(copy, arr)
-  t.end()
-})
-
-test('clone multi-dimensional arrays', t => {
-  const arr = [['foo', 'bar'], ['baz', 'qux']]
-  const copy = clone(arr)
-  t.deepEqual(copy, arr)
-  t.notEqual(copy, arr)
-  t.deepEqual(copy[0], arr[0])
-  t.notEqual(copy[0], arr[0])
-  t.deepEqual(copy[1], arr[1])
-  t.notEqual(copy[1], arr[1])
-  t.end()
-})
-
-test('clone objects containing arrays', t => {
-  const obj = {
-    foo: ['foo'],
-    bar: [null]
+  {
+    const expected = ['foo', 'bar', 'bax']
+    const actual = clone(expected)
+    assert.deepEqual(actual, expected, `should clone equivelent flat array`)
+    assert.notEqual(actual, expected, `clone array should be a new array`)
   }
-  const copy = clone(obj)
-  t.deepEqual(copy, obj)
-  t.notEqual(copy, obj)
-  t.deepEqual(copy.foo, obj.foo)
-  t.notEqual(copy.foo, obj.foo)
-  t.deepEqual(copy.bar, obj.bar)
-  t.notEqual(copy.bar, obj.bar)
-  t.end()
-})
 
-test('clone arrays of objects', t => {
-  const arr = [{ foo: 1 }, { bar: 2 }]
-  const copy = clone(arr)
-  t.deepEqual(copy, arr)
-  t.notEqual(copy, arr)
-  t.deepEqual(copy[0], arr[0])
-  t.notEqual(copy[0], arr[0])
-  t.deepEqual(copy[1], arr[1])
-  t.notEqual(copy[1], arr[1])
-  t.end()
-})
+  {
+    const expected = [['foo', 'bar'], ['baz', 'qux']]
+    const actual = clone(expected)
+    assert.deepEqual(actual, expected, `should clone nested arrays`)
+    assert.notEqual(
+      expected[0],
+      actual[0],
+      `nested array 0 should be a new array`
+    )
+    assert.notEqual(
+      expected[1],
+      actual[1],
+      `nested array 1 should be a new array`
+    )
+  }
 
-test('clone with circular references', t => {
-  const foo = { bar: 'bar' }
-  foo.baz = [foo]
-  const copy = clone(foo)
-  // Cannot use tape's deep equal. It is not circular reference safe.
-  t.doesNotThrow(() => assert.deepEqual(copy, foo))
-  t.notEqual(copy.baz, foo.baz)
-  t.doesNotThrow(() => assert.deepEqual(copy.baz, foo.baz))
-  t.equal(copy.baz[0], copy)
-  t.end()
-})
+  {
+    const expected = {
+      foo: ['foo'],
+      bar: [null]
+    }
+    const actual = clone(expected)
+    assert.deepEqual(actual, expected, 'clone objects containing arrays')
+    assert.notEqual(
+      actual.foo,
+      expected.foo,
+      `nested array "foo" should be new array`
+    )
+    assert.notEqual(
+      actual.bar,
+      expected.bar,
+      `nested array "bar" should be new array`
+    )
+  }
 
-test('clone Dates', t => {
-  const foo = new Date()
-  const copy = clone(foo)
-  t.equal(copy.toString(), foo.toString())
-  t.notEqual(copy, foo)
-  t.end()
+  {
+    const expected = [{ foo: 1 }, { bar: 2 }]
+    const actual = clone(expected)
+    assert.deepEqual(actual, expected)
+    assert.notEqual(actual[0], expected[0], `index 0 should be a new object`)
+    assert.notEqual(actual[1], expected[1], `index 1 should be a new object`)
+  }
+
+  {
+    // test('clone with circular references', assert => {
+    const expected = { bar: 'bar' }
+    expected.bazInArray = [expected]
+    expected.bazAsProperty = expected
+    const actual = clone(expected)
+
+    assert.doesNotThrow(() => {
+      // Cannot use tape's deep equal. It is not circular reference safe.
+      strict.deepEqual(actual, expected)
+    }, `should clone circular references`)
+
+    assert.notEqual(
+      actual.bazInArray,
+      expected.bazInArray,
+      `clone's bazInArray should be a new array`
+    )
+
+    assert.notEqual(
+      actual.bazAsProperty,
+      expected.bazAsProperty,
+      `clone's bazAsProperty should be a new object`
+    )
+
+    assert.notEqual(
+      actual.bazInArray[0],
+      expected.bazInArray[0],
+      `clone's bazInArray[0] should be a new object`
+    )
+
+    assert.equal(
+      actual.bazInArray[0],
+      actual,
+      `clone's bazInArray[0] should be the clone`
+    )
+
+    assert.equal(
+      actual.bazAsProperty,
+      actual,
+      `clone's bazAsProperty should be the clone`
+    )
+  }
+
+  {
+    const expected = new Date()
+    const actual = clone(expected)
+    const message = `Should clone dates`
+    assert.equal(actual.toString(), expected.toString(), message)
+    assert.notEqual(actual, expected, message)
+  }
+
+  assert.end()
 })
 
 /**

@@ -1,5 +1,4 @@
-import reduce from './reduce'
-import { reduce as namedExport } from './index'
+import { reduce as namedExport, default as reduce } from './reduce.js'
 import test from 'tape'
 
 test('reduce module', assert => {
