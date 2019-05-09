@@ -29,6 +29,13 @@ test('clone module', assert => {
   }
 
   {
+    const expected = 'string'
+    const actual = typeof clone.signature
+    const message = 'clone.signature should be a string'
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
     const expected = { foo: 'foo', bar: 'bar' }
     const actual = clone(expected)
     const message = `clone flat objects`

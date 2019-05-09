@@ -1,24 +1,57 @@
+import { compose as namedExport, default as compose } from './compose.js'
 import test from 'tape'
-import compose from './compose'
 
-test('compose module', t => {
-  t.equal(typeof compose, 'function', 'compose should be a function')
-  t.equal(
-    typeof compose.signature,
-    'string',
-    'compose.signature should be a string'
-  )
-  t.end()
-})
+test('compose module', assert => {
+  {
+    const expected = 'function'
+    const actual = typeof compose
+    const message = `compose
+      is a "${actual}",
+      expected "${expected}"`
+    assert.deepEqual(actual, expected, message)
+  }
 
-test('compose applies right to left', t => {
-  const f = x => x + 1
-  const g = x => 2 * x
-  const actual = compose(
-    f,
-    g
-  )(3)
-  t.notEqual(actual, 8, '(2 * 3) + 1 != 8')
-  t.equal(actual, 7, '(2 * 3) + 1 == 7')
-  t.end()
+  {
+    const expected = 'function'
+    const actual = typeof namedExport
+    const message = `namedExport
+      is a "${actual}",
+      expected "${expected}"`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = true
+    const actual = compose === namedExport
+    const message = `Named and Default exports should be identical`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = 'string'
+    const actual = typeof compose.signature
+    const message = 'compose.signature should be a string'
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const f = x => x + 1
+    const g = x => 2 * x
+    const actual = compose(
+      f,
+      g
+    )(3)
+    assert.notEqual(
+      actual,
+      8,
+      `compose should apply right to left (2 * 3) + 1 != 8`
+    )
+    assert.equal(
+      actual,
+      7,
+      `'compose should apply right to left' (2 * 3) + 1 == 7`
+    )
+  }
+
+  assert.end()
 })

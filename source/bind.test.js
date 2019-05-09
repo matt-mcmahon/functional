@@ -27,6 +27,13 @@ test('bind module', assert => {
     assert.deepEqual(actual, expected, message)
   }
 
+  {
+    const expected = 'string'
+    const actual = typeof bind.signature
+    const message = 'bind.signature should be a string'
+    assert.deepEqual(actual, expected, message)
+  }
+
   const objectWith = {
     method(value) {
       this.foo = value

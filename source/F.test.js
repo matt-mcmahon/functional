@@ -1,5 +1,41 @@
+import { F as namedExport, default as F } from './F.js'
 import test from 'tape'
-import F from './F'
+
+test('F module', assert => {
+  {
+    const expected = 'function'
+    const actual = typeof F
+    const message = `F
+      is a "${actual}",
+      expected "${expected}"`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = 'function'
+    const actual = typeof namedExport
+    const message = `namedExport
+      is a "${actual}",
+      expected "${expected}"`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = true
+    const actual = F === namedExport
+    const message = `Named and Default exports should be identical`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  {
+    const expected = 'string'
+    const actual = typeof F.signature
+    const message = 'F.signature should be a string'
+    assert.deepEqual(actual, expected, message)
+  }
+
+  assert.end()
+})
 
 test('F function', t => {
   t.equal(typeof F, 'function', 'F should be a function')
