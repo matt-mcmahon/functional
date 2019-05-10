@@ -10,6 +10,7 @@ test('functional exports expected methods', t => {
     'either',
     'equals',
     'F',
+    'has',
     'head',
     'id',
     'iffe',

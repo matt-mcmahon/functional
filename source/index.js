@@ -5,6 +5,7 @@ import defaultTo from './defaultTo'
 import either from './either'
 import equals from './equals'
 import F from './F'
+import has from './has'
 import head from './head'
 import id from './id'
 import iffe from './iffe'
@@ -29,6 +30,7 @@ export {
   either,
   equals,
   F,
+  has,
   head,
   id,
   iffe,
