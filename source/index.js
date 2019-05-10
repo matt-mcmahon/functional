@@ -1,3 +1,4 @@
+import always from './always'
 import bind from './bind'
 import clone from './clone'
 import compose from './compose'
@@ -24,6 +25,7 @@ import tail from './tail'
 import tap from './tap'
 
 export {
+  always,
   bind,
   clone,
   compose,

@@ -3,6 +3,7 @@ import * as functional from './index'
 
 test('functional exports expected methods', t => {
   const expected = [
+    'always',
     'bind',
     'clone',
     'compose',
