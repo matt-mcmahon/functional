@@ -8,6 +8,7 @@ import F from './F'
 import has from './has'
 import head from './head'
 import id from './id'
+import ifElse from './ifElse'
 import iffe from './iffe'
 import init from './init'
 import last from './last'
@@ -33,6 +34,7 @@ export {
   has,
   head,
   id,
+  ifElse,
   iffe,
   init,
   last,

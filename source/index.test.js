@@ -13,6 +13,7 @@ test('functional exports expected methods', t => {
     'has',
     'head',
     'id',
+    'ifElse',
     'iffe',
     'init',
     'last',
