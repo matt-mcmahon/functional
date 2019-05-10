@@ -1,2 +1,3 @@
-import sign from './sign'
-export { sign }
+import sign from './sign.js'
+import isRequired from './isRequired.js'
+export { sign, isRequired }
