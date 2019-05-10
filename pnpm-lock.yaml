@@ -1,7 +1,7 @@
 dependencies:
   esm: 3.2.22
 devDependencies:
-  husky: 2.0.0
+  husky: 2.2.0
   prettier: 1.17.0
   prettier-check: 2.0.0
   tap-spec: 5.0.0
@@ -312,7 +312,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
-  /husky/2.0.0:
+  /husky/2.2.0:
     dependencies:
       cosmiconfig: 5.2.0
       execa: 1.0.0
@@ -321,7 +321,7 @@ packages:
       is-ci: 2.0.0
       pkg-dir: 4.1.0
       please-upgrade-node: 3.1.1
-      read-pkg: 5.1.0
+      read-pkg: 5.1.1
       run-node: 1.0.0
       slash: 2.0.0
     dev: true
@@ -330,7 +330,7 @@ packages:
     hasBin: true
     requiresBuild: true
     resolution:
-      integrity: sha512-YvSQ5UQHNfqm+g+P1sFTkPI23nEe0gbKXdv5ZTRStYSVdAYyH1iypFilAMVqXLXnjGtb6lBuR/2Sf5FkwCNY2Q==
+      integrity: sha512-lG33E7zq6v//H/DQIojPEi1ZL9ebPFt3MxUMD8MR0lrS2ljEPiuUUxlziKIs/o9EafF0chL7bAtLQkcPvXmdnA==
   /import-fresh/2.0.0:
     dependencies:
       caller-path: 2.0.0
@@ -645,7 +645,7 @@ packages:
     dev: true
     resolution:
       integrity: sha1-+p4xn/3u6zWycpbvDz03TawvUqc=
-  /read-pkg/5.1.0:
+  /read-pkg/5.1.1:
     dependencies:
       '@types/normalize-package-data': 2.4.0
       normalize-package-data: 2.5.0
@@ -655,7 +655,7 @@ packages:
     engines:
       node: '>=8'
     resolution:
-      integrity: sha512-NjNkqf8hlMuSxh+p8h8x8sCIfEv/MoRs/nYDmSRSAk879F9C94ADq+kHUJ4LTy5Nn0PYSmMYsy1mD4+lcXiBKg==
+      integrity: sha512-dFcTLQi6BZ+aFUaICg7er+/usEoqFdQxiEBsEMNGoipenihtxxtdrQuBXvyANCEI8VuUIVYFgeHGx9sLLvim4w==
   /readable-stream/2.2.9:
     dependencies:
       buffer-shims: 1.0.0
@@ -920,7 +920,7 @@ packages:
       integrity: sha1-HBH5IY8HYImkfdUS+TxmmaaoHVI=
 specifiers:
   esm: ^3.2.22
-  husky: ^2.0.0
+  husky: ^2.2.0
   prettier: ^1.17.0
   prettier-check: ^2.0.0
   tap-spec: ^5.0.0
