@@ -1,7 +1,9 @@
 import bind from './bind'
 import clone from './clone'
 import compose from './compose'
-import equal from './equal'
+import defaultTo from './defaultTo'
+import either from './either'
+import equals from './equals'
 import F from './F'
 import head from './head'
 import id from './id'
@@ -23,7 +25,9 @@ export {
   bind,
   clone,
   compose,
-  equal,
+  defaultTo,
+  either,
+  equals,
   F,
   head,
   id,

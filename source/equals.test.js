@@ -1,11 +1,11 @@
-import { equal as namedExport, default as equal } from './equal.js'
+import { equals as namedExport, default as equals } from './equals.js'
 import test from 'tape'
 
-test('equal module', assert => {
+test('equals module', assert => {
   {
     const expected = 'function'
-    const actual = typeof equal
-    const message = `equal
+    const actual = typeof equals
+    const message = `equals
       is a "${actual}",
       expected "${expected}"`
     assert.deepEqual(actual, expected, message)
@@ -22,45 +22,45 @@ test('equal module', assert => {
 
   {
     const expected = true
-    const actual = equal === namedExport
+    const actual = equals === namedExport
     const message = `Named and Default exports should be identical`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = 'string'
-    const actual = typeof equal.signature
-    const message = 'equal.signature should be a string'
+    const actual = typeof equals.signature
+    const message = 'equals.signature should be a string'
     assert.deepEqual(actual, expected, message)
   }
 
   assert.end()
 })
 
-test('equal function', assert => {
-  assert.equal(typeof equal, 'function', 'equal should be a function')
+test('equals function', assert => {
+  assert.equals(typeof equals, 'function', 'equals should be a function')
 
-  const equalsA = equal('a')
+  const equalsA = equals('a')
 
   {
     const actual = typeof equalsA
     const expected = 'function'
-    const message = 'equal(a) should create a function'
-    assert.equal(actual, expected, message)
+    const message = 'equals(a) should create a function'
+    assert.equals(actual, expected, message)
   }
 
   {
     const actual = equalsA('a')
     const expected = true
     const message = `equals('a')('a') === true`
-    assert.equal(actual, expected, message)
+    assert.equals(actual, expected, message)
   }
 
   {
     const actual = equalsA('b')
     const expected = false
     const message = `equals('a')('b') === false`
-    assert.equal(actual, expected, message)
+    assert.equals(actual, expected, message)
   }
 
   assert.end()
