@@ -23,6 +23,7 @@ test('functional exports expected methods', t => {
     'ifElse',
     'iffe',
     'init',
+    'isEmpty',
     'last',
     'map',
     'merge',

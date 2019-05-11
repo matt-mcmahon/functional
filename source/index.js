@@ -18,6 +18,7 @@ import id from './id'
 import ifElse from './ifElse'
 import iffe from './iffe'
 import init from './init'
+import isEmpty from './isEmpty'
 import last from './last'
 import map from './map'
 import merge from './merge'
@@ -51,6 +52,7 @@ export {
   ifElse,
   iffe,
   init,
+  isEmpty,
   last,
   map,
   merge,
