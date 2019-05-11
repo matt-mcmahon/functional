@@ -5,6 +5,7 @@ test('functional exports expected methods', t => {
   const expected = [
     'always',
     'bind',
+    'both',
     'clone',
     'compose',
     'defaultTo',

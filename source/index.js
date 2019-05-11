@@ -1,5 +1,6 @@
 import always from './always'
 import bind from './bind'
+import both from './both'
 import clone from './clone'
 import compose from './compose'
 import defaultTo from './defaultTo'
@@ -27,6 +28,7 @@ import tap from './tap'
 export {
   always,
   bind,
+  both,
   clone,
   compose,
   defaultTo,
