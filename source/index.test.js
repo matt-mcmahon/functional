@@ -7,6 +7,7 @@ test('functional exports expected methods', t => {
     'bind',
     'both',
     'clone',
+    'complement',
     'compose',
     'defaultTo',
     'either',

@@ -2,6 +2,7 @@ import always from './always'
 import bind from './bind'
 import both from './both'
 import clone from './clone'
+import complement from './complement'
 import compose from './compose'
 import defaultTo from './defaultTo'
 import either from './either'
@@ -32,6 +33,7 @@ export {
   bind,
   both,
   clone,
+  complement,
   compose,
   defaultTo,
   either,
