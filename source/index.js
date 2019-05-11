@@ -6,6 +6,8 @@ import compose from './compose'
 import defaultTo from './defaultTo'
 import either from './either'
 import equals from './equals'
+import either from './either'
+import equal from './equal'
 import F from './F'
 import has from './has'
 import head from './head'
@@ -34,6 +36,8 @@ export {
   defaultTo,
   either,
   equals,
+  either,
+  equal,
   F,
   has,
   head,
