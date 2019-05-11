@@ -8,9 +8,6 @@ import compose from './compose'
 import defaultTo from './defaultTo'
 import either from './either'
 import equals from './equals'
-import defaultTo from './defaultTo'
-import either from './either'
-import equal from './equal'
 import F from './F'
 import has from './has'
 import head from './head'
@@ -19,6 +16,7 @@ import ifElse from './ifElse'
 import iffe from './iffe'
 import init from './init'
 import isEmpty from './isEmpty'
+import isNil from './isNil'
 import last from './last'
 import map from './map'
 import merge from './merge'
@@ -42,9 +40,6 @@ export {
   defaultTo,
   either,
   equals,
-  defaultTo,
-  either,
-  equal,
   F,
   has,
   head,
@@ -53,6 +48,7 @@ export {
   iffe,
   init,
   isEmpty,
+  isNil,
   last,
   map,
   merge,
