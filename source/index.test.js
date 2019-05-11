@@ -4,6 +4,7 @@ import * as functional from './index'
 test('functional exports expected methods', t => {
   const expected = [
     'always',
+    'assoc',
     'bind',
     'both',
     'clone',

@@ -1,4 +1,5 @@
 import always from './always'
+import assoc from './assoc'
 import bind from './bind'
 import both from './both'
 import clone from './clone'
@@ -30,6 +31,7 @@ import tap from './tap'
 
 export {
   always,
+  assoc,
   bind,
   both,
   clone,
