@@ -1,7 +1,7 @@
 import { isNil as namedExport, default as isNil } from './isNil.js'
 import { isNil as indexExport } from './index'
 import test from 'tape'
-import { inspect } from 'util'
+import { inspect } from './util'
 
 test('isNil module', assert => {
   {
@@ -33,7 +33,7 @@ test('isNil module', assert => {
 test('isNil functionality', assert => {
   const runTest = ([value, expected]) => {
     const actual = isNil(value)
-    const message = `isNil(${inspect(value)}) → ${expected}, got ${actual}`
+    const message = inspect`isNil(${value}) → ${expected}, got ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 

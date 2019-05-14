@@ -1,7 +1,7 @@
 import { assoc as namedExport, default as assoc } from './assoc.js'
 import { assoc as indexExport } from './index'
 import test from 'tape'
-import { inspect } from 'util'
+import { inspect } from './util'
 
 test('assoc module', assert => {
   {
@@ -40,14 +40,14 @@ test('assoc functionality', assert => {
     const actual = setBar({
       foo: 'foo'
     })
-    const message = `Should be "${inspect(expected)}", got "${inspect(actual)}"`
+    const message = inspect`Should be "${expected}", got "${actual}"`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = { a: 1, b: 2, c: 3 }
     const actual = assoc('c')(3)({ a: 1, b: 2 })
-    const message = `Should be "${inspect(expected)}", got "${inspect(actual)}"`
+    const message = inspect`Should be "${expected}", got "${actual}"`
     assert.deepEqual(actual, expected, message)
   }
 

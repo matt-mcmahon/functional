@@ -1,40 +1,9 @@
-import { isRequired, sign } from './index.js'
 import test from 'tape'
+import * as functional from './index'
 
-test('index module', assert => {
-  {
-    const expected = 'function'
-    const actual = typeof isRequired
-    const message = `isRequired
-      is a "${actual}",
-      expected "${expected}"`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const expected = 'function'
-    const actual = typeof sign
-    const message = `sign
-      is a "${actual}",
-      expected "${expected}"`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const f = a => a
-    sign('id')(f)
-    const expected = 'id'
-    const actual = f.signature
-    const message = `f.signature
-      is a "${actual}",
-      expected "${expected}"`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const message = `executing isRequired should throw`
-    assert.throws(isRequired, message)
-  }
-
-  assert.end()
+test('functional exports expected methods', t => {
+  const expected = ['inspect', 'isRequired', 'sign'].sort()
+  const actual = Object.keys(functional).sort()
+  t.isEquivalent(actual, expected)
+  t.end()
 })

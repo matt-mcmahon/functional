@@ -1,6 +1,6 @@
 import { isEmpty as namedExport, default as isEmpty } from './isEmpty.js'
 import { isEmpty as indexExport } from './index'
-import { inspect } from 'util'
+import { inspect } from './util'
 import test from 'tape'
 
 test('isEmpty module', assert => {
@@ -33,7 +33,7 @@ test('isEmpty module', assert => {
 test('isEmpty functionality', assert => {
   const runTest = ([value, expected]) => {
     const actual = isEmpty(value)
-    const message = `isEmpty(${inspect(value)}) → ${expected}, got ${actual}`
+    const message = inspect`isEmpty(${value}) → ${expected}, got ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 

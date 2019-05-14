@@ -1,3 +1,4 @@
 import sign from './sign.js'
+import inspect from './inspect'
 import isRequired from './isRequired.js'
-export { sign, isRequired }
+export { inspect, sign, isRequired }
