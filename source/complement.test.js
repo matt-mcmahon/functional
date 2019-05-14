@@ -1,17 +1,18 @@
+import test from 'tape'
+import { inspect } from './util/index.js'
 import {
   complement as namedExport,
   default as complement
 } from './complement.js'
 import { complement as indexExport } from './index'
-import test from 'tape'
 
-test('complement module', assert => {
+test('complement module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof complement
-    const message = `complement
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof complement
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
@@ -25,14 +26,16 @@ test('complement module', assert => {
   {
     const expected = 'string'
     const actual = typeof complement.signature
-    const message = 'complement.signature should be a string'
+    const message = inspect`typeof complement.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   assert.end()
 })
 
-test('complement functionality', assert => {
+test('complement module: implementation', assert => {
   {
     const expected = true
     const actual = complement(v => v)(false)

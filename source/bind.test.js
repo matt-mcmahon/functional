@@ -1,39 +1,38 @@
-import { bind as namedExport, default as bind } from './bind.js'
 import test from 'tape'
+import { inspect } from './util/index.js'
+import { bind as namedExport, default as bind } from './bind.js'
+import { bind as indexExport } from './index'
 
-test('bind module', assert => {
+test('bind module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof bind
-    const message = `bind
-      is a "${actual}",
-      expected "${expected}"`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const expected = 'function'
-    const actual = typeof namedExport
-    const message = `namedExport
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof bind
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = true
-    const actual = bind === namedExport
-    const message = `Named and Default exports should be identical`
+    const actual = bind === namedExport && bind === indexExport
+    const message = `Named, Default, and Index exports should all be identical`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = 'string'
     const actual = typeof bind.signature
-    const message = 'bind.signature should be a string'
+    const message = inspect`typeof bind.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
+  assert.end()
+})
+
+test('bind module: implementation', assert => {
   const objectWith = {
     method(value) {
       this.foo = value

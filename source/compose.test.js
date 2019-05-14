@@ -1,39 +1,38 @@
-import { compose as namedExport, default as compose } from './compose.js'
 import test from 'tape'
+import { inspect } from './util/index.js'
+import { compose as namedExport, default as compose } from './compose.js'
+import { compose as indexExport } from './index'
 
-test('compose module', assert => {
+test('compose module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof compose
-    const message = `compose
-      is a "${actual}",
-      expected "${expected}"`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const expected = 'function'
-    const actual = typeof namedExport
-    const message = `namedExport
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof compose
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = true
-    const actual = compose === namedExport
-    const message = `Named and Default exports should be identical`
+    const actual = compose === namedExport && compose === indexExport
+    const message = `Named, Default, and Index exports should all be identical`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = 'string'
     const actual = typeof compose.signature
-    const message = 'compose.signature should be a string'
+    const message = inspect`typeof compose.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
+  assert.end()
+})
+
+test('compose module: implementation', assert => {
   {
     const f = x => x + 1
     const g = x => 2 * x

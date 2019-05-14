@@ -1,40 +1,48 @@
-import reduceRight from './reduceRight'
-import { reduceRight as namedExport } from './index'
 import test from 'tape'
+import { inspect } from './util/index.js'
+import {
+  reduceRight as namedExport,
+  default as reduceRight
+} from './reduceRight.js'
+import { reduceRight as indexExport } from './index'
 
-test('reduceRight module', assert => {
+test('reduceRight module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof reduceRight
-    const message = `reduceRight
-      is a "${actual}",
-      expected ${expected}`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const expected = 'function'
-    const actual = typeof namedExport
-    const message = `namedExport
-      is a "${actual}",
-      expected ${expected}`
+    const message = inspect`typeof reduceRight
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = true
-    const actual = reduceRight === namedExport
-    const message = `Named and Default exports should be identical`
+    const actual = reduceRight === namedExport && reduceRight === indexExport
+    const message = inspect`Named, Default, and Index exports should all be identical`
     assert.deepEqual(actual, expected, message)
   }
 
   {
+    const expected = 'string'
+    const actual = typeof reduceRight.signature
+    const message = inspect`typeof reduceRight.signature
+      should be ${expected},
+      is ${actual}`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  assert.end()
+})
+
+test('reduceRight module: implementation', assert => {
+  {
     const add = (x, y) => x + y
     const expected = 9
     const actual = reduceRight(add)(0)([1, 3, 5])
-    const message = `reducing [1, 3, 5]
-      is "${actual}",
-      expected "${expected}"`
+    const message = inspect`reducing [1, 3, 5]
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
@@ -46,18 +54,18 @@ test('reduceRight module', assert => {
   {
     const expected = 'acb'
     const actual = reduceRight(concat)(a)([b, c])
-    const message = `reducing "a", ["b", "c"]
-      is "${actual}",
-      expected "${expected}"`
+    const message = inspect`reducing 'a', ['b', 'c']
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = 'a'
     const actual = reduceRight(concat)(a)([])
-    const message = `reducing a, []
-      is "${actual}",
-      expected "${expected}"`
+    const message = inspect`reducing 'a', []
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
@@ -69,7 +77,7 @@ test('reduceRight module', assert => {
     const accumulator = 'original accumulator'
     const expected = accumulator
     const actual = reduceRight(thrower)(accumulator)([])
-    const message = `reducing an empty array should yield the original accumulator`
+    const message = inspect`reducing an empty array should yield the original accumulator`
     assert.strictEqual(actual, expected, message)
   }
 
@@ -77,7 +85,7 @@ test('reduceRight module', assert => {
     const accumulator = 'original accumulator'
     const expected = accumulator
     const actual = reduceRight(thrower)(accumulator)(456)
-    const message = `reducing number should yield the original accumulator`
+    const message = inspect`reducing number should yield the original accumulator`
     assert.strictEqual(actual, expected, message)
   }
 
@@ -85,7 +93,7 @@ test('reduceRight module', assert => {
     const accumulator = 'original accumulator'
     const expected = accumulator
     const actual = reduceRight(thrower)(accumulator)({ value: 'not reducable' })
-    const message = `reducing object should yield the original accumulator`
+    const message = inspect`reducing object should yield the original accumulator`
     assert.strictEqual(actual, expected, message)
   }
 

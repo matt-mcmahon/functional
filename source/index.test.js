@@ -1,7 +1,7 @@
 import test from 'tape'
 import * as functional from './index'
 
-test('functional exports expected methods', t => {
+test('functional exports expected modules', t => {
   const expected = [
     'always',
     'assoc',

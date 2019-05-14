@@ -1,15 +1,15 @@
+import test from 'tape'
+import { inspect } from './util/index.js'
 import { isNil as namedExport, default as isNil } from './isNil.js'
 import { isNil as indexExport } from './index'
-import test from 'tape'
-import { inspect } from './util'
 
-test('isNil module', assert => {
+test('isNil module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof isNil
-    const message = `isNil
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof isNil
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
@@ -23,17 +23,21 @@ test('isNil module', assert => {
   {
     const expected = 'string'
     const actual = typeof isNil.signature
-    const message = 'isNil.signature should be a string'
+    const message = inspect`typeof isNil.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   assert.end()
 })
 
-test('isNil functionality', assert => {
+test('isNil module: implementation', assert => {
   const runTest = ([value, expected]) => {
     const actual = isNil(value)
-    const message = inspect`isNil(${value}) → ${expected}, got ${actual}`
+    const message = inspect`isNil(${value})
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 

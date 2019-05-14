@@ -1,43 +1,38 @@
-import { ifElse as namedExport, default as ifElse } from './ifElse.js'
 import test from 'tape'
+import { inspect } from './util/index.js'
+import { ifElse as namedExport, default as ifElse } from './ifElse.js'
+import { ifElse as indexExport } from './index'
 
-test('ifElse module', assert => {
+test('ifElse module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof ifElse
-    const message = `ifElse
-      is a "${actual}",
-      expected "${expected}"`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const expected = 'function'
-    const actual = typeof namedExport
-    const message = `namedExport
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof ifElse
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = true
-    const actual = ifElse === namedExport
-    const message = `Named and Default exports should be identical`
+    const actual = ifElse === namedExport && ifElse === indexExport
+    const message = `Named, Default, and Index exports should all be identical`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = 'string'
     const actual = typeof ifElse.signature
-    const message = 'ifElse.signature should be a string'
+    const message = inspect`typeof ifElse.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   assert.end()
 })
 
-test('ifElse functionality', assert => {
+test('ifElse module: implementation', assert => {
   const isTrue = condition => condition === true
   const boolToString = ifElse(isTrue)(() => 'true')(() => 'false')
 

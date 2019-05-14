@@ -1,45 +1,38 @@
-import { equals as namedExport, default as equals } from './equals.js'
 import test from 'tape'
+import { inspect } from './util/index.js'
+import { equals as namedExport, default as equals } from './equals.js'
+import { equals as indexExport } from './index'
 
-test('equals module', assert => {
+test('equals module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof equals
-    const message = `equals
-      is a "${actual}",
-      expected "${expected}"`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const expected = 'function'
-    const actual = typeof namedExport
-    const message = `namedExport
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof equals
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = true
-    const actual = equals === namedExport
-    const message = `Named and Default exports should be identical`
+    const actual = equals === namedExport && equals === indexExport
+    const message = `Named, Default, and Index exports should all be identical`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = 'string'
     const actual = typeof equals.signature
-    const message = 'equals.signature should be a string'
+    const message = inspect`typeof equals.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   assert.end()
 })
 
-test('equals function', assert => {
-  assert.equals(typeof equals, 'function', 'equals should be a function')
-
+test('equals module: implementation', assert => {
   const equalsA = equals('a')
 
   {

@@ -1,39 +1,38 @@
-import { has as namedExport, default as has } from './has.js'
 import test from 'tape'
+import { inspect } from './util/index.js'
+import { has as namedExport, default as has } from './has.js'
+import { has as indexExport } from './index'
 
-test('has module', assert => {
+test('has module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof has
-    const message = `has
-      is a "${actual}",
-      expected "${expected}"`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const expected = 'function'
-    const actual = typeof namedExport
-    const message = `namedExport
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof has
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = true
-    const actual = has === namedExport
-    const message = `Named and Default exports should be identical`
+    const actual = has === namedExport && has === indexExport
+    const message = `Named, Default, and Index exports should all be identical`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = 'string'
     const actual = typeof has.signature
-    const message = 'has.signature should be a string'
+    const message = inspect`typeof has.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
+  assert.end()
+})
+
+test('has module: implementation', assert => {
   const object = { a: 'a' }
   const hasA = has('a')
 

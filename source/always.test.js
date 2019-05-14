@@ -1,14 +1,15 @@
+import test from 'tape'
+import { inspect } from './util/index.js'
 import { always as namedExport, default as always } from './always.js'
 import { always as indexExport } from './index'
-import test from 'tape'
 
-test('always module', assert => {
+test('always module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof always
-    const message = `always
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof always
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
@@ -22,18 +23,23 @@ test('always module', assert => {
   {
     const expected = 'string'
     const actual = typeof always.signature
-    const message = 'always.signature should be a string'
+    const message = inspect`typeof always.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   assert.end()
 })
 
-test('always functionality', assert => {
+test('always module: implementation', assert => {
   {
-    const expected = { foo: 'foo' }
-    const actual = always(expected)({ bar: 'bar' })
-    const message = `Should be "${expected}", got "${actual}"`
+    const expected = 'foo'
+    const argument = 'bar'
+    const actual = always(expected)(argument)
+    const message = inspect`should return
+      original value, ${expected},
+      not passed in value, ${argument}.`
     assert.deepEqual(actual, expected, message)
   }
 

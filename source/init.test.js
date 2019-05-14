@@ -1,33 +1,38 @@
-import init from './init'
-import { init as namedExport } from './index.js'
 import test from 'tape'
+import { inspect } from './util/index.js'
+import { init as namedExport, default as init } from './init.js'
+import { init as indexExport } from './index'
 
-test('init module', assert => {
+test('init module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof init
-    const message = `init
-      is a "${actual}",
-      expected ${expected}`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const expected = 'function'
-    const actual = typeof namedExport
-    const message = `namedExport
-      is a "${actual}",
-      expected ${expected}`
+    const message = inspect`typeof init
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = true
-    const actual = init === namedExport
-    const message = `Named and Default exports should be identical`
+    const actual = init === namedExport && init === indexExport
+    const message = `Named, Default, and Index exports should all be identical`
     assert.deepEqual(actual, expected, message)
   }
 
+  {
+    const expected = 'string'
+    const actual = typeof init.signature
+    const message = inspect`typeof init.signature
+      should be ${expected},
+      is ${actual}`
+    assert.deepEqual(actual, expected, message)
+  }
+
+  assert.end()
+})
+
+test('init module: implementation', assert => {
   {
     const expected = ['a', 'b']
     const actual = init(['a', 'b', 'c'])

@@ -1,15 +1,15 @@
+import test from 'tape'
+import { inspect } from './util/index.js'
 import { assoc as namedExport, default as assoc } from './assoc.js'
 import { assoc as indexExport } from './index'
-import test from 'tape'
-import { inspect } from './util'
 
-test('assoc module', assert => {
+test('assoc module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof assoc
-    const message = `assoc
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof assoc
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
@@ -23,14 +23,16 @@ test('assoc module', assert => {
   {
     const expected = 'string'
     const actual = typeof assoc.signature
-    const message = 'assoc.signature should be a string'
+    const message = inspect`typeof assoc.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   assert.end()
 })
 
-test('assoc functionality', assert => {
+test('assoc module: implementation', assert => {
   {
     const setBar = assoc('bar')('bar')
     const expected = {
@@ -40,14 +42,18 @@ test('assoc functionality', assert => {
     const actual = setBar({
       foo: 'foo'
     })
-    const message = inspect`Should be "${expected}", got "${actual}"`
+    const message = inspect`after add 'bar'
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   {
-    const expected = { a: 1, b: 2, c: 3 }
-    const actual = assoc('c')(3)({ a: 1, b: 2 })
-    const message = inspect`Should be "${expected}", got "${actual}"`
+    const expected = { a: 1, b: 3 }
+    const actual = assoc('b')(3)({ a: 1, b: 2 })
+    const message = inspect`after overwrite 'b'
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 

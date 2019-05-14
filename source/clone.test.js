@@ -1,40 +1,39 @@
 import { strict } from 'assert'
-import { clone as namedExport, default as clone } from './clone.js'
 import test from 'tape'
+import { inspect } from './util/index.js'
+import { clone as namedExport, default as clone } from './clone.js'
+import { clone as indexExport } from './index'
 
-test('clone module', assert => {
+test('clone module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof clone
-    const message = `clone
-      is a "${actual}",
-      expected "${expected}"`
-    assert.deepEqual(actual, expected, message)
-  }
-
-  {
-    const expected = 'function'
-    const actual = typeof namedExport
-    const message = `namedExport
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof clone
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = true
-    const actual = clone === namedExport
-    const message = `namedExport and default export should be identical`
+    const actual = clone === namedExport && clone === indexExport
+    const message = `Named, Default, and Index exports should all be identical`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = 'string'
     const actual = typeof clone.signature
-    const message = 'clone.signature should be a string'
+    const message = inspect`typeof clone.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
+  assert.end()
+})
+
+test('clone module: implementation', assert => {
   {
     const expected = { foo: 'foo', bar: 'bar' }
     const actual = clone(expected)
@@ -54,7 +53,7 @@ test('clone module', assert => {
     assert.deepEqual(
       actual,
       expected,
-      `clone's nested properties should be equivelent`
+      `clone's nested properties should be equivalent`
     )
     assert.notEqual(
       actual.bar,

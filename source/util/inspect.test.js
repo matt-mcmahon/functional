@@ -2,7 +2,7 @@ import { inspect as namedExport, default as inspect } from './inspect.js'
 import { inspect as indexExport } from './index'
 import test from 'tape'
 
-test('inspect module', assert => {
+test('inspect module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof inspect
@@ -22,7 +22,7 @@ test('inspect module', assert => {
   assert.end()
 })
 
-test('inspect functionality', assert => {
+test('inspect module: implementation', assert => {
   {
     const expected = `one { one: 'one' } two`
     const actual = inspect`one ${{ one: 'one' }} two`

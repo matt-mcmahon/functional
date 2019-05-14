@@ -1,14 +1,15 @@
+import test from 'tape'
+import { inspect } from './util/index.js'
 import { defaultTo as namedExport, default as defaultTo } from './defaultTo.js'
 import { defaultTo as indexExport } from './index'
-import test from 'tape'
 
-test('defaultTo module', assert => {
+test('defaultTo module: declaration', assert => {
   {
     const expected = 'function'
     const actual = typeof defaultTo
-    const message = `defaultTo
-      is a "${actual}",
-      expected "${expected}"`
+    const message = inspect`typeof defaultTo
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
@@ -22,14 +23,16 @@ test('defaultTo module', assert => {
   {
     const expected = 'string'
     const actual = typeof defaultTo.signature
-    const message = 'defaultTo.signature should be a string'
+    const message = inspect`typeof defaultTo.signature
+      should be ${expected},
+      is ${actual}`
     assert.deepEqual(actual, expected, message)
   }
 
   assert.end()
 })
 
-test('defaultTo functionality', assert => {
+test('defaultTo module: implementation', assert => {
   const f = defaultTo('default')
   {
     const expected = false

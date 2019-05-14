@@ -4,4 +4,4 @@ const tail = as => as.slice(1)
 
 sign('tail :: as -> as')(tail)
 
-export default tail
+export { tail, tail as default }
