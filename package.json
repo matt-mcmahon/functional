@@ -4,6 +4,7 @@
   "description": "Extremely minimal functional library with a focus on source-code clarity.",
   "main": "index.js",
   "module": "source/index.js",
+  "types": "index.d.ts",
   "scripts": {
     "prepublishOnly": "npm run test",
     "preversion": "npm run test",
