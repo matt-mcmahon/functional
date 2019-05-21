@@ -31,8 +31,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "husky": "^2.2.0",
-    "prettier": "^1.17.0",
+    "husky": "^2.3.0",
+    "prettier": "^1.17.1",
     "prettier-check": "^2.0.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.10.1"
@@ -42,7 +42,7 @@
     "url": "https://github.com/matt-mcmahon/functional.git"
   },
   "dependencies": {
-    "esm": "^3.2.22"
+    "esm": "^3.2.25"
   },
   "esm": "auto",
   "husky": {
