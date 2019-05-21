@@ -20,6 +20,11 @@ Instead, it's primarily meant to be a learning aid.
 I'll be using this library as part of the tutorials you can find at my [website][1] and [GitHub][2] profile.
 Please check them out … eventually!
 
+## Compatibility
+
+_Functional_ implements a subset of the [Ramda][8] API, but not the entire API.
+When you're ready, you can easily replace the _Functional_ dependency with _Ramda_, without needing to refactor your code.
+
 ## Credits
 
 To keep this library simple and easily debuggable, I'll occasionally copy code from projects that have a compatible license into this project (instead of importing it as a dependency).
