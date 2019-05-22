@@ -11,7 +11,7 @@ import equals from './equals'
 import F from './F'
 import has from './has'
 import head from './head'
-import id from './id'
+import identity from './identity'
 import ifElse from './ifElse'
 import iffe from './iffe'
 import init from './init'
@@ -43,7 +43,7 @@ export {
   F,
   has,
   head,
-  id,
+  identity,
   ifElse,
   iffe,
   init,
