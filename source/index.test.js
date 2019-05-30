@@ -14,6 +14,7 @@ test('functional exports expected modules', t => {
     'either',
     'equals',
     'F',
+    'filter',
     'has',
     'head',
     'identity',

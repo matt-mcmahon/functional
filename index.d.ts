@@ -84,6 +84,12 @@ declare module '@mwm/functional' {
   export const F: () => false
 
   /**
+   * Filters a mappable using the filter function.
+   */
+  export const filter = (filterFunction: Predicate) => (as: Mappable) =>
+    <Mappable>any
+
+  /**
    * Creates a __Predicate__ that returns `true` if it's argument has a
    * property named, _propertyName_, otherwise returns `false`.
    */

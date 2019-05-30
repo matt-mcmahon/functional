@@ -9,6 +9,7 @@ import defaultTo from './defaultTo'
 import either from './either'
 import equals from './equals'
 import F from './F'
+import filter from './filter'
 import has from './has'
 import head from './head'
 import identity from './identity'
@@ -41,6 +42,7 @@ export {
   either,
   equals,
   F,
+  filter,
   has,
   head,
   identity,
