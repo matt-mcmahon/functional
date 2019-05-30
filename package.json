@@ -10,7 +10,7 @@
     "preversion": "npm run test",
     "lint": "prettier-check source/**/*.js",
     "pretest": "npm run lint",
-    "test": "tape -r esm ./source/**/*.test.js | tap-spec"
+    "test": "tape -r esm ./source/**/*.test.js | tap-nirvana"
   },
   "keywords": [
     "functional",
@@ -35,7 +35,7 @@
     "husky": "^2.3.0",
     "prettier": "^1.17.1",
     "prettier-check": "^2.0.0",
-    "tap-spec": "^5.0.0",
+    "tap-nirvana": "^1.1.0",
     "tape": "^4.10.1"
   },
   "repository": {
