@@ -1,25 +1,36 @@
+/**
+ * A unary function that returns either `true` or `false`.
+ */
+type Predicate = (value: any) => boolean
+
+/**
+ * Function that operates on any arguments in context of `this`.
+ */
+type Method = (...args: any[]) => any
+
+type Key = string | symbol
+
+/**
+ * A function that accepts exactly one argument.
+ */
+type Unary = (value: any) => any
+
+/**
+ * A function that accepts exactly two arguments.
+ */
+type Binary = (firstValue: any, secondValue: any) => any
+
+/**
+ * A binary function that accepts an accumulator and a value, and returns an
+ * accumulator.
+ */
+type Reducer = (accumulator: any, value: any) => any
+
+interface Mappable {
+  map: (fun: Unary) => Mappable
+}
+
 declare module '@mwm/functional' {
-  /**
-   * A unary function that returns either `true` or `false`.
-   */
-  type Predicate = (value: any) => boolean
-
-  /**
-   * Function that operates on any arguments in context of `this`.
-   */
-  type Method = (...args: any[]) => any
-
-  type Key = string | symbol
-
-  /**
-   * A function that accepts only one argument.
-   */
-  type Unary = (value: any) => any
-
-  interface Mappable {
-    map: (fun: Unary) => Mappable
-  }
-
   /**
    * Creates a function that always returns _value_, ignoring any arguments.
    */
@@ -86,8 +97,7 @@ declare module '@mwm/functional' {
   /**
    * Filters a mappable using the filter function.
    */
-  export const filter = (filterFunction: Predicate) => (as: Mappable) =>
-    <Mappable>any
+  export const filter: (filterFunction: Predicate) => (as: Mappable) => Mappable
 
   /**
    * Creates a __Predicate__ that returns `true` if it's argument has a
@@ -141,18 +151,18 @@ declare module '@mwm/functional' {
   /**
    * Returns the last element in an array.
    */
-  export const last = (as: any[]) => any
+  export const last: (as: any[]) => any
 
   /**
    * Takes a __Unary__ function and a __Mappable__, applies the function to
    * each of the Mappable's values. Returns a Mappable of the same type.
    */
-  export const map = (fun: Unary) => (as: Mappable) => <Mappable>any
+  export const map: (fun: Unary) => (as: Mappable) => Mappable
 
   /**
    * Performs a shallow merge of two objects.
    */
-  export const merge = (first: object) => (second: object) => <object>ab
+  export const merge: (first: object) => (second: object) => object
   /**
    * Returns the composition, left-to-right, of the _functions_ with with the
    * given _value_, e.g.:
@@ -171,7 +181,7 @@ declare module '@mwm/functional' {
    * and passing the result as the accumulator to the next iteration.
    */
   export const reduce: (
-    reducer: (accumulator: any, value: any) => any
+    reducingFunction: Reducer
   ) => (accumulator: any) => (as: any[]) => any
 
   /**
@@ -180,13 +190,15 @@ declare module '@mwm/functional' {
    * and passing the result as the accumulator to the next iteration.
    */
   export const reduceRight: (
-    reducer: (accumulator: any, value: any) => any
+    reducingFunction: Reducer
   ) => (accumulator: any) => (as: any[]) => any
 
   /**
    * Sorts a list by applying the given sorting function.
    */
-  export const sort: (fun: (a: any, b: any) => number) => (as: any[]) => any[]
+  export const sort: (
+    sortingFunction: (a: any, b: any) => number
+  ) => (as: any[]) => any[]
 
   /**
    * A function that always returns `true`.
