@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { last as namedExport, default as last } from './last.js'
-import { last as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { last as namedExport, default as last } from "./last.js"
+import { last as indexExport } from "./index"
 
-test('last module: declaration', assert => {
+test("last module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof last
     const message = inspect`typeof last
       should be ${expected},
@@ -21,7 +21,7 @@ test('last module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof last.signature
     const message = inspect`typeof last.signature
       should be ${expected},
@@ -32,10 +32,10 @@ test('last module: declaration', assert => {
   assert.end()
 })
 
-test('last module: implementation', assert => {
+test("last module: implementation", assert => {
   {
-    const value = ['a', 'b', 'c']
-    const expected = 'c'
+    const value = ["a", "b", "c"]
+    const expected = "c"
     const actual = last(value)
     const message = inspect`last ${value}
       is "${actual}",

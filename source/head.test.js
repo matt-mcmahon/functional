@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { head as namedExport, default as head } from './head.js'
-import { head as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { head as namedExport, default as head } from "./head.js"
+import { head as indexExport } from "./index"
 
-test('head module: declaration', assert => {
+test("head module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof head
     const message = inspect`typeof head
       should be ${expected},
@@ -21,7 +21,7 @@ test('head module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof head.signature
     const message = inspect`typeof head.signature
       should be ${expected},
@@ -32,10 +32,10 @@ test('head module: declaration', assert => {
   assert.end()
 })
 
-test('head module: implementation', assert => {
+test("head module: implementation", assert => {
   {
-    const expected = 'a'
-    const actual = head(['a', 'b', 'c'])
+    const expected = "a"
+    const actual = head(["a", "b", "c"])
     const message = `head ["a", "b", "c"]
       is "${actual}",
       expected "${expected}"`

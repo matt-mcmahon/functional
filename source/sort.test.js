@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { sort as namedExport, default as sort } from './sort.js'
-import { sort as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { sort as namedExport, default as sort } from "./sort.js"
+import { sort as indexExport } from "./index"
 
-test('sort module: declaration', assert => {
+test("sort module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof sort
     const message = inspect`typeof sort
       should be ${expected},
@@ -21,7 +21,7 @@ test('sort module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof sort.signature
     const message = inspect`typeof sort.signature
       should be ${expected},
@@ -32,7 +32,7 @@ test('sort module: declaration', assert => {
   assert.end()
 })
 
-test('sort module: implementation', assert => {
+test("sort module: implementation", assert => {
   const as = [3, 5, 9, 1, 0, 22]
   const bs = [0, 1, 3, 5, 9, 22]
   const fun = sort((a, b) => a - b)
@@ -49,7 +49,7 @@ test('sort module: implementation', assert => {
   {
     const actual = fun([])
     const expected = []
-    const message = 'Should work with an empty sortable.'
+    const message = "Should work with an empty sortable."
     assert.deepEqual(actual, expected, message)
   }
 

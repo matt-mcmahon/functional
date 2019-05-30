@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { tap as namedExport, default as tap } from './tap.js'
-import { tap as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { tap as namedExport, default as tap } from "./tap.js"
+import { tap as indexExport } from "./index"
 
-test('tap module: declaration', assert => {
+test("tap module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof tap
     const message = inspect`typeof tap
       should be ${expected},
@@ -21,7 +21,7 @@ test('tap module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof tap.signature
     const message = inspect`typeof tap.signature
       should be ${expected},
@@ -32,7 +32,7 @@ test('tap module: declaration', assert => {
   assert.end()
 })
 
-test('tap module: implementation', assert => {
+test("tap module: implementation", assert => {
   const value = 3
   const actual = tap(x => x * 2)(value)
   const expected = value

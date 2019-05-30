@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { map as namedExport, default as map } from './map.js'
-import { map as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { map as namedExport, default as map } from "./map.js"
+import { map as indexExport } from "./index"
 
-test('map module: declaration', assert => {
+test("map module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof map
     const message = inspect`typeof map
       should be ${expected},
@@ -21,7 +21,7 @@ test('map module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof map.signature
     const message = inspect`typeof map.signature
       should be ${expected},
@@ -32,22 +32,22 @@ test('map module: declaration', assert => {
   assert.end()
 })
 
-test('map module: implementation', assert => {
+test("map module: implementation", assert => {
   const as = [1, 2, 3]
-  const bs = ['1', '2', '3']
+  const bs = ["1", "2", "3"]
   const fun = a => a.toString()
 
   {
     const actual = map(fun)(as)
     const expected = bs
-    const message = 'Numbers should be mapped to strings'
+    const message = "Numbers should be mapped to strings"
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const actual = map(fun)([])
     const expected = []
-    const message = 'Should work with an empty mappable.'
+    const message = "Should work with an empty mappable."
     assert.deepEqual(actual, expected, message)
   }
 

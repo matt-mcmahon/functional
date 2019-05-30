@@ -1,11 +1,11 @@
-import test from 'tape'
-import { prop as namedExport, default as prop } from './prop.js'
-import { prop as indexExport } from './index'
-import { inspect } from './util/index.js'
+import test from "tape"
+import { prop as namedExport, default as prop } from "./prop.js"
+import { prop as indexExport } from "./index"
+import { inspect } from "./util/index.js"
 
-test('prop module: declaration', assert => {
+test("prop module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof prop
     const message = inspect`typeof prop
       should be ${expected},
@@ -21,7 +21,7 @@ test('prop module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof prop.signature
     const message = inspect`typeof prop.signature
       should be ${expected},
@@ -32,10 +32,10 @@ test('prop module: declaration', assert => {
   assert.end()
 })
 
-test('prop module: implementation', assert => {
+test("prop module: implementation", assert => {
   {
-    const expected = 'foo'
-    const actual = prop('foo')({ foo: 'foo' })
+    const expected = "foo"
+    const actual = prop("foo")({ foo: "foo" })
     const message = inspect`property foo
       should be ${expected},
       got ${actual}`
@@ -44,7 +44,7 @@ test('prop module: implementation', assert => {
 
   {
     const expected = undefined
-    const actual = prop('foo')({ bar: 'bar' })
+    const actual = prop("foo")({ bar: "bar" })
     const message = inspect`nonexistant property value
       should be ${expected},
       got ${actual}`

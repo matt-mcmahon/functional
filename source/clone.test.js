@@ -1,12 +1,12 @@
-import { strict } from 'assert'
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { clone as namedExport, default as clone } from './clone.js'
-import { clone as indexExport } from './index'
+import { strict } from "assert"
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { clone as namedExport, default as clone } from "./clone.js"
+import { clone as indexExport } from "./index"
 
-test('clone module: declaration', assert => {
+test("clone module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof clone
     const message = inspect`typeof clone
       should be ${expected},
@@ -22,7 +22,7 @@ test('clone module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof clone.signature
     const message = inspect`typeof clone.signature
       should be ${expected},
@@ -33,9 +33,9 @@ test('clone module: declaration', assert => {
   assert.end()
 })
 
-test('clone module: implementation', assert => {
+test("clone module: implementation", assert => {
   {
-    const expected = { foo: 'foo', bar: 'bar' }
+    const expected = { foo: "foo", bar: "bar" }
     const actual = clone(expected)
     const message = `clone flat objects`
     assert.deepEqual(actual, expected, message)
@@ -44,10 +44,10 @@ test('clone module: implementation', assert => {
 
   {
     const expected = {
-      foo: 'foo',
+      foo: "foo",
       bar: {
-        baz: 'baz'
-      }
+        baz: "baz",
+      },
     }
     const actual = clone(expected)
     assert.deepEqual(
@@ -63,14 +63,14 @@ test('clone module: implementation', assert => {
   }
 
   {
-    const expected = ['foo', 'bar', 'bax']
+    const expected = ["foo", "bar", "bax"]
     const actual = clone(expected)
     assert.deepEqual(actual, expected, `should clone equivelent flat array`)
     assert.notEqual(actual, expected, `clone array should be a new array`)
   }
 
   {
-    const expected = [['foo', 'bar'], ['baz', 'qux']]
+    const expected = [["foo", "bar"], ["baz", "qux"]]
     const actual = clone(expected)
     assert.deepEqual(actual, expected, `should clone nested arrays`)
     assert.notEqual(
@@ -87,11 +87,11 @@ test('clone module: implementation', assert => {
 
   {
     const expected = {
-      foo: ['foo'],
-      bar: [null]
+      foo: ["foo"],
+      bar: [null],
     }
     const actual = clone(expected)
-    assert.deepEqual(actual, expected, 'clone objects containing arrays')
+    assert.deepEqual(actual, expected, "clone objects containing arrays")
     assert.notEqual(
       actual.foo,
       expected.foo,
@@ -114,7 +114,7 @@ test('clone module: implementation', assert => {
 
   {
     // test('clone with circular references', assert => {
-    const expected = { bar: 'bar' }
+    const expected = { bar: "bar" }
     expected.bazInArray = [expected]
     expected.bazAsProperty = expected
     const actual = clone(expected)

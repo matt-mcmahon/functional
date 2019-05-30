@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { F as namedExport, default as F } from './F.js'
-import { F as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { F as namedExport, default as F } from "./F.js"
+import { F as indexExport } from "./index"
 
-test('F module: declaration', assert => {
+test("F module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof F
     const message = inspect`typeof F
       should be ${expected},
@@ -21,7 +21,7 @@ test('F module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof F.signature
     const message = inspect`typeof F.signature
       should be ${expected},
@@ -32,7 +32,7 @@ test('F module: declaration', assert => {
   assert.end()
 })
 
-test('F module: implementation', assert => {
+test("F module: implementation", assert => {
   {
     const actual = F()
     const expected = false

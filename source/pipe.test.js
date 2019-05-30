@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { pipe as namedExport, default as pipe } from './pipe.js'
-import { pipe as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { pipe as namedExport, default as pipe } from "./pipe.js"
+import { pipe as indexExport } from "./index"
 
-test('pipe module: declaration', assert => {
+test("pipe module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof pipe
     const message = inspect`typeof pipe
       should be ${expected},
@@ -21,7 +21,7 @@ test('pipe module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof pipe.signature
     const message = inspect`typeof pipe.signature
       should be ${expected},
@@ -32,14 +32,14 @@ test('pipe module: declaration', assert => {
   assert.end()
 })
 
-test('pipe module: implementation', assert => {
+test("pipe module: implementation", assert => {
   const f = x => x + 1
   const g = x => 2 * x
   const actual = pipe(
     f,
     g
   )(3)
-  assert.equal(actual, 8, '2 * (3 + 1) == 8')
-  assert.notEqual(actual, 7, '2 * (3 + 1) != 7')
+  assert.equal(actual, 8, "2 * (3 + 1) == 8")
+  assert.notEqual(actual, 7, "2 * (3 + 1) != 7")
   assert.end()
 })

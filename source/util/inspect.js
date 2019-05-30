@@ -1,10 +1,10 @@
-import { inspect as nodeInspect } from 'util'
+import { inspect as nodeInspect } from "util"
 
 const opts = {
   showHidden: false,
   depth: Infinity,
   colors: false,
-  breakLength: Infinity
+  breakLength: Infinity,
 }
 
 const inspect = (strings, ...values) => {
@@ -18,7 +18,7 @@ const inspect = (strings, ...values) => {
       full.push(inspectedValues[i])
     }
   }
-  return full.join('')
+  return full.join("")
 }
 
 export { inspect, inspect as default }

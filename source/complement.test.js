@@ -1,14 +1,14 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
+import test from "tape"
+import { inspect } from "./util/index.js"
 import {
   complement as namedExport,
-  default as complement
-} from './complement.js'
-import { complement as indexExport } from './index'
+  default as complement,
+} from "./complement.js"
+import { complement as indexExport } from "./index"
 
-test('complement module: declaration', assert => {
+test("complement module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof complement
     const message = inspect`typeof complement
       should be ${expected},
@@ -24,7 +24,7 @@ test('complement module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof complement.signature
     const message = inspect`typeof complement.signature
       should be ${expected},
@@ -35,7 +35,7 @@ test('complement module: declaration', assert => {
   assert.end()
 })
 
-test('complement module: implementation', assert => {
+test("complement module: implementation", assert => {
   {
     const expected = true
     const actual = complement(v => v)(false)
@@ -45,21 +45,21 @@ test('complement module: implementation', assert => {
 
   {
     const expected = true
-    const actual = complement(() => false)('ignored')
+    const actual = complement(() => false)("ignored")
     const message = `complement of false is true, got "${actual}"`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = false
-    const actual = complement(() => 'truthy')('ignored')
+    const actual = complement(() => "truthy")("ignored")
     const message = `complement of truthy value is false, got "${actual}"`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = true
-    const actual = complement(() => 0)('ignored')
+    const actual = complement(() => 0)("ignored")
     const message = `Should be "${expected}", got "${actual}"`
     assert.deepEqual(actual, expected, message)
   }

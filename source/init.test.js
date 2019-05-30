@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { init as namedExport, default as init } from './init.js'
-import { init as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { init as namedExport, default as init } from "./init.js"
+import { init as indexExport } from "./index"
 
-test('init module: declaration', assert => {
+test("init module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof init
     const message = inspect`typeof init
       should be ${expected},
@@ -21,7 +21,7 @@ test('init module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof init.signature
     const message = inspect`typeof init.signature
       should be ${expected},
@@ -32,22 +32,22 @@ test('init module: declaration', assert => {
   assert.end()
 })
 
-test('init module: implementation', assert => {
+test("init module: implementation", assert => {
   {
-    const expected = ['a', 'b']
-    const actual = init(['a', 'b', 'c'])
+    const expected = ["a", "b"]
+    const actual = init(["a", "b", "c"])
     const message = `init(["a", "b", "c"])
-      is [${actual.map(v => `"${v}"`).join(', ')}],
-      expected [${expected.map(v => `"${v}"`).join(', ')}]`
+      is [${actual.map(v => `"${v}"`).join(", ")}],
+      expected [${expected.map(v => `"${v}"`).join(", ")}]`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = []
-    const actual = init(['a'])
+    const actual = init(["a"])
     const message = `init(["a"])
-      is [${actual.map(v => `"${v}"`).join(', ')}],
-      expected [${expected.map(v => `"${v}"`).join(', ')}]`
+      is [${actual.map(v => `"${v}"`).join(", ")}],
+      expected [${expected.map(v => `"${v}"`).join(", ")}]`
     assert.deepEqual(actual, expected, message)
   }
 
@@ -55,8 +55,8 @@ test('init module: implementation', assert => {
     const expected = []
     const actual = init([])
     const message = `init([])
-      is [${actual.map(v => `"${v}"`).join(', ')}],
-      expected [${expected.map(v => `"${v}"`).join(', ')}]`
+      is [${actual.map(v => `"${v}"`).join(", ")}],
+      expected [${expected.map(v => `"${v}"`).join(", ")}]`
     assert.deepEqual(actual, expected, message)
   }
 

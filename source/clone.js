@@ -1,8 +1,8 @@
-import { sign } from './util'
+import { sign } from "./util"
 
 const clone = value => recursiveClone(new WeakMap())(value)
 
-sign('clone :: a -> a')(clone)
+sign("clone :: a -> a")(clone)
 
 const recursiveClone = map => value => {
   const existingClone = map.get(value)

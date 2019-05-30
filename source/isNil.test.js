@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { isNil as namedExport, default as isNil } from './isNil.js'
-import { isNil as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { isNil as namedExport, default as isNil } from "./isNil.js"
+import { isNil as indexExport } from "./index"
 
-test('isNil module: declaration', assert => {
+test("isNil module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof isNil
     const message = inspect`typeof isNil
       should be ${expected},
@@ -21,7 +21,7 @@ test('isNil module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof isNil.signature
     const message = inspect`typeof isNil.signature
       should be ${expected},
@@ -32,7 +32,7 @@ test('isNil module: declaration', assert => {
   assert.end()
 })
 
-test('isNil module: implementation', assert => {
+test("isNil module: implementation", assert => {
   const runTest = ([value, expected]) => {
     const actual = isNil(value)
     const message = inspect`isNil(${value})

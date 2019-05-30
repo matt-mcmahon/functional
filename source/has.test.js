@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { has as namedExport, default as has } from './has.js'
-import { has as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { has as namedExport, default as has } from "./has.js"
+import { has as indexExport } from "./index"
 
-test('has module: declaration', assert => {
+test("has module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof has
     const message = inspect`typeof has
       should be ${expected},
@@ -21,7 +21,7 @@ test('has module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof has.signature
     const message = inspect`typeof has.signature
       should be ${expected},
@@ -32,20 +32,20 @@ test('has module: declaration', assert => {
   assert.end()
 })
 
-test('has module: implementation', assert => {
-  const object = { a: 'a' }
-  const hasA = has('a')
+test("has module: implementation", assert => {
+  const object = { a: "a" }
+  const hasA = has("a")
 
   {
     const expected = true
-    const actual = has('a')(object)
+    const actual = has("a")(object)
     const message = `Should be "${expected}", got "${actual}"`
     assert.deepEqual(actual, expected, message)
   }
 
   {
     const expected = false
-    const actual = hasA({ b: 'b' })
+    const actual = hasA({ b: "b" })
     const message = `Should be "${expected}", got "${actual}"`
     assert.deepEqual(actual, expected, message)
   }

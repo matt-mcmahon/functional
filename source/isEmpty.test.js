@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { isEmpty as namedExport, default as isEmpty } from './isEmpty.js'
-import { isEmpty as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { isEmpty as namedExport, default as isEmpty } from "./isEmpty.js"
+import { isEmpty as indexExport } from "./index"
 
-test('isEmpty module: declaration', assert => {
+test("isEmpty module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof isEmpty
     const message = inspect`typeof isEmpty
       should be ${expected},
@@ -21,7 +21,7 @@ test('isEmpty module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof isEmpty.signature
     const message = inspect`typeof isEmpty.signature
       should be ${expected},
@@ -32,7 +32,7 @@ test('isEmpty module: declaration', assert => {
   assert.end()
 })
 
-test('isEmpty module: implementation', assert => {
+test("isEmpty module: implementation", assert => {
   const runTest = ([value, expected]) => {
     const actual = isEmpty(value)
     const message = inspect`isEmpty(${value})
@@ -44,11 +44,11 @@ test('isEmpty module: implementation', assert => {
   ;[
     [[1, 2, 3], false],
     [[], true],
-    ['', true],
+    ["", true],
     [null, false],
     [undefined, false],
     [{}, true],
-    [{ length: 0 }, false]
+    [{ length: 0 }, false],
   ].forEach(runTest)
 
   assert.end()

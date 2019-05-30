@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { reduce as namedExport, default as reduce } from './reduce.js'
-import { reduce as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { reduce as namedExport, default as reduce } from "./reduce.js"
+import { reduce as indexExport } from "./index"
 
-test('reduce module: declaration', assert => {
+test("reduce module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof reduce
     const message = inspect`typeof reduce
       should be ${expected},
@@ -21,7 +21,7 @@ test('reduce module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof reduce.signature
     const message = inspect`typeof reduce.signature
       should be ${expected},
@@ -32,7 +32,7 @@ test('reduce module: declaration', assert => {
   assert.end()
 })
 
-test('reduce module: implementation', assert => {
+test("reduce module: implementation", assert => {
   {
     const add = (x, y) => x + y
     const expected = 9
@@ -43,13 +43,13 @@ test('reduce module: implementation', assert => {
     assert.deepEqual(actual, expected, message)
   }
 
-  const a = 'a'
-  const b = 'b'
-  const c = 'c'
-  const concat = (x = '', y = '') => x + y
+  const a = "a"
+  const b = "b"
+  const c = "c"
+  const concat = (x = "", y = "") => x + y
 
   {
-    const expected = 'abc'
+    const expected = "abc"
     const actual = reduce(concat)(a)([b, c])
     const message = inspect`reducing 'a', ['b', 'c']
       is ${actual},
@@ -58,7 +58,7 @@ test('reduce module: implementation', assert => {
   }
 
   {
-    const expected = 'a'
+    const expected = "a"
     const actual = reduce(concat)(a)([])
     const message = inspect`reducing a, []
       is ${actual},
@@ -67,11 +67,11 @@ test('reduce module: implementation', assert => {
   }
 
   const thrower = () => {
-    throw Error('I should not be called')
+    throw Error("I should not be called")
   }
 
   {
-    const accumulator = 'original accumulator'
+    const accumulator = "original accumulator"
     const expected = accumulator
     const actual = reduce(thrower)(accumulator)([])
     const message = inspect`reducing an empty array should yield the original accumulator`
@@ -79,7 +79,7 @@ test('reduce module: implementation', assert => {
   }
 
   {
-    const accumulator = 'original accumulator'
+    const accumulator = "original accumulator"
     const expected = accumulator
     const actual = reduce(thrower)(accumulator)(456)
     const message = inspect`reducing number should yield the original accumulator`
@@ -87,9 +87,9 @@ test('reduce module: implementation', assert => {
   }
 
   {
-    const accumulator = 'original accumulator'
+    const accumulator = "original accumulator"
     const expected = accumulator
-    const actual = reduce(thrower)(accumulator)({ value: 'not reducable' })
+    const actual = reduce(thrower)(accumulator)({ value: "not reducable" })
     const message = inspect`reducing object should yield the original accumulator`
     assert.strictEqual(actual, expected, message)
   }

@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { assoc as namedExport, default as assoc } from './assoc.js'
-import { assoc as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { assoc as namedExport, default as assoc } from "./assoc.js"
+import { assoc as indexExport } from "./index"
 
-test('assoc module: declaration', assert => {
+test("assoc module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof assoc
     const message = inspect`typeof assoc
       should be ${expected},
@@ -21,7 +21,7 @@ test('assoc module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof assoc.signature
     const message = inspect`typeof assoc.signature
       should be ${expected},
@@ -32,15 +32,15 @@ test('assoc module: declaration', assert => {
   assert.end()
 })
 
-test('assoc module: implementation', assert => {
+test("assoc module: implementation", assert => {
   {
-    const setBar = assoc('bar')('bar')
+    const setBar = assoc("bar")("bar")
     const expected = {
-      foo: 'foo',
-      bar: 'bar'
+      foo: "foo",
+      bar: "bar",
     }
     const actual = setBar({
-      foo: 'foo'
+      foo: "foo",
     })
     const message = inspect`after add 'bar'
       should be ${expected},
@@ -50,7 +50,7 @@ test('assoc module: implementation', assert => {
 
   {
     const expected = { a: 1, b: 3 }
-    const actual = assoc('b')(3)({ a: 1, b: 2 })
+    const actual = assoc("b")(3)({ a: 1, b: 2 })
     const message = inspect`after overwrite 'b'
       should be ${expected},
       is ${actual}`

@@ -1,5 +1,5 @@
-import { sign } from './util'
-import { init, last } from '.'
+import { sign } from "./util"
+import { init, last } from "."
 
 const reduceRight = reducer => accumulator => (array = []) => {
   const value = last(array)
@@ -14,6 +14,6 @@ const reduceRight = reducer => accumulator => (array = []) => {
   }
 }
 
-sign('reduceRight :: ((a, b) -> a) -> a -> [b] -> a')(reduceRight)
+sign("reduceRight :: ((a, b) -> a) -> a -> [b] -> a")(reduceRight)
 
 export { reduceRight, reduceRight as default }

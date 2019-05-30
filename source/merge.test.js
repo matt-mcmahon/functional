@@ -1,11 +1,11 @@
-import { inspect } from './util'
-import { merge as namedExport, default as merge } from './merge.js'
-import { merge as indexExport } from './index'
-import test from 'tape'
+import { inspect } from "./util"
+import { merge as namedExport, default as merge } from "./merge.js"
+import { merge as indexExport } from "./index"
+import test from "tape"
 
-test('merge module: declaration', assert => {
+test("merge module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof merge
     const message = `merge
       is a "${actual}",
@@ -21,37 +21,37 @@ test('merge module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof merge.signature
-    const message = 'merge.signature should be a string'
+    const message = "merge.signature should be a string"
     assert.deepEqual(actual, expected, message)
   }
 
   assert.end()
 })
 
-test('merge module: implementation', assert => {
+test("merge module: implementation", assert => {
   const first = {
     a: 1,
-    b: 1
+    b: 1,
   }
 
   const second = {
-    b: 2
+    b: 2,
   }
 
   const merge1 = merge(first)
   assert.equal(
     typeof merge1,
-    'function',
-    'merge(...) should return a partially applied function'
+    "function",
+    "merge(...) should return a partially applied function"
   )
 
   const actual = merge1(second)
 
   const expected = {
     a: 1,
-    b: 2
+    b: 2,
   }
 
   assert.deepEqual(
@@ -63,7 +63,7 @@ test('merge module: implementation', assert => {
   assert.notEqual(
     expected,
     actual,
-    'expanded object should not be the same as the initial object'
+    "expanded object should not be the same as the initial object"
   )
   assert.end()
 })

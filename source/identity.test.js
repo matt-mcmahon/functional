@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { identity as namedExport, default as identity } from './identity.js'
-import { identity as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { identity as namedExport, default as identity } from "./identity.js"
+import { identity as indexExport } from "./index"
 
-test('identity module: declaration', assert => {
+test("identity module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof identity
     const message = inspect`typeof identity
       should be ${expected},
@@ -21,7 +21,7 @@ test('identity module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof identity.signature
     const message = inspect`typeof identity.signature
       should be ${expected},
@@ -32,12 +32,12 @@ test('identity module: declaration', assert => {
   assert.end()
 })
 
-test('identity module: implementation', assert => {
+test("identity module: implementation", assert => {
   const foo = {}
   {
     const actual = identity(foo)
     const expected = foo
-    const message = 'invoking identity(foo) should return the object foo'
+    const message = "invoking identity(foo) should return the object foo"
     assert.equal(actual, expected, message)
   }
   assert.end()

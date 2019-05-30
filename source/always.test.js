@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { always as namedExport, default as always } from './always.js'
-import { always as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { always as namedExport, default as always } from "./always.js"
+import { always as indexExport } from "./index"
 
-test('always module: declaration', assert => {
+test("always module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof always
     const message = inspect`typeof always
       should be ${expected},
@@ -21,7 +21,7 @@ test('always module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof always.signature
     const message = inspect`typeof always.signature
       should be ${expected},
@@ -32,10 +32,10 @@ test('always module: declaration', assert => {
   assert.end()
 })
 
-test('always module: implementation', assert => {
+test("always module: implementation", assert => {
   {
-    const expected = 'foo'
-    const argument = 'bar'
+    const expected = "foo"
+    const argument = "bar"
     const actual = always(expected)(argument)
     const message = inspect`should return
       original value, ${expected},

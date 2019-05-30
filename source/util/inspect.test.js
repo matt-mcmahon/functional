@@ -1,10 +1,10 @@
-import { inspect as namedExport, default as inspect } from './inspect.js'
-import { inspect as indexExport } from './index'
-import test from 'tape'
+import { inspect as namedExport, default as inspect } from "./inspect.js"
+import { inspect as indexExport } from "./index"
+import test from "tape"
 
-test('inspect module: declaration', assert => {
+test("inspect module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof inspect
     const message = `inspect
       is a "${actual}",
@@ -22,10 +22,10 @@ test('inspect module: declaration', assert => {
   assert.end()
 })
 
-test('inspect module: implementation', assert => {
+test("inspect module: implementation", assert => {
   {
     const expected = `one { one: 'one' } two`
-    const actual = inspect`one ${{ one: 'one' }} two`
+    const actual = inspect`one ${{ one: "one" }} two`
     const message = `Should be "${expected}", got "${actual}"`
     assert.deepEqual(actual, expected, message)
   }

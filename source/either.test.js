@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { either as namedExport, default as either } from './either.js'
-import { either as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { either as namedExport, default as either } from "./either.js"
+import { either as indexExport } from "./index"
 
-test('either module: declaration', assert => {
+test("either module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof either
     const message = inspect`typeof either
       should be ${expected},
@@ -21,7 +21,7 @@ test('either module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof either.signature
     const message = inspect`typeof either.signature
       should be ${expected},
@@ -32,7 +32,7 @@ test('either module: declaration', assert => {
   assert.end()
 })
 
-test('either module: implementation', assert => {
+test("either module: implementation", assert => {
   const gt10 = x => x > 10
   const even = x => x % 2 === 0
   const f = either(gt10)(even)
@@ -61,15 +61,15 @@ test('either module: implementation', assert => {
   const T = () => true
   const F = () => false
   const throws = () => {
-    throw new Error('either should not execute me')
+    throw new Error("either should not execute me")
   }
 
   assert.doesNotThrow(() => {
     const expected = true
-    const actual = either(T)(throws)('anything')
+    const actual = either(T)(throws)("anything")
     const message = `first predicate returns true, got "${actual}"`
     assert.deepEqual(actual, expected, message)
-  }, 'either short circuits, should not throw')
+  }, "either short circuits, should not throw")
 
   assert.end()
 })

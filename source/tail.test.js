@@ -1,11 +1,11 @@
-import test from 'tape'
-import { inspect } from './util/index.js'
-import { tail as namedExport, default as tail } from './tail.js'
-import { tail as indexExport } from './index'
+import test from "tape"
+import { inspect } from "./util/index.js"
+import { tail as namedExport, default as tail } from "./tail.js"
+import { tail as indexExport } from "./index"
 
-test('tail module: declaration', assert => {
+test("tail module: declaration", assert => {
   {
-    const expected = 'function'
+    const expected = "function"
     const actual = typeof tail
     const message = inspect`typeof tail
       should be ${expected},
@@ -21,7 +21,7 @@ test('tail module: declaration', assert => {
   }
 
   {
-    const expected = 'string'
+    const expected = "string"
     const actual = typeof tail.signature
     const message = inspect`typeof tail.signature
       should be ${expected},
@@ -32,10 +32,10 @@ test('tail module: declaration', assert => {
   assert.end()
 })
 
-test('tail module: implementation', assert => {
+test("tail module: implementation", assert => {
   {
-    const arg = ['a', 'b', 'c']
-    const expected = ['b', 'c']
+    const arg = ["a", "b", "c"]
+    const expected = ["b", "c"]
     const actual = tail(arg)
     const message = inspect`tail(${arg})
       should be ${expected},
@@ -44,7 +44,7 @@ test('tail module: implementation', assert => {
   }
 
   {
-    const arg = ['a']
+    const arg = ["a"]
     const expected = []
     const actual = tail(arg)
     const message = inspect`tail(${arg})
@@ -64,7 +64,7 @@ test('tail module: implementation', assert => {
   }
 
   {
-    const arg = [['a', 'b', 'c']]
+    const arg = [["a", "b", "c"]]
     const expected = []
     const actual = tail(arg)
     const message = inspect`tail(${arg})
