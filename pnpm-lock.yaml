@@ -4,8 +4,8 @@ devDependencies:
   husky: 2.3.0
   prettier: 1.17.1
   prettier-check: 2.0.0
-  tap-spec: 5.0.0
-  tape: 4.10.1
+  tap-nirvana: 1.1.0
+  tape: 4.10.2
 lockfileVersion: 5
 packages:
   /@types/normalize-package-data/2.4.0:
@@ -890,8 +890,18 @@ packages:
     dev: true
     hasBin: true
     resolution:
-      integrity: sha512-zMDVJiE5I6Y4XGjlueGXJIX2YIkbDN44broZlnypT38Hj/czfOXrszHNNJBF/DXR8n+x6gbfSx68x04kIEHdrw==
-  /tape/4.10.1:
+      integrity: sha512-TInVjB9doaYU8f1qX5/N2szEY+1ue506T1UQANrae8RSpQvrsYhtrXcHjkfgCcBVJKY38xZHi3izOkhqY7Yz3g==
+  /tap-out/3.0.0:
+    dependencies:
+      re-emitter: 1.1.3
+      readable-stream: 2.2.9
+      split: 1.0.0
+      trim: 0.0.1
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-JzlrjCL3anqI9xHGPfYb6Mo+6nYs60m0tDy6i0sWhYDlrBDVerYPNWoUo1buK3YeWQFdm42KQv8wu9qLf1tL5A==
+  /tape/4.10.2:
     dependencies:
       deep-equal: 1.0.1
       defined: 1.0.0
@@ -909,7 +919,7 @@ packages:
     dev: true
     hasBin: true
     resolution:
-      integrity: sha512-G0DywYV1jQeY3axeYnXUOt6ktnxS9OPJh97FGR3nrua8lhWi1zPflLxcAHavZ7Jf3qUfY7cxcVIVFa4mY2IY1w==
+      integrity: sha512-mgl23h7W2yuk3N85FOYrin2OvThTYWdwbk6XQ1pr2PMJieyW2FM/4Bu/+kD/wecb3aZ0Enm+Syinyq467OPq2w==
   /through/2.3.8:
     dev: true
     resolution:
