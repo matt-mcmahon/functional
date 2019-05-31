@@ -11,6 +11,6 @@ const isEmpty = value =>
     ? true
     : false
 
-sign("isEmpty :: a → Boolean")(isEmpty)
+sign("isEmpty :: a -> Boolean")(isEmpty)
 
 export { isEmpty, isEmpty as default }

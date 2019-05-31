@@ -1,23 +1,23 @@
 import { sign } from "./util"
 
-const clone = value => recursiveClone(new WeakMap())(value)
+const clone = value => recursiveClone(new WeakMap(), value)
 
 sign("clone :: a -> a")(clone)
 
-const recursiveClone = map => value => {
+const recursiveClone = (map, value) => {
   const existingClone = map.get(value)
   if (existingClone) return existingClone
-  if (Array.isArray(value)) return cloneArray(map)(value)
+  if (Array.isArray(value)) return cloneArray(map, value)
   if (value instanceof Date) return cloneDate(value)
-  if (value instanceof Object) return cloneObject(map)(value)
+  if (value instanceof Object) return cloneObject(map, value)
   return value
 }
 
-const cloneArray = map => arr => {
+const cloneArray = (map, arr) => {
   const copy = []
   map.set(arr, copy)
   arr.reduce((copy, value) => {
-    copy.push(recursiveClone(map)(value))
+    copy.push(recursiveClone(map, value))
     return copy
   }, copy)
   return copy
@@ -25,12 +25,12 @@ const cloneArray = map => arr => {
 
 const cloneDate = date => new Date(date.valueOf())
 
-const cloneObject = map => obj => {
+const cloneObject = (map, obj) => {
   const copy = {}
   map.set(obj, copy)
   const keys = Object.keys(obj)
   keys.reduce((copy, key) => {
-    copy[key] = recursiveClone(map)(obj[key])
+    copy[key] = recursiveClone(map, obj[key])
     return copy
   }, copy)
   return copy

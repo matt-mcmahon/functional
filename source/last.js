@@ -1,6 +1,6 @@
 import { sign } from "./util"
 
-const last = as => as[as.length - 1]
+const last = values => values[values.length - 1]
 
 sign("last :: as -> a")(last)
 

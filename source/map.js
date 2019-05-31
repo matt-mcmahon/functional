@@ -1,6 +1,6 @@
 import { sign } from "./util"
 
-const map = fun => as => as.map(fun)
+const map = fun => values => values.map(fun)
 
 sign("map :: (a -> b) -> as -> bs")(map)
 

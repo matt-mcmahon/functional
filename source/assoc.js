@@ -4,6 +4,6 @@ import { clone } from "."
 const assoc = key => value => object =>
   Object.assign(clone(object), { [key]: value })
 
-sign("assoc :: String → a → {k: v} → {k: v}")(assoc)
+sign("assoc :: k -> a -> {k:*} -> {k:a}")(assoc)
 
 export { assoc, assoc as default }

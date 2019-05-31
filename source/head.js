@@ -1,6 +1,6 @@
 import { sign } from "./util"
 
-const head = as => as[0]
+const head = values => values[0]
 
 sign("head :: as -> a")(head)
 
