@@ -1,36 +1,18 @@
-/**
- * A unary function that returns either `true` or `false`.
- */
-type Predicate = (value: any) => boolean
-
-/**
- * Function that operates on any arguments in context of `this`.
- */
-type Method = (...args: any[]) => any
-
-type Key = string | symbol
-
-/**
- * A function that accepts exactly one argument.
- */
-type Unary = (value: any) => any
-
-/**
- * A function that accepts exactly two arguments.
- */
-type Binary = (firstValue: any, secondValue: any) => any
-
-/**
- * A binary function that accepts an accumulator and a value, and returns an
- * accumulator.
- */
-type Reducer = (accumulator: any, value: any) => any
+import {
+  Binary,
+  Key,
+  Method,
+  Predicate,
+  Reducer,
+  Unary,
+  Variadic,
+} from "./types"
 
 interface Mappable {
   map: (fun: Unary) => Mappable
 }
 
-declare module '@mwm/functional' {
+declare module "@mwm/functional" {
   /**
    * Creates a function that always returns _value_, ignoring any arguments.
    */
