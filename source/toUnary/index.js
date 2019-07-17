@@ -1,0 +1,1 @@
+export { toUnary } from "./toUnary"
