@@ -1,17 +1,24 @@
-import { sign } from "./util"
+import { sign } from "@mwm/sign"
 
-const clone = value => recursiveClone(new WeakMap(), value)
+export const signatures = [{ "clone :: (a, this?) -> a": 2 }]
 
-sign("clone :: a -> a")(clone)
+export const implementation = (value, context) =>
+  recursiveClone(new WeakMap(), value, context)
 
-const recursiveClone = (map, value) => {
+export const clone = sign(signatures, implementation)
+
+const recursiveClone = (map, value, context) => {
   const existingClone = map.get(value)
   if (existingClone) return existingClone
+  if (typeof value === "function") return cloneFunction(map, value, context)
   if (Array.isArray(value)) return cloneArray(map, value)
   if (value instanceof Date) return cloneDate(value)
   if (value instanceof Object) return cloneObject(map, value)
   return value
 }
+
+const cloneFunction = (map, fun, context) =>
+  cloneObject(map, fun, fun.bind(context))
 
 const cloneArray = (map, arr) => {
   const copy = []
@@ -25,8 +32,7 @@ const cloneArray = (map, arr) => {
 
 const cloneDate = date => new Date(date.valueOf())
 
-const cloneObject = (map, obj) => {
-  const copy = {}
+const cloneObject = (map, obj, copy = {}) => {
   map.set(obj, copy)
   const keys = Object.keys(obj)
   keys.reduce((copy, key) => {
@@ -35,8 +41,6 @@ const cloneObject = (map, obj) => {
   }, copy)
   return copy
 }
-
-export { clone, clone as default }
 
 /**
  * Adapted from:
