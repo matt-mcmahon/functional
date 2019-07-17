@@ -1,0 +1,1 @@
+export { assoc } from "./assoc"
