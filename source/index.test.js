@@ -1,15 +1,20 @@
-import test from "tape"
+import { test } from "tap"
+
 import * as functional from "./index"
 
-test("functional exports expected modules", t => {
+test("@mwm/functional public exports", t => {
+  const actual = Object.keys(functional).sort()
   const expected = [
     "always",
     "assoc",
     "bind",
+    "blackbird",
     "both",
     "clone",
     "complement",
     "compose",
+    "curry",
+    "curryN",
     "defaultTo",
     "either",
     "equals",
@@ -19,23 +24,38 @@ test("functional exports expected modules", t => {
     "head",
     "identity",
     "ifElse",
-    "iffe",
+    "iife",
     "init",
+    "invoker",
+    "isDefined",
     "isEmpty",
+    "isFunction",
     "isNil",
+    "join",
     "last",
     "map",
     "merge",
+    "not",
+    "partial",
     "pipe",
+    "pipeV",
     "prop",
     "reduce",
     "reduceRight",
+    "replace",
+    "slice",
     "sort",
+    "split",
     "T",
     "tail",
+    "take",
     "tap",
+    "toUnary",
+    "toVariadic",
+    "trim",
+    "uncurry",
+    "unless",
   ].sort()
-  const actual = Object.keys(functional).sort()
   t.isEquivalent(actual, expected)
   t.end()
 })
