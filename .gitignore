@@ -1,5 +1,7 @@
-# IDEs
-.vscode
+# Package Locks: I'm using linking for packages, so these files are not
+# dependable.
+pnpm-lock.yaml
+package-lock.json
 
 # Logs
 logs
@@ -59,4 +61,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
