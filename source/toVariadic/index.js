@@ -1,0 +1,1 @@
+export { toVariadic } from "./toVariadic"
