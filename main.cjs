@@ -5,4 +5,4 @@ require = require("esm")(module, {
   debug: true,
   sourceMap: true,
 })
-module.exports = require("./source/index.js")
+module.exports = require("./module.js")
