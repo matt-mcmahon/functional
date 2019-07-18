@@ -6,7 +6,7 @@ export const signatures = [
   "unless            ::                               a => a|b",
 ]
 
-export const implementation = predicate => action => a =>
-  predicate(a) ? a : action(a)
+export const implementation = predicate => mapAB => a =>
+  predicate(a) ? a : mapAB(a)
 
 export const unless = sign(signatures, implementation)
