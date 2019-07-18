@@ -5,6 +5,6 @@ export const signatures = [
   "sort->list            ::                  as => as",
 ]
 
-export const implementation = f => as => [...as].sort(f)
+export const implementation = mapAAN => as => [...as].sort(mapAAN)
 
 export const sort = sign(signatures, implementation)
