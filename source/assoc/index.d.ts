@@ -1,7 +1,18 @@
-import { Key } from "../types"
-
 /**
- * Creates a clone of object, _a_, with the additional property
- * `a[key] = value`.
+ * ```
+ * assoc :: k => a => b => {...b, k:a}
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * Clones an object, associating the key, __k__, with value, __a__. For example:
+ *
+ * ```
+ * b[k] = a <=> assoc(k, a, b).
+ * ```
+ *
  */
-export declare function assoc(key: Key, value: any, a: object): object
+export declare function assoc<A>(
+  key: string,
+  a: A,
+  b: object
+): { [key: string]: A }
