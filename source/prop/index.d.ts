@@ -2,11 +2,11 @@ import { Key } from "../types"
 
 /**
  * ```
- * prop :: k => {k:a} => a
+ * prop :: k => a.k => b
  * ```
  * -----------------------------------------------------------------------------
  *
- * Returns the value for the object, of the given _propName_
+ * Returns the value of the given _property_ for the object.
  *
  */
-export declare function prop(propName: Key, object: object): any
+export declare function prop(k: Key, ak: object): any
