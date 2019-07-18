@@ -1,11 +1,11 @@
 import { describe } from "@mwm/describe"
-import { always } from "./always"
+import { always, implementation, signatures } from "./always"
 
 describe(
   {
     path: "source/always",
     public: [always],
-    private: [],
+    private: [implementation, signatures],
   },
   async ({ assert, inspect }) => {
     const argument = "bar"
