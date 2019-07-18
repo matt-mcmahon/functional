@@ -1,7 +1,10 @@
 /**
- * If _nullableValue_ is `null` or `undefined`, return the _defaultValue_,
- * otherwise return the _nullableValue_.
+ * ```
+ * defaultTo :: a => b => a|b
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * If __b__ is `null` or `undefined` return __a__, otherwise return __b__.
+ *
  */
-export declare function defaultTo<T, U>(
-  defaultValue: T
-): (nullableValue: U) => T | U
+export declare function defaultTo<A, B>(a: A, b: B): A | B
