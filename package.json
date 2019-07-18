@@ -12,16 +12,18 @@
     }
   ],
   "dependencies": {
-    "esm": "^3.2.25",
-    "typescript": "^3.5.2"
+    "@mwm/sign": "^1.2.0",
+    "esm": "^3.2.25"
   },
   "description": "Extremely minimal functional library with a focus on source-code clarity.",
   "devDependencies": {
-    "husky": "^2.4.1",
+    "@mwm/describe": "^1.3.0",
+    "husky": "3.0.0",
     "prettier": "^1.18.2",
     "prettier-check": "^2.0.0",
     "tap": "^14.4.1",
-    "tap-nirvana": "^1.1.0"
+    "tap-nirvana": "^1.1.0",
+    "typescript": "^3.5.2"
   },
   "esm": {
     "mode": "all",
