@@ -1,9 +1,4 @@
 /**
- * Performs a shallow merge of two objects.
- */
-export declare function merge(first: object): (second: object) => object
-
-/**
  * ```
  * merge :: a => b => c
  * ```
@@ -12,4 +7,4 @@ export declare function merge(first: object): (second: object) => object
  * Performs a shallow merge of two objects.
  *
  */
-export declare function merge(arg: any): any
+export declare function merge<A, B, C>(a: A, b: B): C
