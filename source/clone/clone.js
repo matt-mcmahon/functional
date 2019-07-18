@@ -1,6 +1,6 @@
 import { sign } from "@mwm/sign"
 
-export const signatures = [{ "clone :: (a, this?) -> a": 2 }]
+export const signatures = [{ "clone :: (a, this?) => a": 2 }]
 
 export const implementation = (value, context) =>
   recursiveClone(new WeakMap(), value, context)
