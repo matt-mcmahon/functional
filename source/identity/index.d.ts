@@ -1,4 +1,10 @@
 /**
+ * ```
+ * identity :: a => a
+ * ```
+ * -----------------------------------------------------------------------------
+ *
  * Returns it's argument, unmodified.
+ *
  */
-export declare function identity(value: any): any
+export declare function identity<A>(a: A): A

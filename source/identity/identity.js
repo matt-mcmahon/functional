@@ -1,6 +1,6 @@
 import { sign } from "@mwm/sign"
 
-export const signatures = [{ "identity :: a -> a": 1 }]
+export const signatures = [{ "identity :: a => a": 1 }]
 
 export const implementation = value => value
 
