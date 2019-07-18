@@ -1,10 +1,16 @@
-import { Unary } from "../types"
 /**
- * The __either__ combinator creates a __Unary__ from two functions that
- * returns the result of calling the _first_ function with some _value_, if
- * `first(value)` is _truthy_, otherwise it returns the result of calling the
- * _second_ function.
+ * ```
+ * either :: (a => b) => (a => c) => a|c
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * The __either__ combinator creates a _Unary_ from two functions. It returns
+ * __b__ form calling `mapAB(a)` if __b__ is truthy. Otherwise it returns __c__
+ * from calling `mapAC(a)`.
+ *
  */
 export declare function either<A, B, C>(
-  first: Unary<A, B>
-): (second: Unary<A, C>) => (value: A) => B | C
+  mapAB: (a: A) => B,
+  mapAC: (a: A) => C,
+  a: A
+): B | C

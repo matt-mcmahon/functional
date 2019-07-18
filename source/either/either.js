@@ -1,12 +1,11 @@
 import { sign } from "@mwm/sign"
 
 export const signatures = [
-  { "either :: (a -> Boolean) -> (a -> Boolean) -> a -> Boolean": 1 },
-  { "either ::                   (a -> Boolean) -> a -> Boolean": 1 },
-  { "either ::                                     a -> Boolean": 1 },
+  { "either :: (a => b) => (a => c) => a => b|c": 1 },
+  { "either ::             (a => c) => a => b|c": 1 },
+  { "either ::                         a => b|c": 1 },
 ]
 
-export const implementation = firstPredicate => secondPredicate => value =>
-  firstPredicate(value) || secondPredicate(value)
+export const implementation = mapAB => mapAC => a => mapAB(a) || mapAC(a)
 
 export const either = sign(signatures, implementation)
