@@ -10,4 +10,4 @@ import { Variadic, Unary } from "../types"
  * that accepts a single array as its argument instead.
  *
  */
-export declare function toUnary<A, B>(variadic: (...a: A[]) => B, as: A[]): B
+export declare function toUnary<A, B>(variadic: (...as: A[]) => B, as: A[]): B

@@ -5,6 +5,6 @@ export const signatures = [
   { "toUnary->array    ::                 as => b": 1 },
 ]
 
-export const implementation = f => as => f(...as)
+export const implementation = variadic => as => variadic(...as)
 
 export const toUnary = sign(signatures, implementation)
