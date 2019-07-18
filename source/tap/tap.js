@@ -5,6 +5,6 @@ export const signatures = [
   "tap ::             a => a",
 ]
 
-export const implementation = f => a => (f(a), a)
+export const implementation = voidA => a => (voidA(a), a)
 
 export const tap = sign(signatures, implementation)
