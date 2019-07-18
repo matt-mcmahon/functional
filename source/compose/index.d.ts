@@ -2,11 +2,13 @@ import { Variadic, Unary } from "../types"
 
 /**
  * ```
- * compose :: (y => z, ..., a => b) => a => z
+ * curry :: ((a¹, a²..., aⁿ) => b) => a¹ => a²...=> aⁿ => b
  * ```
  * -----------------------------------------------------------------------------
- * Returns the composition, right-to-left, of the _functions_ with with the
- * given _value_, e.g.:
+ *
+ * Returns the composition, right-to-left, of each _functions_ where the output
+ * of the right-most is given as the input to the next-right-most function,
+ * etc., e.g.:
  *
  * ```
  * compose(h, g, f)(v) => h(g(f(v)))
