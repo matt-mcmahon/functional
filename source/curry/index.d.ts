@@ -2,13 +2,13 @@ import { Variadic, Curried } from "../types"
 
 /**
  * ```
- * curry :: ((a, b, ..., y) => z) => a => b => ... y => z
+ * curry :: ((a¹, a²..., aⁿ) => b) => a¹ => a²... => aⁿ => b
  * ```
  * -----------------------------------------------------------------------------
  * Converts a _Variadic_ function into a series of _Unary_ functions that
  * produce the same final value.
  *
  */
-export declare function curry<T>(
-  originalFunction: Variadic<any, T>
-): Curried<any, T>
+export declare function curry<A, B>(
+  originalFunction: Variadic<A, B>
+): Curried<A, B>

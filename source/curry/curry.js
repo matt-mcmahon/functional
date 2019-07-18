@@ -2,7 +2,7 @@ import { sign } from "@mwm/sign"
 import { curryN } from "../curryN/curryN"
 
 export const signatures = [
-  "curry :: ((a, b, ..., y) => z) => a => b => ... y => z",
+  "curry :: ((a¹, a²..., aⁿ) => b) => a¹ => a²...=> aⁿ => b",
 ]
 
 export const implementation = originalFunction =>
