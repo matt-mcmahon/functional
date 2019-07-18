@@ -4,13 +4,16 @@ import { Predicate } from "../types"
  * isFunction :: a => boolean
  * ```
  * -----------------------------------------------------------------------------
- * __Predicate__ that returns `true` if it's argument is callable,  `false`
- * otherwise. For example:
+ * _Predicate_ that returns `true` if __a__ is callable, `false` otherwise.
+ * For example:
  *
  * ```
- * isFunction(function() {}) //> true
+ * isFunction(function() {})    //> true
  * isFunction(() => 'function') //> true
- * isFunction({ method() {} })  //> false
+ * const object = { method() {} }
+ * isFunction(object)           //> false
+ * isFUnction(object.method)    //> true
+ * isFUnction(object.method())  //> false
  * ```
  */
 export declare const isFunction: Predicate<Function>
