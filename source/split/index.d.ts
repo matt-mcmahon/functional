@@ -2,8 +2,8 @@ import { OrderedList } from "../types"
 
 /**
  * ```
- * split->at   :: s => s => s
- * split->what ::      s => s
+ * split->at   :: s => s => ss
+ * split->what ::      s => ss
  * ```
  * -----------------------------------------------------------------------------
  *
@@ -14,4 +14,4 @@ import { OrderedList } from "../types"
  * split(" ")(string) <=> string.split(" ") <=> ["one", "two", "three"]
  * ```
  */
-export declare function split(arg: any): any
+export declare function split(at: string, what: string): string[]
