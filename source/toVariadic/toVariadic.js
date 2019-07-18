@@ -5,6 +5,6 @@ export const signatures = [
   { "toVariadic->arguments ::              ...as => b": Infinity },
 ]
 
-export const implementation = f => (...as) => f(as)
+export const implementation = unary => (...as) => unary(as)
 
 export const toVariadic = sign(signatures, implementation)
