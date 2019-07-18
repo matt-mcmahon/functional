@@ -1,5 +1,15 @@
-import { Predicate } from "../types"
 /**
- * __equals__ creates a __Predicate__ that compares it's value to the value, _a_, and returns `a === value`.
+ * ```
+ * equals :: a => b => Boolean
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * __equals__ creates a _Predicate_ that compares the arguments __a__, to the
+ * argument __b__ using the strict-equality operator, i.e.:
+ *
+ * ```
+ * equals(a, b) <=> a === b
+ * ```
+ *
  */
-export declare function equals<A, B>(expected: A): Predicate<A>
+export declare function equals<A, B>(a: A, b: B): boolean
