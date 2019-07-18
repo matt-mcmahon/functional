@@ -2,14 +2,14 @@ import { OrderedList } from "../types"
 
 /**
  * ```
- * slice->begin :: x => y => as => as
- * slice->end   ::      y => as => as
- * slice->list  ::           as => as
+ * slice->beginning :: n => m => as => as
+ * slice->end       ::      m => as => as
+ * slice->list      ::           as => as
  * ```
  * -----------------------------------------------------------------------------
  *
- * Returns part of an _Iterable_ object, from the _start_ index up to, but not
- * including, the _end_ index. For example:
+ * Returns part of an _Iterable_ object, __as__, from the beginning index,
+ * __n__, up to but not including the _end_ index, __m__. For example:
  *
  * ```
  * const as = [0, 1, 2, 3, 4]
@@ -17,7 +17,7 @@ import { OrderedList } from "../types"
  * ```
  */
 export declare function slice<T>(
-  start: number,
-  end: number,
-  iterable: OrderedList<T>
+  n: number,
+  m: number,
+  as: OrderedList<T>
 ): OrderedList<T>
