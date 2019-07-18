@@ -2,7 +2,7 @@ import { Variadic, Curried } from "../types"
 
 /**
  * ```
- * curryN :: n => ((a⁰, a¹, ..., aⁿ) => b) => a⁰ => a¹ => ... => aⁿ => b
+ * curryN :: n => ((a¹, a², ..., aⁿ) => b) =>  a¹ => a²... => aⁿ => b
  * ```
  * -----------------------------------------------------------------------------
  * Converts a _Variadic_ function that accepts _arity_ number of arguments into

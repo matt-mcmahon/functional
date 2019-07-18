@@ -1,8 +1,8 @@
 import { sign } from "@mwm/sign"
 
 export const signatures = [
-  "curryN :: n => ((a¹, a², ..., aⁿ) => b) =>  a¹ => a² => ... => aⁿ => b",
-  "curryN ::      ((a¹, a², ..., aⁿ) => b) =>  a¹ => a² => ... => aⁿ => b",
+  "curryN :: n => ((a¹, a², ..., aⁿ) => b) =>  a¹ => a²... => aⁿ => b",
+  "curryN ::      ((a¹, a², ..., aⁿ) => b) =>  a¹ => a²... => aⁿ => b",
 ]
 
 const gatherN = (n, f) =>
