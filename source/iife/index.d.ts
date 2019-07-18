@@ -1,7 +1,7 @@
 import { Variadic } from "../types"
 /**
  * ```
- * iife :: (...a => b, ...a) => b
+ * iife :: (...as => b, ...as) => b
  * ```
  * -----------------------------------------------------------------------------
  * Immediately Invokes a function, passing in the supplied parameters and
