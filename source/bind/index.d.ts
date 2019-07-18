@@ -2,7 +2,7 @@ import { Method } from "../types"
 
 /**
  * ```
- * bind = (…as => b) => o => …as => b
+ * bind :: (...as => b) => o => ...as => b
  * ```
  * -----------------------------------------------------------------------------
  * Creates a new _Function_ that binds a __method__ to a __context__.
