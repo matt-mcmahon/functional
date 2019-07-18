@@ -2,7 +2,7 @@ import { Predicate, Iterable, Mappable } from "../types"
 
 /**
  * ```
- * filter :: (a -> boolean) -> a -> a
+ * filter :: (a => Boolean) => as => as
  * ```
  * -----------------------------------------------------------------------------
  * Filters a list, keeping only the values for which the __predicate__ returns
