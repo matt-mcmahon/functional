@@ -1,7 +1,9 @@
 import { Variadic, Binary, Unary } from "../types"
 /**
  * ```
- * blackbird :: ((b, …, y) => z) => (a => b, …, a => y) => a => z
+ * blackbird  :: converging => ...parts => a => c
+ * converging :: (b¹, b²,..., bⁿ) => c
+ * parts      :: a => b¹, a => b², ..., a => bⁿ
  * ```
  * -----------------------------------------------------------------------------
  * The __blackbird__ _Combinator_ takes a __converging__ _function_ that
@@ -22,6 +24,7 @@ import { Variadic, Binary, Unary } from "../types"
  * //> 13
  * ```
  */
-export declare function blackbird<T, U>(
-  converging: Variadic<any, U>
-): (...parts: Unary<T, any>[]) => (value: any) => U
+export declare function blackbird<A, B, C>(
+  converging: Variadic<B[], C>,
+  ...parts: Unary<A, B>[]
+): (a: A) => C
