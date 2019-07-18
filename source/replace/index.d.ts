@@ -9,6 +9,7 @@
  *
  * ```
  * replace('foo')('bar')('foo baz bix') <=> 'bar baz bix'
+ * replace(/foo/gi)('bar')('foo baz foo') <=> 'bar baz bar'
  * ```
  *
  */
