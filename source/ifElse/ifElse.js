@@ -7,7 +7,7 @@ export const signatures = [
   "ifElse->finally   ::                                           a => b|c",
 ]
 
-export const implementation = predicate => onTrue => onFalse => value =>
-  predicate(value) ? onTrue(value) : onFalse(value)
+export const implementation = predicate => mapAB => mapAC => a =>
+  predicate(a) ? mapAB(a) : mapAC(a)
 
 export const ifElse = sign(signatures, implementation)
