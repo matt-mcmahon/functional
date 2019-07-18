@@ -1,15 +1,15 @@
 /**
  * ```
- * invoker :: n => k => (...as) => b => c
+ * invoker :: k => (...as) => (b.k => c) => c
  * ```
  * -----------------------------------------------------------------------------
  *
- * Takes an __arity__, a __methodName__, and one or more arguments, __args__.
- * Accepts an __object__ with a method of that name and arity and returns the
- * result of calling object’s method, e.g.:
+ * Takes a method name, __k__; one or more arguments, __as__; and an object,
+ * __b__, which has a method of that name. It invokes the method, applying the
+ * arguments, __as__, and returns the result, __c__; i.e.:
  *
  * ```
- * object[method](...args)
+ * invoker(k, ...as, b) <=> b[k](...as) <=>
  * ```
  *
  */
