@@ -1,8 +1,8 @@
 import { sign } from "@mwm/sign"
 
 export const signatures = [
-  { "partial :: (a¹, a², …, aⁿ => b) => (a¹, …) => (…, aⁿ) => b": 1 },
-  { "partial ::                         (a¹, …) => (…, aⁿ) => b": Infinity },
+  { "partial :: (a¹, a², …, aⁿ => b) => (a¹, …) => ... => (…, aⁿ) => b": 1 },
+  { "partial :: (a¹, …) => ... => (…, aⁿ) => b": Infinity },
 ]
 
 export const implementation = f =>

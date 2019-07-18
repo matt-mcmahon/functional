@@ -1,13 +1,14 @@
 /**
  * ```
- * partial :: (a¹, a², …, aⁿ => b) => (a¹, …) => (…, aⁿ) => b
+ * partial :: (a¹, a², …, aⁿ => b) => (a¹, …) => ... => (…, aⁿ) => b
  * ```
  * -----------------------------------------------------------------------------
  *
- * Creates a version of the supplied Variadic function that can be
+ * Creates a version of the supplied _n_-ary function that can be be partially
+ * applied.
  *
  */
-export declare function partial(
-  originalFunction: Function,
-  ...initialArgs: any[]
-): (...remainingArguments: any[]) => any
+export declare function partial<A, B>(
+  originalFunction: (...args: A[]) => B,
+  ...initial: A[]
+): (...remaining: A[]) => B
