@@ -1,11 +1,10 @@
-import { Predicate } from "../types"
 /**
  * ```
  * isEmpty :: a => boolean
  * ```
  * -----------------------------------------------------------------------------
- * __Predicate__ that returns `true` if it's argument is an empty value for
- * it's type, `false` otherwise. For example:
+ * _Predicate_ that returns `true` if __a__ is an empty value for it's type,
+ * `false` otherwise. For example:
  *
  * ```
  * isEmpty("") //> true
@@ -13,4 +12,4 @@ import { Predicate } from "../types"
  * isEmpty(0)  //> false
  * ```
  */
-export declare const isEmpty: Predicate<any>
+export declare function isEmpty<A>(a: A): boolean

@@ -1,6 +1,6 @@
 import { sign } from "@mwm/sign"
 
-export const signatures = [{ "isEmpty :: a -> Boolean": 1 }]
+export const signatures = [{ "isEmpty :: a => Boolean": 1 }]
 
 export const implementation = value =>
   (Array.isArray(value) && value.length === 0) ||
