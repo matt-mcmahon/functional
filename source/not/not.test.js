@@ -4,8 +4,8 @@ import { not, implementation, signatures } from "./not"
 describe(
   {
     path: "source/not",
-    public: [not, implementation],
-    private: [signatures],
+    public: [not],
+    private: [implementation, signatures],
   },
   async ({ assert, inspect }) => {
     const test = ([value, expected]) => {

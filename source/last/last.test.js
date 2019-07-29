@@ -4,8 +4,8 @@ import { last, implementation, signatures } from "./last"
 describe(
   {
     path: "source/last",
-    public: [implementation, last],
-    private: [signatures],
+    public: [last],
+    private: [implementation, signatures],
   },
   async ({ assert, inspect }) => {
     {

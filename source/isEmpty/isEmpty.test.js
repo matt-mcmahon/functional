@@ -4,8 +4,8 @@ import { isEmpty, implementation, signatures } from "./isEmpty"
 describe(
   {
     path: "source/isEmpty",
-    public: [isEmpty, implementation],
-    private: [signatures],
+    public: [isEmpty],
+    private: [implementation, signatures],
   },
   async ({ assert, inspect }) => {
     const data = [

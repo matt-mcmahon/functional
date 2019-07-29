@@ -4,8 +4,8 @@ import { isFunction, implementation, signatures } from "./isFunction"
 describe(
   {
     path: "source/isFunction",
-    public: [isFunction, implementation],
-    private: [signatures],
+    public: [isFunction],
+    private: [implementation, signatures],
   },
   async ({ assert, inspect }) => {
     const should = inspect`be a function`

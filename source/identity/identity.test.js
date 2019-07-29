@@ -4,8 +4,8 @@ import { identity, signatures, implementation } from "./identity"
 describe(
   {
     path: "source/identity",
-    public: [identity, implementation],
-    private: [signatures],
+    public: [identity],
+    private: [implementation, signatures],
   },
   async ({ assert, inspect }) => {
     const foo = { name: "foo" }

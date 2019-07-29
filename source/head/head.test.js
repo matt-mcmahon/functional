@@ -4,8 +4,8 @@ import { head, signatures, implementation } from "./head"
 describe(
   {
     path: "source/head",
-    public: [head, implementation],
-    private: [signatures],
+    public: [head],
+    private: [signatures, implementation],
   },
   async ({ assert, inspect }) => {
     const as = ["a", "b", "c"]

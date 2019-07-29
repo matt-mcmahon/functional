@@ -4,8 +4,8 @@ import { init, implementation, signatures } from "./init"
 describe(
   {
     path: "source/init",
-    public: [init, implementation],
-    private: [signatures],
+    public: [init],
+    private: [implementation, signatures],
   },
   async ({ assert, inspect }) => {
     {
