@@ -31,7 +31,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test"
+      "pre-commit": "npm run silent"
     }
   },
   "keywords": [
@@ -52,11 +52,13 @@
     "build": "tsc",
     "fix": "prettier --write source/**/*.js",
     "lint": "prettier-check source/**/*.js",
-    "prepublishOnly": "npm run test",
+    "prepublishOnly": "npm run silent",
+    "presilent": "tsc && prettier-check source/**/*.js",
     "pretest": "tsc && prettier-check source/**/*.js",
-    "preversion": "npm run test",
-    "test": "tap -r esm --bail -R spec ./source/**/*.test.js",
-    "watch": "tap -r esm -R spec --watch ./source/**/*.test.js"
+    "preversion": "npm run silent",
+    "silent": "tap --bail -R silent ./source/**/*.test.js",
+    "test": "tap -R spec ./source/**/*.test.js",
+    "watch": "tap -R spec --watch ./source/**/*.test.js"
   },
   "type": "module",
   "types": "source/index.d.ts",
