@@ -66,7 +66,10 @@ describe(
     }
 
     {
-      const expected = [["foo", { bar: "bar" }], ["baz", "qux"]]
+      const expected = [
+        ["foo", { bar: "bar" }],
+        ["baz", "qux"],
+      ]
       const actual = clone(expected)
       const given = inspect`a nested, mixed array`
 

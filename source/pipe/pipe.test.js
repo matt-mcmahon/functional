@@ -11,10 +11,7 @@ describe(
     const f = x => x + 1
     const g = x => 2 * x
 
-    const fg = pipe(
-      f,
-      g
-    )
+    const fg = pipe(f, g)
 
     assert({
       given: inspect`pipe(f, g)(3)`,
@@ -23,10 +20,7 @@ describe(
       expected: 8,
     })
 
-    const gf = pipe(
-      g,
-      f
-    )
+    const gf = pipe(g, f)
 
     assert({
       given: inspect`pipe(g, f)(3)`,
@@ -40,10 +34,7 @@ describe(
       const g = x => x * 3
       const given = inspect`variadic first argument`
       const should = inspect`apply three arguments to ${f}`
-      const actual = pipe(
-        f,
-        g
-      )(1, 2, 3)
+      const actual = pipe(f, g)(1, 2, 3)
       const expected = 18
       assert({ given, should, actual, expected })
     }

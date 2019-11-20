@@ -15,16 +15,19 @@ describe(
     const both1 = both0(gt10)
     const both2 = both1(lt20)
 
-    ;[[10, false], [20, false], [19, true], [11, true]].forEach(
-      ([value, expected]) => {
-        const given = inspect`the value ${value}`
-        const should = inspect`${
-          expected ? "be" : "not be"
-        } between ${10} and ${20}`
-        const actual = both2(value)
-        assert({ given, should, actual, expected })
-      }
-    )
+    ;[
+      [10, false],
+      [20, false],
+      [19, true],
+      [11, true],
+    ].forEach(([value, expected]) => {
+      const given = inspect`the value ${value}`
+      const should = inspect`${
+        expected ? "be" : "not be"
+      } between ${10} and ${20}`
+      const actual = both2(value)
+      assert({ given, should, actual, expected })
+    })
 
     {
       assert.doesNotThrow(() => {

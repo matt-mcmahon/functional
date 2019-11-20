@@ -25,10 +25,7 @@ describe(
     {
       const f = (...xs) => xs.reduce((a, b) => a + b, 0)
       const g = x => x * 2
-      const actual = compose(
-        g,
-        f
-      )(1, 2, 3)
+      const actual = compose(g, f)(1, 2, 3)
       const expected = 12
       const given = inspect`Variadic Function/Args`
       assert({ actual, expected, given })
