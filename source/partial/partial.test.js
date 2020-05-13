@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { partial, implementation, signatures } from "./partial"
+import { partial, implementation, signatures } from "./partial.js"
 
 describe(
   {

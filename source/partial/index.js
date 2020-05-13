@@ -1,1 +1,1 @@
-export { partial } from "./partial"
+export { partial } from "./partial.js"
