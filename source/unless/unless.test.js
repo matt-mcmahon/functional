@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { unless, implementation, signatures } from "./unless"
+import { unless, implementation, signatures } from "./unless.js"
 
 describe(
   {
