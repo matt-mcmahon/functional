@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { complement, signatures, implementation } from "./complement"
+import { complement, signatures, implementation } from "./complement.js"
 
 describe(
   {

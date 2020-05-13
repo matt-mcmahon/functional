@@ -1,1 +1,1 @@
-export { complement } from "./complement"
+export { complement } from "./complement.js"
