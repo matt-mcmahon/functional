@@ -1,1 +1,1 @@
-export { pipe } from "./pipe"
+export { pipe } from "./pipe.js"

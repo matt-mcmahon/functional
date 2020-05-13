@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { pipe, implementation, signatures } from "./pipe"
+import { pipe, implementation, signatures } from "./pipe.js"
 
 describe(
   {
