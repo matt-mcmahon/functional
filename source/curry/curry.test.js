@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { curry, signatures, implementation } from "./curry"
+import { curry, signatures, implementation } from "./curry.js"
 
 describe(
   {

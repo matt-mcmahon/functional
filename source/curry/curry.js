@@ -1,5 +1,5 @@
 import { sign } from "@mwm/sign"
-import { curryN } from "../curryN/curryN"
+import { curryN } from "../curryN/curryN.js"
 
 export const signatures = [
   "curry :: ((a¹, a²..., aⁿ) => b) => a¹ => a²...=> aⁿ => b",
