@@ -1,6 +1,6 @@
 import { strict } from "assert"
 import { describe } from "@mwm/describe"
-import { clone, implementation, signatures } from "./clone"
+import { clone, implementation, signatures } from "./clone.js"
 
 describe(
   {

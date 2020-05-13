@@ -1,1 +1,1 @@
-export { clone } from "./clone"
+export { clone } from "./clone.js"
