@@ -30,7 +30,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run silent"
+      "DISABLED pre-commit": "npm run silent"
     }
   },
   "keywords": [
