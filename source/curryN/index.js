@@ -1,1 +1,1 @@
-export { curryN } from "./curryN"
+export { curryN } from "./curryN.js"

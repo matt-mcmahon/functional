@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { curryN, signatures, implementation } from "./curryN"
+import { curryN, signatures, implementation } from "./curryN.js"
 
 describe(
   {
