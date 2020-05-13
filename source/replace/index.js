@@ -1,1 +1,1 @@
-export { replace } from "./replace"
+export { replace } from "./replace.js"
