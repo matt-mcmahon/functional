@@ -1,1 +1,1 @@
-export { tap } from "./tap"
+export { tap } from "./tap.js"
