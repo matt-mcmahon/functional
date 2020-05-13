@@ -1,1 +1,1 @@
-export { toVariadic } from "./toVariadic"
+export { toVariadic } from "./toVariadic.js"

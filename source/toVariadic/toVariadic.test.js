@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { toVariadic, implementation, signatures } from "./toVariadic"
+import { toVariadic, implementation, signatures } from "./toVariadic.js"
 
 describe(
   {
