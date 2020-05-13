@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { always, implementation, signatures } from "./always"
+import { always, implementation, signatures } from "./always.js"
 
 describe(
   {

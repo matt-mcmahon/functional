@@ -1,1 +1,1 @@
-export { always } from "./always"
+export { always } from "./always.js"
