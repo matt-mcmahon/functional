@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { tail, implementation, signatures } from "./tail"
+import { tail, implementation, signatures } from "./tail.js"
 
 describe(
   {
