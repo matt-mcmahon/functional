@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { toUnary, implementation, signatures } from "./toUnary"
+import { toUnary, implementation, signatures } from "./toUnary.js"
 
 describe(
   {
