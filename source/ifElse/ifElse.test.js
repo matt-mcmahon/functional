@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { ifElse, implementation, signatures } from "./ifElse"
+import { ifElse, implementation, signatures } from "./ifElse.js"
 
 describe(
   {

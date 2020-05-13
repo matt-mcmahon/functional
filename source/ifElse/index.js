@@ -1,1 +1,1 @@
-export { ifElse } from "./ifElse"
+export { ifElse } from "./ifElse.js"
