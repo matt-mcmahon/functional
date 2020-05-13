@@ -1,1 +1,1 @@
-export { T } from "./T"
+export { T } from "./T.js"
