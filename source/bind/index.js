@@ -1,1 +1,1 @@
-export { bind } from "./bind"
+export { bind } from "./bind.js"
