@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { uncurry, implementation, signatures } from "./uncurry"
+import { uncurry, implementation, signatures } from "./uncurry.js"
 
 describe(
   {

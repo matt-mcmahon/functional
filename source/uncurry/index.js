@@ -1,1 +1,1 @@
-export { uncurry } from "./uncurry"
+export { uncurry } from "./uncurry.js"
