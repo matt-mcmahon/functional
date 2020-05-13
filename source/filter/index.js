@@ -1,1 +1,1 @@
-export { filter } from "./filter"
+export { filter } from "./filter.js"

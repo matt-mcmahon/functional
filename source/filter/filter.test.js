@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { filter, implementation, signatures } from "./filter"
+import { filter, implementation, signatures } from "./filter.js"
 
 describe(
   {
