@@ -1,1 +1,1 @@
-export { join } from "./join"
+export { join } from "./join.js"
