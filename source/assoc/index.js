@@ -1,1 +1,1 @@
-export { assoc } from "./assoc"
+export { assoc } from "./assoc.js"

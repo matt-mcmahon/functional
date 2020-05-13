@@ -1,5 +1,5 @@
 import { sign } from "@mwm/sign"
-import { clone } from "../clone"
+import { clone } from "../clone/index.js"
 
 export const signatures = [
   { "assoc :: k => a => {k:*} => {k:a}": 1 },
