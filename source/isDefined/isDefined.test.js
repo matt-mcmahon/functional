@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { isDefined, implementation, signatures } from "./isDefined"
+import { isDefined, implementation, signatures } from "./isDefined.js"
 
 describe(
   {
