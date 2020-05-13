@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { defaultTo, signatures, implementation } from "./defaultTo"
+import { defaultTo, signatures, implementation } from "./defaultTo.js"
 
 describe(
   {
