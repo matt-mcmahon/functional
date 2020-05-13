@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { iife, implementation, signatures } from "./iife"
+import { iife, implementation, signatures } from "./iife.js"
 
 describe(
   {
