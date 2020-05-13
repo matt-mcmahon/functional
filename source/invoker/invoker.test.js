@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { invoker, implementation, signatures } from "./invoker"
+import { invoker, implementation, signatures } from "./invoker.js"
 
 // cSpell:ignore ghijklm abcdefghijklm
 
