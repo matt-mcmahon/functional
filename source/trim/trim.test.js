@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { trim, implementation, signatures } from "./trim"
+import { trim, implementation, signatures } from "./trim.js"
 
 describe(
   {
