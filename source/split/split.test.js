@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { split, implementation, signatures } from "./split"
+import { split, implementation, signatures } from "./split.js"
 
 describe(
   {

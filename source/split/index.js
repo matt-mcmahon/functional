@@ -1,1 +1,1 @@
-export { split } from "./split"
+export { split } from "./split.js"
