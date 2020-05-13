@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { slice, implementation, signatures } from "./slice"
+import { slice, implementation, signatures } from "./slice.js"
 
 describe(
   {

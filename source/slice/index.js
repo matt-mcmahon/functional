@@ -1,1 +1,1 @@
-export { slice } from "./slice"
+export { slice } from "./slice.js"
