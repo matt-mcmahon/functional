@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { reduceRight, implementation, signatures } from "./reduceRight"
+import { reduceRight, implementation, signatures } from "./reduceRight.js"
 
 describe(
   {
