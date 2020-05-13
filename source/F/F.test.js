@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { F, implementation, signatures } from "./F"
+import { F, implementation, signatures } from "./F.js"
 
 describe(
   {
