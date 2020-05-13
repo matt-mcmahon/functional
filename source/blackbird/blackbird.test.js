@@ -1,5 +1,5 @@
 import { describe, configure } from "@mwm/describe"
-import { blackbird, signatures, implementation } from "./blackbird"
+import { blackbird, signatures, implementation } from "./blackbird.js"
 
 describe(
   {
