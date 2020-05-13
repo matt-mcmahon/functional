@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { equals, signatures, implementation } from "./equals"
+import { equals, signatures, implementation } from "./equals.js"
 
 describe(
   {
