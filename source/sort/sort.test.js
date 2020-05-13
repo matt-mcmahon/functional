@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { sort, implementation, signatures } from "./sort"
+import { sort, implementation, signatures } from "./sort.js"
 
 describe(
   {
