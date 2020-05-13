@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { either, signatures, implementation } from "./either"
+import { either, signatures, implementation } from "./either.js"
 
 describe(
   {
