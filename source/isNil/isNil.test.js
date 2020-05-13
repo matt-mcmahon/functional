@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { isNil, implementation, signatures } from "./isNil"
+import { isNil, implementation, signatures } from "./isNil.js"
 
 describe(
   {
