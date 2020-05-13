@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe"
-import { map, implementation, signatures } from "./map"
+import { map, implementation, signatures } from "./map.js"
 
 describe(
   {
