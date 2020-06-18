@@ -1,5 +1,4 @@
-lib
-.deno
+.deno/gen
 
 # Logs
 logs
