@@ -5,11 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Deno",
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
-      "program": "${file}",
-      "runtimeArgs": [],
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": [
+        "test",
+        "--lock=lock-file.json",
+        "--cached-only",
+        "--inspect-brk",
+        "--allow-read=${workspaceFolder}",
+        "${file}"
+      ],
+      "port": 9229,
       "outputCapture": "std"
     }
   ]

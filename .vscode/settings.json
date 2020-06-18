@@ -1,7 +1,3 @@
 {
-  "cSpell.words": [
-    "combinator",
-    "iife",
-    "unreducable"
-  ]
+  "deno.enable": true
 }
