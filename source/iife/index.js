@@ -1,1 +1,1 @@
-export { iife } from "./iife.js"
+export { iife } from "./iife.js";

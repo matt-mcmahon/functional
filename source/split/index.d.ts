@@ -1,4 +1,4 @@
-import { OrderedList } from "../types"
+import { OrderedList } from "../types";
 
 /**
  * ```
@@ -14,4 +14,4 @@ import { OrderedList } from "../types"
  * split(" ")(string) <=> string.split(" ") <=> ["one", "two", "three"]
  * ```
  */
-export declare function split(at: string, what: string): string[]
+export declare function split(at: string, what: string): string[];

@@ -1,5 +1,5 @@
-import { describe } from "@mwm/describe"
-import { isDefined, implementation, signatures } from "./isDefined.js"
+import { describe } from "@mwm/describe";
+import { isDefined, implementation, signatures } from "./isDefined.js";
 
 describe(
   {
@@ -17,14 +17,14 @@ describe(
       [false, true],
       [{}, true],
       [{ length: 0 }, true],
-    ]
+    ];
 
     const test = ([value, expected]) => {
-      const actual = isDefined(value)
-      const given = inspect`isDefined(${value})`
-      assert({ given, actual, expected })
-    }
+      const actual = isDefined(value);
+      const given = inspect`isDefined(${value})`;
+      assert({ given, actual, expected });
+    };
 
-    data.forEach(test)
-  }
-)
+    data.forEach(test);
+  },
+);

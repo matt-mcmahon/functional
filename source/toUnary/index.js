@@ -1,1 +1,1 @@
-export { toUnary } from "./toUnary.js"
+export { toUnary } from "./toUnary.js";

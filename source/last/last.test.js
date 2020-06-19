@@ -1,5 +1,5 @@
-import { describe } from "@mwm/describe"
-import { last, implementation, signatures } from "./last.js"
+import { describe } from "@mwm/describe";
+import { last, implementation, signatures } from "./last.js";
 
 describe(
   {
@@ -9,19 +9,19 @@ describe(
   },
   async ({ assert, inspect }) => {
     {
-      const value = ["a", "b", "c"]
-      const expected = "c"
-      const actual = last(value)
-      const given = inspect`last(${value})`
-      assert({ given, actual, expected })
+      const value = ["a", "b", "c"];
+      const expected = "c";
+      const actual = last(value);
+      const given = inspect`last(${value})`;
+      assert({ given, actual, expected });
     }
 
     {
-      const value = []
-      const expected = undefined
-      const actual = last(value)
-      const given = inspect`last(${value})`
-      assert({ given, actual, expected })
+      const value = [];
+      const expected = undefined;
+      const actual = last(value);
+      const given = inspect`last(${value})`;
+      assert({ given, actual, expected });
     }
-  }
-)
+  },
+);

@@ -1,5 +1,5 @@
-import { describe } from "@mwm/describe"
-import { isEmpty, implementation, signatures } from "./isEmpty.js"
+import { describe } from "@mwm/describe";
+import { isEmpty, implementation, signatures } from "./isEmpty.js";
 
 describe(
   {
@@ -17,14 +17,14 @@ describe(
       [NaN, false],
       [false, false],
       [{ length: 0 }, false],
-    ]
+    ];
 
     const test = ([value, expected]) => {
-      const actual = isEmpty(value)
-      const given = inspect`isEmpty(${value})`
-      assert({ given, actual, expected })
-    }
+      const actual = isEmpty(value);
+      const given = inspect`isEmpty(${value})`;
+      assert({ given, actual, expected });
+    };
 
-    data.forEach(test)
-  }
-)
+    data.forEach(test);
+  },
+);

@@ -1,46 +1,46 @@
-import { sign } from "@mwm/sign"
+import { sign } from "@mwm/sign";
 
-export const signatures = [{ "clone :: (a, this?) => a": 2 }]
+export const signatures = [{ "clone :: (a, this?) => a": 2 }];
 
 export const implementation = (value, context) =>
-  recursiveClone(new WeakMap(), value, context)
+  recursiveClone(new WeakMap(), value, context);
 
-export const clone = sign(signatures, implementation)
+export const clone = sign(signatures, implementation);
 
 const recursiveClone = (map, value, context) => {
-  const existingClone = map.get(value)
-  if (existingClone) return existingClone
-  if (typeof value === "function") return cloneFunction(map, value, context)
-  if (Array.isArray(value)) return cloneArray(map, value)
-  if (value instanceof Date) return cloneDate(value)
-  if (value instanceof Object) return cloneObject(map, value)
-  return value
-}
+  const existingClone = map.get(value);
+  if (existingClone) return existingClone;
+  if (typeof value === "function") return cloneFunction(map, value, context);
+  if (Array.isArray(value)) return cloneArray(map, value);
+  if (value instanceof Date) return cloneDate(value);
+  if (value instanceof Object) return cloneObject(map, value);
+  return value;
+};
 
 const cloneFunction = (map, fun, context) =>
-  cloneObject(map, fun, fun.bind(context))
+  cloneObject(map, fun, fun.bind(context));
 
 const cloneArray = (map, arr) => {
-  const copy = []
-  map.set(arr, copy)
+  const copy = [];
+  map.set(arr, copy);
   arr.reduce((copy, value) => {
-    copy.push(recursiveClone(map, value))
-    return copy
-  }, copy)
-  return copy
-}
+    copy.push(recursiveClone(map, value));
+    return copy;
+  }, copy);
+  return copy;
+};
 
-const cloneDate = date => new Date(date.valueOf())
+const cloneDate = (date) => new Date(date.valueOf());
 
 const cloneObject = (map, obj, copy = {}) => {
-  map.set(obj, copy)
-  const keys = Object.keys(obj)
+  map.set(obj, copy);
+  const keys = Object.keys(obj);
   keys.reduce((copy, key) => {
-    copy[key] = recursiveClone(map, obj[key])
-    return copy
-  }, copy)
-  return copy
-}
+    copy[key] = recursiveClone(map, obj[key]);
+    return copy;
+  }, copy);
+  return copy;
+};
 
 /**
  * Adapted from:

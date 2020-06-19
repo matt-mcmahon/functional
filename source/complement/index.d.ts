@@ -1,4 +1,4 @@
-import { Predicate } from "../types"
+import { Predicate } from "../types";
 
 /**
  * ```
@@ -18,5 +18,5 @@ import { Predicate } from "../types"
  * ```
  */
 export declare function complement<T>(
-  predicate: Predicate<T>
-): (value: T) => boolean
+  predicate: Predicate<T>,
+): (value: T) => boolean;

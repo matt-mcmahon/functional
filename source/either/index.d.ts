@@ -12,5 +12,5 @@
 export declare function either<A, B, C>(
   mapAB: (a: A) => B,
   mapAC: (a: A) => C,
-  a: A
-): B | C
+  a: A,
+): B | C;

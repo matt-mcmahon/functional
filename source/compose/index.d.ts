@@ -1,4 +1,4 @@
-import { Variadic, Unary } from "../types"
+import { Variadic, Unary } from "../types";
 
 /**
  * ```
@@ -14,4 +14,4 @@ import { Variadic, Unary } from "../types"
  * compose(h, g, f)(v) => h(g(f(v)))
  * ```
  */
-export declare function compose(...unaries: Unary<any, any>[]): Unary<any, any>
+export declare function compose(...unaries: Unary<any, any>[]): Unary<any, any>;

@@ -1,7 +1,7 @@
-import { sign } from "@mwm/sign"
+import { sign } from "@mwm/sign";
 
-export const signatures = ["isDefined :: a => boolean"]
+export const signatures = ["isDefined :: a => boolean"];
 
-export const implementation = a => a === a && a !== undefined && a !== null
+export const implementation = (a) => a === a && a !== undefined && a !== null;
 
-export const isDefined = sign(signatures, implementation)
+export const isDefined = sign(signatures, implementation);

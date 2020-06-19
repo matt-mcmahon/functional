@@ -1,5 +1,5 @@
-import { describe } from "@mwm/describe"
-import { not, implementation, signatures } from "./not.js"
+import { describe } from "@mwm/describe";
+import { not, implementation, signatures } from "./not.js";
 
 describe(
   {
@@ -9,12 +9,11 @@ describe(
   },
   async ({ assert, inspect }) => {
     const test = ([value, expected]) => {
-      const actual = not(value)
-      const given = inspect`not(${value})`
-      assert({ expected, actual, given })
-    }
-
-    ;[
+      const actual = not(value);
+      const given = inspect`not(${value})`;
+      assert({ expected, actual, given });
+    };
+    [
       [true, false],
       [false, true],
       // truthy values
@@ -30,6 +29,6 @@ describe(
       [null, true],
       [undefined, true],
       [NaN, true],
-    ].forEach(test)
-  }
-)
+    ].forEach(test);
+  },
+);

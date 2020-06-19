@@ -1,13 +1,13 @@
-import { sign } from "@mwm/sign"
+import { sign } from "@mwm/sign";
 
-import { isDefined } from "../isDefined/index.js"
+import { isDefined } from "../isDefined/index.js";
 
 export const signatures = [
   { "defaultTo :: a => b => a|b": 1 },
   { "defaultTo ::      b => a|b": 1 },
-]
+];
 
-export const implementation = defaultValue => value =>
-  isDefined(value) ? value : defaultValue
+export const implementation = (defaultValue) =>
+  (value) => isDefined(value) ? value : defaultValue;
 
-export const defaultTo = sign(signatures, implementation)
+export const defaultTo = sign(signatures, implementation);

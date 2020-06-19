@@ -1,4 +1,4 @@
-import { Variadic, Curried } from "../types"
+import { Variadic, Curried } from "../types";
 
 /**
  * ```
@@ -12,5 +12,5 @@ import { Variadic, Curried } from "../types"
  * const sum = (...ns) => ns.reduce((n,m)=>n+m,0)
  */
 export declare function curryN<T>(
-  arity: number
-): (originalFunction: Variadic<any, T>) => Curried<any, T>
+  arity: number,
+): (originalFunction: Variadic<any, T>) => Curried<any, T>;

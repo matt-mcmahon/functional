@@ -1,1 +1,1 @@
-export { both } from "./both.js"
+export { both } from "./both.js";

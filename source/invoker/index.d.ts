@@ -13,8 +13,7 @@
  * ```
  *
  */
-export declare const invoker:
-  <T extends { [key: string]: Function }, K extends keyof T>
-    (arity: Number, methodName: K) =>
-    (...as: any[]) =>
-      (object: T) => any
+export declare const invoker: <
+  T extends { [key: string]: Function },
+  K extends keyof T,
+>(arity: Number, methodName: K) => (...as: any[]) => (object: T) => any;

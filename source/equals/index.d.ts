@@ -12,4 +12,4 @@
  * ```
  *
  */
-export declare function equals<A, B>(a: A, b: B): boolean
+export declare function equals<A, B>(a: A, b: B): boolean;

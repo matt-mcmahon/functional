@@ -1,1 +1,1 @@
-export { defaultTo } from "./defaultTo.js"
+export { defaultTo } from "./defaultTo.js";

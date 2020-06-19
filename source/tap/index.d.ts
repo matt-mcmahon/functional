@@ -7,4 +7,4 @@
  * _sideEffect_. Ignores any value returned by the side effect function, and
  * returns the _value_ instead.
  */
-export function tap<A>(sideEffect: (value: A) => void, value: A): A
+export function tap<A>(sideEffect: (value: A) => void, value: A): A;

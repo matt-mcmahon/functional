@@ -1,1 +1,1 @@
-export { reduce } from "./reduce.js"
+export { reduce } from "./reduce.js";

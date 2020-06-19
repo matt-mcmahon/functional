@@ -1,1 +1,1 @@
-export { isDefined } from "./isDefined.js"
+export { isDefined } from "./isDefined.js";

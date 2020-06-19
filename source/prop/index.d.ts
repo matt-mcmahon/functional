@@ -1,4 +1,4 @@
-import { Key } from "../types"
+import { Key } from "../types";
 
 /**
  * ```
@@ -9,4 +9,4 @@ import { Key } from "../types"
  * Returns the value of the given _property_ for the object.
  *
  */
-export declare function prop(k: Key, ak: object): any
+export declare function prop(k: Key, ak: object): any;

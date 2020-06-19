@@ -8,4 +8,4 @@
  * that accepts any number of arguments instead.
  *
  */
-export declare function toVariadic<A, B>(f: (as: A[]) => B, ...as: A[]): B
+export declare function toVariadic<A, B>(f: (as: A[]) => B, ...as: A[]): B;

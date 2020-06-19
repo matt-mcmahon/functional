@@ -1,4 +1,4 @@
-import { Predicate } from "../types"
+import { Predicate } from "../types";
 /**
  * ```
  * isNil :: a => boolean
@@ -13,4 +13,4 @@ import { Predicate } from "../types"
  * isNil(0)         <=> false
  * ```
  */
-export declare function isNil<A>(a: A): boolean
+export declare function isNil<A>(a: A): boolean;

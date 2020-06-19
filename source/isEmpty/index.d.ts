@@ -12,4 +12,4 @@
  * isEmpty(0)  //> false
  * ```
  */
-export declare function isEmpty<A>(a: A): boolean
+export declare function isEmpty<A>(a: A): boolean;

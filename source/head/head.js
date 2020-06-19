@@ -1,7 +1,7 @@
-import { sign } from "@mwm/sign"
+import { sign } from "@mwm/sign";
 
-export const signatures = [{ "head :: as => a": 1 }]
+export const signatures = [{ "head :: as => a": 1 }];
 
-export const implementation = as => as[0]
+export const implementation = (as) => as[0];
 
-export const head = sign(signatures, implementation)
+export const head = sign(signatures, implementation);

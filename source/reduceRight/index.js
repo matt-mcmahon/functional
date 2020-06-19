@@ -1,1 +1,1 @@
-export { reduceRight } from "./reduceRight.js"
+export { reduceRight } from "./reduceRight.js";

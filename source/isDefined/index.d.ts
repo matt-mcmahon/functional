@@ -8,4 +8,4 @@
  * `true`.
  *
  */
-export declare function isDefined(value: any): boolean
+export declare function isDefined(value: any): boolean;

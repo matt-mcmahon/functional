@@ -1,4 +1,4 @@
-import { Predicate, Unary } from "../types"
+import { Predicate, Unary } from "../types";
 /**
  * ```
  * ifElse :: (a => Boolean) => (a => b) => (a => c) => a => b|c
@@ -10,5 +10,5 @@ import { Predicate, Unary } from "../types"
  * otherwise it returns `onFalse(a)`.
  */
 export declare function ifElse<A, B, C>(
-  predicate: Predicate<A>
-): (onTrue: Unary<A, B>) => (onFalse: Unary<A, C>) => (a: A) => B | C
+  predicate: Predicate<A>,
+): (onTrue: Unary<A, B>) => (onFalse: Unary<A, C>) => (a: A) => B | C;

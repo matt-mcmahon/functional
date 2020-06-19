@@ -11,4 +11,4 @@
  * parameter to fix the value for `this` inside the function, or it may not
  * behave as expected.
  */
-export declare function clone<T>(a: T, context?: Function): T
+export declare function clone<T>(a: T, context?: Function): T;

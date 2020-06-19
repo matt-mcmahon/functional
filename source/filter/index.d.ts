@@ -1,4 +1,4 @@
-import { Predicate, Iterable, Mappable } from "../types"
+import { Predicate, Iterable, Mappable } from "../types";
 
 /**
  * ```
@@ -9,4 +9,4 @@ import { Predicate, Iterable, Mappable } from "../types"
  * _true_.
  *
  */
-export declare function filter<T>(predicate: Predicate<T>, list: T[]): T[]
+export declare function filter<T>(predicate: Predicate<T>, list: T[]): T[];

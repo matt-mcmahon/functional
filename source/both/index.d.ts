@@ -1,4 +1,4 @@
-import { Unary, Predicate } from "../types"
+import { Unary, Predicate } from "../types";
 
 /**
  * ```
@@ -10,5 +10,5 @@ import { Unary, Predicate } from "../types"
  *
  */
 export declare function both<A, B, C>(
-  mapAB: Unary<A, B>
-): (mapAC: Unary<A, C>) => (a: A) => B | C
+  mapAB: Unary<A, B>,
+): (mapAC: Unary<A, C>) => (a: A) => B | C;

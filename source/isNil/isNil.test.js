@@ -1,5 +1,5 @@
-import { describe } from "@mwm/describe"
-import { isNil, implementation, signatures } from "./isNil.js"
+import { describe } from "@mwm/describe";
+import { isNil, implementation, signatures } from "./isNil.js";
 
 describe(
   {
@@ -8,7 +8,7 @@ describe(
     private: [implementation, signatures],
   },
   async ({ assert, inspect }) => {
-    ;[
+    [
       [null, true],
       [undefined, true],
       [NaN, false],
@@ -24,6 +24,6 @@ describe(
         expected,
         given: inspect`isNil(${value})`,
       })
-    )
-  }
-)
+    );
+  },
+);

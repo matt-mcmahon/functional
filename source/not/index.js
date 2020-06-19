@@ -1,1 +1,1 @@
-export { not } from "./not.js"
+export { not } from "./not.js";

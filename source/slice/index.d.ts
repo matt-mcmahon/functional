@@ -1,4 +1,4 @@
-import { OrderedList } from "../types"
+import { OrderedList } from "../types";
 
 /**
  * ```
@@ -19,5 +19,5 @@ import { OrderedList } from "../types"
 export declare function slice<T>(
   n: number,
   m: number,
-  as: OrderedList<T>
-): OrderedList<T>
+  as: OrderedList<T>,
+): OrderedList<T>;

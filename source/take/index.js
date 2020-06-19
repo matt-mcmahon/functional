@@ -1,1 +1,1 @@
-export { take } from "./take.js"
+export { take } from "./take.js";

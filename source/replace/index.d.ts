@@ -16,5 +16,5 @@
 export declare function replace(
   match: string | RegExp,
   replaceWith: string,
-  target: string
-): string
+  target: string,
+): string;

@@ -1,1 +1,1 @@
-export { blackbird } from "./blackbird.js"
+export { blackbird } from "./blackbird.js";

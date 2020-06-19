@@ -1,4 +1,4 @@
-import { Reducer, Iterable } from "../types"
+import { Reducer, Iterable } from "../types";
 
 /**
  * ```
@@ -16,5 +16,5 @@ import { Reducer, Iterable } from "../types"
 export declare function reduceRight<A, I, V>(
   reducer: Reducer<A, I, V>,
   accumulator: A,
-  iterable: Iterable<I>
-): V
+  iterable: Iterable<I>,
+): V;

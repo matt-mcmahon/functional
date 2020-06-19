@@ -7,4 +7,4 @@
  * Returns the first element of an array.
  *
  */
-export declare function head(as: any[]): any
+export declare function head(as: any[]): any;

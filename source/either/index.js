@@ -1,1 +1,1 @@
-export { either } from "./either.js"
+export { either } from "./either.js";

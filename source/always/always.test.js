@@ -1,5 +1,5 @@
-import { describe } from "@mwm/describe"
-import { always, implementation, signatures } from "./always.js"
+import { describe } from "@mwm/describe";
+import { always, implementation, signatures } from "./always.js";
 
 describe(
   {
@@ -8,19 +8,19 @@ describe(
     private: [implementation, signatures],
   },
   async ({ assert, inspect }) => {
-    const argument = "bar"
-    const expected = "foo"
+    const argument = "bar";
+    const expected = "foo";
     {
-      const actual = always(expected, argument)
-      const given = inspect`always(${expected}, ${argument})`
-      const should = inspect`still return ${expected}`
-      assert({ actual, expected, given, should })
+      const actual = always(expected, argument);
+      const given = inspect`always(${expected}, ${argument})`;
+      const should = inspect`still return ${expected}`;
+      assert({ actual, expected, given, should });
     }
     {
-      const actual = always(expected)(argument)
-      const given = inspect`always(${expected})(${argument})`
-      const should = inspect`still return ${expected}`
-      assert({ actual, expected, given, should })
+      const actual = always(expected)(argument);
+      const given = inspect`always(${expected})(${argument})`;
+      const should = inspect`still return ${expected}`;
+      assert({ actual, expected, given, should });
     }
-  }
-)
+  },
+);

@@ -1,1 +1,1 @@
-export { curry } from "./curry.js"
+export { curry } from "./curry.js";

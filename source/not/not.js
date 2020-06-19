@@ -1,7 +1,7 @@
-import { sign } from "@mwm/sign"
+import { sign } from "@mwm/sign";
 
-export const signatures = ["not :: a => boolean"]
+export const signatures = ["not :: a => boolean"];
 
-export const implementation = value => !value
+export const implementation = (value) => !value;
 
-export const not = sign(signatures, implementation)
+export const not = sign(signatures, implementation);

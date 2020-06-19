@@ -1,1 +1,1 @@
-export { trim } from "./trim.js"
+export { trim } from "./trim.js";

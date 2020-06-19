@@ -1,9 +1,9 @@
-import { describe } from "@mwm/describe"
-import { deepStrictEqual } from "assert"
+import { describe } from "@mwm/describe";
+import { deepStrictEqual } from "assert";
 
-import * as functional from "./index.js"
+import * as functional from "./index.js";
 
-const actual = Object.keys(functional).sort()
+const actual = Object.keys(functional).sort();
 const expected = [
   "always",
   "assoc",
@@ -56,6 +56,6 @@ const expected = [
   "trim",
   "uncurry",
   "unless",
-].sort()
+].sort();
 
-deepStrictEqual(actual, expected)
+deepStrictEqual(actual, expected);

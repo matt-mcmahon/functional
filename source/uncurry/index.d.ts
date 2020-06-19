@@ -1,4 +1,4 @@
-import { Unary, Curried } from "../types"
+import { Unary, Curried } from "../types";
 
 /**
  * ```
@@ -15,5 +15,5 @@ import { Unary, Curried } from "../types"
  */
 export declare function uncurry<A, B>(
   arity: number,
-  curried: Curried<A, B>
-): (...as: A[]) => B
+  curried: Curried<A, B>,
+): (...as: A[]) => B;

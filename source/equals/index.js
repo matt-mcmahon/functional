@@ -1,1 +1,1 @@
-export { equals } from "./equals.js"
+export { equals } from "./equals.js";

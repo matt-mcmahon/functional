@@ -1,1 +1,1 @@
-export { has } from "./has.js"
+export { has } from "./has.js";

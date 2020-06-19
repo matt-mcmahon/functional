@@ -1,1 +1,1 @@
-export { prop } from "./prop.js"
+export { prop } from "./prop.js";

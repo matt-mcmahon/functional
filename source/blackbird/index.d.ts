@@ -1,4 +1,4 @@
-import { Variadic, Binary, Unary } from "../types"
+import { Variadic, Binary, Unary } from "../types";
 /**
  * ```
  * blackbird  :: converging => ...parts => a => c
@@ -27,4 +27,4 @@ import { Variadic, Binary, Unary } from "../types"
 export declare function blackbird<A, B, C>(
   converging: Variadic<B[], C>,
   ...parts: Unary<A, B>[]
-): (a: A) => C
+): (a: A) => C;

@@ -1,4 +1,4 @@
-import { Variadic, Curried } from "../types"
+import { Variadic, Curried } from "../types";
 
 /**
  * ```
@@ -10,5 +10,5 @@ import { Variadic, Curried } from "../types"
  *
  */
 export declare function curry<A, B>(
-  originalFunction: Variadic<A, B>
-): Curried<A, B>
+  originalFunction: Variadic<A, B>,
+): Curried<A, B>;

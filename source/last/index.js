@@ -1,1 +1,1 @@
-export { last } from "./last.js"
+export { last } from "./last.js";

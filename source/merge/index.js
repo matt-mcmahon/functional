@@ -1,1 +1,1 @@
-export { merge } from "./merge.js"
+export { merge } from "./merge.js";

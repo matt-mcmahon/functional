@@ -1,4 +1,4 @@
-import { Unary, Mappable } from "../types"
+import { Unary, Mappable } from "../types";
 
 /**
  * ```
@@ -11,5 +11,5 @@ import { Unary, Mappable } from "../types"
  */
 export declare function map<A, B>(
   mapAB: Unary<A, B>,
-  as: Mappable<A>
-): Mappable<B>
+  as: Mappable<A>,
+): Mappable<B>;

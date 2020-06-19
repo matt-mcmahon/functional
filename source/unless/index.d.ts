@@ -13,5 +13,5 @@
 export declare function unless<A, B>(
   predicate: (a: A) => Boolean,
   action: (a: A) => B,
-  value: A
-): A | B
+  value: A,
+): A | B;

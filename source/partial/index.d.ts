@@ -11,4 +11,4 @@
 export declare function partial<A, B>(
   originalFunction: (...args: A[]) => B,
   ...initial: A[]
-): (...remaining: A[]) => B
+): (...remaining: A[]) => B;

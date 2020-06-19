@@ -14,5 +14,5 @@
 export declare function assoc<A>(
   key: string,
   a: A,
-  b: object
-): { [key: string]: A }
+  b: object,
+): { [key: string]: A };

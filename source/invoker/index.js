@@ -1,1 +1,1 @@
-export { invoker } from "./invoker.js"
+export { invoker } from "./invoker.js";

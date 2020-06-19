@@ -1,11 +1,11 @@
-import { sign } from "@mwm/sign"
-import { curryN } from "../curryN/curryN.js"
+import { sign } from "@mwm/sign";
+import { curryN } from "../curryN/curryN.js";
 
 export const signatures = [
   "curry :: ((a¹, a²..., aⁿ) => b) => a¹ => a²...=> aⁿ => b",
-]
+];
 
-export const implementation = originalFunction =>
-  curryN(originalFunction.length)(originalFunction)
+export const implementation = (originalFunction) =>
+  curryN(originalFunction.length)(originalFunction);
 
-export const curry = sign(signatures, implementation)
+export const curry = sign(signatures, implementation);

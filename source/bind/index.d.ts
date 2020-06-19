@@ -1,4 +1,4 @@
-import { Method } from "../types"
+import { Method } from "../types";
 
 /**
  * ```
@@ -10,4 +10,4 @@ import { Method } from "../types"
  * @param method a function that depends on a dynamic `this` context
  * @param object the method's context
  */
-export declare function bind(method: Method, object: object): Function
+export declare function bind(method: Method, object: object): Function;

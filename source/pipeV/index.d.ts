@@ -1,4 +1,4 @@
-import { Unary } from "../types"
+import { Unary } from "../types";
 
 /**
  * ```
@@ -12,5 +12,5 @@ import { Unary } from "../types"
  * ```
  */
 export declare function pipeV<A, B>(
-  value: A
-): (...functions: Unary<A, B>[]) => B
+  value: A,
+): (...functions: Unary<A, B>[]) => B;
