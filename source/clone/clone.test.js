@@ -211,7 +211,7 @@ describe(
         assert({ given, should, actual, expected });
       }
     }
-  }
+  },
 );
 
 /**

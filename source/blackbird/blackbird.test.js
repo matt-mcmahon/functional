@@ -40,5 +40,5 @@ describe(
       const should = inspect`return ${expected}`;
       assert({ given, should, actual, expected });
     }
-  }
+  },
 );
