@@ -5,28 +5,30 @@ export
 
 MAIN=./source/index.test.js
 BUNDLE_FILE=./dist/index.mjs
-BUNDLE_TEST_FILE=./dist/index.test.mjs
-LOCK=--lock ./lock-file.json
+LOCK_OPTIONS=--lock ./lock-file.json
 
-ifneq ("$(wildcard ./import-map.json)","")
-IMPORT_MAP=--unstable --importmap ./import-map.json
+ifneq ("$(wildcard ${IMPORT_MAP_PATH})","")
+IMPORT_MAP_OPTIONS=--unstable --importmap ${IMPORT_MAP_PATH}
 else
-IMPORT_MAP=
+IMPORT_MAP_OPTIONS=
 endif
 
 run: test
 
-build: # quicktest cache
+build: quicktest cache
 	echo "// deno-fmt-ignore-file" > ${BUNDLE_FILE}
 	echo "// @ts-nocheck" >> ${BUNDLE_FILE}
 	echo "/* eslint-disable */" >> ${BUNDLE_FILE}
-	deno bundle ${IMPORT_MAP} ${MAIN} >> ${BUNDLE_FILE}
+	deno bundle ${IMPORT_MAP_OPTIONS} ${MAIN} >> ${BUNDLE_FILE}
 ifneq ("$(wildcard ${BUNDLE_TEST_FILE})","")
 	node ${BUNDLE_TEST_FILE} 1> /dev/null; 
+else
+	$(warning BUNDLE_TEST_FILE is not defined)
 endif
 
+
 cache:
-	deno cache --reload ${LOCK} ${IMPORT_MAP} ${MAIN}
+	deno cache --reload ${LOCK_OPTIONS} ${IMPORT_MAP_OPTIONS} ${MAIN}
 
 clean:
 	rm -f ./lib/sign
@@ -41,22 +43,22 @@ lint:
 
 quicktest:
 	deno fmt --quiet --check ./source
-	deno test ${IMPORT_MAP} --failfast --quiet ./source
+	deno test ${IMPORT_MAP_OPTIONS} --failfast --quiet ./source
 
 test:
-	deno test ${IMPORT_MAP} ${LOCK} --cached-only ./source
+	deno test ${IMPORT_MAP_OPTIONS} ${LOCK_OPTIONS} --cached-only ./source
 
 testnode:
 	node ${BUNDLE_TEST_FILE}
 
 update-lock-file:
-	deno cache --reload ${LOCK} --lock-write ${IMPORT_MAP} ${MAIN}
+	deno cache --reload ${LOCK_OPTIONS} --lock-write ${IMPORT_MAP_OPTIONS} ${MAIN}
 
 install:
-ifndef SIGN_MODULE_LOCAL_PATH
-	$(error SIGN_MODULE_LOCAL_PATH is undefined)
+ifndef LOCAL_SIGN_MODULE_PATH
+	$(error LOCAL_SIGN_MODULE_PATH is undefined)
 endif
-	ln -sfr $(SIGN_MODULE_LOCAL_PATH) ./lib/sign
-	deno cache --reload ${LOCK} ${IMPORT_MAP} ${MAIN}
+	ln -sfr $(LOCAL_SIGN_MODULE_PATH) ./lib/sign
+	deno cache --reload ${LOCK_OPTIONS} ${IMPORT_MAP_OPTIONS} ${MAIN}
 
 .PHONY: run build cache clean format lint quicktest test testnode install
