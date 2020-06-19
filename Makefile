@@ -15,7 +15,7 @@ endif
 
 run: test
 
-build: quicktest cache
+bundle: quicktest cache
 	echo "// deno-fmt-ignore-file" > ${BUNDLE_FILE}
 	echo "// @ts-nocheck" >> ${BUNDLE_FILE}
 	echo "/* eslint-disable */" >> ${BUNDLE_FILE}
