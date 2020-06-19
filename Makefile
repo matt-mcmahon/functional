@@ -1,5 +1,5 @@
 export DENO_DIR=./.deno
-MAIN=lib/describe.ts
+MAIN=./source/index.test.js
 BUNDLE_FILE=./dist/main.mjs
 BUNDLE_TEST_FILE=./dist/main.test.mjs
 LOCK=--lock ./lock-file.json
@@ -32,12 +32,12 @@ quicktest:
 	deno test ${IMPORT_MAP} --failfast --quiet ./source
 
 test:
-	deno test ${LOCK} ${IMPORT_MAP} --cached-only ./source
+	deno test ${IMPORT_MAP} ${LOCK} --cached-only ./source
 
 testnode:
 	node ${BUNDLE_TEST_FILE}
 
-upgrade:
-	deno cache --reload --lock-write ${LOCK} ${IMPORT_MAP} ${MAIN}
+install:
+	deno cache --reload ${LOCK} --lock-write ${IMPORT_MAP} ${MAIN}
 
-.PHONY: run build cache clean format lint quicktest test testnode upgrade
+.PHONY: run build cache clean format lint quicktest test testnode install
