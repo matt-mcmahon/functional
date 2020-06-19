@@ -1,1 +1,1 @@
-export { sign } from "./sign/sign.ts"
+export { sign } from "./sign/source/sign.ts";
