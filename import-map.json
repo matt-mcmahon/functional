@@ -1,3 +1,6 @@
 {
-  "@mwm/sign": "./lib/sign/"
+  "imports": {
+    "@mwm/sign": ["./lib/sign.ts"],
+    "@mwm/describe": ["./lib/describe.ts"]
+  }
 }

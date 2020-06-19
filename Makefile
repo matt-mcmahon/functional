@@ -3,7 +3,7 @@ MAIN=lib/describe.ts
 BUNDLE_FILE=./dist/main.mjs
 BUNDLE_TEST_FILE=./dist/main.test.mjs
 LOCK=--lock ./lock-file.json
-IMPORT_MAP=--unstable --importmap=./import-map.json
+IMPORT_MAP=--unstable --importmap ./import-map.json
 
 run: test
 
@@ -31,7 +31,7 @@ quicktest:
 	deno fmt --quiet --check ./source
 	deno test ${IMPORT_MAP} --failfast --quiet ./source
 
-test: lint
+test:
 	deno test ${LOCK} ${IMPORT_MAP} --cached-only ./source
 
 testnode:

@@ -1,1 +1,1 @@
-export { describe } from "./sign/testing.ts";
+export * from "./sign/testing.ts";
