@@ -1,5 +1,6 @@
 import { sign } from "@mwm/sign";
 
+//deno-fmt-ignore
 export const signatures = [
   "log :: s => a => a",
   "log ::      a => a",
