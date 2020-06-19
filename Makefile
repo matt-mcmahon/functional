@@ -3,6 +3,7 @@ MAIN=lib/describe.ts
 BUNDLE_FILE=./dist/main.mjs
 BUNDLE_TEST_FILE=./dist/main.test.mjs
 LOCK=--lock ./lock-file.json
+IMPORT_MAP=--unstable --importmap=./import-map.json
 
 run: test
 
@@ -14,10 +15,10 @@ build: quicktest cache
 	node ${BUNDLE_TEST_FILE} 1> /dev/null
 
 cache:
-	deno cache --reload ${LOCK} ${MAIN}
+	deno cache --reload ${LOCK} ${IMPORT_MAP} ${MAIN}
 
 clean:
-	rm -rf ${BUNDLE_FILE} ${DENO_DIR}/gen
+	rm -rf ${BUNDLE_FILE} ${IMPORT_MAP} ${DENO_DIR}/gen
 
 format:
 	deno fmt ./source
@@ -28,15 +29,15 @@ lint:
 
 quicktest:
 	deno fmt --quiet --check ./source
-	deno test --failfast --quiet ./source
+	deno test ${IMPORT_MAP} --failfast --quiet ./source
 
 test: lint
-	deno test ${LOCK} --cached-only ./source
+	deno test ${LOCK} ${IMPORT_MAP} --cached-only ./source
 
 testnode:
 	node ${BUNDLE_TEST_FILE}
 
 upgrade:
-	deno cache --reload --lock-write ${LOCK} ${MAIN}
+	deno cache --reload --lock-write ${LOCK} ${IMPORT_MAP} ${MAIN}
 
 .PHONY: run build cache clean format lint quicktest test testnode upgrade
