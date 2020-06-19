@@ -5,6 +5,6 @@ export const signatures = [
   { "always ::      * => a": 0 },
 ];
 
-export const implementation = (value) => () => value;
+export const implementation = (a) => () => a;
 
 export const always = sign(signatures, implementation);
