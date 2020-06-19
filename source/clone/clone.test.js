@@ -1,4 +1,3 @@
-import { strict } from "assert";
 import { describe } from "@mwm/describe";
 import { clone, implementation, signatures } from "./clone.js";
 
@@ -143,7 +142,7 @@ describe(
 
       assert.doesNotThrow(() => {
         // Cannot use tape's deep equal. It is not circular reference safe.
-        strict.deepEqual(actual, expected);
+        assert({ actual, expected });
       }, `should clone circular references`);
 
       const given = inspect`circular references`;
@@ -212,7 +211,7 @@ describe(
         assert({ given, should, actual, expected });
       }
     }
-  },
+  }
 );
 
 /**
