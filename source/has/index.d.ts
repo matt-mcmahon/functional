@@ -1,4 +1,4 @@
-import { Key, Predicate } from "../types"
+import { Key, Predicate } from "../types";
 
 /**
  * ```
@@ -16,6 +16,6 @@ import { Key, Predicate } from "../types"
  * ```
  *
  * @param {string|symbol} k the name or symbol of the property to check for
- * @param {object} a the object to check for ownership of the property
+ * @param {A} a the object to check for ownership of the property
  */
-export declare function has(k: Key, a: object): boolean
+export declare const has: (k: Key) => (a: unknown) => boolean;
