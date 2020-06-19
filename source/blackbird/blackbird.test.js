@@ -1,4 +1,4 @@
-import { describe, configure } from "@mwm/describe";
+import { describe } from "@mwm/describe";
 import { blackbird, signatures, implementation } from "./blackbird.js";
 
 describe(
@@ -12,10 +12,6 @@ describe(
 
     // the converging function:
     const inspectArguments = (...as) => {
-      const inspect = configure({
-        colors: false,
-        depth: 1,
-      });
       const ss = as.map((a) => inspect`${a}`);
       const s = ss.join(", ");
       return `(${s})`;
@@ -44,5 +40,5 @@ describe(
       const should = inspect`return ${expected}`;
       assert({ given, should, actual, expected });
     }
-  },
+  }
 );
