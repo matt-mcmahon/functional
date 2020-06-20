@@ -45,6 +45,7 @@ export { T } from "./t/t.ts";
 export { tail } from "./tail/tail.ts";
 export { take } from "./take/take.ts";
 export { tap } from "./tap/tap.ts";
+export { toString } from "./to-string/to-string.ts";
 export { toUnary } from "./to-unary/to-unary.ts";
 export { toVariadic } from "./to-variadic/to-variadic.ts";
 export { trim } from "./trim/trim.ts";
