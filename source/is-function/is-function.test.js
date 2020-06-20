@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe";
-import { isFunction, implementation, signatures } from "./isFunction.js";
+import { isFunction, implementation, signatures } from "./is-function.js";
 
 describe(
   {
@@ -48,5 +48,5 @@ describe(
       const should = inspect`not be a function`;
       assert({ expected, actual, given, should });
     }
-  },
+  }
 );

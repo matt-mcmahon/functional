@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe";
-import { isNil, implementation, signatures } from "./isNil.js";
+import { isNil, implementation, signatures } from "./is-nil.js";
 
 describe(
   {
@@ -25,5 +25,5 @@ describe(
         given: inspect`isNil(${value})`,
       })
     );
-  },
+  }
 );

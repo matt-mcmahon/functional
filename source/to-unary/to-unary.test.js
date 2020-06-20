@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe";
-import { toUnary, implementation, signatures } from "./toUnary.js";
+import { toUnary, implementation, signatures } from "./to-unary.js";
 
 describe(
   {
@@ -23,9 +23,10 @@ describe(
         expected: variadicSum(...args),
         actual: unarySum(args),
         given: inspect`toUnary(variadicSum)(${args})`,
-        should: inspect`be equivalent to variadicSum(` +
+        should:
+          inspect`be equivalent to variadicSum(` +
           `${args.map((v) => inspect`${v}`).join(", ")})`,
       });
     }
-  },
+  }
 );

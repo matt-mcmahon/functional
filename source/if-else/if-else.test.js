@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe";
-import { ifElse, implementation, signatures } from "./ifElse.js";
+import { ifElse, implementation, signatures } from "./if-else.js";
 
 describe(
   {
@@ -31,5 +31,5 @@ describe(
       const actual = final(false);
       assert({ actual, expected, given, should });
     }
-  },
+  }
 );

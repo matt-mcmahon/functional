@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe";
-import { defaultTo, signatures, implementation } from "./defaultTo.js";
+import { defaultTo, signatures, implementation } from "./default-to.js";
 
 describe(
   {
@@ -90,5 +90,5 @@ describe(
       const should = inspect`be "${expected}", got "${actual}"`;
       assert({ given, should, actual, expected });
     }
-  },
+  }
 );

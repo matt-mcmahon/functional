@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe";
-import { reduceRight, implementation, signatures } from "./reduceRight.js";
+import { reduceRight, implementation, signatures } from "./reduce-right.js";
 
 describe(
   {
@@ -53,5 +53,5 @@ describe(
       const should = inspect`not throw; yield ${actual}`;
       assert({ actual, expected, given, should });
     });
-  },
+  }
 );

@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe";
-import { curryN, signatures, implementation } from "./curryN.js";
+import { curryN, signatures, implementation } from "./curry-n.js";
 
 describe(
   {
@@ -137,5 +137,5 @@ describe(
       const expected = "abc";
       assert({ given, should, actual, expected });
     }
-  },
+  }
 );

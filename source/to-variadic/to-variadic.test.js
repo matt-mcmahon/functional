@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe";
-import { toVariadic, implementation, signatures } from "./toVariadic.js";
+import { toVariadic, implementation, signatures } from "./to-variadic.js";
 
 describe(
   {
@@ -25,5 +25,5 @@ describe(
       given: inspect`toVariadic(${unarySum})(${args})`,
       should: inspect`be equivalent to ${unarySum}` + s,
     });
-  },
+  }
 );

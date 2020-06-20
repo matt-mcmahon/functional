@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe";
-import { F, implementation, signatures } from "./F.js";
+import { F, implementation, signatures } from "./f.js";
 
 describe(
   {
@@ -23,5 +23,5 @@ describe(
       actual: F(true),
       expected,
     });
-  },
+  }
 );

@@ -1,30 +1,30 @@
 import { describe } from "@mwm/describe";
-import { isEmpty, implementation, signatures } from "./isEmpty.js";
+import { isDefined, implementation, signatures } from "./is-defined.js";
 
 describe(
   {
-    path: "source/isEmpty",
-    public: [isEmpty],
+    path: "source/isDefined",
+    public: [isDefined],
     private: [implementation, signatures],
   },
   async ({ assert, inspect }) => {
     const data = [
       [null, false],
       [undefined, false],
+      [NaN, false],
       ["", true],
       [[], true],
+      [false, true],
       [{}, true],
-      [NaN, false],
-      [false, false],
-      [{ length: 0 }, false],
+      [{ length: 0 }, true],
     ];
 
     const test = ([value, expected]) => {
-      const actual = isEmpty(value);
-      const given = inspect`isEmpty(${value})`;
+      const actual = isDefined(value);
+      const given = inspect`isDefined(${value})`;
       assert({ given, actual, expected });
     };
 
     data.forEach(test);
-  },
+  }
 );
