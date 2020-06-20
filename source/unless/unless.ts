@@ -1,14 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  "unless->predicate :: (a => boolean) => (a => b) => a => a|b",
-  "unless->action    ::                   (a => b) => a => a|b",
-  "unless            ::                               a => a|b",
-];
-
-export const implementation = (predicate) => (mapAB) => (a) =>
-  predicate(a) ? a : mapAB(a);
-
 /**
  * ```
  * unless->predicate :: (a => boolean) => (a => b) => a => a|b
@@ -21,4 +10,5 @@ export const implementation = (predicate) => (mapAB) => (a) =>
  * when applied the value, _a_.
  *
  */
-export const unless = sign(signatures, implementation);
+export const unless = <A>(predicate: (a: A) => boolean) =>
+  <B>(mapAB: (a: A) => B) => (a: A) => predicate(a) ? a : mapAB(a);
