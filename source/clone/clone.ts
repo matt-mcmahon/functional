@@ -1,7 +1,4 @@
-import { assoc } from "./assoc.ts";
-import { ifElse } from "./if-else.ts";
-import { identity } from "./identity.ts";
-import { isObject, isNil } from "./is.ts";
+import { isNil } from "../is-nil/is-nil.ts";
 
 function cloneObject<A extends object>(a: A, map = new WeakMap()): A {
   if (map.has(a)) return map.get(a);
