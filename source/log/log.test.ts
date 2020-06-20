@@ -1,19 +1,12 @@
-import { describe } from "@mwm/describe";
-import { log, implementation, signatures } from "./log.ts";
+import { describe } from "../../lib/describe.ts";
+import { log } from "./log.ts";
 
-describe(
-  {
-    path: "source/log",
-    public: [log],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    const sideEffect = (x) => x * 2;
-    const value = 4;
-    const actual = log(sideEffect)(value);
-    const expected = value;
-    const given = inspect`log("some message")(${value})`;
-    const should = inspect`should return the original value, ${value}`;
-    assert({ actual, expected, given, should });
-  },
-);
+describe("source/log", async ({ assert, inspect }) => {
+  const value = 4;
+  const message = inspect`the value is...`;
+  const actual = log(message)(value);
+  const expected = value;
+  const given = inspect`log(${message})(${value})`;
+  const should = inspect`should return ${value}`;
+  assert({ actual, expected, given, should });
+});
