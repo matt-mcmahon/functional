@@ -1,52 +1,59 @@
-import { describe } from "@mwm/describe";
-import { either, signatures, implementation } from "./either.ts";
+import { describe } from "../../lib/describe.ts";
+import { either } from "./either.ts";
+import { T } from "../t/t.ts";
 
-describe(
+describe("source/either", async ({ assert, inspect }) => {
+  const max = 10;
+  const gt10 = (x: number) => x > max;
+  const even = (x: number) => x % 2 === 0;
+  const f = either(gt10)(even);
+
   {
-    path: "source/either",
-    public: [either],
-    private: [signatures, implementation],
-  },
-  async ({ assert, inspect }) => {
-    const gt10 = (x) => x > 10;
-    const even = (x) => x % 2 === 0;
-    const f = either(gt10)(even);
+    const value = 101;
+    const expected = true;
+    const actual = f(value);
+    const given = inspect`${value} > ${max}`;
+    assert({ actual, expected, given });
+  }
 
-    {
-      const expected = true;
-      const actual = f(101);
-      const given = inspect``;
-      const should = inspect`101 > 10 = true, got "${actual}"`;
-      assert({ expected, actual, given, should });
-    }
+  {
+    const expected = true;
+    const actual = f(8);
+    const given = inspect``;
+    const should = inspect`true because 8 is even, got "${actual}"`;
+    assert({ expected, actual, given, should });
+  }
 
-    {
-      const expected = true;
-      const actual = f(8);
-      const given = inspect``;
-      const should = inspect`true because 8 is even, got "${actual}"`;
-      assert({ expected, actual, given, should });
-    }
+  {
+    const value = 8;
+    const expected = true;
+    const actual = f(value);
+    const given = inspect`${value} is even`;
+    assert({ actual, expected, given });
+  }
 
-    {
-      const expected = false;
-      const actual = f(7);
-      const given = inspect``;
-      const should = inspect`7 < 10 = false, 7 is not even, got "${actual}"`;
-      assert({ expected, actual, given, should });
-    }
+  {
+    const value = 7;
+    const expected = false;
+    const actual = f(value);
+    const given = inspect`${value} < ${max} and is odd`;
+    assert({ actual, expected, given });
+  }
 
-    const T = () => true;
+  {
     const throws = () => {
       throw new Error("either should not execute me");
     };
-
-    assert.doesNotThrow(() => {
-      const expected = true;
+    const plan = {
+      expected: true,
+      given: inspect`first predicate always returns true`,
+      should: inspect`not execute ${throws}`,
+    };
+    try {
       const actual = either(T)(throws)("anything");
-      const given = inspect``;
-      const should = inspect`first predicate returns true, got "${actual}"`;
-      assert({ expected, actual, given, should });
-    }, "either short circuits, should not throw");
-  },
-);
+      assert({ ...plan, actual });
+    } catch (err) {
+      assert({ ...plan, actual: false });
+    }
+  }
+});
