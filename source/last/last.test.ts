@@ -1,27 +1,20 @@
-import { describe } from "@mwm/describe";
-import { last, implementation, signatures } from "./last.ts";
+import { describe } from "../../lib/describe.ts";
+import { last } from "./last.ts";
 
-describe(
+describe("source/last.ts", async ({ assert, inspect }) => {
   {
-    path: "source/last",
-    public: [last],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    {
-      const value = ["a", "b", "c"];
-      const expected = "c";
-      const actual = last(value);
-      const given = inspect`last(${value})`;
-      assert({ given, actual, expected });
-    }
+    const value = ["a", "b", "c"];
+    const expected = "c";
+    const actual = last(value);
+    const given = inspect`last(${value})`;
+    assert({ given, actual, expected });
+  }
 
-    {
-      const value = [];
-      const expected = undefined;
-      const actual = last(value);
-      const given = inspect`last(${value})`;
-      assert({ given, actual, expected });
-    }
-  },
-);
+  {
+    const value: string[] = [];
+    const expected = undefined;
+    const actual = last(value);
+    const given = inspect`last(${value})`;
+    assert({ given, actual, expected });
+  }
+});

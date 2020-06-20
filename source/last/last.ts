@@ -1,9 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [{ "last :: as => a": 1 }];
-
-export const implementation = (as) => as[as.length - 1];
-
 /**
  * ```
  * last :: as => a
@@ -13,4 +7,4 @@ export const implementation = (as) => as[as.length - 1];
  * Returns the last element in an array.
  *
  */
-export const last = sign(signatures, implementation);
+export const last = <A>(as: A[]) => as[as.length - 1];
