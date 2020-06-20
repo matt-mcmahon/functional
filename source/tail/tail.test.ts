@@ -1,47 +1,40 @@
-import { describe } from "@mwm/describe";
-import { tail, implementation, signatures } from "./tail.ts";
+import { describe } from "../../lib/describe.ts";
+import { tail } from "./tail.ts";
 
-describe(
+describe("source/tail", async ({ assert, inspect }) => {
   {
-    path: "source/tail",
-    public: [tail],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    {
-      const arg = ["a", "b", "c"];
-      const expected = ["b", "c"];
-      const actual = tail(arg);
-      const given = inspect`tail(${arg})`;
-      const should = inspect`${expected}`;
-      assert({ actual, expected, given, should });
-    }
+    const arg = ["a", "b", "c"];
+    const expected = ["b", "c"];
+    const actual = tail(arg);
+    const given = inspect`tail(${arg})`;
+    const should = inspect`${expected}`;
+    assert({ actual, expected, given, should });
+  }
 
-    {
-      const arg = ["a"];
-      const expected = [];
-      const actual = tail(arg);
-      const given = inspect`tail(${arg})`;
-      const should = inspect`${expected}`;
-      assert({ actual, expected, given, should });
-    }
+  {
+    const arg = ["a"];
+    const expected: string[] = [];
+    const actual = tail(arg);
+    const given = inspect`tail(${arg})`;
+    const should = inspect`${expected}`;
+    assert({ actual, expected, given, should });
+  }
 
-    {
-      const arg = [];
-      const expected = [];
-      const actual = tail(arg);
-      const given = inspect`tail(${arg})`;
-      const should = inspect`${expected}`;
-      assert({ actual, expected, given, should });
-    }
+  {
+    const arg: string[] = [];
+    const expected: string[] = [];
+    const actual = tail(arg);
+    const given = inspect`tail(${arg})`;
+    const should = inspect`${expected}`;
+    assert({ actual, expected, given, should });
+  }
 
-    {
-      const arg = [["a", "b", "c"]];
-      const expected = [];
-      const actual = tail(arg);
-      const given = inspect`tail(${arg})`;
-      const should = inspect`${expected}`;
-      assert({ actual, expected, given, should });
-    }
-  },
-);
+  {
+    const arg: string[][] = [["a", "b", "c"]];
+    const expected: string[] = [];
+    const actual = tail(arg);
+    const given = inspect`tail(${arg})`;
+    const should = inspect`${expected}`;
+    assert({ actual, expected, given, should });
+  }
+});
