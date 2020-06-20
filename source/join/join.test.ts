@@ -1,21 +1,15 @@
-import { describe } from "@mwm/describe";
-import { join, implementation, signatures } from "./join.ts";
+import { describe } from "../../lib/describe.ts";
+import { join } from "./join.ts";
 
-describe(
+describe("source/join", async ({ assert, inspect }) => {
   {
-    path: "source/join",
-    public: [join],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    {
-      const char = "-";
-      const list = ["a", "b", "c"];
-      const actual = join(char)(list);
-      const expected = "a-b-c";
-      const given = inspect`join(${char})(${list})`;
-      const should = inspect`be ${expected}`;
-      assert({ given, should, actual, expected });
-    }
-  },
-);
+    const char = "-";
+    const f = join(char);
+    const list = ["a", "b", "c"];
+    const actual = f(list);
+    const expected = "a-b-c";
+    const given = inspect`join(${char})(${list})`;
+    const should = inspect`be ${expected}`;
+    assert({ given, should, actual, expected });
+  }
+});

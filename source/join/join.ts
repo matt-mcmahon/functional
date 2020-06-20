@@ -1,19 +1,14 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  { "join->withCharacter :: s => as => s": 1 },
-  { "join->list          ::      as => s": 1 },
-];
-
-export const implementation = (s) => (as) => as.join(s);
+interface Joinable<A> {
+  join: (separator?: A | undefined) => A;
+}
 
 /**
  * ```
- * "join:: s => as => s
+ * join:: a => as => a
  * ```
  * -----------------------------------------------------------------------------
  *
- * Takes a list of values and returns a concatenated string.
+ * Takes a joining value, a list with the a `join(a:A):B` method, and returns B
  *
  */
-export const join = sign(signatures, implementation);
+export const join = <A>(a: A) => (as: Joinable<A>) => as.join(a);
