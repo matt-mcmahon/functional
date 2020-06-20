@@ -1,16 +1,10 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = ["T :: a => true"];
-
-export const implementation = (a) => true;
-
 /**
  * ```
- * T :: a => true
+ * T :: * => true
  * ```
  * -----------------------------------------------------------------------------
  *
- * A function that always returns `true`.
+ * __T__ ignores any arguments passed to it and returns `true`.
  *
  */
-export const T = sign(signatures, implementation);
+export const T = (...ignored: unknown[]) => true;
