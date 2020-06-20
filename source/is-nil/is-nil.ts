@@ -1,9 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = ["isNil :: a => boolean"];
-
-export const implementation = (a) => a === null || a === undefined;
-
 /**
  * ```
  * isNil :: a => boolean
@@ -18,4 +12,4 @@ export const implementation = (a) => a === null || a === undefined;
  * isNil(0)         <=> false
  * ```
  */
-export const isNil = sign(signatures, implementation);
+export const isNil = <A>(a: A) => a === null || a === undefined;
