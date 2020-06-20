@@ -1,12 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  { "toUnary->variadic :: (...as => b) => as => b": 1 },
-  { "toUnary->array    ::                 as => b": 1 },
-];
-
-export const implementation = (variadic) => (as) => variadic(...as);
-
 /**
  * ```
  * toUnary :: (...as => b) => as => b
@@ -17,4 +8,8 @@ export const implementation = (variadic) => (as) => variadic(...as);
  * that accepts a single array as its argument instead.
  *
  */
-export const toUnary = sign(signatures, implementation);
+export function toUnary<AS extends unknown[], B>(
+  v: (...as: AS) => B,
+): (as: AS) => B {
+  return (as: AS) => v(...as);
+}

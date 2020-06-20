@@ -1,31 +1,28 @@
-import { describe } from "@mwm/describe";
-import { toUnary, implementation, signatures } from "./to-unary.ts";
+import { toUnary } from "./to-unary.ts";
+import { describe } from "../../lib/describe.ts";
 
-describe(
+describe(`arity.ts`, ({ assert, inspect }) => {
   {
-    path: "source/toUnary",
-    public: [toUnary],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    {
-      const args = [1, 2, 3];
-      const variadicSum = (...ns) => ns.reduce((x, y) => x + y, 0);
-      const unarySum = toUnary(variadicSum);
-
-      assert({
-        actual: variadicSum(...args),
-        expected: 6,
-        given: inspect`${variadicSum}(${args})`,
-      });
-
-      assert({
-        expected: variadicSum(...args),
-        actual: unarySum(args),
-        given: inspect`toUnary(variadicSum)(${args})`,
-        should: inspect`be equivalent to variadicSum(` +
-          `${args.map((v) => inspect`${v}`).join(", ")})`,
-      });
-    }
-  },
-);
+    const vf = (
+      s: string,
+      f: (...ns: number[]) => number,
+      ...ns: number[]
+    ) => `${s} is ${f(...ns)}`;
+    const uf = toUnary(vf);
+    const values = ["max", Math.max, 1, 2, 3];
+    const actual = uf(["max", Math.max, 1, 2, 3]);
+    const expected = "max is 3";
+    const given = inspect`unary(${values})`;
+    assert({ actual, expected, given });
+  }
+  {
+    const vf = (...ns: number[]) => `${Math.max(...ns)}`;
+    const uf = toUnary(vf);
+    const values = [1, 2, 3];
+    const actual = uf(values);
+    const expected = "3";
+    const given = inspect`unary(${values})`;
+    const should = inspect`evaluate to ${expected}`;
+    assert({ actual, expected, given, should });
+  }
+});
