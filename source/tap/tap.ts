@@ -1,15 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  "tap :: (a => *) => a => a",
-  "tap ::             a => a",
-];
-
-export const implementation = (f) => (a) => {
-  f(a);
-  return a;
-};
-
 /**
  * ```
  * tap :: (a -> *) -> a -> a
@@ -19,4 +7,8 @@ export const implementation = (f) => (a) => {
  * _sideEffect_. Ignores any value returned by the side effect function, and
  * returns the _value_ instead.
  */
-export const tap = sign(signatures, implementation);
+export const tap = <A>(f: (a: A) => void) =>
+  (a: A) => {
+    f(a);
+    return a;
+  };

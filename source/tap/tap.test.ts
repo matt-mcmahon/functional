@@ -1,19 +1,12 @@
-import { describe } from "@mwm/describe";
-import { tap, implementation, signatures } from "./tap.ts";
+import { describe } from "../../lib/describe.ts";
+import { tap } from "./tap.ts";
 
-describe(
-  {
-    path: "source/tap",
-    public: [tap],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    const sideEffect = (x) => x * 2;
-    const value = 4;
-    const actual = tap(sideEffect)(value);
-    const expected = value;
-    const given = inspect`tap(x => x * ${2})(${value})`;
-    const should = inspect`should return the original value, ${value}`;
-    assert({ actual, expected, given, should });
-  },
-);
+describe("source/tap", async ({ assert, inspect }) => {
+  const sideEffect = (x: number) => x * 2;
+  const value = 4;
+  const actual = tap(sideEffect)(value);
+  const expected = value;
+  const given = inspect`tap(${sideEffect})(${value})`;
+  const should = inspect`return ${value}`;
+  assert({ actual, expected, given, should });
+});
