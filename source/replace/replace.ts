@@ -1,14 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  "replace->what   :: (s|r) => s => s => s",
-  "replace->with   ::          s => s => s",
-  "replace->within ::               s => s",
-];
-
-export const implementation = (what) => (replacement) => (within) =>
-  within.replace(what, replacement);
-
 /**
  * ```
  * replace :: (s|r) => s => s => s
@@ -19,9 +8,12 @@ export const implementation = (what) => (replacement) => (within) =>
  * _RegExp_, with the __replaceWith__ _string_. For example:
  *
  * ```
- * replace('foo')('bar')('foo baz bix') <=> 'bar baz bix'
- * replace(/foo/gi)('bar')('foo baz foo') <=> 'bar baz bar'
+ * replace("foo")("bar")("foo baz bix") => "bar baz bix"
+ * replace(/foo/gi)("bar")("foo baz foo") => "bar baz bar"
+ * replace(/foo/gi)("bar")("foo baz foo") <=> "foo baz foo".replace(/foo/gi, "bar")
  * ```
  *
  */
-export const replace = sign(signatures, implementation);
+export const replace = (searchValue: string | RegExp) =>
+  (replaceValue: string) =>
+    (within: string) => within.replace(searchValue, replaceValue);
