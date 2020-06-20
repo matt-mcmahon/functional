@@ -1,31 +1,35 @@
-import { sign } from "@mwm/sign";
+import { Pipe } from "./types.d.ts";
 
-export const signatures = [
-  { "pipe :: ((...as => b), (b => c), ..., (y => z)) => ...as => z": Infinity },
-  { "pipe ::                                            ...as => z": Infinity },
-];
-
-const reducer = (v, f) => f(v);
-
-export const implementation = (...functions) => (...as) => {
-  const [f, ...fs] = functions;
-  return fs.reduce(reducer, f(...as));
+const first = <A, B>(f: (a: A) => B): Pipe<A, B> => {
+  function call(a: A) {
+    return f(a);
+  }
+  const p: Pipe<A, B> = Object.assign(
+    call.bind(null),
+    {
+      next: <C>(f: (b: B) => C): Pipe<A, C> => {
+        return next<A, B, C>(p, f);
+      },
+      call,
+    },
+  );
+  return p;
 };
 
-/**
- * ```
- * pipe :: ((...as => b), (b => c), ..., (y => z)) => ...as => z
- * ```
- * -----------------------------------------------------------------------------
- *
- * _Pipe_ is a _Variadic_ _Combinator_, that takes one or more _Unary_
- * __functions__ and a __value__. It _composes_ the functions in left-to-right
- * order — evaluating the first function and applying it's result to the second,
- * it's result to third, etc. — and returns the result of evaluating the final
- * function. E.g.:
- *
- * ```
- * pipe(f, g, h)(v) <=> h(g(f(v)))
- * ```
- */
-export const pipe = sign(signatures, implementation);
+const next = <A, B, C>(prev: Pipe<A, B>, f: (b: B) => C) => {
+  function call(a: A) {
+    return f(prev(a));
+  }
+  const p: Pipe<A, C> = Object.assign(
+    call.bind(null),
+    {
+      next: <D>(f: (c: C) => D): Pipe<A, D> => {
+        return next<A, C, D>(p, f);
+      },
+      call,
+    },
+  );
+  return p;
+};
+
+export { first as pipe };

@@ -1,42 +1,43 @@
-import { describe } from "@mwm/describe";
-import { pipe, implementation, signatures } from "./pipe.ts";
+import { pipe } from "./pipe.ts";
+import { describe } from "../../lib/describe.ts";
 
-describe(
-  {
-    path: "source/pipe",
-    public: [pipe],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    const f = (x) => x + 1;
-    const g = (x) => 2 * x;
+describe(`pipe.ts`, ({ assert, inspect }) => {
+  const double = (x: number) => x * 2;
+  const numToString = (x: number) => `${x}`;
+  const toCharacterArray = (x: string) => x.split("");
+  const joinWithDashes = (x: string[]) => x.join("-");
 
-    const fg = pipe(f, g);
+  const p1 = pipe(double);
+  const p2 = p1.next(numToString);
+  const p3 = p2.next(toCharacterArray);
+  const p4 = p3.next(joinWithDashes);
 
-    assert({
-      given: inspect`pipe(f, g)(3)`,
-      should: inspect`have order of operation "2 × (3 + 1) == 8"`,
-      actual: fg(3),
-      expected: 8,
-    });
+  const value = 12345;
 
-    const gf = pipe(g, f);
-
-    assert({
-      given: inspect`pipe(g, f)(3)`,
-      should: inspect`have order of operation "(2 × x) + 1) == 7"`,
-      actual: gf(3),
-      expected: 7,
-    });
-
-    {
-      const f = (...xs) => xs.reduce((x, y) => x + y);
-      const g = (x) => x * 3;
-      const given = inspect`variadic first argument`;
-      const should = inspect`apply three arguments to ${f}`;
-      const actual = pipe(f, g)(1, 2, 3);
-      const expected = 18;
-      assert({ given, should, actual, expected });
-    }
-  },
-);
+  assert({
+    actual: p1(12345),
+    expected: 24690,
+    given: inspect`p1(${value})`,
+  });
+  assert({
+    actual: p2(12345),
+    expected: "24690",
+    given: inspect`p2(${value})`,
+  });
+  assert({
+    actual: p3.call(12345),
+    expected: ["2", "4", "6", "9", "0"],
+    given: inspect`p3(${value})`,
+  });
+  assert({
+    actual: p4(12345),
+    expected: "2-4-6-9-0",
+    given: inspect`p4(${value})`,
+  });
+  assert({
+    actual: p4.call(12345),
+    expected: p4(12345),
+    given: inspect`p4.call(${value})`,
+    should: inspect`be the same as p4(${value})`,
+  });
+});
