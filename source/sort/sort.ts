@@ -1,12 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  "sort->sortingFunction :: ((a, a) => n) => as => as",
-  "sort->list            ::                  as => as",
-];
-
-export const implementation = (mapAAN) => (as) => [...as].sort(mapAAN);
-
 /**
  * ```
  * sort :: ((a, a) => n) => as => as
@@ -16,4 +7,5 @@ export const implementation = (mapAAN) => (as) => [...as].sort(mapAAN);
  * Sorts a list by applying the given sorting function.
  *
  */
-export const sort = sign(signatures, implementation);
+export const sort = <A>(compare: ((a1: A, a2: A) => number) | undefined) =>
+  (as: A[]) => [...as].sort(compare);
