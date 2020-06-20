@@ -1,14 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const hasOwnProperty = {}.hasOwnProperty;
-
-export const signatures = [
-  "has :: k => a => boolean",
-  "has ::      a => boolean",
-];
-
-export const implementation = (k) => (a) => hasOwnProperty.call(a, k);
-
 /**
  * ```
  * has :: k => a => boolean
@@ -24,7 +13,10 @@ export const implementation = (k) => (a) => hasOwnProperty.call(a, k);
  * has('toString', {})  //=> false
  * ```
  *
- * @param {string|symbol} k the name or symbol of the property to check for
+ * @param {string|symbol|number} k the name or symbol of the property to check for
  * @param {unknown} a the object to check for ownership of the property
  */
-export const has = sign(signatures, implementation);
+export const has = (k: string | number | symbol) =>
+  (a: unknown) => {
+    return Object.prototype.hasOwnProperty.call(a, k);
+  };
