@@ -1,34 +1,42 @@
-import { describe } from "@mwm/describe";
-import { compose, signatures, implementation } from "./compose.ts";
+import { compose } from "./compose.ts";
+import { describe } from "../../lib/describe.ts";
 
-describe(
+describe(`compose.ts`, ({ assert, inspect }) => {
+  const double = (x: number) => x * 2;
+  const numToString = (x: number) => `${x}`;
+  const toCharacterArray = (x: string) => x.split("");
+  const joinWithDashes = (x: string[]) => x.join("-");
+
+  const c1 = compose(joinWithDashes);
+  const c2 = c1.after(toCharacterArray);
+  const c3 = c2.after(numToString);
+  const c4 = c3.after(double);
   {
-    path: "source/compose",
-    public: [compose],
-    private: [signatures, implementation],
-  },
-  async ({ assert, inspect }) => {
-    const f = (x) => x + 1;
-    const g = (x) => 2 * x;
-
-    const compose0 = compose;
-    const compose1 = compose0(f, g);
-
-    {
-      const actual = compose1(3);
-      const expected = 7;
-      const given = inspect`composition for (${2} × ${3}) + ${1} = ${expected}`;
-      const should = inspect`not be ${2} × (${3} + ${1}) = ${8}`;
-      assert({ actual, expected, given, should });
-    }
-
-    {
-      const f = (...xs) => xs.reduce((a, b) => a + b, 0);
-      const g = (x) => x * 2;
-      const actual = compose(g, f)(1, 2, 3);
-      const expected = 12;
-      const given = inspect`Variadic Function/Args`;
-      assert({ actual, expected, given });
-    }
-  },
-);
+    const value = ["1", "2", "3", "4", "5"];
+    const actual = c1(value);
+    const expected = "1-2-3-4-5";
+    const given = inspect`c1(${value})`;
+    assert({ actual, expected, given });
+  }
+  {
+    const value = "12345";
+    const actual = c2.call(value);
+    const expected = "1-2-3-4-5";
+    const given = inspect`c2(${value})`;
+    assert({ actual, expected, given });
+  }
+  {
+    const value = 12345;
+    const given = inspect`c3(${value})`;
+    const actual = c3(value);
+    const expected = "1-2-3-4-5";
+    assert({ actual, expected, given });
+  }
+  {
+    const value = 12345;
+    const actual = c4(value);
+    const expected = "2-4-6-9-0";
+    const given = inspect`c4(${value})`;
+    assert({ actual, expected, given });
+  }
+});

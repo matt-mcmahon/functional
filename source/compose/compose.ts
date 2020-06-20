@@ -1,30 +1,36 @@
-import { sign } from "@mwm/sign";
+import { Compose } from "./types.d.ts";
 
-// ⁿ²¹⁰
-export const signatures = [
-  { "compose :: (aⁿ => b, ..., a¹ => a², a => a¹) => a => b": Infinity },
-  { "compose ::                                      a => b": Infinity },
-];
+const last = <B, A>(f: (b: B) => A): Compose<B, A> => {
+  function call(b: B): A {
+    return f(b);
+  }
 
-const reducer = (v, f) => f(v);
-
-export const implementation = (...functions) => (...as) => {
-  const [f, ...fs] = functions.reverse();
-  return fs.reduce(reducer, f(...as));
+  const p: Compose<B, A> = Object.assign(
+    call.bind(null),
+    {
+      after: <C>(f: (c: C) => B): Compose<C, A> => {
+        return after<C, B, A>(p, f);
+      },
+      call,
+    },
+  );
+  return p;
 };
 
-/**
- * ```
- * curry :: ((a¹, a²..., aⁿ) => b) => a¹ => a²...=> aⁿ => b
- * ```
- * -----------------------------------------------------------------------------
- *
- * Returns the composition, right-to-left, of each _functions_ where the output
- * of the right-most is given as the input to the next-right-most function,
- * etc., e.g.:
- *
- * ```
- * compose(h, g, f)(v) => h(g(f(v)))
- * ```
- */
-export const compose = sign(signatures, implementation);
+const after = <C, B, A>(next: Compose<B, A>, f: (c: C) => B) => {
+  function call(c: C): A {
+    return next(f(c));
+  }
+  const p: Compose<C, A> = Object.assign(
+    call.bind(null),
+    {
+      after: <D>(f: (d: D) => C) => {
+        return after<D, C, A>(p, f);
+      },
+      call,
+    },
+  );
+  return p;
+};
+
+export { last as compose };
