@@ -1,4 +1,4 @@
-import { clone } from "./clone.ts";
+import { clone } from "../clone/clone.ts";
 
 /**
  * ```
