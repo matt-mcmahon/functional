@@ -1,9 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = ["not :: a => boolean"];
-
-export const implementation = (value) => !value;
-
 /**
  * ```
  * not :: a => boolean
@@ -19,4 +13,4 @@ export const implementation = (value) => !value;
  * [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Logical_NOT_(!)
  *
  */
-export const not = sign(signatures, implementation);
+export const not = (a: unknown) => !a;

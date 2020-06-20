@@ -1,34 +1,28 @@
-import { describe } from "@mwm/describe";
-import { not, implementation, signatures } from "./not.ts";
+import { describe } from "../../lib/describe.ts";
+import { not } from "./not.ts";
 
-describe(
-  {
-    path: "source/not",
-    public: [not],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    const test = ([value, expected]) => {
-      const actual = not(value);
-      const given = inspect`not(${value})`;
-      assert({ expected, actual, given });
-    };
-    [
-      [true, false],
-      [false, true],
-      // truthy values
-      [{}, false],
-      ["some string", false],
-      [5, false],
-      // falsy values
-      [0, true],
-      [-0, true],
-      [+0, true],
-      ["", true],
-      [``, true],
-      [null, true],
-      [undefined, true],
-      [NaN, true],
-    ].forEach(test);
-  },
-);
+describe("source/not", async ({ assert, inspect }) => {
+  const values: [unknown, boolean][] = [
+    [true, false],
+    [false, true],
+    // truthy values
+    [{}, false],
+    ["some string", false],
+    [5, false],
+    // falsy values
+    [0, true],
+    [-0, true],
+    [+0, true],
+    ["", true],
+    [``, true],
+    [null, true],
+    [undefined, true],
+    [NaN, true],
+  ];
+
+  values.forEach(([value, expected]: [unknown, boolean]) => {
+    const actual = not(value);
+    const given = inspect`not(${value})`;
+    assert({ expected, actual, given });
+  });
+});
