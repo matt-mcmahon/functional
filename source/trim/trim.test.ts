@@ -1,26 +1,19 @@
-import { describe } from "@mwm/describe";
-import { trim, implementation, signatures } from "./trim.ts";
+import { describe } from "../../lib/describe.ts";
+import { trim } from "./trim.ts";
 
-describe(
+describe("source/trim", async ({ assert, inspect }) => {
   {
-    path: "source/trim",
-    public: [trim],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    {
-      const value = "  \n   foo  \n   ";
-      const expected = "foo";
-      const actual = trim(value);
-      const given = inspect`trim(${value})`;
-      assert({ expected, actual, given });
-    }
-
-    {
-      const expected = "5";
-      const actual = trim(5);
-      const given = inspect`trim(${5})`;
-      assert({ expected, actual, given });
-    }
-  },
-);
+    const value = "  \n   foo  \n   ";
+    const expected = "foo";
+    const actual = trim(value);
+    const given = inspect`trim(${value})`;
+    assert({ expected, actual, given });
+  }
+  {
+    const value = "  \n   foo    bar  \n   ";
+    const expected = "foo    bar";
+    const actual = trim(value);
+    const given = inspect`trim(${value})`;
+    assert({ expected, actual, given });
+  }
+});
