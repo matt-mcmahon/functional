@@ -1,5 +1,5 @@
 import { describe } from "@mwm/describe";
-import * as functional from "./index.js";
+import * as functional from "./index.ts";
 
 describe("module exports", ({ assert }) => {
   const actual = Object.keys(functional).sort();
