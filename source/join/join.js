@@ -7,4 +7,13 @@ export const signatures = [
 
 export const implementation = (s) => (as) => as.join(s);
 
+/**
+ * ```
+ * "join:: s => as => s
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * Takes a list of values and returns a concatenated string.
+ *
+ */
 export const join = sign(signatures, implementation);

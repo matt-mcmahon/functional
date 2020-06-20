@@ -7,4 +7,13 @@ export const signatures = [
 
 export const implementation = (a) => (b) => Object.assign({}, a, b);
 
+/**
+ * ```
+ * merge :: a => b => c
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * Performs a shallow merge of two objects.
+ *
+ */
 export const merge = sign(signatures, implementation);

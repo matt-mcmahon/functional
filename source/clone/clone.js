@@ -5,6 +5,19 @@ export const signatures = [{ "clone :: (a, this?) => a": 2 }];
 export const implementation = (value, context) =>
   recursiveClone(new WeakMap(), value, context);
 
+/**
+ * ```
+ * clone :: (a, this?) => a
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * Returns a deep-clone of it's argument, `a`.
+ *
+ * __Warning__: _clone_ cannot create true copies of a _Method_ or any function
+ * with a dynamic `this`. If you need to clone a _Method_, supply a `context`
+ * parameter to fix the value for `this` inside the function, or it may not
+ * behave as expected.
+ */
 export const clone = sign(signatures, implementation);
 
 const recursiveClone = (map, value, context) => {

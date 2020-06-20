@@ -13,4 +13,14 @@ export const implementation = (f) =>
       : f(...as);
   };
 
+/**
+ * ```
+ * partial :: (a¹, a², …, aⁿ => b) => (a¹, …) => ... => (…, aⁿ) => b
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * Creates a version of the supplied _n_-ary function that can be be partially
+ * applied.
+ *
+ */
 export const partial = sign(signatures, implementation);

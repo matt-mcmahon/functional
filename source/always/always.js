@@ -7,4 +7,12 @@ export const signatures = [
 
 export const implementation = (a) => () => a;
 
+/**
+ * ```
+ * always :: a => * => a
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * Creates a function that always returns _value_, ignoring any arguments.
+ */
 export const always = sign(signatures, implementation);

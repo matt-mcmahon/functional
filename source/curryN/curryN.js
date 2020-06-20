@@ -18,11 +18,21 @@ const genSigns = (name, length) => {
   return signatures;
 };
 
-export const implementation = (n) =>
-  (f) => {
-    const s = genSigns(f.name, n);
+/**
+ * ```
+ * curryN :: n => ((a¹, a², ..., aⁿ) => b) =>  a¹ => a²... => aⁿ => b
+ * ```
+ * -----------------------------------------------------------------------------
+ * Converts a _Variadic_ function that accepts _arity_ number of arguments into
+ * a series of arity-number _Unary_ functions that produce the same final value.
+ *
+ * ```
+ * const sum = (...ns) => ns.reduce((n,m)=>n+m,0)
+ */
+export const implementation = (n) => (f) => {
+  const s = genSigns(f.name, n);
 
-    return sign(s, gatherN(n, f));
-  };
+  return sign(s, gatherN(n, f));
+};
 
 export const curryN = sign(signatures, implementation);

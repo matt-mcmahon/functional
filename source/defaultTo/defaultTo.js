@@ -7,7 +7,16 @@ export const signatures = [
   { "defaultTo ::      b => a|b": 1 },
 ];
 
-export const implementation = (defaultValue) =>
-  (value) => isDefined(value) ? value : defaultValue;
+export const implementation = (defaultValue) => (value) =>
+  isDefined(value) ? value : defaultValue;
 
+/**
+ * ```
+ * defaultTo :: a => b => a|b
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * If __b__ is `null` or `undefined` return __a__, otherwise return __b__.
+ *
+ */
 export const defaultTo = sign(signatures, implementation);

@@ -9,4 +9,18 @@ export const implementation = (value) =>
     value !== null &&
     Object.keys(value).length === 0);
 
+/**
+ * ```
+ * isEmpty :: a => boolean
+ * ```
+ * -----------------------------------------------------------------------------
+ * _Predicate_ that returns `true` if __a__ is an empty value for it's type,
+ * `false` otherwise. For example:
+ *
+ * ```
+ * isEmpty("") //> true
+ * isEmpty([]) //> true
+ * isEmpty(0)  //> false
+ * ```
+ */
 export const isEmpty = sign(signatures, implementation);
