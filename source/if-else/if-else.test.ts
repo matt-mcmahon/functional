@@ -1,35 +1,57 @@
-import { describe } from "@mwm/describe";
-import { ifElse, implementation, signatures } from "./if-else.ts";
+import { ifElse } from "./if-else.ts";
+import { describe } from "../../lib/describe.ts";
 
-describe(
+describe(`if-else.ts`, ({ assert, inspect }) => {
   {
-    path: "source/ifElse",
-    public: [ifElse],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    const isTrue = (condition) => condition == true;
-    const onTrueCB = (v) => `was ${v}`;
-    const onFalseCB = (v) => `was ${v}`;
-
-    const onTrue = ifElse(isTrue);
-    const onFalse = onTrue(onTrueCB);
-    const final = onFalse(onFalseCB);
+    const ifEven = (x: number) => x % 2 === 0;
+    const whenEven = (x: number) => `${x} is even`;
+    const whenOdd = (x: number) => `${x} is odd`;
+    const f = ifElse(ifEven, whenEven, whenOdd);
 
     {
-      const expected = "was true";
-      const given = inspect`ifElse(${isTrue}, ${onTrue}, ${onFalse}, ${true})`;
-      const should = inspect`return ${expected}`;
-      const actual = final(true);
+      const given = inspect`f(${4})`;
+      const actual = f(4);
+      const expected = "4 is even";
+      const should = "should run true branch";
       assert({ actual, expected, given, should });
     }
 
     {
-      const expected = "was false";
-      const given = inspect`ifElse(${isTrue}, ${onTrue}, ${onFalse}, ${false})`;
-      const should = inspect`return ${expected}`;
-      const actual = final(false);
+      const given = inspect`f(${3})`;
+      const actual = f(3);
+      const expected = `3 is odd`;
+      const should = `run false branch`;
       assert({ actual, expected, given, should });
     }
-  },
-);
+  }
+
+  {
+    const isNumber = (n: unknown) => typeof n === "number";
+    const whenTrue = (n: number) => n * 2;
+    const whenFalse = (n: unknown) => `I'm a ${typeof n}`;
+    const f = ifElse(isNumber, whenTrue, whenFalse);
+    {
+      const given = inspect`f(${2})`;
+      const should = `run true branch`;
+      const expected = 4;
+      const actual = f(2);
+      assert({ given, should, actual, expected });
+    }
+
+    {
+      const given = inspect`f(${"foo"})`;
+      const should = `run false branch`;
+      const expected = "I'm a string";
+      const actual = f("foo");
+      assert({ given, should, actual, expected });
+    }
+
+    {
+      const expected = "I'm a object";
+      const actual = f({ bar: "3" });
+      const given = inspect`f({ bar: "3" })`;
+      const should = `run false branch`;
+      assert({ given, should, actual, expected });
+    }
+  }
+});
