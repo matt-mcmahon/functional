@@ -24,6 +24,7 @@ export { isDefined } from "./is-defined/is-defined.ts";
 export { isEmpty } from "./is-empty/is-empty.ts";
 export { isFunction } from "./is-function/is-function.ts";
 export { isNil } from "./is-nil/is-nil.ts";
+export { isNumber } from "./is-number/is-number.ts";
 export { join } from "./join/join.ts";
 export { last } from "./last/last.ts";
 export { log } from "./log/log.ts";
