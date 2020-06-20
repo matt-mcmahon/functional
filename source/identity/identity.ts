@@ -1,9 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [{ "identity :: a => a": 1 }];
-
-export const implementation = (value) => value;
-
 /**
  * ```
  * identity :: a => a
@@ -13,4 +7,4 @@ export const implementation = (value) => value;
  * Returns it's argument, unmodified.
  *
  */
-export const identity = sign(signatures, implementation);
+export const identity = <A>(a: A) => a;
