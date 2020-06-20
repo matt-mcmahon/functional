@@ -1,9 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [{ "head :: as => a": 1 }];
-
-export const implementation = (as) => as[0];
-
 /**
  * ```
  * head :: as => a
@@ -13,4 +7,4 @@ export const implementation = (as) => as[0];
  * Returns the first element of an array.
  *
  */
-export const head = sign(signatures, implementation);
+export const head = <A>(as: A[]) => as[0];
