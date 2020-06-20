@@ -1,26 +1,22 @@
-import { sign } from "@mwm/sign";
-import { clone } from "../clone/clone.ts";
-
-export const signatures = [
-  { "assoc :: k => a => {k:*} => {k:a}": 1 },
-  { "assoc ::      a => {k:*} => {k:a}": 1 },
-  { "assoc ::           {k:*} => {k:a}": 1 },
-];
-
-export const implementation = (key) =>
-  (value) => (object) => Object.assign(clone(object), { [key]: value });
+import { clone } from "./clone.ts";
 
 /**
  * ```
- * assoc :: k => a => b => {...b, k:a}
+ * assoc = (k, i?) => a => b => {...b, [k]:a}
  * ```
  * -----------------------------------------------------------------------------
  *
- * Clones an object, associating the key, __k__, with value, __a__. For example:
+ * Clones the object __b__, associating the key, __k__, with value, __b__. 
+ * Accepts an optional type-instance example, __i__, which is used to infer 
+ * typings for the final object.
+ * 
+ * For example:
  *
  * ```
  * b[k] = a <=> assoc(k, a, b).
  * ```
  *
  */
-export const assoc = sign(signatures, implementation);
+export const assoc = <I, K extends keyof I>(key: K | number, i?: I) =>
+  <B extends I[K]>(b: B) =>
+    <A extends I>(a: A) => Object.assign(clone(a), { [key]: b }) as I;
