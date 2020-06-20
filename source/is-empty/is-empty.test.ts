@@ -1,30 +1,23 @@
-import { describe } from "@mwm/describe";
-import { isEmpty, implementation, signatures } from "./is-empty.ts";
+import { describe } from "../../lib/describe.ts";
+import { isEmpty } from "./is-empty.ts";
 
-describe(
-  {
-    path: "source/isEmpty",
-    public: [isEmpty],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    const data = [
-      [null, false],
-      [undefined, false],
-      ["", true],
-      [[], true],
-      [{}, true],
-      [NaN, false],
-      [false, false],
-      [{ length: 0 }, false],
-    ];
+describe("source/is-empty.ts", async ({ assert, inspect }) => {
+  const data: [unknown, boolean][] = [
+    [null, false],
+    [undefined, false],
+    ["", true],
+    [[], true],
+    [{}, true],
+    [NaN, false],
+    [false, false],
+    [{ length: 0 }, false],
+  ];
 
-    const test = ([value, expected]) => {
-      const actual = isEmpty(value);
-      const given = inspect`isEmpty(${value})`;
-      assert({ given, actual, expected });
-    };
+  const test = ([value, expected]: [unknown, boolean]) => {
+    const actual = isEmpty(value);
+    const given = inspect`isEmpty(${value})`;
+    assert({ given, actual, expected });
+  };
 
-    data.forEach(test);
-  },
-);
+  data.forEach(test);
+});

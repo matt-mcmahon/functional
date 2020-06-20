@@ -1,14 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [{ "isEmpty :: a => Boolean": 1 }];
-
-export const implementation = (value) =>
-  (Array.isArray(value) && value.length === 0) ||
-  (typeof value === "string" && value.length === 0) ||
-  (typeof value === "object" &&
-    value !== null &&
-    Object.keys(value).length === 0);
-
 /**
  * ```
  * isEmpty :: a => boolean
@@ -20,7 +9,13 @@ export const implementation = (value) =>
  * ```
  * isEmpty("") //> true
  * isEmpty([]) //> true
+ * isEmpty({}) //> true
  * isEmpty(0)  //> false
  * ```
  */
-export const isEmpty = sign(signatures, implementation);
+export const isEmpty = (a: unknown) =>
+  (Array.isArray(a) && a.length === 0) ||
+  (typeof a === "string" && a.length === 0) ||
+  (typeof a === "object" &&
+    a !== null &&
+    Object.keys(a).length === 0);
