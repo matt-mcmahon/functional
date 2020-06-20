@@ -1,30 +1,21 @@
-import { describe } from "@mwm/describe";
-import { take, implementation, signatures } from "./take.ts";
+import { describe } from "../../lib/describe.ts";
+import { take } from "./take.ts";
 
-describe(
+describe("source/take", async ({ assert, inspect }) => {
+  const [a, b, c, d, e] = ["a", "b", "c", "d", "e"];
   {
-    path: "source/take",
-    public: [take],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    const [a, b, c, d, e] = ["a", "b", "c", "d", "e"];
-    {
-      const as = [a, b, c, d, e];
-      const actual = take(3)(as);
-      const expected = [a, b, c];
-      const given = inspect`take(${3}, ${as})`;
-      const should = inspect`be ${expected}`;
-      assert({ given, should, actual, expected });
-    }
+    const as = [a, b, c, d, e];
+    const actual = take(3)(as);
+    const expected = [a, b, c];
+    const given = inspect`take(${3}, ${as})`;
+    assert({ given, actual, expected });
+  }
 
-    {
-      const as = [a, b];
-      const actual = take(4, as);
-      const expected = [a, b];
-      const given = inspect`first(${4}, ${as})`;
-      const should = inspect`be ${expected}`;
-      assert({ given, should, actual, expected });
-    }
-  },
-);
+  {
+    const as = [a, b];
+    const actual = take(4)(as);
+    const expected = [a, b];
+    const given = inspect`take(${4})(${as})`;
+    assert({ given, actual, expected });
+  }
+});
