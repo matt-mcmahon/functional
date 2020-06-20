@@ -1,9 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = ["isFunction :: a => boolean"];
-
-export const implementation = (a) => typeof a === "function";
-
 /**
  * ```
  * isFunction :: a => boolean
@@ -21,4 +15,4 @@ export const implementation = (a) => typeof a === "function";
  * isFUnction(object.method())  //> false
  * ```
  */
-export const isFunction = sign(signatures, implementation);
+export const isFunction = (a: unknown) => typeof a === "function";
