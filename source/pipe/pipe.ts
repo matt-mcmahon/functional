@@ -1,4 +1,4 @@
-import { Pipe } from "./types.d.ts";
+import { Pipe } from "../types.d.ts";
 
 const first = <A, B>(f: (a: A) => B): Pipe<A, B> => {
   function call(a: A) {
