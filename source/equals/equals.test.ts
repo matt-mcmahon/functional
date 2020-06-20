@@ -1,45 +1,22 @@
-import { describe } from "@mwm/describe";
-import { equals, signatures, implementation } from "./equals.ts";
+import { describe } from "../../lib/describe.ts";
+import { equals } from "./equals.ts";
 
-describe(
-  {
-    path: "source/equals",
-    public: [equals],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    const [a, b] = ["a", "b"];
+describe("source/equals.ts", async ({ assert, inspect }) => {
+  const values: [unknown, unknown, boolean][] = [
+    ["a", "b", false],
+    ["a", "a", true],
+    [1, 1, true],
+    [1, 2, false],
+    [1, BigInt ? BigInt(1) : 3, false],
+    [NaN, NaN, false],
+    [undefined, undefined, true],
+    [undefined, null, false],
+    [null, null, true],
+  ];
 
-    {
-      const expected = true;
-      const actual = equals(a, a);
-      const given = inspect`equals(${a}, ${a})`;
-      const should = inspect`be ${expected}`;
-      assert({ expected, actual, given, should });
-    }
-
-    {
-      const expected = true;
-      const actual = equals(a)(a);
-      const given = inspect`equals(${a})(${a})`;
-      const should = inspect`be ${expected}`;
-      assert({ expected, actual, given, should });
-    }
-
-    {
-      const expected = false;
-      const actual = equals(a, b);
-      const given = inspect`equals(${a}, ${b})`;
-      const should = inspect`be ${expected}`;
-      assert({ expected, actual, given, should });
-    }
-
-    {
-      const expected = false;
-      const actual = equals(a)(b);
-      const given = inspect`equals(${a})(${b})`;
-      const should = inspect`be ${expected}`;
-      assert({ expected, actual, given, should });
-    }
-  },
-);
+  values.forEach(([a, b, expected]) => {
+    const actual = equals(a)(b);
+    const given = inspect`equals(${a}, ${b})`;
+    assert({ expected, actual, given });
+  });
+});
