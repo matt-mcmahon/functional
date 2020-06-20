@@ -1,12 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  { "toVariadic->unary     :: (as => b) => ...as => b": 1 },
-  { "toVariadic->arguments ::              ...as => b": Infinity },
-];
-
-export const implementation = (unary) => (...as) => unary(as);
-
 /**
  * ```
  * toVariadic :: (as => b) => ...as => b
@@ -17,4 +8,5 @@ export const implementation = (unary) => (...as) => unary(as);
  * that accepts any number of arguments instead.
  *
  */
-export const toVariadic = sign(signatures, implementation);
+export const toVariadic = <AS extends unknown[], B>(u: (as: AS) => B) =>
+  (...as: AS) => u(as);
