@@ -1,12 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  "complement->predicate :: (a => Boolean) => a => Boolean",
-  "complement            ::                   a => Boolean",
-];
-
-export const implementation = (predicate) => (value) => !predicate(value);
-
 /**
  * ```
  * complement :: (a => Boolean) => a => Boolean
@@ -24,4 +15,5 @@ export const implementation = (predicate) => (value) => !predicate(value);
  * isNotFunction('value') => true
  * ```
  */
-export const complement = sign(signatures, implementation);
+export const complement = <A>(predicate: (a: A) => boolean) =>
+  (a: A) => !predicate(a);
