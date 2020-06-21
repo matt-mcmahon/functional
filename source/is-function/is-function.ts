@@ -15,4 +15,5 @@
  * isFUnction(object.method())  //> false
  * ```
  */
-export const isFunction = (a: unknown) => typeof a === "function";
+export const isFunction = (a: unknown): a is Function =>
+  typeof a === "function";

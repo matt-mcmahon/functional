@@ -7,4 +7,4 @@
  * Returns `true` if __a__ has type `number`.
  *
  */
-export const isNumber = <A>(a: A) => typeof a === "number";
+export const isNumber = (a: unknown): a is number => typeof a === "number";

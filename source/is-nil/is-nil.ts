@@ -7,9 +7,10 @@
  * `false` otherwise. For example
  *
  * ```
- * isNil(null)      <=> true
- * isNil(undefined) <=> true
- * isNil(0)         <=> false
+ * isNil(null)      => true
+ * isNil(undefined) => true
+ * isNil(0)         => false
  * ```
  */
-export const isNil = <A>(a: A) => a === null || a === undefined;
+export const isNil = (a: unknown): a is null | undefined =>
+  a === null || a === undefined;

@@ -1,3 +1,5 @@
+import { Something } from "../types.d.ts";
+
 /**
  * ```
  * isDefined :: a => boolean
@@ -8,4 +10,9 @@
  * `true`.
  *
  */
-export const isDefined = <A>(a: A) => a === a && a !== undefined && a !== null;
+export const isDefined = (
+  a: unknown,
+): a is Something => !(isUndefined(a) || isNull(a) || Number.isNaN(a));
+
+const isUndefined = (a: unknown): a is undefined => a === undefined;
+const isNull = (a: unknown): a is null => a === null;
