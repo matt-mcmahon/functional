@@ -1,57 +1,47 @@
-import { describe } from "@mwm/describe";
-import { reduceRight, implementation, signatures } from "./reduce-right.ts";
+import { describe } from "../../lib/describe.ts";
+import { reduceRight } from "./reduce-right.ts";
 
-describe(
+describe("source/reduceRight", async ({ assert, inspect }) => {
   {
-    path: "source/reduceRight",
-    public: [reduceRight],
-    private: [implementation, signatures],
-  },
-  async ({ assert, inspect }) => {
-    {
-      const add = (x, y) => x + y;
-      const value = [1, 3, 5];
-      const expected = 9;
-      const actual = reduceRight(add)(0)(value);
-      const given = inspect`reduceRight(${add})(${0})(${value})`;
-      assert({ actual, expected, given });
-    }
+    const add = (x: number, y: number) => x + y;
+    const value = [1, 3, 5];
+    const expected = 9;
+    const actual = reduceRight(add)(0)(value);
+    const given = inspect`reduceRight(${add})(${0})(${value})`;
+    assert({ actual, expected, given });
+  }
 
+  const a = "a";
+  const b = "b";
+  const c = "c";
+  const concat = (x: string, y: string) => x + y;
+
+  {
+    const expected = "abc";
+    const value = [c, b];
+    const actual = reduceRight(concat)(a)(value);
+    const given = inspect`reduceRight(${concat})(${a})(${value})`;
+    assert({ actual, expected, given });
+  }
+
+  {
+    const expected = "a";
+    const value: string[] = [];
+    const actual = reduceRight(concat)(a)(value);
+    const given = inspect`reduceRight(${concat})(${a})(${value})`;
+    assert({ actual, expected, given });
+  }
+
+  {
     const a = "a";
-    const b = "b";
-    const c = "c";
-    const concat = (x, y) => x + y;
-
-    {
-      const expected = "abc";
-      const value = [c, b];
-      const actual = reduceRight(concat)(a)(value);
-      const given = inspect`reduceRight(${concat})(${a})(${value})`;
-      assert({ actual, expected, given });
-    }
-
-    {
-      const expected = "a";
-      const value = [];
-      const actual = reduceRight(concat)(a)(value);
-      const given = inspect`reduceRight(${concat})(${a})(${value})`;
-      assert({ actual, expected, given });
-    }
-
-    const accumulator = "accumulator";
-    const thrower = () => {
+    const thrower = (a: string, b: string) => {
       throw Error("I should not be called");
     };
-    const unreducable = reduceRight(thrower)(accumulator);
-
-    const tests = [[], 456, { value: "not reducible" }];
-
-    tests.forEach((value) => {
-      const actual = unreducable(value);
-      const expected = accumulator;
-      const given = inspect`reduceRight(${thrower})(${accumulator})(${value})`;
-      const should = inspect`not throw; yield ${actual}`;
-      assert({ actual, expected, given, should });
-    });
-  },
-);
+    const unreducable = reduceRight(thrower)(a);
+    const actual = unreducable([]);
+    const expected = a;
+    const given = inspect`reduceRight(thrower)(${a})(${[]})`;
+    const should = inspect`not throw; yield ${a}`;
+    assert({ actual, expected, given, should });
+  }
+});
