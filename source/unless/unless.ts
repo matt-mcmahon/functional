@@ -11,4 +11,8 @@
  *
  */
 export const unless = <A>(predicate: (a: A) => boolean) =>
-  <B>(mapAB: (a: A) => B) => (a: A) => predicate(a) ? a : mapAB(a);
+  <B>(mapAB: (a: A) => B) =>
+    (a: A) => {
+      if (predicate(a)) return a;
+      else return mapAB(a);
+    };

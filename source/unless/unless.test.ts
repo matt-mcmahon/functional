@@ -1,5 +1,6 @@
 import { describe } from "../../lib/describe.ts";
 import { unless } from "./unless.ts";
+import { isNil } from "../is-nil/is-nil.ts";
 
 describe("source/unless", async ({ assert, inspect }) => {
   const isA = (v: unknown) => v === "A";
@@ -22,14 +23,14 @@ describe("source/unless", async ({ assert, inspect }) => {
     assert({ expected, actual, given });
   }
 
-  const isNil = (value: unknown) => value === null || value === undefined;
   const inc = (n: number) => n + 1;
-
-  //@ts-ignore
-  let saferInc = unless(isNil)(inc);
+  const isNotSafe = (n: number) =>
+    n >= Number.MAX_SAFE_INTEGER || n < Number.MIN_SAFE_INTEGER;
+  const unlessNotSafe = unless(isNotSafe);
+  const saferInc = unlessNotSafe(inc);
   {
-    const value = null;
-    const expected = null;
+    const value = Number.MAX_SAFE_INTEGER;
+    const expected = value;
     const actual = saferInc(value);
     const given = inspect`saferInc(${value})`;
     assert({ expected, actual, given });
