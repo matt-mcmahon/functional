@@ -1,4 +1,4 @@
-import { Compose } from "./types.d.ts";
+import { Compose } from "../types.d.ts";
 
 const last = <B, A>(f: (b: B) => A): Compose<B, A> => {
   function call(b: B): A {
