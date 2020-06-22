@@ -1,12 +1,9 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  { "invoker->method    :: k => (...as) => (b.k => c) => c": 1 },
-  { "invoker->arguments ::      (...as) => (b.k => c) => c": Infinity },
-  { "invoker->context   ::                 (b.k => c) => c": 1 },
-];
-
-export const implementation = (k) => (...as) => (b) => b[k](...as);
+/**
+ * type `A` ensures that our object contains the property PropertyName
+ */
+type Invokable<F extends Function, PropertyName extends string> = {
+  [P in PropertyName]: F;
+};
 
 /**
  * ```
@@ -21,6 +18,12 @@ export const implementation = (k) => (...as) => (b) => b[k](...as);
  * ```
  * invoker(k, ...as, b) <=> b[k](...as) <=>
  * ```
- *
+ * @todo: Add support for Variadic Tuples when TypeScript 4 is released.
  */
-export const invoker = sign(signatures, implementation);
+
+export const invoker = <B, PropertyKey extends string>(
+  propertyKey: PropertyKey,
+) =>
+  <A extends unknown>(...args: A[]) =>
+    <F extends Function>(a: Invokable<F, PropertyKey>): F =>
+      a[propertyKey](...args);
