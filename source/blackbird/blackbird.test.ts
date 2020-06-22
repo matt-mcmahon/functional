@@ -5,20 +5,18 @@ describe("source/blackbird", async ({ assert, inspect }) => {
   const blackbird0 = blackbird;
 
   // the converging function:
-  const inspectArguments = (...as: unknown[]) => {
-    const ss = as.map((a) => inspect`${a}`);
-    const s = ss.join(", ");
-    return `(${s})`;
+  const converge = (a: string, b: string, c: number) => {
+    return inspect`(${a}, ${b}, ${c})`;
   };
 
   {
-    const actual = inspectArguments("HELLO", "hello", 5);
+    const actual = converge("HELLO", "hello", 5);
     const expected = `("HELLO", "hello", 5)`;
     const given = inspect`converging function`;
     assert({ given, actual, expected });
   }
 
-  const blackbird1 = blackbird0(inspectArguments);
+  const blackbird1 = blackbird0(converge);
 
   const toUpper = (s: string) => s.toUpperCase();
   const toLower = (s: string) => s.toLowerCase();
