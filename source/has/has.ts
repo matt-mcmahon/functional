@@ -16,7 +16,5 @@
  * @param {string|symbol|number} k the name or symbol of the property to check for
  * @param {unknown} a the object to check for ownership of the property
  */
-export const has = (k: string | number | symbol) =>
-  (a: unknown) => {
-    return Object.prototype.hasOwnProperty.call(a, k);
-  };
+export const has = (k: string | symbol | number) =>
+  (a: unknown) => Object.prototype.hasOwnProperty.call(a, k);
