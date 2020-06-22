@@ -1,3 +1,7 @@
+type A<PropertyName extends string | symbol> = {
+  [P in PropertyName]: unknown;
+};
+
 /**
  * ```
  * has :: k => a => boolean
@@ -16,5 +20,6 @@
  * @param {string|symbol|number} k the name or symbol of the property to check for
  * @param {unknown} a the object to check for ownership of the property
  */
-export const has = (k: string | symbol | number) =>
-  (a: unknown) => Object.prototype.hasOwnProperty.call(a, k);
+export const has = <PropertyKey extends string | symbol>(k: PropertyKey) =>
+  (a: unknown): a is A<PropertyKey> =>
+    Object.prototype.hasOwnProperty.call(a, k);

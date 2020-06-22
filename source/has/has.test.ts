@@ -1,7 +1,9 @@
-import { has } from "./has.ts";
 import { describe } from "../../lib/describe.ts";
 
-describe("own.ts", ({ assert, inspect }) => {
+import { has } from "./has.ts";
+import { prop } from "../prop/prop.ts";
+
+describe("has.ts", ({ assert, inspect }) => {
   const ownFoo = has("foo");
 
   {
@@ -85,5 +87,27 @@ describe("own.ts", ({ assert, inspect }) => {
       const expected = false;
       assert({ given, expected, should, actual });
     }
+  }
+});
+
+describe(`has.ts->type guard`, async ({ assert, inspect }) => {
+  type A = { a: string };
+  const hasA = has("a");
+  {
+    const empty = {};
+    const value = { a: "has a" } as typeof empty;
+    const actual = hasA(value) ? prop("a")(value) : "no a";
+    const expected = "has a";
+    const given = inspect`property "a" hidden from compiler`;
+    const should = inspect`detect that ${value} has "a"`;
+    assert({ actual, expected, value, given, should });
+  }
+  {
+    const value = { b: "B" };
+    const actual = hasA(value) ? prop("a")(value) : "no a";
+    const expected = "no a";
+    const given = inspect`property "a" hidden from compiler`;
+    const should = inspect`detect that ${value} has "a"`;
+    assert({ actual, expected, value, given, should });
   }
 });
