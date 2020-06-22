@@ -1,18 +1,3 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  { "partial :: (a¹, a², …, aⁿ => b) => (a¹, …) => ... => (…, aⁿ) => b": 1 },
-  { "partial :: (a¹, …) => ... => (…, aⁿ) => b": Infinity },
-];
-
-export const implementation = (f) =>
-  function g(...as) {
-    const signatures = [{ [`${f.name}${as.length} :: ...as => b`]: Infinity }];
-    return as.length < f.length
-      ? sign(signatures, (...bs) => g(...as, ...bs))
-      : f(...as);
-  };
-
 /**
  * ```
  * partial :: (a¹, a², …, aⁿ => b) => (a¹, …) => ... => (…, aⁿ) => b
@@ -22,5 +7,12 @@ export const implementation = (f) =>
  * Creates a version of the supplied _n_-ary function that can be be partially
  * applied.
  *
+ * @todo add support for Variadic Tuples in TypeScript 4
  */
-export const partial = sign(signatures, implementation);
+export const partial = <F extends Function>(f: F) =>
+  function g(...as: unknown[]) {
+    const signatures = [{ [`${f.name}${as.length} :: ...as => b`]: Infinity }];
+    return as.length < f.length
+      ? (...bs: unknown[]) => g(...as, ...bs)
+      : f(...as);
+  };
