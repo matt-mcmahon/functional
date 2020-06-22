@@ -1,38 +1,27 @@
-import { sign } from "@mwm/sign";
-
-export const signatures = [
-  "curryN :: n => ((a¹, a², ..., aⁿ) => b) =>  a¹ => a²... => aⁿ => b",
-  "curryN ::      ((a¹, a², ..., aⁿ) => b) =>  a¹ => a²... => aⁿ => b",
-];
-
-const gatherN = (n, f) =>
-  function g(...as) {
-    return as.length < n ? (a) => g(...as, a) : f(...as);
+const gather = <F extends Function>(
+  n: number,
+  f: F,
+  previous: unknown[] = [],
+) => {
+  const curried = (...as: unknown[]) => {
+    const args = [...previous, ...as];
+    const remaining = n - args.length;
+    return remaining > 0 ? gather(n, f, args) : f(...args.slice(0, n));
   };
-
-const genSigns = (name, length) => {
-  const signatures = [];
-  for (let i = 0; i < length; i++) {
-    signatures.push({ [name + i]: 1 });
-  }
-  return signatures;
+  Object.defineProperties(curried, {
+    length: { value: n - previous.length },
+    name: { value: `${f.name}${previous.length}` },
+  });
+  return curried;
 };
-
 /**
  * ```
  * curryN :: n => ((a¹, a², ..., aⁿ) => b) =>  a¹ => a²... => aⁿ => b
  * ```
  * -----------------------------------------------------------------------------
- * Converts a _Variadic_ function that accepts _arity_ number of arguments into
- * a series of arity-number _Unary_ functions that produce the same final value.
- *
- * ```
- * const sum = (...ns) => ns.reduce((n,m)=>n+m,0)
+ * Converts a function that accepts an arity, __n__, number of arguments into a 
+ * series of _Unary_ functions that produce the same final value.
+ * 
+ * @todo add support for Variadic Tuples in TypeScript 4
  */
-export const implementation = (n) => (f) => {
-  const s = genSigns(f.name, n);
-
-  return sign(s, gatherN(n, f));
-};
-
-export const curryN = sign(signatures, implementation);
+export const curryN = (n: number) => <F extends Function>(f: F) => gather(n, f);
