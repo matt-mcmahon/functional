@@ -18,7 +18,7 @@ type Invokable<F extends Function, PropertyName extends string> = {
  * ```
  * invoker(k, ...as, b) <=> b[k](...as) <=>
  * ```
- * @todo: Add support for Variadic Tuples when TypeScript 4 is released.
+ * @todo Add support for Variadic Tuples when TypeScript 4 is released.
  */
 
 export const invoker = <B, PropertyKey extends string>(
