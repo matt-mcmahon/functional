@@ -1,4 +1,4 @@
-import { describe } from "@mwm/describe";
+import { describe } from "../lib/describe.ts";
 import * as functional from "./index.ts";
 
 describe("module exports", ({ assert }) => {
@@ -9,6 +9,7 @@ describe("module exports", ({ assert }) => {
     "bind",
     "blackbird",
     "both",
+    "cap",
     "clone",
     "complement",
     "compose",
@@ -29,7 +30,10 @@ describe("module exports", ({ assert }) => {
     "isDefined",
     "isEmpty",
     "isFunction",
+    "isNaN",
     "isNil",
+    "isNumber",
+    "isString",
     "join",
     "last",
     "log",
@@ -50,6 +54,8 @@ describe("module exports", ({ assert }) => {
     "tail",
     "take",
     "tap",
+    "toArray",
+    "toString",
     "toUnary",
     "toVariadic",
     "trim",
