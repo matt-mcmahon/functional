@@ -10,6 +10,15 @@ export type Pipe<A, B> = {
   call(a: A): B;
 };
 
+export type Something =
+  | bigint
+  | boolean
+  | Function
+  | number
+  | object
+  | string
+  | symbol;
+
 export type Mapper<A, B> = (a: A) => B;
 
 /**
