@@ -31,10 +31,14 @@ export const signatures = [
  * //> 0 + 4 + 9
  * //> 13
  * ```
+ * 
+ * @todo add support for Variadic Tuples in TypeScript 4
  */
-export const blackbird = (converging: any) =>
-  (...parts: any) =>
-    (a: any) => {
-      const bs = parts.map((part: any) => part(a));
-      return converging(...bs);
+export const blackbird = <B extends unknown, C>(
+  converging: (...bs: any[]) => C,
+) =>
+  <A>(...parts: ((a: A) => unknown)[]) =>
+    (a: A) => {
+      const bs = parts.map((part: Function) => part(a));
+      return converging(...bs) as C;
     };

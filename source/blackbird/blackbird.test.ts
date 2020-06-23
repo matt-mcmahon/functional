@@ -2,8 +2,6 @@ import { describe } from "../../lib/describe.ts";
 import { blackbird } from "./blackbird.ts";
 
 describe("source/blackbird", async ({ assert, inspect }) => {
-  const blackbird0 = blackbird;
-
   // the converging function:
   const converge = (a: string, b: string, c: number) => {
     return inspect`(${a}, ${b}, ${c})`;
@@ -16,11 +14,12 @@ describe("source/blackbird", async ({ assert, inspect }) => {
     assert({ given, actual, expected });
   }
 
-  const blackbird1 = blackbird0(converge);
-
   const toUpper = (s: string) => s.toUpperCase();
   const toLower = (s: string) => s.toLowerCase();
   const toLength = (s: string) => s.length;
+
+  const blackbird0 = blackbird;
+  const blackbird1 = blackbird0(converge);
   const blackbird2 = blackbird1(toUpper, toLower, toLength);
 
   {
