@@ -57,8 +57,10 @@ update-lock-file:
 install:
 ifndef LOCAL_SIGN_MODULE_PATH
 	$(error LOCAL_SIGN_MODULE_PATH is undefined)
-endif
+else
+	unlink $(LOCAL_SIGN_MODULE_PATH)
 	ln -sfr $(LOCAL_SIGN_MODULE_PATH) ./lib/sign
+endif
 	deno cache --reload ${LOCK_OPTIONS} ${IMPORT_MAP_OPTIONS} ${MAIN}
 
 .PHONY: run build cache clean format lint quicktest test testnode install
