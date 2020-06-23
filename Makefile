@@ -3,7 +3,7 @@
 include .env
 export
 
-MAIN=./source/index.test.js
+MAIN=./source/index.test.ts
 BUNDLE_FILE=./dist/index.mjs
 LOCK_OPTIONS=--lock ./lock-file.json
 
@@ -58,7 +58,7 @@ install:
 ifndef LOCAL_SIGN_MODULE_PATH
 	$(error LOCAL_SIGN_MODULE_PATH is undefined)
 else
-	unlink $(LOCAL_SIGN_MODULE_PATH)
+	unlink ./lib/sign
 	ln -sfr $(LOCAL_SIGN_MODULE_PATH) ./lib/sign
 endif
 	deno cache --reload ${LOCK_OPTIONS} ${IMPORT_MAP_OPTIONS} ${MAIN}
