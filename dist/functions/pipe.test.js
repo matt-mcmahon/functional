@@ -39,4 +39,3 @@ sign_1.describe("pipe", ({ assert, inspect }) => {
         should: inspect `be the same as p4(${value})`,
     });
 });
-//# sourceMappingURL=pipe.test.js.map

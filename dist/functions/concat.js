@@ -28,4 +28,3 @@ exports.concat = (as) => (bs) => [
     ...as,
     ...bs,
 ];
-//# sourceMappingURL=concat.js.map

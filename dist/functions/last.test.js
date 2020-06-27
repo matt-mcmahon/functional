@@ -18,4 +18,3 @@ sign_1.describe("last", async ({ assert, inspect }) => {
         assert({ given, actual, expected });
     }
 });
-//# sourceMappingURL=last.test.js.map

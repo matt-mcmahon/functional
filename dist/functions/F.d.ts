@@ -8,4 +8,3 @@
  *
  */
 export declare const F: (...ignored: unknown[]) => boolean;
-//# sourceMappingURL=F.d.ts.map

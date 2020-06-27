@@ -20,4 +20,3 @@ exports.has = void 0;
  * @param {unknown} a the object to check for ownership of the property
  */
 exports.has = (k) => (a) => Object.prototype.hasOwnProperty.call(a, k);
-//# sourceMappingURL=has.js.map

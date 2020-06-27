@@ -20,4 +20,3 @@ sign_1.describe("isNaN", async ({ assert, inspect }) => {
         given: inspect `isNil(${value})`,
     }));
 });
-//# sourceMappingURL=isNaN.test.js.map

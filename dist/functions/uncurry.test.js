@@ -22,4 +22,3 @@ sign_1.describe("uncurry", async ({ assert, inspect }) => {
         assert({ expected, actual, given, should });
     }
 });
-//# sourceMappingURL=uncurry.test.js.map

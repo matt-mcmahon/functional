@@ -10,4 +10,3 @@ exports.isNaN = void 0;
  * otherwise.
  */
 exports.isNaN = (a) => Number.isNaN(a);
-//# sourceMappingURL=isNaN.js.map

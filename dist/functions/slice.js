@@ -18,4 +18,3 @@ exports.slice = void 0;
  * ```
  */
 exports.slice = (n) => (m) => (as) => Array.from(as).slice(n, m);
-//# sourceMappingURL=slice.js.map

@@ -8,4 +8,3 @@
  *
  */
 export declare const defaultTo: <A>(a: A) => <B>(b: B) => A | (Exclude<B, null> & Exclude<B, undefined>);
-//# sourceMappingURL=defaultTo.d.ts.map

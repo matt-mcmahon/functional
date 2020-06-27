@@ -20,4 +20,3 @@ sign_1.describe("is-date", async ({ assert, inspect }) => {
     };
     data.forEach(test);
 });
-//# sourceMappingURL=isDate.test.js.map

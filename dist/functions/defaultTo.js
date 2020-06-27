@@ -12,4 +12,3 @@ const functions_1 = require("../functions");
  *
  */
 exports.defaultTo = (a) => (b) => functions_1.isNaN(b) ? a : functions_1.isDefined(b) ? b : a;
-//# sourceMappingURL=defaultTo.js.map

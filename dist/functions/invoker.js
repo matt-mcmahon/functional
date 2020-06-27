@@ -17,4 +17,3 @@ exports.invoker = void 0;
  * @todo Add support for Variadic Tuples when TypeScript 4 is released.
  */
 exports.invoker = (propertyKey) => (...args) => (a) => a[propertyKey](...args);
-//# sourceMappingURL=invoker.js.map

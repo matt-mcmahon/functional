@@ -26,4 +26,3 @@ const after = (next, f) => {
     });
     return p;
 };
-//# sourceMappingURL=compose.js.map

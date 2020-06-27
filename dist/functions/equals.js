@@ -16,4 +16,3 @@ exports.equals = void 0;
  *
  */
 exports.equals = (a) => (b) => a === b;
-//# sourceMappingURL=equals.js.map

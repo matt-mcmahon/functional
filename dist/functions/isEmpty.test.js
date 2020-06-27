@@ -20,4 +20,3 @@ sign_1.describe("is-empty", async ({ assert, inspect }) => {
     };
     data.forEach(test);
 });
-//# sourceMappingURL=isEmpty.test.js.map

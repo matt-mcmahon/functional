@@ -38,4 +38,3 @@ sign_1.describe("is-array, type guard", async ({ assert, inspect }) => {
         assert({ actual, expected, value, should });
     }
 });
-//# sourceMappingURL=isArray.test.js.map

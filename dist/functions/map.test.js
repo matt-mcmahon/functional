@@ -23,4 +23,3 @@ sign_1.describe("map", ({ assert, inspect }) => {
         assert({ actual, expected, given, should });
     }
 });
-//# sourceMappingURL=map.test.js.map

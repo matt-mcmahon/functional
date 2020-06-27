@@ -23,4 +23,3 @@ sign_1.describe("to-unary", ({ assert, inspect }) => {
         assert({ actual, expected, given, should });
     }
 });
-//# sourceMappingURL=toUnary.test.js.map

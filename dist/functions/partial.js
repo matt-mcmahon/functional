@@ -18,4 +18,3 @@ exports.partial = (f) => function g(...as) {
         ? (...bs) => g(...as, ...bs)
         : f(...as);
 };
-//# sourceMappingURL=partial.js.map

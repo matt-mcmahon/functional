@@ -8,4 +8,3 @@
  *
  */
 export declare const sort: <A>(compare: ((a1: A, a2: A) => number) | undefined) => (as: A[]) => A[];
-//# sourceMappingURL=sort.d.ts.map

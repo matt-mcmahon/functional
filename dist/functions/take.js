@@ -11,4 +11,3 @@ exports.take = void 0;
  *
  */
 exports.take = (n) => (as) => as.slice(0, n);
-//# sourceMappingURL=take.js.map

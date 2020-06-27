@@ -11,4 +11,3 @@ exports.merge = void 0;
  *
  */
 exports.merge = (a) => (b) => Object.assign({}, a, b);
-//# sourceMappingURL=merge.js.map

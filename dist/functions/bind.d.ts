@@ -9,4 +9,3 @@
  * @param object the method's context
  */
 export declare const bind: <F extends Function>(m: F) => <B>(b: B) => F;
-//# sourceMappingURL=bind.d.ts.map

@@ -16,4 +16,3 @@ sign_1.describe("cap", ({ assert, inspect }) => {
         assert({ given: inspect `${value}`, actual, expected });
     }
 });
-//# sourceMappingURL=cap.test.js.map

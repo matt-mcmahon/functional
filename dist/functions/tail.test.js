@@ -36,4 +36,3 @@ sign_1.describe("tail", async ({ assert, inspect }) => {
         assert({ actual, expected, given, should });
     }
 });
-//# sourceMappingURL=tail.test.js.map

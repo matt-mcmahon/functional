@@ -23,4 +23,3 @@ sign_1.describe("is-number", async ({ assert, inspect }) => {
     };
     data.forEach(test);
 });
-//# sourceMappingURL=isNumber.test.js.map

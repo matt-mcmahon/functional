@@ -19,4 +19,3 @@ sign_1.describe("take", async ({ assert, inspect }) => {
         assert({ given, actual, expected });
     }
 });
-//# sourceMappingURL=take.test.js.map

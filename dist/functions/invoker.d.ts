@@ -21,4 +21,3 @@ declare type Invokable<F extends Function, PropertyName extends string> = {
  */
 export declare const invoker: <B, PropertyKey_1 extends string>(propertyKey: PropertyKey_1) => <A extends unknown>(...args: A[]) => <F extends Function>(a: Invokable<F, PropertyKey_1>) => F;
 export {};
-//# sourceMappingURL=invoker.d.ts.map

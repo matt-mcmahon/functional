@@ -12,4 +12,3 @@ interface Joinable<A> {
  */
 export declare const join: <A>(a: A) => (as: Joinable<A>) => A;
 export {};
-//# sourceMappingURL=join.d.ts.map

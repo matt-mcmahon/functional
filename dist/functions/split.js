@@ -20,4 +20,3 @@ exports.split = (separator, limit) => (source) => separator == undefined
     : separator === ""
         ? Array.from(source)
         : source.split(separator);
-//# sourceMappingURL=split.js.map

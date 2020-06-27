@@ -24,4 +24,3 @@ sign_1.describe("isObject", async ({ assert, inspect }) => {
     };
     data.forEach(test);
 });
-//# sourceMappingURL=isObject.test.js.map

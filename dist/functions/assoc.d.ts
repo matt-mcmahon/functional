@@ -16,4 +16,3 @@
  *
  */
 export declare const assoc: <I, K extends keyof I>(key: number | K, i?: I | undefined) => <B extends I[K]>(b: B) => <A extends I>(a: A) => I;
-//# sourceMappingURL=assoc.d.ts.map

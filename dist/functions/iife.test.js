@@ -30,4 +30,3 @@ sign_1.describe("iife", async ({ assert, inspect }) => {
         assert({ actual, expected, given });
     }
 });
-//# sourceMappingURL=iife.test.js.map

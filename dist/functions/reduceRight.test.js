@@ -42,4 +42,3 @@ sign_1.describe("reduceRight", async ({ assert, inspect }) => {
         assert({ actual, expected, given, should });
     }
 });
-//# sourceMappingURL=reduceRight.test.js.map

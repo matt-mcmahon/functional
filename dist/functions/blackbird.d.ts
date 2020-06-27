@@ -24,4 +24,3 @@
  * @todo add support for Variadic Tuples in TypeScript 4
  */
 export declare const blackbird: <B extends unknown, C>(converging: (...bs: any[]) => C) => <A>(...parts: ((a: A) => unknown)[]) => (a: A) => C;
-//# sourceMappingURL=blackbird.d.ts.map

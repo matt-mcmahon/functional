@@ -12,4 +12,3 @@ exports.toArray = void 0;
  *
  */
 exports.toArray = (as) => Array.from(as);
-//# sourceMappingURL=toArray.js.map

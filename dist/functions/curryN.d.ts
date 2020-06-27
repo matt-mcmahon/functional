@@ -9,4 +9,3 @@
  * @todo add support for Variadic Tuples in TypeScript 4
  */
 export declare const curryN: (n: number) => <F extends Function>(f: F) => (...as: unknown[]) => any;
-//# sourceMappingURL=curryN.d.ts.map

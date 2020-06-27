@@ -8,4 +8,3 @@
  *
  */
 export declare const tail: <A>(as: A[]) => A[];
-//# sourceMappingURL=tail.d.ts.map

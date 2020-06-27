@@ -17,4 +17,3 @@ sign_1.describe("head", async ({ assert, inspect }) => {
         assert({ given, actual, expected });
     }
 });
-//# sourceMappingURL=head.test.js.map

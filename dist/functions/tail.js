@@ -11,4 +11,3 @@ exports.tail = void 0;
  *
  */
 exports.tail = (as) => as.slice(1);
-//# sourceMappingURL=tail.js.map

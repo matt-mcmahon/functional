@@ -40,4 +40,3 @@ sign_1.describe("compose", ({ assert, inspect }) => {
         assert({ actual, expected, given });
     }
 });
-//# sourceMappingURL=compose.test.js.map

@@ -10,4 +10,3 @@ exports.always = void 0;
  * Creates a function that always returns _a_, ignoring any arguments.
  */
 exports.always = (a) => (...bs) => a;
-//# sourceMappingURL=always.js.map

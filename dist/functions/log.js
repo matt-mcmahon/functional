@@ -15,4 +15,3 @@ exports.log = (s) => (a) => {
     console.groupEnd();
     return a;
 };
-//# sourceMappingURL=log.js.map

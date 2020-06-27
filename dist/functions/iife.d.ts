@@ -8,4 +8,3 @@
  *
  */
 export declare const iife: <F extends Function>(f: F, ...as: unknown[]) => any;
-//# sourceMappingURL=iife.d.ts.map

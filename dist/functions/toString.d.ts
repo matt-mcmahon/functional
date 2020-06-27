@@ -9,4 +9,3 @@
  *
  */
 export declare const toString: <B>(a: unknown) => string;
-//# sourceMappingURL=toString.d.ts.map

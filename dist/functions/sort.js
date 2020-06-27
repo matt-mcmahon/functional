@@ -11,4 +11,3 @@ exports.sort = void 0;
  *
  */
 exports.sort = (compare) => (as) => [...as].sort(compare);
-//# sourceMappingURL=sort.js.map

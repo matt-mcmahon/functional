@@ -20,4 +20,3 @@ const functions_1 = require("../functions");
  *
  */
 exports.assoc = (key, i) => (b) => (a) => Object.assign(functions_1.clone(a), { [key]: b });
-//# sourceMappingURL=assoc.js.map

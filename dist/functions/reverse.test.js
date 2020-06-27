@@ -17,4 +17,3 @@ sign_1.describe("reverse", ({ assert }) => {
         assert({ actual, expected, message });
     }
 });
-//# sourceMappingURL=reverse.test.js.map

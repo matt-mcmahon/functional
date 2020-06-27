@@ -10,4 +10,3 @@
  *
  */
 export declare const curry: <F extends Function>(f: F) => (...as: unknown[]) => any;
-//# sourceMappingURL=curry.d.ts.map

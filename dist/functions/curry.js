@@ -14,4 +14,3 @@ const functions_1 = require("../functions");
  *
  */
 exports.curry = (f) => functions_1.curryN(f.length)(f);
-//# sourceMappingURL=curry.js.map

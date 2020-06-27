@@ -15,4 +15,3 @@ declare type A<B, PropertyName extends string> = {
  */
 export declare const prop: <B, PropertyKey_1 extends string>(propertyKey: PropertyKey_1) => (a: A<B, PropertyKey_1>) => A<B, PropertyKey_1>[PropertyKey_1];
 export {};
-//# sourceMappingURL=prop.d.ts.map

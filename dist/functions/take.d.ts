@@ -8,4 +8,3 @@
  *
  */
 export declare const take: (n: number) => <A>(as: A[]) => A[];
-//# sourceMappingURL=take.d.ts.map

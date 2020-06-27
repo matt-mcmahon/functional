@@ -22,4 +22,3 @@
  * @todo better types with Variadic Tuples in TypeScript 4
  */
 export declare const concat: <A>(as: Iterable<A>) => (bs: Iterable<A>) => A[];
-//# sourceMappingURL=concat.d.ts.map

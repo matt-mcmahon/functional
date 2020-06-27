@@ -11,4 +11,3 @@ sign_1.describe("log", async ({ assert, inspect }) => {
     const should = inspect `should return ${value}`;
     assert({ actual, expected, given, should });
 });
-//# sourceMappingURL=log.test.js.map

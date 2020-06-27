@@ -87,4 +87,3 @@ sign_1.describe("prop, missing propertyKey", async ({ assert, inspect }) => {
         assert({ actual, expected, given, should });
     }
 });
-//# sourceMappingURL=prop.test.js.map

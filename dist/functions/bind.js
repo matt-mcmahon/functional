@@ -12,4 +12,3 @@ exports.bind = void 0;
  * @param object the method's context
  */
 exports.bind = (m) => (b) => m.bind(b);
-//# sourceMappingURL=bind.js.map

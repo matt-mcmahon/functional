@@ -17,4 +17,3 @@ exports.not = void 0;
  *
  */
 exports.not = (a) => !a;
-//# sourceMappingURL=not.js.map

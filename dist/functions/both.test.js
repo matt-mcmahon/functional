@@ -49,4 +49,3 @@ sign_1.describe("both", async ({ assert, inspect }) => {
         assert({ actual: f(value), expected, value });
     }
 });
-//# sourceMappingURL=both.test.js.map

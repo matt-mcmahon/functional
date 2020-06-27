@@ -43,4 +43,3 @@ sign_1.describe("to-variadic", ({ assert, inspect }) => {
         });
     }
 });
-//# sourceMappingURL=toVariadic.test.js.map

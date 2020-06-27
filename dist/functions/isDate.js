@@ -11,4 +11,3 @@ exports.isDate = void 0;
  *
  */
 exports.isDate = (a) => a instanceof Date;
-//# sourceMappingURL=isDate.js.map

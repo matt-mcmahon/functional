@@ -23,4 +23,3 @@ sign_1.describe("reduce", ({ assert, inspect }) => {
         assert({ actual, expected, given, should });
     }
 });
-//# sourceMappingURL=reduce.test.js.map

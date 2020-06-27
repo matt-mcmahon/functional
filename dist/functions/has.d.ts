@@ -21,4 +21,3 @@ declare type A<PropertyName extends string | symbol> = {
  */
 export declare const has: <PropertyKey_1 extends string | symbol>(k: PropertyKey_1) => (a: unknown) => a is A<PropertyKey_1>;
 export {};
-//# sourceMappingURL=has.d.ts.map

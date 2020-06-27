@@ -40,4 +40,3 @@ sign_1.describe("isFunction", async ({ assert, inspect }) => {
         assert({ actual, expected, given, should });
     }
 });
-//# sourceMappingURL=isFunction.test.js.map

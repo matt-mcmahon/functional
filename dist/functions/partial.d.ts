@@ -10,4 +10,3 @@
  * @todo add support for Variadic Tuples in TypeScript 4
  */
 export declare const partial: <F extends Function>(f: F) => (...as: unknown[]) => any;
-//# sourceMappingURL=partial.d.ts.map

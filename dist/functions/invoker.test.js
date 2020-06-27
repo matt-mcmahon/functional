@@ -35,4 +35,3 @@ sign_1.describe("invoker", async ({ assert, inspect }) => {
         assert({ given, actual, expected, should });
     }
 });
-//# sourceMappingURL=invoker.test.js.map

@@ -26,4 +26,3 @@ const next = (prev, f) => {
     });
     return p;
 };
-//# sourceMappingURL=pipe.js.map

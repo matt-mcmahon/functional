@@ -24,4 +24,3 @@ const gather = (n, f, previous = []) => {
  * @todo add support for Variadic Tuples in TypeScript 4
  */
 exports.curryN = (n) => (f) => gather(n, f);
-//# sourceMappingURL=curryN.js.map

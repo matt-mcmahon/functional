@@ -22,4 +22,3 @@ sign_1.describe("init", async ({ assert, inspect }) => {
         assert({ given, actual, expected });
     }
 });
-//# sourceMappingURL=init.test.js.map

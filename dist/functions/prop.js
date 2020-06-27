@@ -11,4 +11,3 @@ exports.prop = void 0;
  *
  */
 exports.prop = (propertyKey) => (a) => a[propertyKey];
-//# sourceMappingURL=prop.js.map

@@ -17,4 +17,3 @@ exports.pipeV = void 0;
  * ```
  */
 exports.pipeV = (...as) => (f, ...fs) => fs.reduce((a, f) => f(a), f(...as));
-//# sourceMappingURL=pipeV.js.map

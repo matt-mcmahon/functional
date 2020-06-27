@@ -12,4 +12,3 @@ exports.toVariadic = void 0;
  *
  */
 exports.toVariadic = (u) => (...as) => u(as);
-//# sourceMappingURL=toVariadic.js.map

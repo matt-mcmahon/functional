@@ -11,4 +11,3 @@ sign_1.describe("tap", async ({ assert, inspect }) => {
     const should = inspect `return ${value}`;
     assert({ actual, expected, given, should });
 });
-//# sourceMappingURL=tap.test.js.map

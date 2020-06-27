@@ -18,4 +18,3 @@ sign_1.describe("trim", async ({ assert, inspect }) => {
         assert({ expected, actual, given });
     }
 });
-//# sourceMappingURL=trim.test.js.map
