@@ -1,4 +1,6 @@
-import { Key, Predicate } from "../types"
+type A<PropertyName extends string | symbol> = {
+  [P in PropertyName]: unknown
+}
 
 /**
  * ```
@@ -15,7 +17,9 @@ import { Key, Predicate } from "../types"
  * has('toString', {})  //=> false
  * ```
  *
- * @param {string|symbol} k the name or symbol of the property to check for
- * @param {object} a the object to check for ownership of the property
+ * @param {string|symbol|number} k the name or symbol of the property to check for
+ * @param {unknown} a the object to check for ownership of the property
  */
-export declare function has(k: Key, a: object): boolean
+export const has = <PropertyKey extends string | symbol>(k: PropertyKey) => (
+  a: unknown
+): a is A<PropertyKey> => Object.prototype.hasOwnProperty.call(a, k)
