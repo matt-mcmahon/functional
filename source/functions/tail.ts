@@ -7,4 +7,4 @@
  * Returns the portion of an array not including the first element.
  *
  */
-export declare function tail<A>(as: A[]): A[]
+export const tail = <A>(as: A[]) => as.slice(1)
