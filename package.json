@@ -25,23 +25,26 @@
     "learning"
   ],
   "license": "MIT",
+  "type": "commonjs",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/matt-mcmahon/functional.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "run-s build:clean build:development build:production",
+    "build:clean": "rm -rf ./build ./dist",
+    "build:development": "tsc",
+    "build:production": "tsc -p tsconfig.production.json",
+    "build:watch": "tsc --watch",
     "lint": "prettier --check source/**/*",
     "lint:fix": "prettier --write source/**/*",
-    "prepublishOnly": "run-s silent",
-    "preversion": "run-s silent",
-    "silent": "run-s lint build test:silent",
+    "prepublishOnly": "run-s test:silent build:production",
+    "preversion": "run-s test:silent",
     "test": "run-s lint build test:unit",
-    "test:silent": "tap --bail -R silent ./source/**/*.test.ts",
-    "test:unit": "tap -R spec ./source/**/*.test.ts",
-    "test:unit:watch": "tap -R spec --watch ./source/**/*.test.ts"
-  },
-  "type": "commonjs",
-  "types": "./dist/index.d.ts"
+    "test:silent": "tap --no-coverage --no-coverage-report --bail -R silent ./source/**/*.test.ts",
+    "test:unit:watch": "tap -R spec --watch ./source/**/*.test.ts",
+    "test:unit": "tap -R spec ./source/**/*.test.ts"
+  }
 }
