@@ -1,1 +1,0 @@
-export { uncurry } from "./uncurry"
