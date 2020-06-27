@@ -1,4 +1,3 @@
-import { Predicate } from "../types"
 /**
  * ```
  * isNil :: a => boolean
@@ -8,9 +7,10 @@ import { Predicate } from "../types"
  * `false` otherwise. For example
  *
  * ```
- * isNil(null)      <=> true
- * isNil(undefined) <=> true
- * isNil(0)         <=> false
+ * isNil(null)      => true
+ * isNil(undefined) => true
+ * isNil(0)         => false
  * ```
  */
-export declare function isNil<A>(a: A): boolean
+export const isNil = (a: unknown): a is null | undefined =>
+  a === null || a === undefined
