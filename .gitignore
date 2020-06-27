@@ -1,3 +1,6 @@
+# Build Test Artificats
+dist/**/*.test.*
+
 # Logs
 logs
 *.log
