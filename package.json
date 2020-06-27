@@ -33,8 +33,8 @@
     "url": "https://github.com/matt-mcmahon/functional.git"
   },
   "scripts": {
-    "build": "run-s build:clean build:development build:production",
-    "build:clean": "rm -rf ./build ./dist",
+    "build": "run-s build:development",
+    "build:clean": "rm -rf ./build ./dist ./.nyc_output",
     "build:development": "tsc",
     "build:production": "tsc -p tsconfig.production.json",
     "build:watch": "tsc --watch",
