@@ -1,4 +1,3 @@
-import { Variadic } from "../types"
 /**
  * ```
  * iife :: (...as => b, ...as) => b
@@ -8,4 +7,4 @@ import { Variadic } from "../types"
  * returning the result, if any.
  *
  */
-export declare function iife<A, B>(invoke: Variadic<A[], B>, ...args: A[]): B
+export const iife = <F extends Function>(f: F, ...as: unknown[]) => f(...as)
