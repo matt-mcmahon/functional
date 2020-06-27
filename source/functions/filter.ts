@@ -1,5 +1,3 @@
-import { Predicate, Iterable, Mappable } from "../types"
-
 /**
  * ```
  * filter :: (a => Boolean) => as => as
@@ -9,4 +7,4 @@ import { Predicate, Iterable, Mappable } from "../types"
  * _true_.
  *
  */
-export declare function filter<T>(predicate: Predicate<T>, list: T[]): T[]
+export const filter = <A>(p: (a: A) => boolean) => (as: A[]) => as.filter(p)
