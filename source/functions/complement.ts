@@ -1,5 +1,3 @@
-import { Predicate } from "../types"
-
 /**
  * ```
  * complement :: (a => Boolean) => a => Boolean
@@ -17,6 +15,5 @@ import { Predicate } from "../types"
  * isNotFunction('value') => true
  * ```
  */
-export declare function complement<T>(
-  predicate: Predicate<T>
-): (value: T) => boolean
+export const complement = <A>(predicate: (a: A) => boolean) => (a: A) =>
+  !predicate(a)
