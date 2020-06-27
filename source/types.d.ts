@@ -1,41 +1,64 @@
+export interface Compose<B, A> {
+  (b: B): A;
+  from: <C>(f: (c: C) => B) => Compose<C, A>;
+  call(a: A): B;
+}
+
+export interface Pipe<A, B> {
+  (a: A): B;
+  then: <C>(f: (b: B) => C) => Pipe<A, C>;
+  call(a: A): B;
+}
+
+export type Something =
+  | bigint
+  | boolean
+  | Function
+  | number
+  | object
+  | string
+  | symbol;
+
+export type Mapper<A, B> = (a: A) => B;
+
 /**
  * A unary function that returns either `true` or `false`.
  */
 export interface Predicate<T> extends Unary<T, boolean> {
-  (value: T): boolean
+  (value: T): boolean;
 }
 
 /**
  * Function that operates on any arguments in context of `this`.
  */
 export interface Method {
-  (...args: any[]): any
+  (...args: unknown[]): unknown;
 }
 
 /**
  * A valid property name for an object.
  */
-export type Key = string | symbol
+export type Key = string | symbol;
 
 /**
  * A function that does not accept any arguments.
  */
 export interface Nullary<T> {
-  (): T
+  (): T;
 }
 
 /**
  * A function that accepts exactly one argument.
  */
 export interface Unary<T, U> {
-  (value: T): U
+  (value: T): U;
 }
 
 /**
  * A function that accepts exactly two arguments.
  */
 export interface Binary<T, U, V> {
-  (firstValue: T, secondValue: U): V
+  (firstValue: T, secondValue: U): V;
 }
 
 /**
@@ -45,8 +68,8 @@ export interface Binary<T, U, V> {
  * -----------------------------------------------------------------------------
  * A function that accepts many arguments and returns a value.
  */
-export interface Variadic<T, U> {
-  (...values: T[]): U
+export interface Variadic<T extends unknown, U> {
+  (...values: T[]): U;
 }
 
 /**
@@ -54,15 +77,15 @@ export interface Variadic<T, U> {
  * an accumulator.
  */
 export interface Reducer<T, U, V> extends Binary<T, U, V> {
-  (accumulator: T, value: U): V
+  (accumulator: T, value: U): V;
 }
 
 export interface Iterable<T> {
-  [Symbol.iterator]: { next: () => { done: boolean; value: T } }
+  [Symbol.iterator]: { next: () => { done: boolean; value: T } };
 }
 
 export interface OrderedList<T> extends Iterable<T> {
-  [n: number]: T
+  [n: number]: T;
 }
 
 /**
@@ -74,7 +97,7 @@ export interface OrderedList<T> extends Iterable<T> {
  * function.
  */
 export interface Curried<T, U> extends Unary<T, U> {
-  (argument: any): Curried<T, U> | U
+  (argument: unknown): Curried<T, U> | U;
 }
 
 /**
@@ -87,6 +110,6 @@ export interface Curried<T, U> extends Unary<T, U> {
  * returns a new __Mappable__.
  *
  */
-export declare interface Mappable<A> {
-  map<B>(mapping: (a: A) => B): Mappable<B>
+export interface Mappable<A> {
+  map: <B>(f: Mapper<A, B>) => Mappable<B>;
 }
