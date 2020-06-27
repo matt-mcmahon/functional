@@ -1,4 +1,3 @@
-import { Predicate } from "../types"
 /**
  * ```
  * isFunction :: a => boolean
@@ -16,4 +15,4 @@ import { Predicate } from "../types"
  * isFUnction(object.method())  //> false
  * ```
  */
-export declare const isFunction: Predicate<Function>
+export const isFunction = (a: unknown): a is Function => typeof a === "function"
