@@ -1,5 +1,3 @@
-import { Variadic, Unary } from "../types"
-
 /**
  * ```
  * toUnary :: (...as => b) => as => b
@@ -10,4 +8,8 @@ import { Variadic, Unary } from "../types"
  * that accepts a single array as its argument instead.
  *
  */
-export declare function toUnary<A, B>(variadic: (...as: A[]) => B, as: A[]): B
+export function toUnary<AS extends unknown[], B>(
+  v: (...as: AS) => B
+): (as: AS) => B {
+  return (as: AS) => v(...as)
+}
