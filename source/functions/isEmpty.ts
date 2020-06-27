@@ -9,7 +9,11 @@
  * ```
  * isEmpty("") //> true
  * isEmpty([]) //> true
+ * isEmpty({}) //> true
  * isEmpty(0)  //> false
  * ```
  */
-export declare function isEmpty<A>(a: A): boolean
+export const isEmpty = (a: unknown) =>
+  (Array.isArray(a) && a.length === 0) ||
+  (typeof a === "string" && a.length === 0) ||
+  (typeof a === "object" && a !== null && Object.keys(a).length === 0)
