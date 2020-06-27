@@ -1,5 +1,3 @@
-import { OrderedList } from "../types"
-
 /**
  * ```
  * slice->beginning :: n => m => as => as
@@ -16,8 +14,5 @@ import { OrderedList } from "../types"
  * slice(1)(4)(as) <=> as.slice(1, 4) <=> [1, 2, 3]
  * ```
  */
-export declare function slice<T>(
-  n: number,
-  m: number,
-  as: OrderedList<T>
-): OrderedList<T>
+export const slice = (n?: number) => (m?: number) => <A>(as: Iterable<A>) =>
+  Array.from(as).slice(n, m)
