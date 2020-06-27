@@ -7,4 +7,4 @@
  * Performs a shallow merge of two objects.
  *
  */
-export declare function merge<A, B, C>(a: A, b: B): C
+export const merge = <A>(a: A) => <B>(b: B): A & B => Object.assign({}, a, b)
