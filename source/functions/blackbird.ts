@@ -1,9 +1,6 @@
-import { Variadic, Binary, Unary } from "../types"
 /**
  * ```
- * blackbird  :: converging => ...parts => a => c
- * converging :: (b¹, b²,..., bⁿ) => c
- * parts      :: a => b¹, a => b², ..., a => bⁿ
+ * blackbird :: ((b¹, b², ..., bⁿ) => c) => (a => b¹, a => b², ..., a => bⁿ) => a => c
  * ```
  * -----------------------------------------------------------------------------
  * The __blackbird__ _Combinator_ takes a __converging__ _function_ that
@@ -23,8 +20,12 @@ import { Variadic, Binary, Unary } from "../types"
  * //> 0 + 4 + 9
  * //> 13
  * ```
+ *
+ * @todo add support for Variadic Tuples in TypeScript 4
  */
-export declare function blackbird<A, B, C>(
-  converging: Variadic<B[], C>,
-  ...parts: Unary<A, B>[]
-): (a: A) => C
+export const blackbird = <B extends unknown, C>(
+  converging: (...bs: any[]) => C
+) => <A>(...parts: ((a: A) => unknown)[]) => (a: A) => {
+  const bs = parts.map((part: Function) => part(a))
+  return converging(...bs) as C
+}
