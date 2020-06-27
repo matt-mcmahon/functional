@@ -1,5 +1,5 @@
-# Build Test Artificats
-dist/**/*.test.*
+# Build Artificats
+build
 
 # Logs
 logs
