@@ -12,4 +12,4 @@
  * ```
  *
  */
-export declare function trim(string: string): string
+export const trim = (s: string) => s.trim()
