@@ -7,4 +7,4 @@
  * Returns all but the last element in an array.
  *
  */
-export declare function init(as: any[]): any[]
+export const init = <A>(as: A[]) => as.slice(0, as.length - 1)
