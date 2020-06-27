@@ -4,6 +4,6 @@
  * ```
  * -----------------------------------------------------------------------------
  *
- * Creates a function that always returns _value_, ignoring any arguments.
+ * Creates a function that always returns _a_, ignoring any arguments.
  */
-export declare function always<A>(returns: A): () => A
+export const always = <A>(a: A) => (...bs: unknown[]) => a
