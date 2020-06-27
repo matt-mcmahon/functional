@@ -8,4 +8,6 @@
  * that accepts any number of arguments instead.
  *
  */
-export declare function toVariadic<A, B>(f: (as: A[]) => B, ...as: A[]): B
+export const toVariadic = <AS extends unknown[], B>(u: (as: AS) => B) => (
+  ...as: AS
+) => u(as)
