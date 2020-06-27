@@ -7,12 +7,9 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Current File",
       "program": "${file}",
-      "runtimeArgs": [
-        "-r",
-        "esm"
-      ],
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
       "outputCapture": "std"
     }
   ]
