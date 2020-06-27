@@ -13,4 +13,4 @@
  * [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Logical_NOT_(!)
  *
  */
-export declare function not<A>(a: A): boolean
+export const not = (a: unknown) => !a
