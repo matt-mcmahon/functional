@@ -1,18 +1,16 @@
 /**
  * ```
- * partial :: (a¹, a², …, aⁿ => b) => (a¹, …) => ... => (…, aⁿ) => b
+ * partial :: (a¹, …, aᵐ) => ((a¹, …, aⁿ, b¹, …, bⁿ) => c) => (b¹, …, bⁿ) => c
  * ```
  * -----------------------------------------------------------------------------
  *
- * Creates a version of the supplied _n_-ary function that can be be partially
- * applied.
- *
- * @todo add support for Variadic Tuples in TypeScript 4
+ * Accepts _m_-number of arguments, **a**. Then accepts a function, **f**, of
+ * the form `(a¹, …, aⁿ, b¹, …, bⁿ) => c`. Then accepts the remaining _n_-number
+ * of arguments, __b__, and applies them to __f__, as in
+ * `f(a¹, …, aⁿ, b¹, …, bⁿ) => c`.
  */
-export const partial = <F extends Function>(f: F) =>
-  function g(...as: unknown[]) {
-    const signatures = [{ [`${f.name}${as.length} :: ...as => b`]: Infinity }]
-    return as.length < f.length
-      ? (...bs: unknown[]) => g(...as, ...bs)
-      : f(...as)
-  }
+export const partial = <AS extends Args>(...as: AS) => <BS extends Args, C>(
+  f: (...args: [...AS, ...BS]) => C
+) => (...bs: BS) => f(...as, ...bs)
+
+export type Args = readonly unknown[]

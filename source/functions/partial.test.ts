@@ -13,7 +13,7 @@ describe("partial", async ({ assert, inspect }) => {
   }
 
   const [a, b, c, d] = ["a", "b", "c", "d"]
-  const f_AB = partial(f)(a, b)
+  const f_AB = partial(a, b)(f)
 
   const given = inspect`(${a}, ${b}, c, d) => ${a} + ${b} + c + d`
 
@@ -31,7 +31,7 @@ describe("partial", async ({ assert, inspect }) => {
   }
 
   {
-    const f_ABC = partial(f_AB)(c)
+    const f_ABC = partial(c)(f_AB)
     const actual = f_ABC(d)
     const expected = a + b + c + d
     const given = inspect`two partial applications, ([${a}, ${b}]), ([${c}])`
