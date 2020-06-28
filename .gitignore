@@ -1,6 +1,11 @@
 # Build Artificats
 build
 
+# Deno Files
+# .deno/gen
+# .deno/**/*.metadata.json
+.deno
+
 # Logs
 logs
 *.log
