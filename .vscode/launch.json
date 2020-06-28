@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Current File",
       "program": "${file}",
-      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "outFiles": ["${workspaceFolder}/build/**/*.js"],
       "outputCapture": "std"
     }
   ]
