@@ -45,7 +45,7 @@
     "test": "run-s lint build test:build",
     "test:build": "tap -R spec ./build/**/*.test.js",
     "test:silent": "tap --no-coverage --no-coverage-report --bail -R silent ./source/**/*.test.ts",
-    "test:source:watch": "tap -R spec --watch ./source/**/*.test.ts",
+    "test:source:watch": "tap -R spec --watch --no-coverage-report ./source/**/*.test.ts",
     "test:source": "tap -R spec ./source/**/*.test.ts"
   }
 }
