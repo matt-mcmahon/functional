@@ -1,4 +1,8 @@
-import { Compose } from "../types"
+export interface Compose<B, A> {
+  (b: B): A
+  from: <C>(f: (c: C) => B) => Compose<C, A>
+  call(a: A): B
+}
 
 const last = <B, A>(f: (b: B) => A): Compose<B, A> => {
   function call(b: B): A {

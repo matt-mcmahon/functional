@@ -1,4 +1,8 @@
-import { Pipe } from "../types"
+export interface Pipe<A, B> {
+  (a: A): B
+  then: <C>(f: (b: B) => C) => Pipe<A, C>
+  call(a: A): B
+}
 
 const first = <A, B>(f: (a: A) => B): Pipe<A, B> => {
   function call(a: A) {
