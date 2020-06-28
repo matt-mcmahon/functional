@@ -115,11 +115,10 @@ describe("clone, recursive", async ({ assert, inspect }) => {
     should: `clone should be a new object`,
   })
 
-  //@todo deno doesn't appear to use recursion safe deep equal check
-  // assert({
-  //   actual: copy,
-  //   expected: original,
-  //   given: `recursive structure`,
-  //   should: `clone`,
-  // });
+  assert({
+    actual: copy,
+    expected: original,
+    given: `recursive structure`,
+    should: `clone`,
+  })
 })
