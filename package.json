@@ -14,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "DISABLED pre-commit": "npm run silent"
+      "pre-commit": "run-s test:silent"
     }
   },
   "keywords": [
