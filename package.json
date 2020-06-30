@@ -10,7 +10,6 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
     "tap": "^14.10.7",
-    "tap-nirvana": "^1.1.0",
     "typescript": "^4.0.0-beta"
   },
   "husky": {
