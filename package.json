@@ -43,9 +43,9 @@
     "prepublishOnly": "run-s test:silent build:production",
     "preversion": "run-s test:silent",
     "test": "run-s lint build test:build",
-    "test:build": "tap -R spec ./build/**/*.test.js",
-    "test:silent": "tap --no-coverage --no-coverage-report --bail -R silent ./source/**/*.test.ts",
-    "test:source:watch": "tap -R spec --watch --no-coverage-report ./source/**/*.test.ts",
-    "test:source": "tap -R spec ./source/**/*.test.ts"
+    "test:build": "tap --bail ./build/**/*.test.js",
+    "test:silent": "tap --bail --no-coverage --no-coverage-report -R silent ./source/**/*.test.ts",
+    "test:source:watch": "tap --watch --no-coverage-report ./source/**/*.test.ts",
+    "test:source": "tap --bail ./source/**/*.test.ts"
   }
 }
