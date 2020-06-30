@@ -1,6 +1,6 @@
 {
   "name": "@mwm/functional",
-  "version": "5.3.0",
+  "version": "6.0.0",
   "author": "Matt McMahon <contact@matt-mcmahon.com> (http://matt-mcmahon.com/)",
   "description": "Extremely minimal functional library with a focus on source-code clarity.",
   "devDependencies": {
