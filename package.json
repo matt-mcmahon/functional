@@ -14,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "run-s test:silent"
+      "pre-commit": "run-s lint:cached test:silent"
     }
   },
   "keywords": [
@@ -39,6 +39,7 @@
     "build:watch": "tsc --watch",
     "lint": "prettier --check source/**/*",
     "lint:fix": "prettier --write source/**/*",
+    "lint:cached": "prettier --check $(git diff --name-only --cached)",
     "prepublishOnly": "run-s test:silent build:production",
     "preversion": "run-s test:silent",
     "test": "run-s lint build test:build",
