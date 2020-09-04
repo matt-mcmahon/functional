@@ -14,15 +14,28 @@ describe("fluent pipe", ({ assert, inspect }) => {
 
   const value = 12345
 
-  const values = [
-    [p1(12345), 24690, inspect`p1(${value})`],
-    [p2(12345), "24690", inspect`p2(${value})`],
-    [p3.invoke(12345), ["2", "4", "6", "9", "0"], inspect`p3(${value})`],
-    [p4(12345), "2-4-6-9-0", inspect`p4(${value})`],
-  ]
+  assert({
+    actual: p1(12345),
+    expected: 24690,
+    given: inspect`p1(${value})`,
+  })
 
-  values.forEach(([actual, expected, given]) => {
-    assert({ actual, expected, given })
+  assert({
+    actual: p2(12345),
+    expected: "24690",
+    given: inspect`p2(${value})`,
+  })
+
+  assert({
+    actual: p3.invoke(12345),
+    expected: ["2", "4", "6", "9", "0"],
+    given: inspect`p3(${value})`,
+  })
+
+  assert({
+    actual: p4(12345),
+    expected: "2-4-6-9-0",
+    given: inspect`p4(${value})`,
   })
 
   assert({
