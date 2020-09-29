@@ -15,5 +15,6 @@
  * isNotFunction('value') => true
  * ```
  */
-export const complement = <A>(predicate: (a: A) => boolean) => (a: A) =>
-  !predicate(a)
+export const complement = <A>(predicate: (a: A) => boolean) => (
+  a: A
+): boolean => !predicate(a)
