@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-types -- WeakMap needs an object type */
+
 import { isArray, isDate, isObject, isDefined } from "../functions"
 
 function cloneObject<A extends object>(a: A, map: WeakMap<object, unknown>): A {
@@ -24,7 +26,7 @@ function cloneArray<A extends unknown[]>(
   if (map.has(a)) {
     return map.get(a) as A
   } else {
-    let clone: unknown[] = []
+    const clone: unknown[] = []
     map.set(a, clone)
     return a.reduce((clone: unknown[], v: unknown) => {
       clone.push(cloneUnknown(v, map))
