@@ -11,4 +11,4 @@
  */
 export const either = <A, B>(mapAB: (a: A) => B) => <C>(mapAC: (a: A) => C) => (
   a: A
-) => mapAB(a) || mapAC(a)
+): B | C => mapAB(a) || mapAC(a)
