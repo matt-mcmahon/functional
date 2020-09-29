@@ -5,7 +5,9 @@
  * -----------------------------------------------------------------------------
  * Creates a new _Function_ that binds a __method__ to a __context__.
  *
- * @param method a function that depends on a dynamic `this` context
- * @param object the method's context
+ * @param m - a function that depends on a dynamic `this` context
+ * @param o - the method's context
  */
-export const bind = <F extends Function>(m: F) => <B>(b: B): F => m.bind(b)
+export const bind = <M extends CallableFunction>(m: M) => (
+  b: ThisParameterType<M>
+): OmitThisParameter<M> => m.bind(b)
