@@ -1,4 +1,4 @@
-import { GetLast, Pipe } from "../types"
+import { Last, Pipe } from "../types"
 
 const fluent = <A, B>(f: (a: A) => B): Pipe<A, B> => {
   function invoke(a: A) {
@@ -69,9 +69,10 @@ const next = <A, B, C>(prev: Pipe<A, B>, f: (b: B) => C): Pipe<A, C> => {
  * ```
  */
 export const pipe = Object.assign(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   <FS extends ((x: any) => any)[]>(...fs: FS) => {
     type A = Parameters<FS[0]>[0]
-    type B = ReturnType<GetLast<FS>>
+    type B = ReturnType<Last<FS>>
 
     return (a: A): B => fs.reduce((v, f) => f(v), a) as B
   },

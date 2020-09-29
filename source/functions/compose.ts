@@ -1,4 +1,4 @@
-import { Compose, GetLast } from "../types"
+import { Compose, Last } from "../types"
 
 const fluent = <B, A>(f: (b: B) => A): Compose<B, A> => {
   function call(b: B): A {
@@ -75,8 +75,9 @@ const after = <C, B, A>(next: Compose<B, A>, f: (c: C) => B) => {
  * ```
  */
 export const compose = Object.assign(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   <FS extends ((x: any) => any)[]>(...fs: FS) => {
-    type A = Parameters<GetLast<FS>>[0]
+    type A = Parameters<Last<FS>>[0]
     type B = ReturnType<FS[0]>
 
     return (a: A): B => fs.reduceRight((v, f) => f(v), a) as B
