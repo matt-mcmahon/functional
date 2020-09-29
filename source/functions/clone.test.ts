@@ -43,7 +43,7 @@ describe("clone, deep", async ({ assert, inspect }) => {
   assert({ actual: copy, expected: { foo: "foo", bar: { baz: "BAZ" } } })
 })
 
-describe("clone, undefined", async ({ assert, inspect }) => {
+describe("clone, undefined", async ({ assert }) => {
   const value = undefined
   const original: { foo: string; bar?: string } = { foo: "foo" }
   const copy = clone(original)
@@ -53,7 +53,7 @@ describe("clone, undefined", async ({ assert, inspect }) => {
   assert({ actual: copy, expected: { foo: "foo", bar: "bar" } })
 })
 
-describe("clone, null", async ({ assert, inspect }) => {
+describe("clone, null", async ({ assert }) => {
   const value = null
   const original: { foo: string; bar: string | null } = {
     foo: "foo",
