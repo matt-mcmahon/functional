@@ -27,8 +27,8 @@ describe("both", async ({ assert, inspect }) => {
   })
 
   try {
-    const first = (v: unknown) => false
-    const second = (v: unknown) => {
+    const first = () => false
+    const second = () => {
       throw new Error("both should never execute me")
     }
     both(first)(second)(true)
