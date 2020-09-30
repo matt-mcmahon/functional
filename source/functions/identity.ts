@@ -7,4 +7,4 @@
  * Returns it's argument, unmodified.
  *
  */
-export const identity = <A>(a: A) => a
+export const identity = <A>(a: A): A => a
