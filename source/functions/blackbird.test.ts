@@ -3,14 +3,12 @@ import { blackbird } from "./blackbird"
 
 describe("blackbird", async ({ assert, inspect }) => {
   // the converging function:
-  const converge = (a: string, b: string, c: number) => {
-    return inspect`(${a}, ${b}, ${c})`
-  }
+  const converge = (a: string, b: string, c: number) => `("${a}", "${b}", ${c})`
 
   {
     const actual = converge("HELLO", "hello", 5)
     const expected = `("HELLO", "hello", 5)`
-    const given = inspect`converging function`
+    const given = inspect`converge(${"HELLO"}, ${"hello"}, ${5})`
     assert({ given, actual, expected })
   }
 
