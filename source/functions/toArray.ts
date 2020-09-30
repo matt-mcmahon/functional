@@ -8,4 +8,5 @@
  * that accepts any number of arguments instead.
  *
  */
-export const toArray = <A>(as: Iterable<A> | ArrayLike<A>) => Array.from(as)
+export const toArray = <A>(as: Iterable<A> | ArrayLike<A>): A[] =>
+  Array.from(as)
