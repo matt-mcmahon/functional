@@ -12,4 +12,4 @@
  * ```
  *
  */
-export const trim = (s: string) => s.trim()
+export const trim = (s: string): string => s.trim()
