@@ -23,7 +23,7 @@ describe("is-array", async ({ assert, inspect }) => {
 })
 
 // These tests won't compile unless isDefined has the  `: a is ...` type guard
-describe("is-array, type guard", async ({ assert, inspect }) => {
+describe("is-array, type guard", async ({ assert }) => {
   const f = (value: unknown) => (isArray(value) ? "array" : "error")
 
   {
