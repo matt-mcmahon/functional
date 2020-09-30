@@ -3,8 +3,8 @@ import { tail } from "./tail"
 
 describe("tail", async ({ assert, inspect }) => {
   {
-    const arg = ["a", "b", "c"] as const
-    const expected = ["b", "c"] as const
+    const arg = ["a", "b", "c"]
+    const expected = ["b", "c"]
     const actual = tail(arg)
     const given = inspect`tail(${arg})`
     const should = inspect`${expected}`
@@ -12,8 +12,8 @@ describe("tail", async ({ assert, inspect }) => {
   }
 
   {
-    const arg = ["a"] as const
-    const expected = [] as const
+    const arg = ["a"]
+    const expected: string[] = []
     const actual = tail(arg)
     const given = inspect`tail(${arg})`
     const should = inspect`${expected}`
@@ -21,9 +21,8 @@ describe("tail", async ({ assert, inspect }) => {
   }
 
   {
-    const arg = [] as const
-    const expected = [] as const
-    //@ts-ignore
+    const arg: string[] = []
+    const expected: string[] = []
     const actual = tail(arg)
     const given = inspect`tail(${arg})`
     const should = inspect`${expected}`
@@ -31,8 +30,17 @@ describe("tail", async ({ assert, inspect }) => {
   }
 
   {
-    const arg = [["a", "b", "c"]] as const
-    const expected = [] as const
+    const arg: Array<string[]> = [["a", "b", "c"]]
+    const expected: Array<string[]> = []
+    const actual = tail(arg)
+    const given = inspect`tail(${arg})`
+    const should = inspect`${expected}`
+    assert({ actual, expected, given, should })
+  }
+
+  {
+    const arg = ["a", 1, "c"]
+    const expected = [1, "c"]
     const actual = tail(arg)
     const given = inspect`tail(${arg})`
     const should = inspect`${expected}`
