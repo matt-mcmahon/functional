@@ -35,6 +35,7 @@ Programming is hard work, and I can't thank the open-source community enough for
 ## Special Thanks To:
 
 - [Tim Davis][5], `clone` was based heavily on his [deep-clone][4] implementation.
+- [Pierre-Antoine Mills][11], for his [How to master advanced TypeScript patterns][9] article on [freeCodeCamp][10] and [ts-toolbelt][12] library. His step-by-step guide on advanced TypeScript types is invaluable.
 
 [1]: http://matthewcodes.com/
 [2]: https://github.com/matt-mcmahon
@@ -44,3 +45,7 @@ Programming is hard work, and I can't thank the open-source community enough for
 [6]: https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0
 [7]: https://github.com/lodash/lodash/wiki/FP-Guide
 [8]: https://ramdajs.com/
+[9]: https://www.freecodecamp.org/news/typescript-curry-ramda-types-f747e99744ab/
+[10]: https://www.freecodecamp.org/
+[11]: https://github.com/millsp
+[12]: https://github.com/millsp/ts-toolbelt
