@@ -21,7 +21,6 @@ describe("to-variadic", ({ assert, inspect }) => {
       return `${s} is ${f(...ns)}`
     }
     const variadic = toVariadic(unary)
-    const values = ["min", Math.min, 3, 2, 1]
     const actual = variadic("min", Math.min, 3, 2, 1)
     const expected = "min is 1"
     const given = inspect`vf(${"min"}, ${Math.min}, ${3}, ...)`
