@@ -13,7 +13,7 @@
  * isEmpty(0)  //> false
  * ```
  */
-export const isEmpty = (a: unknown) =>
+export const isEmpty = (a: unknown): boolean =>
   (Array.isArray(a) && a.length === 0) ||
   (typeof a === "string" && a.length === 0) ||
   (typeof a === "object" && a !== null && Object.keys(a).length === 0)
