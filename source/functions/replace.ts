@@ -16,4 +16,4 @@
  */
 export const replace = (searchValue: string | RegExp) => (
   replaceValue: string
-) => (within: string) => within.replace(searchValue, replaceValue)
+) => (within: string): string => within.replace(searchValue, replaceValue)
