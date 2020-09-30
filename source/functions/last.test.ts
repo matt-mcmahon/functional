@@ -11,6 +11,14 @@ describe("last", async ({ assert, inspect }) => {
   }
 
   {
+    const value = ["a", 1, "c"]
+    const expected = "c"
+    const actual = last(value)
+    const given = inspect`mixed array ${value}`
+    assert({ given, actual, expected })
+  }
+
+  {
     const value: string[] = []
     const expected = undefined
     const actual = last(value)
