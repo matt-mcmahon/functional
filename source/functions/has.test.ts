@@ -91,7 +91,6 @@ describe("has", ({ assert, inspect }) => {
 })
 
 describe("has, type guard", async ({ assert, inspect }) => {
-  type A = { a: string }
   const hasA = has("a")
   {
     const empty = {}
