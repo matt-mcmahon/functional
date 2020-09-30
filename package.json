@@ -40,6 +40,7 @@
     "build:development": "tsc",
     "build:production": "rm -rf ./dist && tsc -p tsconfig.production.json",
     "build:watch": "tsc --watch",
+    "clean": "run-s build:clean",
     "lint": "prettier --check source/**/*",
     "lint:fix": "prettier --write source/**/*",
     "lint:cached": "prettier --check $(git diff --name-only --cached)",
