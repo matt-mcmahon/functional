@@ -25,7 +25,7 @@ describe("is-string", async ({ assert, inspect }) => {
   data.forEach(test)
 })
 
-describe("is-string: string-like object", async ({ assert, inspect }) => {
+describe("is-string: string-like object", async ({ assert }) => {
   const value = {
     valueOf: () => "fake v",
     toString: () => "fake s",
