@@ -1,7 +1,7 @@
 import { describe } from "@mwm/sign"
 import { slice } from "./slice"
 
-describe("slice", async ({ assert, inspect }) => {
+describe("slice", async ({ assert }) => {
   test(["a", "b", "c", "d", "e"], ["a", "b", "c", "d", "e"])
   test("abcde", ["a", "b", "c", "d", "e"])
   test(
