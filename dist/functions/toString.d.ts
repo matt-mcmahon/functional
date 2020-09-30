@@ -4,8 +4,7 @@
  * ```
  * -----------------------------------------------------------------------------
  *
- * Takes a _Unary_ function that accepts an array as its argument, and returns
- * that accepts any number of arguments instead.
+ * Takes any JavaScript value and returns a string version of that value.
  *
  */
-export declare const toString: <B>(a: unknown) => string;
+export declare const toString: (a: unknown) => string;

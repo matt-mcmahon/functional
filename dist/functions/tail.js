@@ -10,4 +10,4 @@ exports.tail = void 0;
  * Returns the portion of an array not including the first element.
  *
  */
-exports.tail = (as) => as.slice(1);
+exports.tail = ([, ...as]) => as;

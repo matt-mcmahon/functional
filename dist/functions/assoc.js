@@ -4,19 +4,18 @@ exports.assoc = void 0;
 const functions_1 = require("../functions");
 /**
  * ```
- * assoc = (k, i?) => a => b => {...b, [k]:a}
+ * assoc = k => b => a => {...a, k:b}
  * ```
  * -----------------------------------------------------------------------------
  *
- * Clones the object __b__, associating the key, __k__, with value, __b__.
- * Accepts an optional type-instance example, __i__, which is used to infer
- * typings for the final object.
+ * Clones the object __a__, associating the key, __k__, with value, __b__.
  *
  * For example:
  *
  * ```
- * b[k] = a <=> assoc(k, a, b).
+ * a[k] = b <=> assoc(k)(b)(a).
  * ```
  *
  */
-exports.assoc = (key, i) => (b) => (a) => Object.assign(functions_1.clone(a), { [key]: b });
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+exports.assoc = (k) => (b) => (a) => Object.assign(functions_1.clone(a), { [k]: b });

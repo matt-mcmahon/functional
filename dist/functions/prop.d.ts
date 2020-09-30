@@ -1,17 +1,17 @@
 /**
- * type `A` ensures that our object contains the property PropertyName
- */
-declare type A<B, PropertyName extends string> = {
-    [P in PropertyName]: B;
-};
-/**
  * ```
- * prop :: k => a.k => b
+ * prop :: k => { k: b } => b
  * ```
  * -----------------------------------------------------------------------------
  *
- * Returns the value of the given _property_ for the object.
+ * Returns the value, __`b`__, of the given property key, __`k`__, for any
+ * object __`{ k: b }`__.
  *
+ * ```
+ * const obj = {
+ *   foo: "FOO"
+ * };
+ * obj.foo <=> prop("foo")(obj) <=> "FOO"
+ * ```
  */
-export declare const prop: <B, PropertyKey_1 extends string>(propertyKey: PropertyKey_1) => (a: A<B, PropertyKey_1>) => A<B, PropertyKey_1>[PropertyKey_1];
-export {};
+export declare const prop: <K extends string | number | symbol>(k: K) => <B>(a: { [P in K]: B; }) => B;

@@ -3,11 +3,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.prop = void 0;
 /**
  * ```
- * prop :: k => a.k => b
+ * prop :: k => { k: b } => b
  * ```
  * -----------------------------------------------------------------------------
  *
- * Returns the value of the given _property_ for the object.
+ * Returns the value, __`b`__, of the given property key, __`k`__, for any
+ * object __`{ k: b }`__.
  *
+ * ```
+ * const obj = {
+ *   foo: "FOO"
+ * };
+ * obj.foo <=> prop("foo")(obj) <=> "FOO"
+ * ```
  */
-exports.prop = (propertyKey) => (a) => a[propertyKey];
+exports.prop = (k) => (a) => a[k];

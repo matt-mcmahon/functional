@@ -7,8 +7,7 @@ exports.toString = void 0;
  * ```
  * -----------------------------------------------------------------------------
  *
- * Takes a _Unary_ function that accepts an array as its argument, and returns
- * that accepts any number of arguments instead.
+ * Takes any JavaScript value and returns a string version of that value.
  *
  */
 exports.toString = (a) => `${a}`;

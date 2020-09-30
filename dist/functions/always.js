@@ -9,4 +9,5 @@ exports.always = void 0;
  *
  * Creates a function that always returns _a_, ignoring any arguments.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 exports.always = (a) => (...bs) => a;

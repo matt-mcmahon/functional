@@ -3,18 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.partial = void 0;
 /**
  * ```
- * partial :: (a¹, a², …, aⁿ => b) => (a¹, …) => ... => (…, aⁿ) => b
+ * partial :: (a¹, …, aᵐ) => ((a¹, …, aⁿ, b¹, …, bⁿ) => c) => (b¹, …, bⁿ) => c
  * ```
  * -----------------------------------------------------------------------------
  *
- * Creates a version of the supplied _n_-ary function that can be be partially
- * applied.
- *
- * @todo add support for Variadic Tuples in TypeScript 4
+ * Accepts _m_-number of arguments, **a**. Then accepts a function, **f**, of
+ * the form `(a¹, …, aⁿ, b¹, …, bⁿ) => c`. Then accepts the remaining _n_-number
+ * of arguments, __b__, and applies them to __f__, as in
+ * `f(a¹, …, aⁿ, b¹, …, bⁿ) => c`.
  */
-exports.partial = (f) => function g(...as) {
-    const signatures = [{ [`${f.name}${as.length} :: ...as => b`]: Infinity }];
-    return as.length < f.length
-        ? (...bs) => g(...as, ...bs)
-        : f(...as);
-};
+exports.partial = (...as) => (f) => (...bs) => f(...as, ...bs);

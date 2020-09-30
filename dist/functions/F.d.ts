@@ -7,4 +7,4 @@
  * __F__ ignores any arguments passed to it and returns `false`.
  *
  */
-export declare const F: (...ignored: unknown[]) => boolean;
+export declare const F: (...ignored: unknown[]) => false;

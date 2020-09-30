@@ -7,4 +7,4 @@
  * returning the result, if any.
  *
  */
-export declare const iife: <F extends Function>(f: F, ...as: unknown[]) => any;
+export declare const iife: <AS extends unknown[], B>(f: (...as: AS) => B, ...as: AS) => B;

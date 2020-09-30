@@ -21,10 +21,7 @@ exports.concat = void 0;
  * const bs = ["b", { bar: "baz" } ]
  * concat<unknown>(as)(bs) <=> ["a", 1, { foo: "bar" }, "b", { bar: "baz" } ]
  * ```
- *
- * @todo better types with Variadic Tuples in TypeScript 4
  */
-exports.concat = (as) => (bs) => [
-    ...as,
-    ...bs,
-];
+exports.concat = (as //
+) => (bs //
+) => [...as, ...bs];

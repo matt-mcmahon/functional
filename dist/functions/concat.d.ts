@@ -18,7 +18,5 @@
  * const bs = ["b", { bar: "baz" } ]
  * concat<unknown>(as)(bs) <=> ["a", 1, { foo: "bar" }, "b", { bar: "baz" } ]
  * ```
- *
- * @todo better types with Variadic Tuples in TypeScript 4
  */
-export declare const concat: <A>(as: Iterable<A>) => (bs: Iterable<A>) => A[];
+export declare const concat: <A extends readonly unknown[]>(as: A) => <B extends readonly unknown[]>(bs: B) => [...A, ...B];

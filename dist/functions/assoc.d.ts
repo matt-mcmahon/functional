@@ -1,18 +1,18 @@
 /**
  * ```
- * assoc = (k, i?) => a => b => {...b, [k]:a}
+ * assoc = k => b => a => {...a, k:b}
  * ```
  * -----------------------------------------------------------------------------
  *
- * Clones the object __b__, associating the key, __k__, with value, __b__.
- * Accepts an optional type-instance example, __i__, which is used to infer
- * typings for the final object.
+ * Clones the object __a__, associating the key, __k__, with value, __b__.
  *
  * For example:
  *
  * ```
- * b[k] = a <=> assoc(k, a, b).
+ * a[k] = b <=> assoc(k)(b)(a).
  * ```
  *
  */
-export declare const assoc: <I, K extends keyof I>(key: number | K, i?: I | undefined) => <B extends I[K]>(b: B) => <A extends I>(a: A) => I;
+export declare const assoc: <K extends string | number | symbol>(k: K) => <B>(b: B) => <A>(a: A) => A | {
+    K: B;
+};

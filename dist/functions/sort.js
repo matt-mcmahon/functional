@@ -10,4 +10,4 @@ exports.sort = void 0;
  * Sorts a list by applying the given sorting function.
  *
  */
-exports.sort = (compare) => (as) => [...as].sort(compare);
+exports.sort = (compare) => (as) => Array.from(as).sort(compare);

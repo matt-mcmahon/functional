@@ -10,4 +10,5 @@ exports.T = void 0;
  * __T__ ignores any arguments passed to it and returns `true`.
  *
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 exports.T = (...ignored) => true;

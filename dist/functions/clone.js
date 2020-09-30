@@ -1,4 +1,5 @@
 "use strict";
+/* eslint-disable @typescript-eslint/ban-types -- WeakMap needs an object type */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.clone = void 0;
 const functions_1 = require("../functions");
@@ -23,7 +24,7 @@ function cloneArray(a, map) {
         return map.get(a);
     }
     else {
-        let clone = [];
+        const clone = [];
         map.set(a, clone);
         return a.reduce((clone, v) => {
             clone.push(cloneUnknown(v, map));

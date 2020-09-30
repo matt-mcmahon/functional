@@ -9,8 +9,10 @@ exports.slice = void 0;
  * ```
  * -----------------------------------------------------------------------------
  *
- * Returns part of an _Iterable_ object, __as__, from the beginning index,
- * __n__, up to but not including the _end_ index, __m__. For example:
+ * Returns part of an array, __as__, from the beginning index, __n__, up to but
+ * not including the _end_ index, __m__.
+ *
+ * For example:
  *
  * ```
  * const as = [0, 1, 2, 3, 4]

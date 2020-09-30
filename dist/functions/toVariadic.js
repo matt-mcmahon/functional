@@ -7,8 +7,8 @@ exports.toVariadic = void 0;
  * ```
  * -----------------------------------------------------------------------------
  *
- * Takes a _Unary_ function that accepts an array as its argument, and returns
- * that accepts any number of arguments instead.
+ * Takes a _Unary_ function that accepts an array as its only argument, and
+ * returns a function that accepts any number of arguments instead.
  *
  */
 exports.toVariadic = (u) => (...as) => u(as);
