@@ -24,7 +24,7 @@ describe("invoker", async ({ assert, inspect }) => {
   {
     const o = {
       x: 1,
-      sumX(x2: number, x3: number, x4: number, x5: number = 0) {
+      sumX(x2: number, x3: number, x4: number, x5 = 0) {
         return this.x + x2 + x3 + x4 + x5
       },
     }
