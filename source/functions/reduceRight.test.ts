@@ -34,6 +34,7 @@ describe("reduceRight", async ({ assert, inspect }) => {
 
   {
     const a = "a"
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const thrower = (a: string, b: string) => {
       throw Error("I should not be called")
     }
