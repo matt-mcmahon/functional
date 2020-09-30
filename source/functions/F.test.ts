@@ -13,8 +13,15 @@ describe("f", async ({ assert, inspect }) => {
 
   assert({
     given: inspect`argument ${true} to ${F}`,
-    should: inspect`ignorer argument and return ${false}`,
+    should: inspect`ignore argument and return ${false}`,
     actual: F(true),
+    expected,
+  })
+
+  assert({
+    given: inspect`argument ${"foo"}, ${"bar"} to ${F}`,
+    should: inspect`ignore arguments and return ${false}`,
+    actual: F("foo", "bar"),
     expected,
   })
 })
