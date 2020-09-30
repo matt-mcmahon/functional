@@ -8,5 +8,5 @@
  *
  */
 export const sort = <A>(compare: ((a1: A, a2: A) => number) | undefined) => (
-  as: A[]
-) => [...as].sort(compare)
+  as: ArrayLike<A> | Iterable<A>
+): A[] => Array.from(as).sort(compare)
