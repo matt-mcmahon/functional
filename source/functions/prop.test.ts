@@ -2,7 +2,7 @@ import { prop } from "./prop"
 import { describe } from "@mwm/sign"
 
 describe("prop, explicit", async ({ assert, inspect }) => {
-  const getA = prop<string, "a">("a")
+  const getA = prop("a")
 
   {
     const value = { a: "A" }
@@ -20,7 +20,7 @@ describe("prop, explicit", async ({ assert, inspect }) => {
 
   {
     const value = { b: "B" }
-    //@ts-ignore
+    //@ts-ignore INTENTIONAL ERROR
     const actual = getA(value)
     const expected = undefined
     const given = inspect`a ${value} without ${{ a: "A" }}`
@@ -81,7 +81,7 @@ describe("prop, inferred", async ({ assert, inspect }) => {
 describe("prop, missing propertyKey", async ({ assert, inspect }) => {
   {
     const value = { a: "a" }
-    //@ts-ignore THIS IS A DELIBERATE ERROR
+    //@ts-ignore INTENTIONAL ERROR
     const actual = prop("b")(value)
     const expected = undefined
     const given = inspect`get(${"b"})(${value})`
@@ -90,7 +90,7 @@ describe("prop, missing propertyKey", async ({ assert, inspect }) => {
 
   {
     const expected = undefined
-    //@ts-ignore THIS IS A DELIBERATE ERROR
+    //@ts-ignore INTENTIONAL ERROR
     const actual = prop("foo")({ bar: "bar" })
     const given = inspect`nonexistant property value`
     const should = inspect`${expected}`
