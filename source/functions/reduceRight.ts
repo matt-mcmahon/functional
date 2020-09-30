@@ -13,4 +13,4 @@
  */
 export const reduceRight = <A, B>(reducer: (a: A, b: B) => A) => (a: A) => (
   bs: B[]
-) => (bs.length > 0 ? bs.reduceRight(reducer, a) : a)
+): A => (bs.length > 0 ? bs.reduceRight(reducer, a) : a)
