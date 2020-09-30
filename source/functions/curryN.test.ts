@@ -106,7 +106,6 @@ describe("curry-n", async ({ assert, inspect }) => {
     const actual = join3
     const expected = "abc"
     const given = inspect`join2(${c})`
-    const should = inspect`be the value ${expected}`
     assert({ actual, expected, given })
   }
 
