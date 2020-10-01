@@ -1,7 +1,7 @@
 export type Compose<B, A> = {
   (b: B): A
-  from: <C>(f: (c: C) => B) => Compose<C, A>
   call(a: A): B
+  from<C>(f: (c: C) => B): Compose<C, A>
 }
 
 export type Pipe<A, B> = {
