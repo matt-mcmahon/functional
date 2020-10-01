@@ -1,5 +1,19 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["combinator", "iife", "uncurry", "unreducable"],
-  "eslint.lintTask.enable": true
+  "[javascript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "cSpell.words": ["combinator", "deno", "iife", "uncurry", "unreducable"],
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.unstable": true,
+  "eslint.lintTask.enable": true,
+  "deno.import_intellisense_origins": {
+    "https://deno.land": true
+  }
 }
