@@ -50,7 +50,7 @@ module.exports = {
     "no-obj-calls": "error",
     "no-octal": "error",
     "no-prototype-builtins": "error",
-    "@typescript-eslint/no-redeclare": "error",
+    "no-redeclare": "error",
     "no-regex-spaces": "error",
     "no-self-assign": "error",
     "no-setter-return": "error",
