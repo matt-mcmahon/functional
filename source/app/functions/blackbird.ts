@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * ```
  * blackbird :: ((b¹, b², ..., bⁿ) => c) => (a => b¹, a => b², ..., a => bⁿ) => a => c
@@ -22,10 +24,11 @@
  * ```
  *
  * @todo add support for Variadic Tuples in TypeScript 4
+ * @todo remove file allow-any pragma
  */
-export const blackbird = <B extends unknown, C>(
-  converging: (...bs: any[]) => C
-) => <A>(...parts: ((a: A) => unknown)[]) => (a: A) => {
-  const bs = parts.map((part: Function) => part(a))
-  return converging(...bs) as C
+export const blackbird = <BS extends any[], C>(
+  converging: (...bs: BS) => C
+) => <A>(...parts: ((a: A) => unknown)[]) => (a: A): C => {
+  const bs = parts.map((part: (a: any) => any) => part(a)) as BS
+  return converging(...bs)
 }
