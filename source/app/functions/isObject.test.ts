@@ -14,6 +14,7 @@ describe("isObject", async ({ assert, inspect }) => {
     [false, false],
     [{}, true],
     [{ length: 0 }, true],
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     [() => {}, false],
   ]
 
