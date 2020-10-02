@@ -6,9 +6,10 @@ import { invoker } from "./invoker"
 describe("invoker", async ({ assert, inspect }) => {
   const target = "abcdefghijklm"
   {
-    const sliceFrom = invoker("slice")
+    const slice1 = invoker("slice")
+    const slice2 = slice1(6)
     const expected = "ghijklm"
-    const actual = sliceFrom(6)(target)
+    const actual = slice2(target)
     const given = inspect`invoker(${"slice"})(${6})(${"target"})`
     assert({ expected, actual, given })
   }

@@ -1,28 +1,22 @@
 /**
- * type `A` ensures that our object contains the property PropertyName
- */
-type Invokable<F extends Function, PropertyName extends string> = {
-  [P in PropertyName]: F
-}
-
-/**
  * ```
- * invoker :: k => (...as) => (b.k => c) => c
+ * invoker = k => (...as) => (c: { k: (...as) => b }) => b
  * ```
  * -----------------------------------------------------------------------------
  *
- * Takes a method name, __k__; one or more arguments, __as__; and an object,
- * __b__, which has a method of name __k__. It invokes the method, applying
- * __as__ as arguments, and returns the result, __c__; i.e.:
+ * Takes a method name, __ab__, one or more arguments, __as__, and an
+ * object, __c__, which has a method of name __ab__ that accepts __as__ and
+ * returns __b__. It invokes the method, applying __as__ as it's arguments,
+ * and returns the result, __b__; i.e.:
  *
  * ```
- * invoker(k, ...as, b) <=> b[k](...as) <=>
+ * const k = "slice"
+ * const as = [6]
+ * const c = "abcdefghijklm"
+ *
+ * invoker(k)(...as)(c) <=> c[k](...as) <=> "ghijklm"
  * ```
- * @todo Add support for Variadic Tuples when TypeScript 4 is released.
  */
-
-export const invoker = <B, PropertyKey extends string>(
-  propertyKey: PropertyKey
-) => <A extends unknown>(...args: A[]) => <F extends Function>(
-  a: Invokable<F, PropertyKey>
-): F => a[propertyKey](...args)
+export const invoker = <K extends PropertyKey>(k: K) => <AS extends unknown[]>(
+  ...as: AS
+) => <B>(c: { [_ in K]: (...as: AS) => B }): B => c[k](...as)
