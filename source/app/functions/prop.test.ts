@@ -20,6 +20,7 @@ describe("prop, explicit", async ({ assert, inspect }) => {
 
   {
     const value = { b: "B" }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore INTENTIONAL ERROR
     const actual = getA(value)
     const expected = undefined
@@ -81,6 +82,7 @@ describe("prop, inferred", async ({ assert, inspect }) => {
 describe("prop, missing propertyKey", async ({ assert, inspect }) => {
   {
     const value = { a: "a" }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore INTENTIONAL ERROR
     const actual = prop("b")(value)
     const expected = undefined
@@ -90,6 +92,7 @@ describe("prop, missing propertyKey", async ({ assert, inspect }) => {
 
   {
     const expected = undefined
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore INTENTIONAL ERROR
     const actual = prop("foo")({ bar: "bar" })
     const given = inspect`nonexistant property value`
