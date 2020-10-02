@@ -1,7 +1,7 @@
 import { describe } from "../lib/describe.ts";
 import { readdir } from "../lib/readdir.ts";
 
-import * as functional from "./functions.ts";
+import * as functional from "../app/functions.ts";
 
 const removeExtension = (fileNames: string[]) =>
   fileNames.map((file) => file.replace(/.\w+$/, ""));
@@ -17,12 +17,9 @@ const getModuleList = () =>
   readdir("./source/app/functions")
     .then(filterTestFiles)
     .then(removeExtension)
-    .then(sortFiles)
-    .catch((reason) => {
-      throw reason;
-    });
+    .then(sortFiles);
 
-describe("index", async ({ assert }) => {
+describe("functions.test.ts", async ({ assert }) => {
   const actual = Object.keys(functional).sort();
   const expected = await getModuleList();
 
