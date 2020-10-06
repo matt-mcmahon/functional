@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export type Compose<B, A> = {
   (b: B): A
   call(a: A): B
@@ -461,15 +463,13 @@ type CurryV6<P extends unknown[], R> = <T extends unknown[]>(
  * `Parameters<F>` and `R` with `ReturnType<F>`. Thus, TypeScript is able to
  * conserve the name of the parameters, even after currying:
  */
-export type Curry<F extends (...args: unknown[]) => unknown> = <
-  T extends unknown[]
->(
-  ...args: Cast<Cast<T, Gaps<Parameters<F>>>, unknown[]>
-) => GapsOf<T, Parameters<F>> extends [unknown, ...unknown[]]
+export type Curry<F extends (...args: any[]) => any> = <T extends any[]>(
+  ...args: Cast<Cast<T, Gaps<Parameters<F>>>, any[]>
+) => GapsOf<T, Parameters<F>> extends [any, ...any[]]
   ? Curry<
       (
         ...args: GapsOf<T, Parameters<F>> extends infer G
-          ? Cast<G, unknown[]>
+          ? Cast<G, any[]>
           : never
       ) => ReturnType<F>
     >
