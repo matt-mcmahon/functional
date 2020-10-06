@@ -1,5 +1,5 @@
 devDependencies:
-  '@mwm/sign': 1.3.2
+  '@mwm/sign': 'link:../../.nvm/versions/node/v12.18.3/pnpm-global/node_modules/@mwm/sign'
   '@types/node': 14.11.2
   '@typescript-eslint/eslint-plugin': 4.3.0_60de305021300fed1989a0be1a9284d2
   '@typescript-eslint/parser': 4.3.0_eslint@7.10.0+typescript@4.0.3
@@ -8,6 +8,7 @@ devDependencies:
   npm-run-all: 4.1.5
   prettier: 2.1.2
   tap: 14.10.8
+  tslib: 2.0.1
   typescript: 4.0.3
 lockfileVersion: 5.1
 packages:
@@ -273,12 +274,6 @@ packages:
       node: ^10.12.0 || >=12.0.0
     resolution:
       integrity: sha512-4YVwPkANLeNtRjMekzux1ci8hIaH5eGKktGqR0d3LWsKNn5B2X/1Z6Trxy7jQXl9EBGE6Yj02O+t09FMeRllaA==
-  /@mwm/sign/1.3.2:
-    dependencies:
-      esm: 3.2.25
-    dev: true
-    resolution:
-      integrity: sha512-BpOMcBzbUqnq3Gd5FJGWNgFPHyWMnZvPgbX8AnJqtJ6/PcWigmnZomj0cSFDOp33ZFnswSU+HCFFyzc3b8J+ew==
   /@nodelib/fs.scandir/2.1.3:
     dependencies:
       '@nodelib/fs.stat': 2.0.3
@@ -2910,6 +2905,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
+  /tslib/2.0.1:
+    dev: true
+    resolution:
+      integrity: sha512-SgIkNheinmEBgx1IUNirK0TUD4X9yjjBRTqqjggWCU3pUEqIk3/Uwl3yRixYKT6WjQuGiwDv4NomL3wqRCj+CQ==
   /tsutils/3.17.1_typescript@4.0.3:
     dependencies:
       tslib: 1.13.0
@@ -3146,4 +3145,5 @@ specifiers:
   npm-run-all: ^4.1.5
   prettier: ^2.1.2
   tap: ^14.10.8
+  tslib: ^2.0.1
   typescript: ^4.0.3
