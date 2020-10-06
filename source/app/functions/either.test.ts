@@ -1,6 +1,6 @@
 import { describe } from "../../lib/describe"
 import { either } from "./either"
-import { T } from "../functions"
+import { T } from "./T"
 
 describe("either", async ({ assert, inspect }) => {
   const max = 10

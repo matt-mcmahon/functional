@@ -1,4 +1,4 @@
-import { clone } from "../functions"
+import { clone } from "./clone"
 
 /**
  * ```

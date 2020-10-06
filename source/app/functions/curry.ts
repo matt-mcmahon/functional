@@ -1,4 +1,5 @@
-import { curryN } from "../functions"
+import { curryN } from "./curryN"
+
 /**
  * ```
  * curry :: ((a¹, a²..., aⁿ) => b) => a¹ => a²... => aⁿ => b

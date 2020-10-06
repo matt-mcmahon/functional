@@ -1,4 +1,5 @@
-import { isDefined, isNaN } from "../functions"
+import { isDefined } from "./isDefined"
+import { isNaN } from "./isNaN"
 
 /**
  * ```

@@ -1,6 +1,7 @@
 import { describe } from "../../lib/describe"
 import { both } from "./both"
-import { toString, isNumber } from "../functions"
+import { toString } from "./toString"
+import { isNumber } from "./isNumber"
 
 describe("both", async ({ assert, inspect }) => {
   const gt10 = (v: number) => v > 10

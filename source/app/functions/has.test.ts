@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe"
 
 import { has } from "./has"
-import { prop } from "../functions"
+import { prop } from "./prop"
 
 describe("has", ({ assert, inspect }) => {
   const ownFoo = has("foo")

@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-types -- WeakMap needs an object type */
 
-import { isArray, isDate, isObject, isDefined } from "../functions"
+import { isArray } from "./isArray"
+import { isDate } from "./isDate"
+import { isObject } from "./isObject"
+import { isDefined } from "./isDefined"
 
 function cloneObject<A extends object>(a: A, map: WeakMap<object, unknown>): A {
   if (map.has(a)) {
