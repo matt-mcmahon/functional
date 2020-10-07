@@ -8,5 +8,5 @@
  *
  */
 export const isDefined = <A>(
-  a: A
-): a is Exclude<A, null> & Exclude<A, undefined> => a != null
+  a: A,
+): a is Exclude<A, null> & Exclude<A, undefined> => a != null;

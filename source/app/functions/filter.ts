@@ -7,5 +7,5 @@
  * _true_.
  *
  */
-export const filter = <A>(p: (a: A) => boolean) => (as: A[]): A[] =>
-  as.filter(p)
+export const filter = <A>(p: (a: A) => boolean) =>
+  (as: A[]): A[] => as.filter(p);

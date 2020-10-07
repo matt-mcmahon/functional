@@ -8,6 +8,5 @@
  * @param m - a function that depends on a dynamic `this` context
  * @param o - the method's context
  */
-export const bind = <M extends CallableFunction>(m: M) => (
-  b: ThisParameterType<M>
-): OmitThisParameter<M> => m.bind(b)
+export const bind = <M extends CallableFunction>(m: M) =>
+  (b: ThisParameterType<M>): OmitThisParameter<M> => m.bind(b);

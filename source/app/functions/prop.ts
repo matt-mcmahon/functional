@@ -14,6 +14,5 @@
  * obj.foo <=> prop("foo")(obj) <=> "FOO"
  * ```
  */
-export const prop = <K extends PropertyKey>(k: K) => <B>(
-  a: { [P in K]: B }
-): B => a[k]
+export const prop = <K extends PropertyKey>(k: K) =>
+  <B>(a: { [P in K]: B }): B => a[k];

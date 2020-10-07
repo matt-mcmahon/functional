@@ -7,6 +7,5 @@
  * otherwise returns `mapAC(a)`.
  *
  */
-export const both = <A, B>(first: (a: A) => B) => <C>(second: (a: A) => C) => (
-  a: A
-): B | C => first(a) && second(a)
+export const both = <A, B>(first: (a: A) => B) =>
+  <C>(second: (a: A) => C) => (a: A): B | C => first(a) && second(a);

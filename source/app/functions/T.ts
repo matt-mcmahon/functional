@@ -8,4 +8,4 @@
  *
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const T = (...ignored: unknown[]): true => true
+export const T = (...ignored: unknown[]): true => true;

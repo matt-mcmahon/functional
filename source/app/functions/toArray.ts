@@ -9,4 +9,4 @@
  *
  */
 export const toArray = <A>(as: Iterable<A> | ArrayLike<A>): A[] =>
-  Array.from(as)
+  Array.from(as);

@@ -10,4 +10,4 @@
 export const iife = <AS extends unknown[], B>(
   f: (...as: AS) => B,
   ...as: AS
-): B => f(...as)
+): B => f(...as);

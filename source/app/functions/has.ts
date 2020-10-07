@@ -16,8 +16,6 @@
  * @param k the name or symbol of the property to check for
  * @param a the object to check for ownership of the property
  */
-export const has = <K extends PropertyKey>(k: K) => (
-  a: unknown
-): a is {
-  [P in K]: unknown
-} => Object.prototype.hasOwnProperty.call(a, k)
+export const has = <K extends PropertyKey>(k: K) =>
+  (a: unknown): a is { [P in K]: unknown } =>
+    Object.prototype.hasOwnProperty.call(a, k);

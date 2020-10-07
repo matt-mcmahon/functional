@@ -9,6 +9,5 @@
  * from calling `mapAC(a)`.
  *
  */
-export const either = <A, B>(mapAB: (a: A) => B) => <C>(mapAC: (a: A) => C) => (
-  a: A
-): B | C => mapAB(a) || mapAC(a)
+export const either = <A, B>(mapAB: (a: A) => B) =>
+  <C>(mapAC: (a: A) => C) => (a: A): B | C => mapAB(a) || mapAC(a);
