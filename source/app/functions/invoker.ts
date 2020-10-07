@@ -17,6 +17,6 @@
  * invoker(k)(...as)(c) <=> c[k](...as) <=> "ghijklm"
  * ```
  */
-export const invoker = <K extends PropertyKey>(k: K) => <AS extends unknown[]>(
-  ...as: AS
-) => <B>(c: { [_ in K]: (...as: AS) => B }): B => c[k](...as)
+export const invoker = <K extends PropertyKey>(k: K) =>
+  <AS extends unknown[]>(...as: AS) =>
+    <B>(c: { [_ in K]: (...as: AS) => B }): B => c[k](...as);

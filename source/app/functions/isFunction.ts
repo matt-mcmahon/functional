@@ -1,3 +1,5 @@
+// deno-lint-ignore-file ban-types -- we only care that it's a function, so allow
+
 /**
  * ```
  * isFunction :: a => boolean
@@ -15,5 +17,5 @@
  * isFUnction(object.method())  //> false
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const isFunction = (a: unknown): a is Function => typeof a === "function"
+export const isFunction = (a: unknown): a is Function =>
+  typeof a === "function";

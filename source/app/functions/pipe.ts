@@ -1,36 +1,36 @@
-import { Last } from "../types"
+import type { Last } from "../types.d.ts";
 
 export type Pipe<A, B> = {
-  (a: A): B
-  then: <C>(f: (b: B) => C) => Pipe<A, C>
-  invoke(a: A): B
-}
+  (a: A): B;
+  then: <C>(f: (b: B) => C) => Pipe<A, C>;
+  invoke(a: A): B;
+};
 
 const fluent = <A, B>(f: (a: A) => B): Pipe<A, B> => {
   function invoke(a: A) {
-    return f(a)
+    return f(a);
   }
   const p: Pipe<A, B> = Object.assign(invoke.bind(null), {
     then: <C>(f: (b: B) => C): Pipe<A, C> => {
-      return next<A, B, C>(p, f)
+      return next<A, B, C>(p, f);
     },
     invoke,
-  })
-  return p
-}
+  });
+  return p;
+};
 
 const next = <A, B, C>(prev: Pipe<A, B>, f: (b: B) => C): Pipe<A, C> => {
   function invoke(a: A) {
-    return f(prev(a))
+    return f(prev(a));
   }
   const p: Pipe<A, C> = Object.assign(invoke.bind(null), {
     then: <D>(f: (c: C) => D): Pipe<A, D> => {
-      return next<A, C, D>(p, f)
+      return next<A, C, D>(p, f);
     },
     invoke,
-  })
-  return p
-}
+  });
+  return p;
+};
 
 /**
  * ```
@@ -74,13 +74,10 @@ const next = <A, B, C>(prev: Pipe<A, B>, f: (b: B) => C): Pipe<A, C> => {
  * fgh(a) <=> fgh.invoke(a)
  * ```
  */
-export const pipe = Object.assign(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  <FS extends ((x: any) => any)[]>(...fs: FS) => {
-    type A = Parameters<FS[0]>[0]
-    type B = ReturnType<Last<FS>>
+export const pipe = Object.assign(// deno-lint-ignore no-explicit-any
+<FS extends ((x: any) => any)[]>(...fs: FS) => {
+  type A = Parameters<FS[0]>[0];
+  type B = ReturnType<Last<FS>>;
 
-    return (a: A): B => fs.reduce((v, f) => f(v), a) as B
-  },
-  { fluent }
-)
+  return (a: A): B => fs.reduce((v, f) => f(v), a) as B;
+}, { fluent });

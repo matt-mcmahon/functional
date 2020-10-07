@@ -11,4 +11,4 @@
  * Array.from(as).reverse() <=> reverse(as) <=> [3, 2, 1]
  * ```
  */
-export const reverse = <A>(as: ArrayLike<A>): A[] => Array.from(as).reverse()
+export const reverse = <A>(as: ArrayLike<A>): A[] => Array.from(as).reverse();

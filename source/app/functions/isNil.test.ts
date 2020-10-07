@@ -1,5 +1,5 @@
-import { describe } from "../../lib/describe"
-import { isNil } from "./isNil"
+import { describe } from "../../lib/remote/describe.ts";
+import { isNil } from "./isNil.ts";
 
 describe("isNil", async ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
@@ -12,7 +12,7 @@ describe("isNil", async ({ assert, inspect }) => {
     [false, false],
     [true, false],
     ["truthy", false],
-  ]
+  ];
 
   data.forEach(([value, expected]) =>
     assert({
@@ -20,5 +20,5 @@ describe("isNil", async ({ assert, inspect }) => {
       expected,
       given: inspect`isNil(${value})`,
     })
-  )
-})
+  );
+});

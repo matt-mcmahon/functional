@@ -1,37 +1,37 @@
-import { Last } from "../types"
+import type { Last } from "../types.d.ts";
 
 export type Compose<B, A> = {
-  (b: B): A
-  call(a: A): B
-  from<C>(f: (c: C) => B): Compose<C, A>
-}
+  (b: B): A;
+  call(a: A): B;
+  from<C>(f: (c: C) => B): Compose<C, A>;
+};
 
 const fluent = <B, A>(f: (b: B) => A): Compose<B, A> => {
   function call(b: B): A {
-    return f(b)
+    return f(b);
   }
 
   const p: Compose<B, A> = Object.assign(call.bind(null), {
     from: <C>(f: (c: C) => B): Compose<C, A> => {
-      return after<C, B, A>(p, f)
+      return after<C, B, A>(p, f);
     },
     call,
-  })
-  return p
-}
+  });
+  return p;
+};
 
 const after = <C, B, A>(next: Compose<B, A>, f: (c: C) => B) => {
   function call(c: C): A {
-    return next(f(c))
+    return next(f(c));
   }
   const p: Compose<C, A> = Object.assign(call.bind(null), {
     from: <D>(f: (d: D) => C) => {
-      return after<D, C, A>(p, f)
+      return after<D, C, A>(p, f);
     },
     call,
-  })
-  return p
-}
+  });
+  return p;
+};
 
 /**
  * ```
@@ -80,13 +80,10 @@ const after = <C, B, A>(next: Compose<B, A>, f: (c: C) => B) => {
  * ```
  * ```
  */
-export const compose = Object.assign(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  <FS extends ((x: any) => any)[]>(...fs: FS) => {
-    type A = Parameters<Last<FS>>[0]
-    type B = ReturnType<FS[0]>
+export const compose = Object.assign(// deno-lint-ignore no-explicit-any
+<FS extends ((x: any) => any)[]>(...fs: FS) => {
+  type A = Parameters<Last<FS>>[0];
+  type B = ReturnType<FS[0]>;
 
-    return (a: A): B => fs.reduceRight((v, f) => f(v), a) as B
-  },
-  { fluent }
-)
+  return (a: A): B => fs.reduceRight((v, f) => f(v), a) as B;
+}, { fluent });

@@ -1,54 +1,54 @@
-import { describe } from "../../lib/describe"
-import { join } from "./join"
+import { describe } from "../../lib/remote/describe.ts";
+import { join } from "./join.ts";
 
 describe("join", async ({ assert, inspect }) => {
   {
-    const char = "-"
-    const f = join(char)
-    const list = ["a", "b", "c"]
-    const actual = f(list)
-    const expected = "a-b-c"
-    const given = inspect`join(${char})(${list})`
-    assert({ given, actual, expected })
+    const char = "-";
+    const f = join(char);
+    const list = ["a", "b", "c"];
+    const actual = f(list);
+    const expected = "a-b-c";
+    const given = inspect`join(${char})(${list})`;
+    assert({ given, actual, expected });
   }
 
   {
-    const char = undefined
-    const f = join(char)
-    const list = ["a", "b", "c"]
-    const actual = f(list)
-    const expected = "a,b,c"
-    const given = inspect`undefined separator, ${list}`
-    assert({ given, actual, expected })
+    const char = undefined;
+    const f = join(char);
+    const list = ["a", "b", "c"];
+    const actual = f(list);
+    const expected = "a,b,c";
+    const given = inspect`undefined separator, ${list}`;
+    assert({ given, actual, expected });
   }
 
   {
-    const char = "-"
-    const f = join(char)
-    const list = ["a"]
-    const actual = f(list)
-    const expected = "a"
-    const given = inspect`single element, ${list}`
-    assert({ given, actual, expected })
+    const char = "-";
+    const f = join(char);
+    const list = ["a"];
+    const actual = f(list);
+    const expected = "a";
+    const given = inspect`single element, ${list}`;
+    assert({ given, actual, expected });
   }
 
   {
-    const char = ", "
-    const f = join(char)
+    const char = ", ";
+    const f = join(char);
     const list = [
       "a",
       {
         toString() {
-          return "object!"
+          return "object!";
         },
       },
       "b",
       1,
       "c",
-    ]
-    const actual = f(list)
-    const expected = "a, object!, b, 1, c"
-    const given = inspect`irregular array`
-    assert({ given, actual, expected })
+    ];
+    const actual = f(list);
+    const expected = "a, object!, b, 1, c";
+    const given = inspect`irregular array`;
+    assert({ given, actual, expected });
   }
-})
+});

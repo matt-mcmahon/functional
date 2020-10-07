@@ -17,5 +17,5 @@
  * [1, 2, 3].join()      <=> join()([1, 2, 3])      <=> "1,2,3"
  * ```
  */
-export const join = (a: string | undefined) => <A>(bs: A[]): string =>
-  bs.join(a)
+export const join = (a: string | undefined) =>
+  <A>(bs: A[]): string => bs.join(a);

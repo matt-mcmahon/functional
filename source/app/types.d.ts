@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// deno-lint-ignore-file no-explicit-any no-unused-vars
 
 // From: https://dev.to/kjleitz/comment/gb5d
 // Keegan Leitz (https://dev.to/kjleitz)
@@ -11,9 +11,8 @@
  * //=> 3
  * ```
  */
-export type GetLength<T extends unknown[]> = T extends { length: infer L }
-  ? L
-  : never
+export type GetLength<T extends unknown[]> = T extends { length: infer L } ? L
+  : never;
 
 /**
  * HEAD
@@ -26,11 +25,10 @@ export type GetLength<T extends unknown[]> = T extends { length: infer L }
  * This way, we'll be able to know what argument type has to be taken at a time.
  *
  */
-export type Head<AS extends unknown[]> = AS extends [infer A, ...unknown[]]
-  ? A
-  : never
+export type Head<AS extends unknown[]> = AS extends [infer A, ...unknown[]] ? A
+  : never;
 
-declare function fn00(name: string, age: number, single: boolean): true
+declare function fn00(name: string, age: number, single: boolean): true;
 
 // prettier-ignore
 /**
@@ -42,9 +40,8 @@ declare function fn00(name: string, age: number, single: boolean): true
  * it conveniently removes the first entry that a tuple might contain.
  *
  */
-export type Tail<T extends unknown[]> = T extends [unknown, ...infer TT]
-  ? TT
-  : never
+export type Tail<T extends unknown[]> = T extends [unknown, ...infer TT] ? TT
+  : never;
 
 /**
  * HAS-TAIL
@@ -53,31 +50,31 @@ export type Tail<T extends unknown[]> = T extends [unknown, ...infer TT]
  * been consumed. This condition is reached when we called `Tail` enough times
  * that there is no tail left, nothing's left to consume:
  */
-export type HasTail<T extends unknown[]> = T extends [] | [unknown]
-  ? false
-  : true
+export type HasTail<T extends unknown[]> = T extends [] | [unknown] ? false
+  : true;
 
-type params = [1, 2, string]
+type params = [1, 2, string];
 
 /**
  * Extract a property's type from an object
  */
-type ObjectInfer<O> = O extends { a: infer A } ? A : never
+type ObjectInfer<O> = O extends { a: infer A } ? A : never;
 
 /**
  * Extract inner types from function types
  */
-type FunctionInfer<F> = F extends (...args: infer A) => infer R ? [A, R] : never
+type FunctionInfer<F> = F extends (...args: infer A) => infer R ? [A, R]
+  : never;
 
 /**
  * Extract generic types from a class or an interface
  */
-type ClassInfer<I> = I extends Promise<infer G> ? G : never
+type ClassInfer<I> = I extends Promise<infer G> ? G : never;
 
 /**
  * Extract types from an array
  */
-type ArrayInfer<T> = T extends (infer U)[] ? U : never
+type ArrayInfer<T> = T extends (infer U)[] ? U : never;
 
 // prettier-ignore
 /**
@@ -90,7 +87,7 @@ type ArrayInfer<T> = T extends (infer U)[] ? U : never
  * for tuples in the future. This is why `Tail` is constructed the way it is.
  *
  */
-type TupleInfer<T> = T extends [infer A, ...infer B] ? [A, B] : never
+type TupleInfer<T> = T extends [infer A, ...infer B] ? [A, B] : never;
 
 /**
  * LAST
@@ -98,8 +95,7 @@ type TupleInfer<T> = T extends [infer A, ...infer B] ? [A, B] : never
  * Take your time to try to understand this complex yet very short type. This
  * example takes a tuple as a parameter and it extracts its last entry out:
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type Last<T extends unknown[]> = T extends [...infer _, infer A] ? A : never
+type Last<T extends unknown[]> = T extends [...infer _, infer A] ? A : never;
 
 /**
  * LENGTH
@@ -110,7 +106,7 @@ type Last<T extends unknown[]> = T extends [...infer _, infer A] ? A : never
  * another, but they are too limiting for what we want to do. So, ideally, we
  * would like to be able to manipulate some sort of counter:
  */
-export type Length<T extends unknown[]> = T["length"]
+export type Length<T extends unknown[]> = T["length"];
 
 // prettier-ignore
 /**
@@ -120,7 +116,7 @@ export type Length<T extends unknown[]> = T["length"]
  */
 export type Prepend<A, BS extends unknown[]> = [A, ...BS] extends [...infer U]
   ? U
-  : BS
+  : BS;
 
 /**
  * DROP
@@ -131,11 +127,11 @@ export type Prepend<A, BS extends unknown[]> = [A, ...BS] extends [...infer U]
 export type Drop<
   N extends number,
   T extends unknown[],
-  I extends unknown[] = []
+  I extends unknown[] = [],
 > = {
-  MORE: Drop<N, Tail<T>, Prepend<unknown, I>>
-  DONE: T
-}[Length<I> extends N ? "DONE" : "MORE"]
+  MORE: Drop<N, Tail<T>, Prepend<unknown, I>>;
+  DONE: T;
+}[Length<I> extends N ? "DONE" : "MORE"];
 
 /**
  * CAST
@@ -146,28 +142,28 @@ export type Drop<
  * type test41 = Cast<[string], unknown>; // [string]
  * type test42 = Cast<[string], number>; // number
  */
-export type Cast<X, Y> = X extends Y ? X : Y
+export type Cast<X, Y> = X extends Y ? X : Y;
 
 /**
  * POS (Position)
  *
  * Use it to query the position of an iterator:
  */
-export type Pos<I extends unknown[]> = Length<I>
+export type Pos<I extends unknown[]> = Length<I>;
 
 /**
  * NEXT (+1)
  *
  * It brings the position of an iterator up:
  */
-export type Next<I extends unknown[]> = Prepend<unknown, I>
+export type Next<I extends unknown[]> = Prepend<unknown, I>;
 
 /**
  * PREV (-1)
  *
  * It brings the position of an iterator down:
  */
-export type Prev<I extends unknown[]> = Tail<I>
+export type Prev<I extends unknown[]> = Tail<I>;
 
 /**
  * Iterator
@@ -183,11 +179,11 @@ export type Prev<I extends unknown[]> = Tail<I>
 export type Iterator<
   Index extends number = 0,
   From extends unknown[] = [],
-  I extends unknown[] = []
+  I extends unknown[] = [],
 > = {
-  MORE: Iterator<Index, Next<From>, Next<I>>
-  DONE: From
-}[Pos<I> extends Index ? "DONE" : "MORE"]
+  MORE: Iterator<Index, Next<From>, Next<I>>;
+  DONE: From;
+}[Pos<I> extends Index ? "DONE" : "MORE"];
 
 /**
  * REVERSE
@@ -199,11 +195,11 @@ export type Iterator<
 export type Reverse<
   T extends unknown[],
   R extends unknown[] = [],
-  I extends unknown[] = []
+  I extends unknown[] = [],
 > = {
-  MORE: Reverse<T, Prepend<T[Pos<I>], R>, Next<I>>
-  DONE: R
-}[Pos<I> extends Length<T> ? "DONE" : "MORE"]
+  MORE: Reverse<T, Prepend<T[Pos<I>], R>, Next<I>>;
+  DONE: R;
+}[Pos<I> extends Length<T> ? "DONE" : "MORE"];
 
 /**
  * CONCAT
@@ -214,14 +210,14 @@ export type Reverse<
 export type Concat<T1 extends unknown[], T2 extends unknown[]> = Reverse<
   Reverse<T1> extends infer R ? Cast<R, unknown[]> : never,
   T2
->
+>;
 
 /**
  * APPEND
  *
  * Enabled by `Concat`, `Append` can add a type `E` at the end of a tuple `T`:
  */
-export type Append<E, T extends unknown[]> = Concat<T, [E]>
+export type Append<E, T extends unknown[]> = Concat<T, [E]>;
 
 /**
  * CURRY V0
@@ -239,8 +235,8 @@ export type Append<E, T extends unknown[]> = Concat<T, [E]>
  *
  */
 type CurryV0<P extends unknown[], R> = (
-  arg0: Head<P>
-) => HasTail<P> extends true ? CurryV0<Tail<P>, R> : R
+  arg0: Head<P>,
+) => HasTail<P> extends true ? CurryV0<Tail<P>, R> : R;
 
 /**
  * CURRY V1
@@ -259,7 +255,7 @@ type CurryV0<P extends unknown[], R> = (
 type CurryV1<P extends unknown[], R> = (
   arg0: Head<P>,
   ...rest: Tail<Partial<P>>
-) => HasTail<P> extends true ? CurryV1<Tail<P>, R> : R
+) => HasTail<P> extends true ? CurryV1<Tail<P>, R> : R;
 
 /**
  * CURRY V2
@@ -279,7 +275,7 @@ type CurryV1<P extends unknown[], R> = (
  */
 type CurryV2<P extends unknown[], R> = <T extends unknown[]>(
   ...args: T
-) => HasTail<P> extends true ? CurryV2<Tail<T>, R> : R
+) => HasTail<P> extends true ? CurryV2<Tail<T>, R> : R;
 
 /**
  * CURRY V3
@@ -299,12 +295,11 @@ type CurryV3<P extends unknown[], R> = <T extends unknown[]>(
   ...args: T
 ) => Length<
   Drop<Length<T>, P> extends infer DT ? Cast<DT, unknown[]> : never
-> extends 0
-  ? R
+> extends 0 ? R
   : CurryV3<
-      Drop<Length<T>, P> extends infer DT ? Cast<DT, unknown[]> : never,
-      R
-    >
+    Drop<Length<T>, P> extends infer DT ? Cast<DT, unknown[]> : never,
+    R
+  >;
 
 /**
  * CURRY V4
@@ -321,12 +316,11 @@ type CurryV4<P extends unknown[], R> = <T extends unknown[]>(
   ...args: Cast<T, Partial<P>>
 ) => Length<
   Drop<Length<T>, P> extends infer DT ? Cast<DT, unknown[]> : never
-> extends 0
-  ? R
+> extends 0 ? R
   : CurryV4<
-      Drop<Length<T>, P> extends infer DT ? Cast<DT, unknown[]> : never,
-      R
-    >
+    Drop<Length<T>, P> extends infer DT ? Cast<DT, unknown[]> : never,
+    R
+  >;
 
 /**
  * CURRY V5
@@ -348,14 +342,13 @@ type CurryV4<P extends unknown[], R> = <T extends unknown[]>(
  */
 type CurryV5<P extends unknown[], R> = <T extends unknown[]>(
   ...args: Cast<T, Partial<P>>
-) => Drop<Length<T>, P> extends [unknown, ...unknown[]]
-  ? CurryV5<
-      Drop<Length<T>, P> extends infer DT ? Cast<DT, unknown[]> : never,
-      R
-    >
-  : R
+) => Drop<Length<T>, P> extends [unknown, ...unknown[]] ? CurryV5<
+  Drop<Length<T>, P> extends infer DT ? Cast<DT, unknown[]> : never,
+  R
+>
+  : R;
 
-type __ = "PLACEHOLDER"
+type __ = "PLACEHOLDER";
 
 /**
  * GAPOF
@@ -368,8 +361,8 @@ type GapOf<
   T1 extends unknown[],
   T2 extends unknown[],
   TN extends unknown[],
-  I extends unknown[]
-> = T1[Pos<I>] extends __ ? Append<T2[Pos<I>], TN> : TN
+  I extends unknown[],
+> = T1[Pos<I>] extends __ ? Append<T2[Pos<I>], TN> : TN;
 
 /**
  * GAPSOF
@@ -382,19 +375,19 @@ type GapsOf<
   T1 extends unknown[],
   T2 extends unknown[],
   TN extends unknown[] = [],
-  I extends unknown[] = []
+  I extends unknown[] = [],
 > = {
   MORE: GapsOf<
     T1,
     T2,
     GapOf<T1, T2, TN, I> extends infer G ? Cast<G, unknown[]> : never,
     Next<I>
-  >
+  >;
   DONE: Concat<
     TN,
     Drop<Pos<I>, T2> extends infer D ? Cast<D, unknown[]> : never
-  >
-}[Pos<I> extends Length<T1> ? "DONE" : "MORE"]
+  >;
+}[Pos<I> extends Length<T1> ? "DONE" : "MORE"];
 
 /**
  * GAPS
@@ -408,19 +401,19 @@ type GapsOf<
  * And thanks to `?`, we explained that each entry of `T` is optional. It means
  * that we no longer have the need to use `Partial` on the tracked parameters.
  */
-type PartialGaps<T extends unknown[]> = { [K in keyof T]?: T[K] | __ }
+type PartialGaps<T extends unknown[]> = { [K in keyof T]?: T[K] | __ };
 
 /**
  * Ugh, we never said that we could take `undefined`! We just wanted to be able
  * to omit a part of `T`. It is a side effect of using the `?` operator. But it
  * is not that bad, we can fix this by re-mapping with `NonNullable`:
  */
-type CleanedGaps<T extends unknown[]> = { [K in keyof T]: NonNullable<T[K]> }
+type CleanedGaps<T extends unknown[]> = { [K in keyof T]: NonNullable<T[K]> };
 
 /**
  * So let's put the two together and get what we wanted:
  */
-type Gaps<T extends unknown[]> = CleanedGaps<PartialGaps<T>>
+type Gaps<T extends unknown[]> = CleanedGaps<PartialGaps<T>>;
 
 /**
  * CURRY V6
@@ -433,7 +426,7 @@ type CurryV6<P extends unknown[], R> = <T extends unknown[]>(
   ...args: Cast<T, Gaps<P>>
 ) => GapsOf<T, P> extends [unknown, ...unknown[]]
   ? CurryV6<GapsOf<T, P> extends infer G ? Cast<G, unknown[]> : never, R>
-  : R
+  : R;
 
 /**
  * CURRY
@@ -452,12 +445,9 @@ type CurryV6<P extends unknown[], R> = <T extends unknown[]>(
  */
 export type Curry<F extends (...args: any[]) => any> = <T extends any[]>(
   ...args: Cast<Cast<T, Gaps<Parameters<F>>>, any[]>
-) => GapsOf<T, Parameters<F>> extends [any, ...any[]]
-  ? Curry<
-      (
-        ...args: GapsOf<T, Parameters<F>> extends infer G
-          ? Cast<G, any[]>
-          : never
-      ) => ReturnType<F>
-    >
-  : ReturnType<F>
+) => GapsOf<T, Parameters<F>> extends [any, ...any[]] ? Curry<
+  (
+    ...args: GapsOf<T, Parameters<F>> extends infer G ? Cast<G, any[]> : never
+  ) => ReturnType<F>
+>
+  : ReturnType<F>;

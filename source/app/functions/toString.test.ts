@@ -1,5 +1,5 @@
-import { describe } from "../../lib/describe"
-import { toString } from "./toString"
+import { describe } from "../../lib/remote/describe.ts";
+import { toString } from "./toString.ts";
 
 describe("to-string", async ({ assert, inspect }) => {
   const data: [unknown, string][] = [
@@ -18,18 +18,18 @@ describe("to-string", async ({ assert, inspect }) => {
       {
         value: "custom toString",
         toString() {
-          return this.value
+          return this.value;
         },
       } as { value: string },
       "custom toString",
     ],
-  ]
+  ];
 
   const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = toString(value)
-    const given = inspect`toString(${value})`
-    assert({ given, actual, expected })
-  }
+    const actual = toString(value);
+    const given = inspect`toString(${value})`;
+    assert({ given, actual, expected });
+  };
 
-  data.forEach(test)
-})
+  data.forEach(test);
+});

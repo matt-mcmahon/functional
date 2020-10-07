@@ -1,5 +1,5 @@
-import { describe } from "../../lib/describe"
-import { isString } from "./isString"
+import { describe } from "../../lib/remote/describe.ts";
+import { isString } from "./isString.ts";
 
 describe("is-string", async ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
@@ -14,41 +14,41 @@ describe("is-string", async ({ assert, inspect }) => {
     [false, false],
     [{}, false],
     [{ length: 0 }, false],
-  ]
+  ];
 
   const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = isString(value)
-    const given = inspect`isString(${value})`
-    assert({ given, actual, expected })
-  }
+    const actual = isString(value);
+    const given = inspect`isString(${value})`;
+    assert({ given, actual, expected });
+  };
 
-  data.forEach(test)
-})
+  data.forEach(test);
+});
 
 describe("is-string: string-like object", async ({ assert }) => {
   const value = {
     valueOf: () => "fake v",
     toString: () => "fake s",
+  };
+
+  {
+    const actual = "" + value;
+    const expected = "fake v";
+    const given = "coerce to value";
+    assert({ actual, expected, given });
   }
 
   {
-    const actual = "" + value
-    const expected = "fake v"
-    const given = "coerce to value"
-    assert({ actual, expected, given })
+    const actual = `${value}`;
+    const expected = "fake s";
+    const given = "coerce to string";
+    assert({ actual, expected, given });
   }
 
   {
-    const actual = `${value}`
-    const expected = "fake s"
-    const given = "coerce to string"
-    assert({ actual, expected, given })
+    const actual = isString(value);
+    const expected = false;
+    const given = `string-like object with valueOf() => string`;
+    assert({ actual, expected, value, given });
   }
-
-  {
-    const actual = isString(value)
-    const expected = false
-    const given = `string-like object with valueOf() => string`
-    assert({ actual, expected, value, given })
-  }
-})
+});

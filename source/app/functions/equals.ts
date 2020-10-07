@@ -12,4 +12,4 @@
  * ```
  *
  */
-export const equals = (a: unknown) => (b: unknown): boolean => a === b
+export const equals = (a: unknown) => (b: unknown): boolean => a === b;

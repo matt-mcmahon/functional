@@ -13,4 +13,4 @@
  * ```
  */
 export const isNil = (a: unknown): a is null | undefined =>
-  a === null || a === undefined
+  a === null || a === undefined;

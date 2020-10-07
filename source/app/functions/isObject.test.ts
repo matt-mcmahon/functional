@@ -1,5 +1,5 @@
-import { describe } from "../../lib/describe"
-import { isObject } from "./isObject"
+import { describe } from "../../lib/remote/describe.ts";
+import { isObject } from "./isObject.ts";
 
 describe("isObject", async ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
@@ -14,15 +14,14 @@ describe("isObject", async ({ assert, inspect }) => {
     [false, false],
     [{}, true],
     [{ length: 0 }, true],
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     [() => {}, false],
-  ]
+  ];
 
   const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = isObject(value)
-    const given = inspect`isObject(${value})`
-    assert({ given, actual, expected })
-  }
+    const actual = isObject(value);
+    const given = inspect`isObject(${value})`;
+    assert({ given, actual, expected });
+  };
 
-  data.forEach(test)
-})
+  data.forEach(test);
+});
