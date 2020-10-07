@@ -1,0 +1,2 @@
+export declare const partial: <AS extends readonly unknown[]>(...as: AS) => <BS extends readonly unknown[], C>(f: (...args_0: AS, ...args_1: BS) => C) => (...bs: BS) => C;
+//# sourceMappingURL=partial.d.ts.map
