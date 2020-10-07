@@ -1,0 +1,27 @@
+{
+  "headers": {
+    "x-cache": "MISS, MISS",
+    "expires": "Sat, 10 Oct 2020 19:25:02 GMT",
+    "x-fastly-request-id": "591ae7ef031a06f39810baefdd5de2a427666036",
+    "x-github-request-id": "4220:536F:73FE9F:83873D:5F820962",
+    "accept-ranges": "bytes",
+    "connection": "keep-alive",
+    "x-frame-options": "deny",
+    "x-xss-protection": "1; mode=block",
+    "x-timer": "S1602357602.409525,VS0,VE113",
+    "date": "Sat, 10 Oct 2020 19:20:02 GMT",
+    "access-control-allow-origin": "*",
+    "x-served-by": "cache-wdc5578-WDC",
+    "via": "1.1 varnish (Varnish/6.0),1.1 varnish",
+    "x-cache-hits": "0, 0",
+    "cache-control": "max-age=300",
+    "source-age": "0",
+    "x-content-type-options": "nosniff",
+    "content-type": "text/plain; charset=utf-8",
+    "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox",
+    "vary": "Authorization,Accept-Encoding",
+    "strict-transport-security": "max-age=31536000",
+    "etag": "W/\"7a3c9bb62bf326b72c41631283a01693944cf25dc07d2f3cb248bbd345801de6\""
+  },
+  "url": "https://raw.githubusercontent.com/matt-mcmahon/describe/master/source/lib/inspect.ts"
+}
