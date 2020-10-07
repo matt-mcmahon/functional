@@ -1,4 +1,4 @@
-import { clone } from "./clone"
+import { clone } from "./clone.ts";
 
 /**
  * ```haskell
@@ -16,11 +16,6 @@ import { clone } from "./clone"
  * ```
  * a[k] = b <=> assoc(k)(b)(a)
  * ```
- *
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const assoc =
-  <K extends PropertyKey>(k: K) =>
-  <B>(b: B) =>
-  <A>(a: A): A | { K: B } =>
-    Object.assign(clone(a), { [k]: b })
+export const assoc = <K extends PropertyKey>(k: K) =>
+  <B>(b: B) => <A>(a: A): A | { K: B } => Object.assign(clone(a), { [k]: b });

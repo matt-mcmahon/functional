@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isDate } from "./isDate"
+import { describe } from "../../lib/describe.ts";
+import { isDate } from "./isDate.ts";
 
-describe("is-date", async ({ assert, inspect }) => {
+describe("is-date", ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
     [new Date(), true],
     [undefined, false],
@@ -11,13 +11,13 @@ describe("is-date", async ({ assert, inspect }) => {
     [false, false],
     [{}, false],
     [{ length: 0 }, false],
-  ]
+  ];
 
   const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = isDate(value)
-    const given = inspect`isDate(${value})`
-    assert({ given, actual, expected })
-  }
+    const actual = isDate(value);
+    const given = inspect`isDate(${value})`;
+    assert({ given, actual, expected });
+  };
 
-  data.forEach(test)
-})
+  data.forEach(test);
+});

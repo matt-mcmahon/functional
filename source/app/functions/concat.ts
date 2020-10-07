@@ -19,11 +19,9 @@
  * concat(as)(bs) <=> ["a", 1, { foo: "bar" }, "b", { bar: "baz" } ]
  * ```
  */
-export const concat =
-  <A extends readonly unknown[]>(
-    as: A //
-  ) =>
-  <B extends readonly unknown[]>(
-    bs: B //
-  ): [...A, ...B] =>
-    [...as, ...bs]
+export const concat = <AS extends readonly unknown[]>(
+  as: AS,
+) =>
+  <BS extends readonly unknown[]>(
+    bs: BS,
+  ): [...AS, ...BS] => [...as, ...bs];

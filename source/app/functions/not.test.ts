@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { not } from "./not"
+import { describe } from "../../lib/describe.ts";
+import { not } from "./not.ts";
 
-describe("not", async ({ assert, inspect }) => {
+describe("not", ({ assert, inspect }) => {
   const values: [unknown, boolean][] = [
     [true, false],
     [false, true],
@@ -18,11 +18,11 @@ describe("not", async ({ assert, inspect }) => {
     [null, true],
     [undefined, true],
     [NaN, true],
-  ]
+  ];
 
   values.forEach(([value, expected]: [unknown, boolean]) => {
-    const actual = not(value)
-    const given = inspect`not(${value})`
-    assert({ expected, actual, given })
-  })
-})
+    const actual = not(value);
+    const given = inspect`not(${value})`;
+    assert({ expected, actual, given });
+  });
+});

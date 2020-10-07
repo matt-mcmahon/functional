@@ -1,8 +1,8 @@
 type FluentCompose<B, A> = {
-  (b: B): A
-  after<C>(f: (c: C) => B): FluentCompose<C, A>
-  invoke(b: B): A
-}
+  (b: B): A;
+  after<C>(f: (c: C) => B): FluentCompose<C, A>;
+  invoke(b: B): A;
+};
 
 /**
  * ```haskell
@@ -22,26 +22,26 @@ type FluentCompose<B, A> = {
  */
 export function fluentCompose<B, A>(f: (b: B) => A): FluentCompose<B, A> {
   function invoke(b: B): A {
-    return f(b)
+    return f(b);
   }
 
   const p: FluentCompose<B, A> = Object.assign(invoke.bind(null), {
     after: <C>(f: (c: C) => B): FluentCompose<C, A> => {
-      return after<C, B, A>(p, f)
+      return after<C, B, A>(p, f);
     },
     invoke,
-  })
-  return p
+  });
+  return p;
 }
 
 function after<C, B, A>(next: FluentCompose<B, A>, f: (c: C) => B) {
   function invoke(c: C): A {
-    return next(f(c))
+    return next(f(c));
   }
 
   const p: FluentCompose<C, A> = Object.assign(invoke.bind(null), {
     after: <D>(f: (d: D) => C) => after<D, C, A>(p, f),
     invoke,
-  })
-  return p
+  });
+  return p;
 }

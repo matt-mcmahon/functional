@@ -1,23 +1,21 @@
-/** @todo: delete eslint pragma */
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+// deno-lint-ignore-file ban-types
 
 const gather = <F extends Function>(
   n: number,
   f: F,
-  previous: unknown[] = []
+  previous: unknown[] = [],
 ) => {
   const curried = (...as: unknown[]) => {
-    const args = [...previous, ...as]
-    const remaining = n - args.length
-    return remaining > 0 ? gather(n, f, args) : f(...args.slice(0, n))
-  }
+    const args = [...previous, ...as];
+    const remaining = n - args.length;
+    return remaining > 0 ? gather(n, f, args) : f(...args.slice(0, n));
+  };
   Object.defineProperties(curried, {
     length: { value: n - previous.length },
     name: { value: `${f.name}${previous.length}` },
-  })
-  return curried
-}
+  });
+  return curried;
+};
 
 /**
  * ```haskell
@@ -29,7 +27,5 @@ const gather = <F extends Function>(
  *
  * @todo add support for Variadic Tuples in TypeScript 4
  */
-export const curryN =
-  (n: number) =>
-  <F extends Function>(f: F): Function =>
-    gather(n, f)
+export const curryN = (n: number) =>
+  <F extends Function>(f: F): Function => gather(n, f);

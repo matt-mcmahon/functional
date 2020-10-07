@@ -1,4 +1,4 @@
-import { First, Last } from "../types"
+import { First, Last } from "../types.d.ts";
 
 /**
  * ```haskell
@@ -27,12 +27,11 @@ import { First, Last } from "../types"
  * accepts only a `string`.
  *
  * To guarantee type safety, use _fluentCompose_.
- *
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// deno-lint-ignore no-explicit-any
 export function compose<FS extends ((x: any) => any)[]>(...fs: FS) {
-  type A0 = First<Parameters<Last<FS>>>
-  type AN = ReturnType<First<FS>>
+  type A0 = First<Parameters<Last<FS>>>;
+  type AN = ReturnType<First<FS>>;
 
-  return (a: A0): AN => fs.reduceRight((v, f) => f(v), a) as AN
+  return (a: A0): AN => fs.reduceRight((v, f) => f(v), a) as AN;
 }

@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isEmpty } from "./isEmpty"
+import { describe } from "../../lib/describe.ts";
+import { isEmpty } from "./isEmpty.ts";
 
-describe("is-empty", async ({ assert, inspect }) => {
+describe("is-empty", ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],
@@ -15,13 +15,13 @@ describe("is-empty", async ({ assert, inspect }) => {
     [new Set([1]), false],
     [new Map(), true],
     [new Map([["a", 1]]), false],
-  ]
+  ];
 
   const test = ([value, expected]: [unknown, boolean]) => {
-    const actual = isEmpty(value)
-    const given = inspect`isEmpty(${value})`
-    assert({ given, actual, expected })
-  }
+    const actual = isEmpty(value);
+    const given = inspect`isEmpty(${value})`;
+    assert({ given, actual, expected });
+  };
 
-  data.forEach(test)
-})
+  data.forEach(test);
+});

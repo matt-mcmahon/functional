@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isNumber } from "./isNumber"
+import { describe } from "../../lib/describe.ts";
+import { isNumber } from "./isNumber.ts";
 
-describe("is-number", async ({ assert, inspect }) => {
+describe("is-number", ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
     [1, true],
     [0, true],
@@ -14,13 +14,13 @@ describe("is-number", async ({ assert, inspect }) => {
     [false, false],
     [{}, false],
     [{ length: 0 }, false],
-  ]
+  ];
 
   const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = isNumber(value)
-    const given = inspect`isNumber(${value})`
-    assert({ given, actual, expected })
-  }
+    const actual = isNumber(value);
+    const given = inspect`isNumber(${value})`;
+    assert({ given, actual, expected });
+  };
 
-  data.forEach(test)
-})
+  data.forEach(test);
+});

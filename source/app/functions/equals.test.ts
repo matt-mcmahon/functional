@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { equals } from "./equals"
+import { describe } from "../../lib/describe.ts";
+import { equals } from "./equals.ts";
 
-describe("equals", async ({ assert, inspect }) => {
+describe("equals", ({ assert, inspect }) => {
   const values: [unknown, unknown, boolean][] = [
     ["a", "b", false],
     ["a", "a", true],
@@ -11,11 +11,11 @@ describe("equals", async ({ assert, inspect }) => {
     [undefined, undefined, true],
     [undefined, null, false],
     [null, null, true],
-  ]
+  ];
 
   values.forEach(([a, b, expected]) => {
-    const actual = equals(a)(b)
-    const given = inspect`equals(${a}, ${b})`
-    assert({ expected, actual, given })
-  })
-})
+    const actual = equals(a)(b);
+    const given = inspect`equals(${a}, ${b})`;
+    assert({ expected, actual, given });
+  });
+});

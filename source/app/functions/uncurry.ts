@@ -1,9 +1,5 @@
-/** @todo: remove eslint-disable pragma */
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
-const applyArgument = <F extends Function, A>(currentStep: F, a: A) =>
-  currentStep(a)
+const applyArgument = <F extends CallableFunction, A>(currentStep: F, a: A) =>
+  currentStep(a);
 
 /**
  * ```haskell
@@ -19,10 +15,9 @@ const applyArgument = <F extends Function, A>(currentStep: F, a: A) =>
  * ```
  * @todo add support for Variadic Tuples in TypeScript 4
  */
-export const uncurry =
-  (length: number) =>
+export const uncurry = (length: number) =>
   <A extends unknown, AS extends unknown[], B>(curried: (a: A) => B) =>
-  (...allArguments: AS) => {
-    const expectedArguments = allArguments.slice(0, length)
-    return expectedArguments.reduce(applyArgument, curried)
-  }
+    (...allArguments: AS) => {
+      const expectedArguments = allArguments.slice(0, length);
+      return expectedArguments.reduce(applyArgument, curried);
+    };

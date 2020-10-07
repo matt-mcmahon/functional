@@ -15,7 +15,5 @@
  * setFooBar({ foo: "foo" }) //=> { foo: "bar" }
  * ```
  */
-export const bind =
-  <M extends CallableFunction>(m: M) =>
-  (b: ThisParameterType<M>): OmitThisParameter<M> =>
-    m.bind(b)
+export const bind = <M extends CallableFunction>(m: M) =>
+  (b: ThisParameterType<M>): OmitThisParameter<M> => m.bind(b);
