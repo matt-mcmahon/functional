@@ -2,7 +2,6 @@
 
 You're looking at an experimental, extremely-minimal, functional library with a focus on clear source-code and readable function signatures.
 I've tried to design each function so that browsers and IDEs will generate readable function signatures and easy to debug code.
-Further, every exported function has an even simpler, [haskell-style][3], `<function>.signature` string that you can examine.
 
 ## Rational
 
@@ -29,7 +28,7 @@ To keep this library simple and easily debuggable, I'll occasionally copy code f
 When this is done, I'll include the original license with the source-code for that module, and (with permission) I'll give credit both here and in _package.json_'s `contributor` field.
 Programming is hard work, and I can't thank the open-source community enough for the enormity of their multitudinous efforts!
 
-## Special Thanks To:
+### Special Thanks To
 
 - [Tim Davis][5], `clone` was based heavily on his [deep-clone][4] implementation.
 - [Pierre-Antoine Mills][11], for his [How to master advanced TypeScript patterns][9] article on [freeCodeCamp][10] and [ts-toolbelt][12] library. His step-by-step guide on advanced TypeScript types is invaluable.
