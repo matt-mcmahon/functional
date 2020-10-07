@@ -1,0 +1,9 @@
+{
+  "https://deno.land/std@0.73.0/fmt/colors.ts": "ce9375edade12ca09c257743f223fc469d72578d0c74a55cbf1a34f6198ce3df",
+  "https://deno.land/std@0.73.0/testing/_diff.ts": "48a34be6be2721bafe48033a46e8d80c44d5458ea862e5ffdb9083d8c2b97a46",
+  "https://deno.land/std@0.73.0/testing/asserts.ts": "27b32ec4fd6d598f0ea14078e2d76e99e947b95cd10f8aefeeff81637c999143",
+  "https://raw.githubusercontent.com/matt-mcmahon/describe/master/source/app/describe.ts": "445a1eec9c3fd184c493ff8637266e8776a669f230ed6ca0c9922b7b215dfe64",
+  "https://raw.githubusercontent.com/matt-mcmahon/describe/master/source/lib/deps/asserts.ts": "2853d509686d625d1dbacbcd1725dfc5f9e7ccebbab9ae59b9193566089e5d22",
+  "https://raw.githubusercontent.com/matt-mcmahon/describe/master/source/lib/inspect.ts": "740d2d4b752dda011d836ceee8ce147a8a4e50a302201a8098660d9123f72beb",
+  "https://raw.githubusercontent.com/matt-mcmahon/describe/master/source/lib/test-framework.ts": "7f9a683a840bc38b7d4de91a5b99e363b2873d0a4bff3ce19c8180796c7095c4"
+}
