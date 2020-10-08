@@ -17,7 +17,7 @@ const filterTestFiles = (fileNames: string[]) =>
 const sortFiles = (files: string[]) => files.sort()
 
 const getModuleList = () =>
-  listDir("./source/functions")
+  listDir("./source/app/functions")
     .then(filterTestFiles)
     .then(removeExtension)
     .then(sortFiles)
