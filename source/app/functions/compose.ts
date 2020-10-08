@@ -1,4 +1,10 @@
-import { Compose, Last } from "../types"
+import { Last } from "../types"
+
+export type Compose<B, A> = {
+  (b: B): A
+  call(a: A): B
+  from<C>(f: (c: C) => B): Compose<C, A>
+}
 
 const fluent = <B, A>(f: (b: B) => A): Compose<B, A> => {
   function call(b: B): A {
