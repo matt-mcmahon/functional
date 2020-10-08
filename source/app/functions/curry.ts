@@ -1,3 +1,7 @@
+/** @todo: delete eslint pragma */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import { curryN } from "./curryN"
 
 /**
