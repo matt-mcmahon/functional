@@ -1,5 +1,5 @@
 devDependencies:
-  '@mwm/sign': 'link:../../.nvm/versions/node/v12.18.3/pnpm-global/node_modules/@mwm/sign'
+  '@mwm/describe': 2.0.0
   '@types/node': 14.11.2
   '@typescript-eslint/eslint-plugin': 4.3.0_60de305021300fed1989a0be1a9284d2
   '@typescript-eslint/parser': 4.3.0_eslint@7.10.0+typescript@4.0.3
@@ -274,6 +274,12 @@ packages:
       node: ^10.12.0 || >=12.0.0
     resolution:
       integrity: sha512-4YVwPkANLeNtRjMekzux1ci8hIaH5eGKktGqR0d3LWsKNn5B2X/1Z6Trxy7jQXl9EBGE6Yj02O+t09FMeRllaA==
+  /@mwm/describe/2.0.0:
+    dependencies:
+      tap: 14.10.8
+    dev: true
+    resolution:
+      integrity: sha512-49PtL1OGCESXciKcFwBfzd7AS1zt3R86LEaGjz4oeCPM9zRioT/Mu1Z49IZtBDiGNniI1PaXeUDPIahQtzs5Gg==
   /@nodelib/fs.scandir/2.1.3:
     dependencies:
       '@nodelib/fs.stat': 2.0.3
@@ -3136,7 +3142,7 @@ packages:
     resolution:
       integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
 specifiers:
-  '@mwm/sign': ^1.3.2
+  '@mwm/describe': ^2.0.0
   '@types/node': ^14.11.2
   '@typescript-eslint/eslint-plugin': ^4.3.0
   '@typescript-eslint/parser': ^4.3.0

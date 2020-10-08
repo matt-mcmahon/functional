@@ -1,1 +1,1 @@
-export { describe } from "@mwm/sign"
+export { describe } from "@mwm/describe"
