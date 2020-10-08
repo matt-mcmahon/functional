@@ -1,4 +1,4 @@
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 import { reduceRight } from "./reduceRight"
 
 describe("reduceRight", async ({ assert, inspect }) => {

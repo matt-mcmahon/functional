@@ -1,7 +1,7 @@
-import { describe } from "@mwm/sign"
-import { invoker } from "./invoker"
-
 // cSpell:ignore ghijklm abcdefghijklm
+
+import { describe } from "../../lib/describe"
+import { invoker } from "./invoker"
 
 describe("invoker", async ({ assert, inspect }) => {
   const target = "abcdefghijklm"

@@ -1,5 +1,5 @@
 import { toVariadic } from "./toVariadic"
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 describe("to-variadic", ({ assert, inspect }) => {
   {

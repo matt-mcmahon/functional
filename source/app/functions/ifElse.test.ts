@@ -1,5 +1,5 @@
 import { ifElse } from "./ifElse"
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 describe("if-else", ({ assert, inspect }) => {
   {

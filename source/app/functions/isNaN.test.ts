@@ -1,4 +1,4 @@
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 import { isNaN } from "./isNaN"
 
 describe("isNaN", async ({ assert, inspect }) => {

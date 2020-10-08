@@ -1,4 +1,4 @@
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 import { both } from "./both"
 import { toString, isNumber } from "../functions"
 

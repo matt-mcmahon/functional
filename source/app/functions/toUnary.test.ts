@@ -1,5 +1,5 @@
 import { toUnary } from "./toUnary"
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 describe("to-unary", ({ assert, inspect }) => {
   {

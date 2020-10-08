@@ -1,5 +1,5 @@
 import { reduce, reduceV } from "./reduce"
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 describe("reduce", ({ assert, inspect }) => {
   const as = ["1", "2", "3"]

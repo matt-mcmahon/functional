@@ -1,5 +1,5 @@
 import { map, mapV } from "./map"
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 describe("map", ({ assert, inspect }) => {
   const as = ["1", "2", "3"]

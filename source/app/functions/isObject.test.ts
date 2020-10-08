@@ -1,4 +1,4 @@
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 import { isObject } from "./isObject"
 
 describe("isObject", async ({ assert, inspect }) => {

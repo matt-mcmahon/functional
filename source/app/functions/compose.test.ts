@@ -1,5 +1,5 @@
 import { compose } from "./compose"
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 describe("fluent compose", ({ assert, inspect }) => {
   const double = (x: number) => x * 2

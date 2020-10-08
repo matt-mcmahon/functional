@@ -1,4 +1,4 @@
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 import { has } from "./has"
 import { prop } from "../functions"

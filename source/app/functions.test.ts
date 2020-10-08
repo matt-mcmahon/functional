@@ -1,10 +1,7 @@
-import { describe } from "@mwm/sign"
+import { describe } from "../lib/describe"
+import { readdir } from "../lib/readdir"
+
 import * as functional from "./functions"
-
-import { readdir } from "fs"
-import { promisify } from "util"
-
-const listDir = promisify(readdir)
 
 const removeExtension = (fileNames: string[]) =>
   fileNames.map((file) => file.replace(/.\w+$/, ""))
@@ -17,10 +14,13 @@ const filterTestFiles = (fileNames: string[]) =>
 const sortFiles = (files: string[]) => files.sort()
 
 const getModuleList = () =>
-  listDir("./source/app/functions")
+  readdir("./source/app/functions")
     .then(filterTestFiles)
     .then(removeExtension)
     .then(sortFiles)
+    .catch((reason) => {
+      throw reason
+    })
 
 describe("index", async ({ assert }) => {
   const actual = Object.keys(functional).sort()

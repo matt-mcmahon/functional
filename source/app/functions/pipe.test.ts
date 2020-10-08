@@ -1,5 +1,5 @@
 import { pipe } from "./pipe"
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 describe("fluent pipe", ({ assert, inspect }) => {
   const double = (x: number) => x * 2

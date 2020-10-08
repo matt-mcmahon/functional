@@ -1,5 +1,5 @@
 import { cap } from "./cap"
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 describe("cap", ({ assert, inspect }) => {
   {

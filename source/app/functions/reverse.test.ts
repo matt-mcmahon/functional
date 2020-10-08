@@ -1,5 +1,5 @@
 import { reverse } from "./reverse"
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 describe("reverse", ({ assert }) => {
   {

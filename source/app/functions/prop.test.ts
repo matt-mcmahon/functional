@@ -1,5 +1,5 @@
 import { prop } from "./prop"
-import { describe } from "@mwm/sign"
+import { describe } from "../../lib/describe"
 
 describe("prop, explicit", async ({ assert, inspect }) => {
   const getA = prop("a")
