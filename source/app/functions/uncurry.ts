@@ -1,3 +1,7 @@
+/** @todo: remove eslint-disable pragma */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 const applyArgument = <F extends Function, A>(currentStep: F, a: A) =>
   currentStep(a)
 
