@@ -1,3 +1,7 @@
+/** @todo: remove eslint-disable pragmas */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 /**
  * ```
  * pipeV :: (...as) => ((a⁰ => a¹), (a¹ => a²), ..., (aⁿ=> b)) =>  b
