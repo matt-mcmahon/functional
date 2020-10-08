@@ -1,3 +1,7 @@
+/** @todo: delete eslint pragma */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 const gather = <F extends Function>(
   n: number,
   f: F,
@@ -14,6 +18,7 @@ const gather = <F extends Function>(
   })
   return curried
 }
+
 /**
  * ```
  * curryN :: n => ((a¹, a², ..., aⁿ) => b) =>  a¹ => a²... => aⁿ => b
@@ -24,4 +29,5 @@ const gather = <F extends Function>(
  *
  * @todo add support for Variadic Tuples in TypeScript 4
  */
-export const curryN = (n: number) => <F extends Function>(f: F) => gather(n, f)
+export const curryN = (n: number) => <F extends Function>(f: F): Function =>
+  gather(n, f)
