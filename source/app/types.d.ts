@@ -1,17 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export type Compose<B, A> = {
-  (b: B): A
-  call(a: A): B
-  from<C>(f: (c: C) => B): Compose<C, A>
-}
-
-export type Pipe<A, B> = {
-  (a: A): B
-  then: <C>(f: (b: B) => C) => Pipe<A, C>
-  invoke(a: A): B
-}
-
 // From: https://dev.to/kjleitz/comment/gb5d
 // Keegan Leitz (https://dev.to/kjleitz)
 
@@ -104,7 +92,6 @@ type ArrayInfer<T> = T extends (infer U)[] ? U : never
  */
 type TupleInfer<T> = T extends [infer A, ...infer B] ? [A, B] : never
 
-// prettier-ignore
 /**
  * LAST
  *
