@@ -1,4 +1,10 @@
-import { Last, Pipe } from "../types"
+import { Last } from "../types"
+
+export type Pipe<A, B> = {
+  (a: A): B
+  then: <C>(f: (b: B) => C) => Pipe<A, C>
+  invoke(a: A): B
+}
 
 const fluent = <A, B>(f: (a: A) => B): Pipe<A, B> => {
   function invoke(a: A) {
