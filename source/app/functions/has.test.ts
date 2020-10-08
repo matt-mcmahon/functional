@@ -93,8 +93,7 @@ describe("has", ({ assert, inspect }) => {
 describe("has, type guard", async ({ assert, inspect }) => {
   const hasA = has("a")
   {
-    const empty = {}
-    const value = { a: "has a" } as typeof empty
+    const value = { a: "has a" } as unknown
     const actual = hasA(value) ? prop("a")(value) : "no a"
     const expected = "has a"
     const given = inspect`property "a" hidden from compiler`
