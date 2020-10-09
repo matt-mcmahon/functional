@@ -4,20 +4,21 @@
   "author": "Matt McMahon <contact@matt-mcmahon.com> (http://matt-mcmahon.com/)",
   "description": "Extremely minimal functional library with a focus on source-code clarity.",
   "devDependencies": {
-    "@mwm/sign": "^1.3.2",
-    "@types/node": "^14.6.0",
+    "@mwm/describe": "^2.0.0",
+    "@types/node": "^14.11.2",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
     "eslint": "^7.10.0",
-    "husky": "^4.2.5",
+    "husky": "^4.3.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.5",
+    "prettier": "^2.1.2",
     "tap": "^14.10.8",
+    "tslib": "^2.0.1",
     "typescript": "^4.0.3"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "run-s lint:cached test:silent"
+      "pre-commit": "run-s lint:cached build:development test:build:silent"
     }
   },
   "keywords": [
@@ -32,24 +33,29 @@
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/matt-mcmahon/functional.git"
+    "url": "git+https://github.com/matt-mcmahon/functional.git"
   },
   "scripts": {
-    "build": "run-s build:development",
-    "build:clean": "rm -rf ./build ./dist ./.nyc_output",
+    "build": "run-s build:production",
     "build:development": "tsc",
     "build:production": "rm -rf ./dist && tsc -p tsconfig.production.json",
     "build:watch": "tsc --watch",
-    "clean": "run-s build:clean",
+    "clean": "rm -rf ./build ./dist ./.nyc_output",
     "lint": "prettier --check source/**/*",
-    "lint:fix": "prettier --write source/**/*",
     "lint:cached": "prettier --check $(git diff --name-only --cached)",
-    "prepublishOnly": "run-s test:silent build:production",
-    "preversion": "run-s test:silent",
-    "test": "run-s lint build test:build",
-    "test:build": "tap --bail ./build/**/*.test.js",
-    "test:silent": "tap --bail --no-coverage --no-coverage-report -R silent ./source/**/*.test.ts",
-    "test:source:watch": "tap --watch --no-coverage-report ./source/**/*.test.ts",
-    "test:source": "tap --bail ./source/**/*.test.ts"
-  }
+    "lint:fix": "prettier --write source/**/*",
+    "prepublishOnly": "run-s clean lint build:development test:build:silent build:production",
+    "preversion": "run-s clean lint build:development test:build:silent build:production",
+    "test": "run-s lint build:development test:build",
+    "test:build": "tap --bail $(find ./build/ -name '*.test.js')",
+    "test:build:silent": "tap --bail --no-coverage --no-coverage-report -R silent $(find ./build -name '*.test.js')",
+    "test:build:watch": "tap --watch --no-coverage --no-coverage-report $(find ./build -name '*.test.js')",
+    "test:source": "tap --bail $(find ./source -name '*.test.ts')",
+    "test:source:watch": "tap --watch --no-coverage-report $(find ./source -name '*.test.ts')",
+    "watch": "run-p build:watch test:build:watch"
+  },
+  "bugs": {
+    "url": "https://github.com/matt-mcmahon/functional/issues"
+  },
+  "homepage": "https://github.com/matt-mcmahon/functional#readme"
 }
