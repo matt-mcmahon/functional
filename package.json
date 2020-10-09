@@ -46,6 +46,7 @@
     "lint:fix": "prettier --write source/**/*",
     "prepublishOnly": "run-s clean lint build:development test:build:silent build:production",
     "preversion": "run-s clean lint build:development test:build:silent build:production",
+    "prepack": "cat .gitignore .npmignore-additions > .npmignore",
     "test": "run-s lint build:development test:build",
     "test:build": "tap --bail $(find ./build/ -name '*.test.js')",
     "test:build:silent": "tap --bail --no-coverage --no-coverage-report -R silent $(find ./build -name '*.test.js')",
