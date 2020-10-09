@@ -14,3 +14,4 @@ const gather = (n, f, previous = []) => {
     return curried;
 };
 exports.curryN = (n) => (f) => gather(n, f);
+//# sourceMappingURL=curryN.js.map

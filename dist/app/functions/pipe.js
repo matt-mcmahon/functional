@@ -28,3 +28,4 @@ const next = (prev, f) => {
 exports.pipe = Object.assign((...fs) => {
     return (a) => fs.reduce((v, f) => f(v), a);
 }, { fluent });
+//# sourceMappingURL=pipe.js.map

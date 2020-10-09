@@ -5,3 +5,4 @@ function toUnary(v) {
     return (as) => v(...as);
 }
 exports.toUnary = toUnary;
+//# sourceMappingURL=toUnary.js.map

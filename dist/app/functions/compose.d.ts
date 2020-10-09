@@ -7,3 +7,4 @@ export declare type Compose<B, A> = {
 export declare const compose: (<FS extends ((x: any) => any)[]>(...fs: FS) => (a: Parameters<Last<FS>>[0]) => ReturnType<FS[0]>) & {
     fluent: <B, A>(f: (b: B) => A) => Compose<B, A>;
 };
+//# sourceMappingURL=compose.d.ts.map

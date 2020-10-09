@@ -6,3 +6,4 @@ exports.uncurry = (length) => (curried) => (...allArguments) => {
     const expectedArguments = allArguments.slice(0, length);
     return expectedArguments.reduce(applyArgument, curried);
 };
+//# sourceMappingURL=uncurry.js.map

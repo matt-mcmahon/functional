@@ -5,3 +5,4 @@ exports.blackbird = (converging) => (...parts) => (a) => {
     const bs = parts.map((part) => part(a));
     return converging(...bs);
 };
+//# sourceMappingURL=blackbird.js.map

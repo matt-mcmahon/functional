@@ -28,3 +28,4 @@ const after = (next, f) => {
 exports.compose = Object.assign((...fs) => {
     return (a) => fs.reduceRight((v, f) => f(v), a);
 }, { fluent });
+//# sourceMappingURL=compose.js.map

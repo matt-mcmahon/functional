@@ -2,3 +2,4 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.F = void 0;
 exports.F = (...ignored) => false;
+//# sourceMappingURL=F.js.map

@@ -5,3 +5,4 @@ exports.tap = (f) => (a) => {
     f(a);
     return a;
 };
+//# sourceMappingURL=tap.js.map

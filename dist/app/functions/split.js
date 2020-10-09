@@ -6,3 +6,4 @@ exports.split = (separator, limit) => (source) => separator == undefined
     : separator === ""
         ? Array.from(source).slice(0, limit)
         : source.split(separator, limit);
+//# sourceMappingURL=split.js.map
