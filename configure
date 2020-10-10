@@ -1,0 +1,58 @@
+#!/bin/bash
+
+RUN_PERMISSIONS=""
+TEST_PERMISSIONS="--allow-read=./source"
+
+printf "
+Create a minimal .env file for the project. See \`./example/.env\` or 
+\`./README.md\` for more information.
+
+"
+
+if [ -e ".env" ]; then
+     read -p "A .env file exists; overwrite? [y/N] " INPUT
+     case $INPUT in
+     y | Y | yes | YES) truncate -s 0 .env ;;
+     esac
+else
+     touch .env
+fi
+
+
+IMPORT_MAP_FILE="import-map.json"
+read -e                                                 \
+     -i "$IMPORT_MAP_FILE"                              \
+     -p "Import map filename, delete to disable: "  \
+     IMPORT_MAP_FILE
+if [ "$IMPORT_MAP_FILE" != "" ] && ! [ -e "$IMPORT_MAP_FILE" ]; then
+     printf "Import Map file ${IMPORT_MAP_FILE} was not found, creating..."
+     printf '{
+  "imports": {
+    "https://raw.githubusercontent.com/matt-mcmahon/describe/master/source/app/describe.ts": "./source/lib/describe/source/app/describe.ts"
+  }
+}' > $IMPORT_MAP_FILE
+fi
+
+
+echo ""
+DENO_DIR=${DENO_DIR:-.deno}
+read -e                                            \
+     -i "$DENO_DIR"                                \
+     -p "Local DENO_DIR, or nothing to disable: "  \
+     DENO_DIR
+
+
+echo ""
+read -e                    \
+     -i "npm"              \
+     -p "NPM executable: " \
+     NPM_CMD
+NPM_CMD=${NPM_CMD:-npm}
+
+
+printf "DENO_DIR=${DENO_DIR}
+IMPORT_MAP_FILE=${IMPORT_MAP_FILE}
+NPM_CMD=${NPM_CMD}
+RUN_PERMISSIONS=${RUN_PERMISSIONS}
+TEST_PERMISSIONS=--unstable ${TEST_PERMISSIONS}
+" > .env
