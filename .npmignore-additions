@@ -1,5 +1,6 @@
 # Additional files ignored by NPM publish, added to list in .gitignore
 
+.deno
 .eslintignore
 .eslintrc.js
 .gitattributes
