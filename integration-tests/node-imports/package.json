@@ -1,0 +1,12 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Matt McMahon <contact@matt-mcmahon.com> (https://matt-mcmahon.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "@mwm/functional": "file:../../target/node"
+  }
+}
