@@ -170,7 +170,7 @@ endif
 	fmt format \
 	install \
 	lint lint-quiet \
-	node node-link node-build \
+	node node-build node-clean node-install node-link node-test \
 	run \
 	test test-quiet test-watch \
 	upgrade \
