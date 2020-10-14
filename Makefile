@@ -11,10 +11,11 @@ export
 #
 CACHE_OPTIONS                ?= --cached-only
 DENO_DIR                     ?= .deno
-IMPORT_MAP_FILE              ?= import-map.json
+IMPORT_MAP_FILE              ?=
 LOCK_FILE                    ?= lock-file.json
 RUN_PERMISSIONS              ?=
 TEST_PERMISSIONS             ?= --allow-read=./source
+USE_UNSTABLE                 ?=
 
 # The default values for these settings are meant to be easily overwritten by
 # your project's .env file.
@@ -24,7 +25,6 @@ TEST_PERMISSIONS             ?= --allow-read=./source
 DENO_BUNDLE_FILE             ?= ./bundle.js
 DENO_MAIN                    ?= ./module.ts
 DENO_SOURCE_DIR              ?= ./source
-LOCAL_DESCRIBE_MODULE_PATH   ?= ../describe
 TARGET_NODE                  ?= ./target/node
 
 DENO_APP_DIR                 ?= ${DENO_SOURCE_DIR}/app
@@ -39,7 +39,8 @@ NPM_LINK_CMD                 ?= ${NPM_CMD} link
 NODE_GEN_DIR                 ?= ${TARGET_NODE}/source/gen
 
 ifneq (${IMPORT_MAP_FILE},)
-IMPORT_MAP_OPTIONS=--unstable --importmap ${IMPORT_MAP_FILE}
+IMPORT_MAP_OPTIONS=--importmap ${IMPORT_MAP_FILE}
+USE_UNSTABLE=--unstable
 endif
 
 ifneq (${LOCK_FILE},)
@@ -57,21 +58,18 @@ ${LOCK_FILE}:
 	@deno cache \
 		${RUN_PERMISSIONS} \
 		${LOCK_OPTIONS_WRITE} \
-		${IMPORT_MAP_OPTIONS} \
+		${IMPORT_MAP_OPTIONS} ${USE_UNSTABLE} \
 		${DENO_DEPENDENCIES_FILE}
-
-${DENO_LIB_DIR}/describe:
-	@ln -sfrT ${LOCAL_DESCRIBE_MODULE_PATH} ${DENO_LIB_DIR}/describe
 
 build: deno-build node-build
 
 cache:
-	@deno cache ${RUN_PERMISSIONS} ${LOCK_OPTIONS} ${IMPORT_MAP_OPTIONS} \
+	@deno cache ${RUN_PERMISSIONS} ${LOCK_OPTIONS} ${IMPORT_MAP_OPTIONS} ${USE_UNSTABLE} \
 		${DENO_DEPENDENCIES_FILE}
 	@$(shell DENO_DIR=;deno cache \
 		${RUN_PERMISSIONS} \
 		${LOCK_OPTIONS} \
-		${IMPORT_MAP_OPTIONS} \
+		${IMPORT_MAP_OPTIONS} ${USE_UNSTABLE} \
 		${DENO_DEPENDENCIES_FILE})
 
 clean:
@@ -84,12 +82,12 @@ configure:
 
 deno: deno-build
 
-deno-build: test-quiet
+deno-build:
 	@echo "// deno-fmt-ignore-file" > ${DENO_BUNDLE_FILE}
 	@echo "// deno-lint-ignore-file" >> ${DENO_BUNDLE_FILE}
 	@echo "// @ts-nocheck" >> ${DENO_BUNDLE_FILE}
 	@echo "/* eslint-disable */" >> ${DENO_BUNDLE_FILE}
-	@deno bundle ${IMPORT_MAP_OPTIONS} ${DENO_MAIN} >> ${DENO_BUNDLE_FILE}
+	@deno bundle ${IMPORT_MAP_OPTIONS} ${USE_UNSTABLE} ${DENO_MAIN} >> ${DENO_BUNDLE_FILE}
 
 fmt: format
 
@@ -142,13 +140,13 @@ run:
 	@deno run ${RUN_PERMISSIONS} ${DENO_MAIN}
 
 test: install lint
-	@deno test --coverage=coverage \
+	@deno test --coverage=coverage --unstable \
 		${TEST_PERMISSIONS} ${IMPORT_MAP_OPTIONS} ${LOCK_OPTIONS} ${CACHE_OPTIONS} \
 		${DENO_SOURCE_DIR}
 
 test-quiet: install lint-quiet
 	@deno test --failfast --quiet \
-		${TEST_PERMISSIONS} ${IMPORT_MAP_OPTIONS} ${LOCK_OPTIONS} ${CACHE_OPTIONS} \
+		${TEST_PERMISSIONS} ${IMPORT_MAP_OPTIONS} ${USE_UNSTABLE} ${LOCK_OPTIONS} ${CACHE_OPTIONS} \
 		${DENO_SOURCE_DIR}
 
 test-watch: install
@@ -161,7 +159,7 @@ upgrade:
 ifneq (${LOCK_FILE},)
 	@read -p "[Enter] to update your lock-file and dependencies or [Ctrl]+[C] to cancel:" cancel
 	@deno cache --reload \
-		${RUN_PERMISSIONS} ${LOCK_OPTIONS_WRITE} ${IMPORT_MAP_OPTIONS} \
+		${RUN_PERMISSIONS} ${LOCK_OPTIONS_WRITE} ${IMPORT_MAP_OPTIONS} ${USE_UNSTABLE} \
 		${DENO_DEPENDENCIES_FILE}
 endif
 
