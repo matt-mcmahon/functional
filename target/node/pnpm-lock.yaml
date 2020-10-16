@@ -1,5 +1,5 @@
 devDependencies:
-  '@mwm/describe': 2.0.0
+  '@mwm/describe': 'link:../../../../.nvm/versions/node/v12.18.3/pnpm-global/node_modules/@mwm/describe'
   '@types/node': 14.11.2
   npm-run-all: 4.1.5
   tap: 14.10.8
@@ -252,12 +252,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-bvM7Qz6eKnJVFIn+1LPtjlBFPVN5jNDc1XmN15vWe7Q3DPBufWWsLiIvUu7xW87uTG6QoggpIDnUgLQvPheU+Q==
-  /@mwm/describe/2.0.0:
-    dependencies:
-      tap: 14.10.8
-    dev: true
-    resolution:
-      integrity: sha512-49PtL1OGCESXciKcFwBfzd7AS1zt3R86LEaGjz4oeCPM9zRioT/Mu1Z49IZtBDiGNniI1PaXeUDPIahQtzs5Gg==
   /@types/node/14.11.2:
     dev: true
     resolution:
