@@ -4,11 +4,11 @@
   "author": "Matt McMahon <contact@matt-mcmahon.com> (http://matt-mcmahon.com/)",
   "description": "Extremely minimal functional library with a focus on source-code clarity.",
   "devDependencies": {
-    "@mwm/describe": "^2.0.0",
-    "@types/node": "^14.11.2",
+    "@mwm/describe": "^2.1.0",
+    "@types/node": "^14.11.10",
     "npm-run-all": "^4.1.5",
     "tap": "^14.10.8",
-    "tslib": "^2.0.1",
+    "tslib": "^2.0.3",
     "typescript": "^4.0.3"
   },
   "keywords": [
