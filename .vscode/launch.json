@@ -17,7 +17,7 @@
         "--inspect-brk=127.0.0.1:9229",
         "--allow-env",
         "--allow-read=${workspaceFolder}",
-        "--lock=lock-file.json",
+        "--lock=lock_file.json",
         "--cached-only"
       ],
       "attachSimplePort": 9229
