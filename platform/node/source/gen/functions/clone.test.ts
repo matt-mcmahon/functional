@@ -115,7 +115,7 @@ describe("clone, recursive", async ({ assert, inspect }) => {
     should: `clone should be a new object`,
   });
 
-  // @todo make recursive safe assert
+  /** @todo: make circular dependent safe */
   // assert({
   //   actual: copy,
   //   expected: original,

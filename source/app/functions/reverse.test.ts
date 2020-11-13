@@ -1,5 +1,5 @@
 import { reverse } from "./reverse.ts";
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 describe("reverse", ({ assert }) => {
   {

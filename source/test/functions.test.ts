@@ -1,4 +1,4 @@
-import { describe } from "../lib/remote/describe.ts";
+import { describe } from "../lib/describe.ts";
 import { readdir } from "../lib/readdir.ts";
 
 import * as functional from "../app/functions.ts";

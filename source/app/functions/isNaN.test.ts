@@ -1,4 +1,4 @@
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 import { isNaN } from "./isNaN.ts";
 
 describe("isNaN", async ({ assert, inspect }) => {

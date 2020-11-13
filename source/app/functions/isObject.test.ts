@@ -1,4 +1,4 @@
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 import { isObject } from "./isObject.ts";
 
 describe("isObject", async ({ assert, inspect }) => {

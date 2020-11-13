@@ -1,5 +1,5 @@
 import { toVariadic } from "./toVariadic.ts";
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 describe("to-variadic", ({ assert, inspect }) => {
   {

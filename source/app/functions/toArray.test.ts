@@ -1,4 +1,4 @@
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 import { toArray } from "./toArray.ts";
 
 describe("to-string", async ({ assert, inspect }) => {

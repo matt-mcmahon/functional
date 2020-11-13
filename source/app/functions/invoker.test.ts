@@ -1,6 +1,6 @@
 // cSpell:ignore ghijklm abcdefghijklm
 
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 import { invoker } from "./invoker.ts";
 
 describe("invoker", async ({ assert, inspect }) => {

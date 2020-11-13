@@ -6,11 +6,11 @@ describe("if-else", ({ assert, inspect }) => {
     const ifEven = (x: number) => x % 2 === 0;
     const whenEven = (x: number) => `${x} is even`;
     const whenOdd = (x: number) => `${x} is odd`;
-    const f = ifElse(ifEven, whenEven, whenOdd);
+    const fn = ifElse(ifEven, whenEven, whenOdd);
 
     {
       const given = inspect`f(${4})`;
-      const actual = f(4);
+      const actual = fn(4);
       const expected = "4 is even";
       const should = "should run true branch";
       assert({ actual, expected, given, should });
@@ -18,7 +18,7 @@ describe("if-else", ({ assert, inspect }) => {
 
     {
       const given = inspect`f(${3})`;
-      const actual = f(3);
+      const actual = fn(3);
       const expected = `3 is odd`;
       const should = `run false branch`;
       assert({ actual, expected, given, should });

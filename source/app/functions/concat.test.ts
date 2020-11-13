@@ -1,4 +1,4 @@
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 import { concat } from "./concat.ts";
 
 describe("concat", async ({ assert, inspect }) => {

@@ -1,4 +1,4 @@
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 import { has } from "./has.ts";
 import { prop } from "./prop.ts";

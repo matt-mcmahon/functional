@@ -1,5 +1,5 @@
 import { compose } from "./compose.ts";
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 describe("fluent compose", ({ assert, inspect }) => {
   const double = (x: number) => x * 2;

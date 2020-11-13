@@ -1,4 +1,4 @@
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 import { always } from "./always.ts";
 
 describe("always", async ({ assert, inspect }) => {

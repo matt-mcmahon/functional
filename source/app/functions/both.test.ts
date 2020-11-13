@@ -1,4 +1,4 @@
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 import { both } from "./both.ts";
 import { toString } from "./toString.ts";
 import { isNumber } from "./isNumber.ts";

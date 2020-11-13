@@ -1,0 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const describe_1 = require("../../lib/describe");
+const take_1 = require("./take");
+describe_1.describe("take", async ({ assert, inspect }) => {
+    const [a, b, c, d, e] = ["a", "b", "c", "d", "e"];
+    {
+        const as = [a, b, c, d, e];
+        const actual = take_1.take(3)(as);
+        const expected = [a, b, c];
+        const given = inspect `take(${3}, ${as})`;
+        assert({ given, actual, expected });
+    }
+    {
+        const as = [a, b];
+        const actual = take_1.take(4)(as);
+        const expected = [a, b];
+        const given = inspect `take(${4})(${as})`;
+        assert({ given, actual, expected });
+    }
+});
+//# sourceMappingURL=take.test.js.map

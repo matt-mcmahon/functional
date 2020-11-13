@@ -1,5 +1,5 @@
 import { prop } from "./prop.ts";
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 describe("prop, explicit", async ({ assert, inspect }) => {
   const getA = prop("a");

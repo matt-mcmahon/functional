@@ -1,1 +1,1 @@
-import "./source/lib/remote/describe.ts";
+import "./remote/describe.ts";

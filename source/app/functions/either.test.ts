@@ -1,4 +1,4 @@
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 import { either } from "./either.ts";
 import { T } from "./T.ts";

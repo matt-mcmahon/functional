@@ -60,3 +60,4 @@ export { toVariadic } from "./functions/toVariadic.ts";
 export { trim } from "./functions/trim.ts";
 export { uncurry } from "./functions/uncurry.ts";
 export { unless } from "./functions/unless.ts";
+export { when } from "./functions/when.ts";

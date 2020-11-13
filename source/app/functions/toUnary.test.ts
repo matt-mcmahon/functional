@@ -1,5 +1,5 @@
 import { toUnary } from "./toUnary.ts";
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 describe("to-unary", ({ assert, inspect }) => {
   {

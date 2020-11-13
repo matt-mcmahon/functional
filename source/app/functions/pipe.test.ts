@@ -1,5 +1,5 @@
 import { pipe } from "./pipe.ts";
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 describe("fluent pipe", ({ assert, inspect }) => {
   const double = (x: number) => x * 2;

@@ -1,5 +1,5 @@
 import { map, mapV } from "./map.ts";
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 describe("map", ({ assert, inspect }) => {
   const as = ["1", "2", "3"];

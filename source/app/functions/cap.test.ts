@@ -1,5 +1,5 @@
 import { cap } from "./cap.ts";
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 describe("cap", ({ assert, inspect }) => {
   {

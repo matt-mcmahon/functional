@@ -1,5 +1,5 @@
 import { reduce, reduceV } from "./reduce.ts";
-import { describe } from "../../lib/remote/describe.ts";
+import { describe } from "../../lib/describe.ts";
 
 describe("reduce", ({ assert, inspect }) => {
   const as = ["1", "2", "3"];
