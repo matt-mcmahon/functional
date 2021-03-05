@@ -171,7 +171,7 @@ run:
 	deno run $(RUN_PERMISSIONS) $(DENO_MAIN)
 
 test: .header(test) $(LOCK_FILE)
-	deno test --unstable --coverage \
+	deno test --unstable --coverage=cov_profile \
 		$(TEST_PERMISSIONS) \
 		$(LOCK_OPTIONS) \
 		$(USE_CACHE) \

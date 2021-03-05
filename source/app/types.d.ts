@@ -97,6 +97,8 @@ type TupleInfer<T> = T extends [infer A, ...infer B] ? [A, B] : never;
  */
 type Last<T extends unknown[]> = T extends [...infer _, infer A] ? A : never;
 
+type F<A, B, C, D> = Last<[(a: A) => B, (b: B) => C, (c: C) => D]>;
+
 /**
  * LENGTH
  *
