@@ -19,13 +19,10 @@ const applyArgument = <F extends Function, A>(currentStep: F, a: A) =>
  * ```
  * @todo add support for Variadic Tuples in TypeScript 4
  */
-export const uncurry = (length: number) => <
-  A extends unknown,
-  AS extends unknown[],
-  B
->(
-  curried: (a: A) => B
-) => (...allArguments: AS) => {
-  const expectedArguments = allArguments.slice(0, length)
-  return expectedArguments.reduce(applyArgument, curried)
-}
+export const uncurry =
+  (length: number) =>
+  <A extends unknown, AS extends unknown[], B>(curried: (a: A) => B) =>
+  (...allArguments: AS) => {
+    const expectedArguments = allArguments.slice(0, length)
+    return expectedArguments.reduce(applyArgument, curried)
+  }
