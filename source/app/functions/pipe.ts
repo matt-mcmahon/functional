@@ -1,36 +1,4 @@
-import { Last } from "../types"
-
-export type Pipe<A, B> = {
-  (a: A): B
-  then: <C>(f: (b: B) => C) => Pipe<A, C>
-  invoke(a: A): B
-}
-
-const fluent = <A, B>(f: (a: A) => B): Pipe<A, B> => {
-  function invoke(a: A) {
-    return f(a)
-  }
-  const p: Pipe<A, B> = Object.assign(invoke.bind(null), {
-    then: <C>(f: (b: B) => C): Pipe<A, C> => {
-      return next<A, B, C>(p, f)
-    },
-    invoke,
-  })
-  return p
-}
-
-const next = <A, B, C>(prev: Pipe<A, B>, f: (b: B) => C): Pipe<A, C> => {
-  function invoke(a: A) {
-    return f(prev(a))
-  }
-  const p: Pipe<A, C> = Object.assign(invoke.bind(null), {
-    then: <D>(f: (c: C) => D): Pipe<A, D> => {
-      return next<A, C, D>(p, f)
-    },
-    invoke,
-  })
-  return p
-}
+import { First, Last } from "../types"
 
 /**
  * ```
@@ -57,30 +25,14 @@ const next = <A, B, C>(prev: Pipe<A, B>, f: (b: B) => C): Pipe<A, C> => {
  * To guarantee type safety, use the _fluent_ API:
  *
  * ```
- * pipe.fluent(f).then(g).then(h).invoke(a) <=> h(g(f(a)))
- * ```
- *
- * The fluent algorithm guarantees that the return type of _f_ will match the
- * argument type of _g_, that _g_ will match _h_, etc. Note that the final
- * `invoke` method is equivalent to:
- *
- * ```
- * pipe.fluent(f).then(g).then(h)(a)
- * ```
- * and if you assign a fluent chain to a variable you may treat it as a normal
- * function. For example:
- * ```
- * const fgh = pipe.fluent(f).then(g).then(h)
- * fgh(a) <=> fgh.invoke(a)
+ * import { fluentPipe } from "@mwm/functions/fluentPipe"
+ * fluentPipe(f).then(g).then(h).invoke(a) <=> h(g(f(a)))
  * ```
  */
-export const pipe = Object.assign(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  <FS extends ((x: any) => any)[]>(...fs: FS) => {
-    type A = Parameters<FS[0]>[0]
-    type B = ReturnType<Last<FS>>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function pipe<FS extends ((x: any) => any)[]>(...fs: FS) {
+  type A0 = First<Parameters<First<FS>>>
+  type AN = ReturnType<Last<FS>>
 
-    return (a: A): B => fs.reduce((v, f) => f(v), a) as B
-  },
-  { fluent }
-)
+  return (a: A0): AN => fs.reduce((v, f) => f(v), a) as AN
+}
