@@ -48,7 +48,7 @@ function cloneUnknown<A>(a: A, map: WeakMap<object, unknown>): A {
       ? cloneObject(a, map)
       : a
     : a
-  return (t as unknown) as A
+  return t as unknown as A
 }
 
 /**

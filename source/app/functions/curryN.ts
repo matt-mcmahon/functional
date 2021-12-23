@@ -29,5 +29,7 @@ const gather = <F extends Function>(
  *
  * @todo add support for Variadic Tuples in TypeScript 4
  */
-export const curryN = (n: number) => <F extends Function>(f: F): Function =>
-  gather(n, f)
+export const curryN =
+  (n: number) =>
+  <F extends Function>(f: F): Function =>
+    gather(n, f)

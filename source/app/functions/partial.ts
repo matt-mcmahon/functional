@@ -13,8 +13,10 @@
  * of arguments, __b__, and applies them to __f__, as in
  * `f(a¹, …, aⁿ, b¹, …, bⁿ) => c`.
  */
-export const partial = <AS extends Args>(...as: AS) => <BS extends Args, C>(
-  f: (...args: [...AS, ...BS]) => C
-) => (...bs: BS) => f(...as, ...bs)
+export const partial =
+  <AS extends Args>(...as: AS) =>
+  <BS extends Args, C>(f: (...args: [...AS, ...BS]) => C) =>
+  (...bs: BS) =>
+    f(...as, ...bs)
 
 export type Args = readonly unknown[]

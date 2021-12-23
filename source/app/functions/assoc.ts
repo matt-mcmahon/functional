@@ -16,6 +16,8 @@ import { clone } from "./clone"
  *
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const assoc = <K extends PropertyKey>(k: K) => <B>(b: B) => <A>(
-  a: A
-): A | { K: B } => Object.assign(clone(a), { [k]: b })
+export const assoc =
+  <K extends PropertyKey>(k: K) =>
+  <B>(b: B) =>
+  <A>(a: A): A | { K: B } =>
+    Object.assign(clone(a), { [k]: b })
