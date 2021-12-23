@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isNil = void 0;
-exports.isNil = (a) => a === null || a === undefined;
+const isNil = (a) => a === null || a === undefined;
+exports.isNil = isNil;
 //# sourceMappingURL=isNil.js.map

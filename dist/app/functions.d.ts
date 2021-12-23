@@ -15,6 +15,8 @@ export { either } from "./functions/either";
 export { equals } from "./functions/equals";
 export { F } from "./functions/F";
 export { filter } from "./functions/filter";
+export { fluentCompose } from "./functions/fluentCompose";
+export { fluentPipe } from "./functions/fluentPipe";
 export { has } from "./functions/has";
 export { head } from "./functions/head";
 export { identity } from "./functions/identity";
