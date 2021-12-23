@@ -13,5 +13,6 @@ const gather = (n, f, previous = []) => {
     });
     return curried;
 };
-exports.curryN = (n) => (f) => gather(n, f);
+const curryN = (n) => (f) => gather(n, f);
+exports.curryN = curryN;
 //# sourceMappingURL=curryN.js.map

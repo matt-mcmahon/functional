@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.reverse = void 0;
-exports.reverse = (as) => Array.from(as).reverse();
+const reverse = (as) => Array.from(as).reverse();
+exports.reverse = reverse;
 //# sourceMappingURL=reverse.js.map

@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mapV = exports.map = void 0;
-exports.map = (ab) => (as) => as.map(ab);
-exports.mapV = (ab) => (...as) => as.map(ab);
+const map = (ab) => (as) => as.map(ab);
+exports.map = map;
+const mapV = (ab) => (...as) => as.map(ab);
+exports.mapV = mapV;
 //# sourceMappingURL=map.js.map

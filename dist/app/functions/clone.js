@@ -35,12 +35,12 @@ function cloneArray(a, map) {
     }
 }
 function cloneUnknown(a, map) {
-    const t = isDefined_1.isDefined(a)
-        ? isDate_1.isDate(a)
+    const t = (0, isDefined_1.isDefined)(a)
+        ? (0, isDate_1.isDate)(a)
             ? cloneDate(a)
-            : isArray_1.isArray(a)
+            : (0, isArray_1.isArray)(a)
                 ? cloneArray(a, map)
-                : isObject_1.isObject(a)
+                : (0, isObject_1.isObject)(a)
                     ? cloneObject(a, map)
                     : a
         : a;

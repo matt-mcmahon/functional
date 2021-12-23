@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.identity = void 0;
-exports.identity = (a) => a;
+const identity = (a) => a;
+exports.identity = identity;
 //# sourceMappingURL=identity.js.map
