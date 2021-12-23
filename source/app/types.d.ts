@@ -32,7 +32,6 @@ export type Head<AS extends unknown[]> = AS extends [infer A, ...unknown[]]
 
 declare function fn00(name: string, age: number, single: boolean): true
 
-// prettier-ignore
 /**
  * TAIL
  *
@@ -79,7 +78,6 @@ type ClassInfer<I> = I extends Promise<infer G> ? G : never
  */
 type ArrayInfer<T> = T extends (infer U)[] ? U : never
 
-// prettier-ignore
 /**
  * Extract types from a tuple
  *
@@ -93,13 +91,21 @@ type ArrayInfer<T> = T extends (infer U)[] ? U : never
 type TupleInfer<T> = T extends [infer A, ...infer B] ? [A, B] : never
 
 /**
- * LAST
- *
- * Take your time to try to understand this complex yet very short type. This
- * example takes a tuple as a parameter and it extracts its last entry out:
+ * The index of the last element in the array or tuple.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type Last<T extends unknown[]> = T extends [...infer _, infer A] ? A : never
+type LastIndex<AS extends unknown[]> = AS extends [infer A, ...infer BS]
+  ? Length<BS>
+  : never
+
+/**
+ * Gets the type of the last item in an array or tuple.
+ */
+export type Last<AS extends unknown[]> = AS[LastIndex<AS>]
+
+/**
+ * Gets the type of the first item in an array or tuple.
+ */
+export type First<AS extends unknown[]> = AS[0]
 
 /**
  * LENGTH
@@ -112,7 +118,6 @@ type Last<T extends unknown[]> = T extends [...infer _, infer A] ? A : never
  */
 export type Length<T extends unknown[]> = T["length"]
 
-// prettier-ignore
 /**
  * PREPEND
  *
