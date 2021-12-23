@@ -27,8 +27,8 @@ import { First, Last } from "../types"
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function compose<FS extends ((x: any) => any)[]>(...fs: FS) {
-  type A = First<Parameters<Last<FS>>>
-  type B = ReturnType<First<FS>>
+  type A0 = First<Parameters<Last<FS>>>
+  type AN = ReturnType<First<FS>>
 
-  return (a: A): B => fs.reduceRight((v, f) => f(v), a) as B
+  return (a: A0): AN => fs.reduceRight((v, f) => f(v), a) as AN
 }
