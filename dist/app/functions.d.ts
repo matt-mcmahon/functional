@@ -38,8 +38,10 @@ export { join } from "./functions/join";
 export { last } from "./functions/last";
 export { log } from "./functions/log";
 export { map } from "./functions/map";
+export { mapV } from "./functions/mapV";
 export { merge } from "./functions/merge";
 export { not } from "./functions/not";
+export { orDefault } from "./functions/orDefault";
 export { partial } from "./functions/partial";
 export { pipe } from "./functions/pipe";
 export { pipeV } from "./functions/pipeV";
@@ -62,4 +64,5 @@ export { toVariadic } from "./functions/toVariadic";
 export { trim } from "./functions/trim";
 export { uncurry } from "./functions/uncurry";
 export { unless } from "./functions/unless";
+export { zip } from "./functions/zip";
 //# sourceMappingURL=functions.d.ts.map
