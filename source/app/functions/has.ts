@@ -1,5 +1,5 @@
 /**
- * ```
+ * ```haskell
  * has :: k => a => boolean
  * ```
  * -----------------------------------------------------------------------------
@@ -23,4 +23,4 @@ export const has =
   ): a is {
     [P in K]: unknown
   } =>
-    Object.prototype.hasOwnProperty.call(a, k)
+    a != null && Object.prototype.hasOwnProperty.call(a, k)
