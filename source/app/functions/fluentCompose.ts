@@ -5,7 +5,7 @@ type FluentCompose<B, A> = {
 }
 
 /**
- * ```
+ * ```haskell
  * fluentCompose :: (aⁿ⁻¹ => aⁿ)...after(a¹ => a²).after(a⁰ => a¹).invoke(a⁰) => aⁿ
  * ```
  *

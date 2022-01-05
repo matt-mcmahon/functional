@@ -1,5 +1,5 @@
 /**
- * ```
+ * ```haskell
  * isFunction :: a => boolean
  * ```
  * -----------------------------------------------------------------------------
@@ -7,12 +7,12 @@
  * For example:
  *
  * ```
- * isFunction(function() {})    //> true
- * isFunction(() => 'function') //> true
+ * isFunction(function() {})    //=> true
+ * isFunction(() => 'function') //=> true
  * const object = { method() {} }
- * isFunction(object)           //> false
- * isFUnction(object.method)    //> true
- * isFUnction(object.method())  //> false
+ * isFunction(object)           //=> false
+ * isFUnction(object.method)    //=> true
+ * isFUnction(object.method())  //=> false
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/ban-types

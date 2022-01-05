@@ -1,11 +1,12 @@
 /**
- * ```
+ * ```haskell
  * not :: a => boolean
  * ```
  * -----------------------------------------------------------------------------
  *
  * Takes a _value_, __a__, and returns it's [logical not][1].
  *
+ * @example
  * ```
  * not('foo') <=> !'foo' <=> false
  * ```

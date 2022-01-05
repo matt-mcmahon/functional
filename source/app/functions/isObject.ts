@@ -1,5 +1,5 @@
 /**
- * ```
+ * ```haskell
  * isObject :: a => boolean
  * ```
  * -----------------------------------------------------------------------------
@@ -7,12 +7,12 @@
  * For example:
  *
  * ```
- * isObject(function() {})    //> true
- * isObject(() => 'function') //> true
+ * isObject(function() {})    //=> true
+ * isObject(() => 'function') //=> true
  * const object = { method() {} }
- * isObject(object)           //> false
- * isObject(object.method)    //> true
- * isObject(object.method())  //> false
+ * isObject(object)           //=> false
+ * isObject(object.method)    //=> true
+ * isObject(object.method())  //=> false
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/ban-types

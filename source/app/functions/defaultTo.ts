@@ -2,7 +2,7 @@ import { isDefined } from "./isDefined"
 import { isNaN } from "./isNaN"
 
 /**
- * ```
+ * ```haskell
  * defaultTo :: a => b => a|b
  * ```
  * -----------------------------------------------------------------------------

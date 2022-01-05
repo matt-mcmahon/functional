@@ -1,22 +1,26 @@
 import { First, Last } from "../types"
 
 /**
- * ```
+ * ```haskell
  * compose :: (aⁿ⁻¹ => aⁿ, ..., a¹ => a², a⁰ => a¹) => a⁰ => aⁿ
  * ```
+ * -----------------------------------------------------------------------------
  *
- * Takes any number, _n_, unary Functions of the form `aˣ⁻¹ => aˣ`, and composes
+ * Takes a number, _n_, unary Functions of the form `aⁿ⁻¹ => aⁿ`, and composes
  * them in a right-to-left order, passing the value, _a⁰_, to the right-most
  * function, the return value, _a¹_ to the next-right-most function, etc.
- * finally returning _aⁿ_. For example:
+ * finally returning _aⁿ_.
  *
+ * @param ...as - functions to apply, in right-to-left order
+ * @param a - argument to the last function, `a⁰ => a¹`
+ *
+ * @example
  * ```
- * compose(h, g, f)(a) <=> h(g(f(a)))
+ * compose(h, g, f)(a) //=> h(g(f(a)))
  * ```
  *
- * ## Warning
- *
- * While _compose(...)_ can correctly detect the types of _a⁰_ and _aⁿ_, it
+ * @warning
+ * While _compose_ can correctly detect the types of _a⁰_ and _aⁿ_, it
  * cannot detect if the return type for an inner function fails to satisfy the
  * type requirements for the next function. In the above example, the TypeScript
  * Compiler will not consider it an error if _f_ returns a `number`, but _g_

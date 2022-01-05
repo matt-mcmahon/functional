@@ -1,9 +1,5 @@
-/** @todo: delete eslint pragma */
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
 /**
- * ```
+ * ```haskell
  * partial :: (a¹, …, aᵐ) => ((a¹, …, aⁿ, b¹, …, bⁿ) => c) => (b¹, …, bⁿ) => c
  * ```
  * -----------------------------------------------------------------------------

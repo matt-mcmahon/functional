@@ -52,15 +52,20 @@ function cloneUnknown<A>(a: A, map: WeakMap<object, unknown>): A {
 }
 
 /**
- * ```
+ * ```haskell
  * clone :: a => a
  * ```
- * @export
- * @template A
- * @param {A} a
- * @returns {A}
+ * @param a
+ * @returns a deep clone of __a__
+ *
+ * @example
+ * ```js
+ *
+ * const a = { hasFoo: { foo: 'foo', a: a }}
+ * const b = clone(a)
+ *
+ * b === a //=> false
+ * b //=> { hasFoo: { foo: 'foo': a: a }}
+ * ```
  */
-export function clone<A>(a: A): A {
-  const map = new WeakMap()
-  return cloneUnknown(a, map)
-}
+export const clone = <A>(a: A): A => cloneUnknown(a, new WeakMap())

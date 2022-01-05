@@ -1,10 +1,10 @@
 /**
- * ```
+ * ```haskell
  * isDefined :: a => boolean
  * ```
  * -----------------------------------------------------------------------------
  *
- * Returns `false` if a is `undefined` or `null`, otherwise return `true`.
+ * Predicate that returns `true` if __a__ is an array, otherwise return `false`.
  *
  */
 export const isArray = Array.isArray

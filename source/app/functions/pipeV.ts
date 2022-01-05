@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
 /**
- * ```
+ * ```haskell
  * pipeV :: (...as) => ((a⁰ => a¹), (a¹ => a²), ..., (aⁿ=> b)) =>  b
  * ```
  *

@@ -1,4 +1,9 @@
 /**
+ * ```haskell
+ * zip :: as => bs => as
+ * ```
+ * -----------------------------------------------------------------------------
+ *
  * Join two arrays in index order, __as__ before __bs__, into a single flat
  * array.
  */

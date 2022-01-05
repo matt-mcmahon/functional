@@ -5,7 +5,7 @@ type FluentPipe<A, B> = {
 }
 
 /**
- * ```
+ * ```haskell
  * fluentPipe :: (a⁰ => a¹).next(a¹ => a²)...next(aⁿ⁻¹ -> aⁿ).invoke(a⁰) => aⁿ
  * ```
  *

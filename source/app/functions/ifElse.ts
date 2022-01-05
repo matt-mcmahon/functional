@@ -1,3 +1,12 @@
+/**
+ * ```haskell
+ * ifElse :: (a => Boolean) => (a => b) => (a => c) => (a) => b|c
+ * ```
+ * -----------------------------------------------------------------------------
+ *
+ * If the __predicate__ evaluates to true, passes a to the
+ *
+ */
 export const ifElse =
   <A, B, C, D>(
     predicate: (a: A | C) => true | false,

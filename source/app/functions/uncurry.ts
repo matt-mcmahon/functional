@@ -6,7 +6,7 @@ const applyArgument = <F extends Function, A>(currentStep: F, a: A) =>
   currentStep(a)
 
 /**
- * ```
+ * ```haskell
  * uncurry :: n => (a¹ => a² => ... => aⁿ => b) => (a¹, a², ..., aⁿ) => b
  * ```
  * -----------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 import { First, Last } from "../types"
 
 /**
- * ```
+ * ```haskell
  * pipe :: (a⁰ => a¹, ..., aⁿ⁻¹ -> aⁿ) => a⁰ => aⁿ
  * ```
  *
