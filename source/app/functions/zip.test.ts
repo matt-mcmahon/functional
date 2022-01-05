@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe"
 import { zip } from "./zip"
 
-describe("zip", async ({ assert, inspect }) => {
+describe("zip", async ({ assert }) => {
   {
     const as = ["a", "c", "e"]
     const bs = ["b", "d", "f"]
