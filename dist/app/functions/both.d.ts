@@ -1,2 +1,2 @@
-export declare const both: <A, B>(first: (a: A) => B) => <C>(second: (a: A) => C) => (a: A) => B | C;
+export declare const both: <A, B>(mapAB: (a: A) => B) => <C>(mapAC: (a: A) => C) => (a: A) => B | C;
 //# sourceMappingURL=both.d.ts.map

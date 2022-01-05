@@ -46,9 +46,6 @@ function cloneUnknown(a, map) {
         : a;
     return t;
 }
-function clone(a) {
-    const map = new WeakMap();
-    return cloneUnknown(a, map);
-}
+const clone = (a) => cloneUnknown(a, new WeakMap());
 exports.clone = clone;
 //# sourceMappingURL=clone.js.map
