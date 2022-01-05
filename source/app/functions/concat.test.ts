@@ -14,10 +14,11 @@ describe("concat", async ({ assert, inspect }) => {
   {
     type AS = [string, number, { foo: string }]
     type BS = [string, { bar: string }, boolean]
+
     const as: AS = ["a", 1, { foo: "bar" }]
     const bs: BS = ["b", { bar: "baz" }, true]
 
-    const actual = concat(as)(bs)
+    const actual: [...AS, ...BS] = concat(as)(bs)
     const expected: [...AS, ...BS] = [...as, ...bs]
     const given = inspect`concat(${as})(${bs})`
     assert({ actual, expected, given })
