@@ -5,16 +5,16 @@
   "description": "Extremely minimal functional library with a focus on source-code clarity.",
   "devDependencies": {
     "@mwm/describe": "^2.5.0",
-    "@types/node": "^17.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.8.0",
-    "@typescript-eslint/parser": "^5.8.0",
-    "eslint": "^8.5.0",
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
+    "eslint": "^8.10.0",
     "husky": "^7.0.4",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
-    "tap": "^15.1.5",
+    "tap": "^15.1.6",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.4"
+    "typescript": "^4.6.2"
   },
   "husky": {
     "hooks": {
