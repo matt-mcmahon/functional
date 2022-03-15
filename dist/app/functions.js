@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reduceRight = exports.reduce = exports.prop = exports.pipeV = exports.pipe = exports.partial = exports.orDefault = exports.not = exports.merge = exports.mapV = exports.map = exports.log = exports.last = exports.join = exports.isString = exports.isObject = exports.isNumber = exports.isNil = exports.isNaN = exports.isFunction = exports.isEmpty = exports.isDefined = exports.isDate = exports.isArray = exports.invoker = exports.init = exports.iife = exports.ifElse = exports.identity = exports.head = exports.has = exports.fluentPipe = exports.fluentCompose = exports.filter = exports.F = exports.equals = exports.either = exports.defaultTo = exports.curryN = exports.curry = exports.concat = exports.compose = exports.complement = exports.clone = exports.cap = exports.both = exports.blackbird = exports.bind = exports.assoc = exports.always = void 0;
+exports.reduceRight = exports.reduce = exports.prop = exports.pipeV = exports.pipe = exports.partial = exports.orDefault = exports.not = exports.merge = exports.mapV = exports.map = exports.log = exports.last = exports.join = exports.isString = exports.isObject = exports.isNumber = exports.isNil = exports.isNaN = exports.isFunction = exports.isEmpty = exports.isDefined = exports.isDate = exports.isArray = exports.invoker = exports.init = exports.iife = exports.ifElse = exports.identity = exports.head = exports.has = exports.flow = exports.fluentCompose = exports.filter = exports.F = exports.equals = exports.either = exports.defaultTo = exports.curryN = exports.curry = exports.concat = exports.compose = exports.complement = exports.clone = exports.cap = exports.both = exports.blackbird = exports.bind = exports.assoc = exports.always = void 0;
 exports.zip = exports.unless = exports.uncurry = exports.trim = exports.toVariadic = exports.toUnary = exports.toString = exports.toArray = exports.tap = exports.take = exports.tail = exports.T = exports.split = exports.sort = exports.slice = exports.reverse = exports.replace = void 0;
 var always_1 = require("./functions/always");
 Object.defineProperty(exports, "always", { enumerable: true, get: function () { return always_1.always; } });
@@ -38,8 +38,8 @@ var filter_1 = require("./functions/filter");
 Object.defineProperty(exports, "filter", { enumerable: true, get: function () { return filter_1.filter; } });
 var fluentCompose_1 = require("./functions/fluentCompose");
 Object.defineProperty(exports, "fluentCompose", { enumerable: true, get: function () { return fluentCompose_1.fluentCompose; } });
-var fluentPipe_1 = require("./functions/fluentPipe");
-Object.defineProperty(exports, "fluentPipe", { enumerable: true, get: function () { return fluentPipe_1.fluentPipe; } });
+var flow_1 = require("./functions/flow");
+Object.defineProperty(exports, "flow", { enumerable: true, get: function () { return flow_1.flow; } });
 var has_1 = require("./functions/has");
 Object.defineProperty(exports, "has", { enumerable: true, get: function () { return has_1.has; } });
 var head_1 = require("./functions/head");
