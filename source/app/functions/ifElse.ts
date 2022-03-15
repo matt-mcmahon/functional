@@ -8,10 +8,10 @@
  *
  */
 export const ifElse =
-  <A, B, C, D>(
-    predicate: (a: A | C) => true | false,
-    whenTrue: (a: A) => B,
-    whenFalse: (c: C) => D
+  <A1, A2, B1, B2>(
+    predicate: (a: A1 | B1) => boolean,
+    whenTrue: (a: A1) => A2,
+    whenFalse: (b: B1) => B2
   ) =>
-  (x: A | C): B | D =>
-    predicate(x) ? whenTrue(x as A) : whenFalse(x as C)
+  (x: A1 | B1): A2 | B2 =>
+    predicate(x) ? whenTrue(x as A1) : whenFalse(x as B1)
