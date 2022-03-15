@@ -25,8 +25,8 @@ import { First, Last } from "../types"
  * To guarantee type safety, use the _fluent_ API:
  *
  * ```
- * import { fluentPipe } from "@mwm/functions/fluentPipe"
- * fluentPipe(f).then(g).then(h).invoke(a) <=> h(g(f(a)))
+ * import { flow } from "@mwm/functions/flow"
+ * flow(f).then(g).then(h).invoke(a) <=> h(g(f(a)))
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

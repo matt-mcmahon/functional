@@ -1,4 +1,4 @@
-import { fluentPipe } from "./fluentPipe"
+import { flow } from "./flow"
 import { describe } from "../../lib/describe"
 
 describe("fluent pipe", ({ assert, inspect }) => {
@@ -7,9 +7,9 @@ describe("fluent pipe", ({ assert, inspect }) => {
   const toCharacterArray = (x: string) => x.split("")
   const joinWithDashes = (x: string[]) => x.join("-")
 
-  const p1 = fluentPipe(double)
+  const p1 = flow(double)
   const p2 = p1.then(numToString)
-  const p3 = p2.then(toCharacterArray)
+  const p3 = p2.map(toCharacterArray)
   const p4 = p3.then(joinWithDashes)
 
   const value = 12345
@@ -28,6 +28,12 @@ describe("fluent pipe", ({ assert, inspect }) => {
 
   assert({
     actual: p3.invoke(12345),
+    expected: ["2", "4", "6", "9", "0"],
+    given: inspect`p3(${value})`,
+  })
+
+  assert({
+    actual: p3.invoker()(12345),
     expected: ["2", "4", "6", "9", "0"],
     given: inspect`p3(${value})`,
   })
