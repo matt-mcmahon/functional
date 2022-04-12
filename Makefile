@@ -13,7 +13,7 @@ CACHE_OPTIONS                ?= --cached-only
 DENO_DIR                     ?= .deno
 IMPORT_MAP_FILE              ?= import-map.json
 LOCK_FILE                    ?= lock-file.json
-RUN_PERMISSIONS              ?= 
+RUN_PERMISSIONS              ?=
 TEST_PERMISSIONS             ?= --allow-read=./source
 
 # The default values for these settings are meant to be easily overwritten by
@@ -142,7 +142,7 @@ run:
 	@deno run ${RUN_PERMISSIONS} ${DENO_MAIN}
 
 test: install lint
-	@deno test --coverage \
+	@deno test --coverage=coverage \
 		${TEST_PERMISSIONS} ${IMPORT_MAP_OPTIONS} ${LOCK_OPTIONS} ${CACHE_OPTIONS} \
 		${DENO_SOURCE_DIR}
 
