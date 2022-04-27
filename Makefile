@@ -94,7 +94,7 @@ fmt: format
 format:
 	@deno fmt ${DENO_SOURCE_DIR} ${DENO_LIB_DIR}
 
-install: ${LOCK_FILE} ${DENO_LIB_DIR}/describe
+install: ${LOCK_FILE} ${DENO_LIB_DIR}/describe.ts
 
 lint:
 	@deno fmt --check --unstable ${DENO_SOURCE_DIR}
@@ -140,7 +140,7 @@ run:
 	@deno run ${RUN_PERMISSIONS} ${DENO_MAIN}
 
 test: install lint
-	@deno test --coverage=coverage --unstable \
+	@deno test --coverage=coverage \
 		${TEST_PERMISSIONS} ${IMPORT_MAP_OPTIONS} ${LOCK_OPTIONS} ${CACHE_OPTIONS} \
 		${DENO_SOURCE_DIR}
 
