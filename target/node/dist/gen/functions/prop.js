@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.prop = void 0;
-exports.prop = (k) => (a) => a[k];
+const prop = (k) => (a) => a[k];
+exports.prop = prop;
 //# sourceMappingURL=prop.js.map

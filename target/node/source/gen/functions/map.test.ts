@@ -1,4 +1,4 @@
-import { map, mapV } from "./map";
+import { map } from "./map";
 import { describe } from "../../lib/describe";
 
 describe("map", ({ assert, inspect }) => {
@@ -12,15 +12,6 @@ describe("map", ({ assert, inspect }) => {
     const expected = bs;
     const given = inspect`map(${ab})(${as})`;
     const should = `accept accept an array`;
-    assert({ actual, expected, given, should });
-  }
-
-  {
-    const f = mapV(ab);
-    const actual = f(...as);
-    const expected = bs;
-    const given = inspect`mapV(${ab})(${1}, ${2}, ${3})`;
-    const should = `accept multiple arguments`;
     assert({ actual, expected, given, should });
   }
 });

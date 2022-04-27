@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { equals } from "./equals";
 
-describe("equals", async ({ assert, inspect }) => {
+describe("equals", ({ assert, inspect }) => {
   const values: [unknown, unknown, boolean][] = [
     ["a", "b", false],
     ["a", "a", true],

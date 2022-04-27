@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { clone } from "./clone";
 
-describe("clone", async ({ assert, inspect }) => {
+describe("clone", ({ assert, inspect }) => {
   const original = { foo: "foo", bar: "bar" };
   const copy = clone(original);
   clone(original).bar = "BAZ";
@@ -17,7 +17,7 @@ describe("clone", async ({ assert, inspect }) => {
   });
 });
 
-describe("clone, shallow", async ({ assert, inspect }) => {
+describe("clone, shallow", ({ assert, inspect }) => {
   const original = { foo: "foo", bar: "bar" };
   const copy = clone(original);
   copy.bar = "BAZ";
@@ -30,7 +30,7 @@ describe("clone, shallow", async ({ assert, inspect }) => {
   assert({ actual: copy, expected: { foo: "foo", bar: "BAZ" } });
 });
 
-describe("clone, deep", async ({ assert, inspect }) => {
+describe("clone, deep", ({ assert, inspect }) => {
   const original = { foo: "foo", bar: { baz: "baz" } };
   const copy = clone(original);
   copy.bar.baz = "BAZ";
@@ -43,7 +43,7 @@ describe("clone, deep", async ({ assert, inspect }) => {
   assert({ actual: copy, expected: { foo: "foo", bar: { baz: "BAZ" } } });
 });
 
-describe("clone, undefined", async ({ assert }) => {
+describe("clone, undefined", ({ assert }) => {
   const value = undefined;
   const original: { foo: string; bar?: string } = { foo: "foo" };
   const copy = clone(original);
@@ -53,7 +53,7 @@ describe("clone, undefined", async ({ assert }) => {
   assert({ actual: copy, expected: { foo: "foo", bar: "bar" } });
 });
 
-describe("clone, null", async ({ assert }) => {
+describe("clone, null", ({ assert }) => {
   const value = null;
   const original: { foo: string; bar: string | null } = {
     foo: "foo",
@@ -66,7 +66,7 @@ describe("clone, null", async ({ assert }) => {
   assert({ actual: copy, expected: { foo: "foo", bar: "bar" } });
 });
 
-describe("clone, date", async ({ assert, inspect }) => {
+describe("clone, date", ({ assert, inspect }) => {
   const original = new Date(Date.now());
   const copy = clone(original);
   assert({
@@ -82,7 +82,7 @@ describe("clone, date", async ({ assert, inspect }) => {
   });
 });
 
-describe("clone, array", async ({ assert, inspect }) => {
+describe("clone, array", ({ assert, inspect }) => {
   const original = [1, 2, 3];
   const copy = clone(original);
   assert({
@@ -98,7 +98,7 @@ describe("clone, array", async ({ assert, inspect }) => {
   });
 });
 
-describe("clone, recursive", async ({ assert, inspect }) => {
+describe("clone, recursive", ({ assert, inspect }) => {
   type A = { a?: A };
   const a: A = {};
   a.a = a;

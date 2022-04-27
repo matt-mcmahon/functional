@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { curryN } from "./curryN";
 
-describe("curry-n", async ({ assert, inspect }) => {
+describe("curry-n", ({ assert, inspect }) => {
   const join = (...xs: string[]) => {
     return xs.reduce((x, y) => x + y, "");
   };

@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { pipeV } from "./pipeV";
 
-describe("pipeV", async ({ assert, inspect }) => {
+describe("pipeV", ({ assert, inspect }) => {
   const f = (x: number) => x + 1;
   const g = (x: number) => 2 * x;
   {

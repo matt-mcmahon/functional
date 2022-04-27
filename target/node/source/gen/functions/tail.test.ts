@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { tail } from "./tail";
 
-describe("tail", async ({ assert, inspect }) => {
+describe("tail", ({ assert, inspect }) => {
   {
     const arg = ["a", "b", "c"];
     const expected = ["b", "c"];

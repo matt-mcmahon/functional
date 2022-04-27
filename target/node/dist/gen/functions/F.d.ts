@@ -1,2 +1,2 @@
-export declare const F: (...ignored: unknown[]) => false;
+export declare const F: (..._: unknown[]) => false;
 //# sourceMappingURL=F.d.ts.map

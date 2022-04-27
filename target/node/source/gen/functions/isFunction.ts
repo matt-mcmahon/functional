@@ -1,7 +1,8 @@
-// deno-lint-ignore-file ban-types -- we only care that it's a function, so allow
+// deno-lint-ignore-file ban-types
+// -- we only care that it's a function, so allow
 
 /**
- * ```
+ * ```haskell
  * isFunction :: a => boolean
  * ```
  * -----------------------------------------------------------------------------
@@ -9,12 +10,12 @@
  * For example:
  *
  * ```
- * isFunction(function() {})    //> true
- * isFunction(() => 'function') //> true
+ * isFunction(function() {})    //=> true
+ * isFunction(() => 'function') //=> true
  * const object = { method() {} }
- * isFunction(object)           //> false
- * isFUnction(object.method)    //> true
- * isFUnction(object.method())  //> false
+ * isFunction(object)           //=> false
+ * isFUnction(object.method)    //=> true
+ * isFUnction(object.method())  //=> false
  * ```
  */
 export const isFunction = (a: unknown): a is Function =>

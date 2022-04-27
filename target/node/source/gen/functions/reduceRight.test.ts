@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { reduceRight } from "./reduceRight";
 
-describe("reduceRight", async ({ assert, inspect }) => {
+describe("reduceRight", ({ assert, inspect }) => {
   {
     const add = (x: number, y: number) => x + y;
     const value = [1, 3, 5];
@@ -34,8 +34,7 @@ describe("reduceRight", async ({ assert, inspect }) => {
 
   {
     const a = "a";
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const thrower = (a: string, b: string) => {
+    const thrower = (_a: string, _b: string) => {
       throw Error("I should not be called");
     };
     const unreducable = reduceRight(thrower)(a);

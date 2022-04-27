@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { curry } from "./curry";
 
-describe("curry", async ({ assert, inspect }) => {
+describe("curry", ({ assert, inspect }) => {
   const f = function f(a: string, b: string, c: string) {
     return a + b + c;
   };

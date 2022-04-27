@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isDate = void 0;
-exports.isDate = (a) => a instanceof Date;
+const isDate = (a) => a instanceof Date;
+exports.isDate = isDate;
 //# sourceMappingURL=isDate.js.map

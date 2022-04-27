@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { toArray } from "./toArray";
 
-describe("to-string", async ({ assert, inspect }) => {
+describe("to-string", ({ assert, inspect }) => {
   const values: [ArrayLike<string> | Iterable<string>, Array<string>][] = [
     [
       ["a", "b", "c", "d", "e"],

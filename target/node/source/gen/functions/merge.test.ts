@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { merge } from "./merge";
 
-describe("merge", async ({ assert, inspect }) => {
+describe("merge", ({ assert, inspect }) => {
   const first = {
     a: 1,
     b: 1,

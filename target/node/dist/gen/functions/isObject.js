@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isObject = void 0;
-exports.isObject = (a) => typeof a === "object";
+const isObject = (a) => typeof a === "object";
+exports.isObject = isObject;
 //# sourceMappingURL=isObject.js.map

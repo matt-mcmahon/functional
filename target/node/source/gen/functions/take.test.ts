@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { take } from "./take";
 
-describe("take", async ({ assert, inspect }) => {
+describe("take", ({ assert, inspect }) => {
   const [a, b, c, d, e] = ["a", "b", "c", "d", "e"];
   {
     const as = [a, b, c, d, e];

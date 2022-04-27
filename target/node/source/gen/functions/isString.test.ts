@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { isString } from "./isString";
 
-describe("is-string", async ({ assert, inspect }) => {
+describe("is-string", ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
     [1, false],
     [0, false],
@@ -25,7 +25,7 @@ describe("is-string", async ({ assert, inspect }) => {
   data.forEach(test);
 });
 
-describe("is-string: string-like object", async ({ assert }) => {
+describe("is-string: string-like object", ({ assert }) => {
   const value = {
     valueOf: () => "fake v",
     toString: () => "fake s",

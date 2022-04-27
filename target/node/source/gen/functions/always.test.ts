@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { always } from "./always";
 
-describe("always", async ({ assert, inspect }) => {
+describe("always", ({ assert, inspect }) => {
   const expected = "bar";
   const alwaysBar = always(expected);
   const foo = "foo";

@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { iife } from "./iife";
 
-describe("iife", async ({ assert, inspect }) => {
+describe("iife", ({ assert, inspect }) => {
   {
     const f = (a: number, b: number, c: number) => a + b + c;
     const actual = iife(f, 1, 3, 5);

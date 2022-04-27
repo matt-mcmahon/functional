@@ -1,9 +1,9 @@
 import { describe } from "../../lib/describe";
 import { bind } from "./bind";
 
-describe("bind", async ({ assert, inspect }) => {
+describe("bind", ({ assert, inspect }) => {
   type Foo = {
-    method(foo: string): string;
+    method(foo?: string): string;
     foo?: string;
   };
 
@@ -11,7 +11,7 @@ describe("bind", async ({ assert, inspect }) => {
     foo: "original",
     method(value: string) {
       this.foo = value;
-      return "method called";
+      return `method called`;
     },
   };
 
@@ -66,5 +66,25 @@ describe("bind", async ({ assert, inspect }) => {
     const given = inspect`${actual.misdirection("BAZ")} on misdirection`;
     const should = inspect`not have ${{ foo: "BAZ" }}`;
     assert({ given, should, actual, expected });
+  }
+
+  {
+    const arrow = (a: string) => a;
+
+    const bound = bind(arrow);
+
+    assert({
+      actual: typeof bound,
+      expected: "function",
+      given: inspect`an arrow function`,
+      should: inspect`fail, but that's not desirable`,
+    });
+
+    assert({
+      actual: bound({ foo: "arrow bound" })("arrow argument"),
+      expected: "arrow argument",
+      given: inspect`bound arrow function`,
+      should: inspect`be callable`,
+    });
   }
 });

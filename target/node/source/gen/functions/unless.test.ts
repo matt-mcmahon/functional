@@ -1,12 +1,11 @@
 import { describe } from "../../lib/describe";
 import { unless } from "./unless";
 
-describe("unless", async ({ assert, inspect }) => {
+describe("unless", ({ assert, inspect }) => {
   type A = "A";
   type B = "B";
   const isA = (v: unknown): v is A => v === "A";
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const makeB = (v: unknown): B => "B";
+  const makeB = (_: unknown): B => "B";
   const unless_isA_makeB = unless(isA)(makeB);
 
   {

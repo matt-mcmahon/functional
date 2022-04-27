@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { log } from "./log";
 
-describe("log", async ({ assert, inspect }) => {
+describe("log", ({ assert, inspect }) => {
   const value = 4;
   const message = inspect`the value is...`;
   const actual = log(message)(value);

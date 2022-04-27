@@ -1,10 +1,8 @@
-// deno-lint-ignore-file ban-types
-
-const applyArgument = <F extends Function, A>(currentStep: F, a: A) =>
+const applyArgument = <F extends CallableFunction, A>(currentStep: F, a: A) =>
   currentStep(a);
 
 /**
- * ```
+ * ```haskell
  * uncurry :: n => (a¹ => a² => ... => aⁿ => b) => (a¹, a², ..., aⁿ) => b
  * ```
  * -----------------------------------------------------------------------------

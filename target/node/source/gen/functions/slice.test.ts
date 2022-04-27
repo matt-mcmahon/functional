@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { slice } from "./slice";
 
-describe("slice", async ({ assert }) => {
+describe("slice", ({ assert }) => {
   {
     const value = [0, 1, 2, 3, 4];
     {

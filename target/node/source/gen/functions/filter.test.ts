@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { filter } from "./filter";
 
-describe("filter", async ({ assert, inspect }) => {
+describe("filter", ({ assert, inspect }) => {
   const predicate = (n: number) => n % 2 === 0;
   const evens = filter(predicate);
 

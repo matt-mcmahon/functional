@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { split } from "./split";
 
-describe("split", async ({ assert, inspect }) => {
+describe("split", ({ assert, inspect }) => {
   {
     const value = "one two three";
     const char = " ";

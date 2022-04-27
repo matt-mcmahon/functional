@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { not } from "./not";
 
-describe("not", async ({ assert, inspect }) => {
+describe("not", ({ assert, inspect }) => {
   const values: [unknown, boolean][] = [
     [true, false],
     [false, true],

@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { isEmpty } from "./isEmpty";
 
-describe("is-empty", async ({ assert, inspect }) => {
+describe("is-empty", ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],
@@ -11,6 +11,10 @@ describe("is-empty", async ({ assert, inspect }) => {
     [NaN, false],
     [false, false],
     [{ length: 0 }, false],
+    [new Set(), true],
+    [new Set([1]), false],
+    [new Map(), true],
+    [new Map([["a", 1]]), false],
   ];
 
   const test = ([value, expected]: [unknown, boolean]) => {

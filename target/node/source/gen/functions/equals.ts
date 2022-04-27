@@ -1,5 +1,5 @@
 /**
- * ```
+ * ```haskell
  * equals :: a => b => Boolean
  * ```
  * -----------------------------------------------------------------------------
@@ -10,6 +10,5 @@
  * ```
  * equals(a, b) <=> a === b
  * ```
- *
  */
 export const equals = (a: unknown) => (b: unknown): boolean => a === b;

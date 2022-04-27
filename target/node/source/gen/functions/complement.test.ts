@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { complement } from "./complement";
 
-describe("complement", async ({ assert, inspect }) => {
+describe("complement", ({ assert, inspect }) => {
   const something = (v: unknown) => !!v;
   const T = () => true;
 

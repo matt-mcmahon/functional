@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { isFunction } from "./isFunction";
 
-describe("isFunction", async ({ assert, inspect }) => {
+describe("isFunction", ({ assert, inspect }) => {
   const expected = true;
   const should = inspect`be a function`;
   {
@@ -22,7 +22,7 @@ describe("isFunction", async ({ assert, inspect }) => {
 
   {
     const actual = isFunction(async function test() {
-      "do nothing";
+      return await Promise.resolve();
     });
     const given = inspect`async function`;
     assert({ actual, expected, given, should });

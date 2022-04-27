@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { tap } from "./tap";
 
-describe("tap", async ({ assert, inspect }) => {
+describe("tap", ({ assert, inspect }) => {
   const sideEffect = (x: number) => x * 2;
   const value = 4;
   const actual = tap(sideEffect)(value);

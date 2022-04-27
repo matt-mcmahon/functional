@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { init } from "./init";
 
-describe("init", async ({ assert, inspect }) => {
+describe("init", ({ assert, inspect }) => {
   {
     const given = inspect`init(${["a", "b", "c"]})`;
     const actual = init(["a", "b", "c"]);

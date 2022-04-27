@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { replace } from "./replace";
 
-describe("replace", async ({ assert, inspect }) => {
+describe("replace", ({ assert, inspect }) => {
   const replaceFoo = replace("foo");
   const replaceFooWithBar = replaceFoo("bar");
   const source = "foo baz bix foo Foo";

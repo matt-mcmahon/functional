@@ -3,7 +3,7 @@
 import { describe } from "../../lib/describe";
 import { invoker } from "./invoker";
 
-describe("invoker", async ({ assert, inspect }) => {
+describe("invoker", ({ assert, inspect }) => {
   const target = "abcdefghijklm";
   {
     const slice1 = invoker("slice");

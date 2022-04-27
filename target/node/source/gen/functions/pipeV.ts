@@ -1,7 +1,7 @@
 // deno-lint-ignore-file ban-types
 
 /**
- * ```
+ * ```haskell
  * pipeV :: (...as) => ((a⁰ => a¹), (a¹ => a²), ..., (aⁿ=> b)) =>  b
  * ```
  *
@@ -16,7 +16,5 @@
  * ```
  */
 export const pipeV = <A>(...as: A[]) =>
-  <F extends Function>(
-    f: F,
-    ...fs: Function[]
-  ) => fs.reduce((a, f) => f(a), f(...as));
+  <F extends Function>(f: F, ...fs: Function[]) =>
+    fs.reduce((a, f) => f(a), f(...as));

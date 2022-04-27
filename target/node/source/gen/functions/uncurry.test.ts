@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { uncurry } from "./uncurry";
 
-describe("uncurry", async ({ assert, inspect }) => {
+describe("uncurry", ({ assert, inspect }) => {
   {
     const curried = (x: number) => (y: number) => (z: number) => x + y + z;
     const variadic = uncurry(3)(curried);

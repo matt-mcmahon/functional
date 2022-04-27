@@ -1,7 +1,7 @@
 import { prop } from "./prop";
 import { describe } from "../../lib/describe";
 
-describe("prop, explicit", async ({ assert, inspect }) => {
+describe("prop, explicit", ({ assert, inspect }) => {
   const getA = prop("a");
 
   {
@@ -29,7 +29,7 @@ describe("prop, explicit", async ({ assert, inspect }) => {
   }
 });
 
-describe("prop, inferred", async ({ assert, inspect }) => {
+describe("prop, inferred", ({ assert, inspect }) => {
   {
     const expected = 1;
     const value = { a: expected };
@@ -78,7 +78,7 @@ describe("prop, inferred", async ({ assert, inspect }) => {
   }
 });
 
-describe("prop, missing propertyKey", async ({ assert, inspect }) => {
+describe("prop, missing propertyKey", ({ assert, inspect }) => {
   {
     const value = { a: "a" };
     //@ts-ignore INTENTIONAL ERROR

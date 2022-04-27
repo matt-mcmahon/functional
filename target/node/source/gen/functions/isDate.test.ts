@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { isDate } from "./isDate";
 
-describe("is-date", async ({ assert, inspect }) => {
+describe("is-date", ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
     [new Date(), true],
     [undefined, false],

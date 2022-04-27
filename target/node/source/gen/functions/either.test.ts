@@ -3,7 +3,7 @@ import { describe } from "../../lib/describe";
 import { either } from "./either";
 import { T } from "./T";
 
-describe("either", async ({ assert, inspect }) => {
+describe("either", ({ assert, inspect }) => {
   const max = 10;
   const gt10 = (x: number) => x > max;
   const even = (x: number) => x % 2 === 0;
@@ -53,7 +53,7 @@ describe("either", async ({ assert, inspect }) => {
     try {
       const actual = either(T)(throws)("anything");
       assert({ ...plan, actual });
-    } catch (err) {
+    } catch (_) {
       assert({ ...plan, actual: false });
     }
   }

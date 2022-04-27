@@ -1,5 +1,5 @@
 /**
- * ```
+ * ```haskell
  * has :: k => a => boolean
  * ```
  * -----------------------------------------------------------------------------
@@ -17,5 +17,8 @@
  * @param a the object to check for ownership of the property
  */
 export const has = <K extends PropertyKey>(k: K) =>
-  (a: unknown): a is { [P in K]: unknown } =>
-    Object.prototype.hasOwnProperty.call(a, k);
+  (
+    a: unknown,
+  ): a is {
+    [P in K]: unknown;
+  } => a != null && Object.prototype.hasOwnProperty.call(a, k);

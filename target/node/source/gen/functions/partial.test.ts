@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { partial } from "./partial";
 
-describe("partial", async ({ assert, inspect }) => {
+describe("partial", ({ assert, inspect }) => {
   const f = (a: string, b: string, c: string, d: string) => a + b + c + d;
 
   {

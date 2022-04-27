@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { defaultTo } from "./defaultTo";
 
-describe("defaultTo", async ({ assert, inspect }) => {
+describe("defaultTo", ({ assert, inspect }) => {
   const defaultValue = "replaced";
   const f = defaultTo(defaultValue);
   {

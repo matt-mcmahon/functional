@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { isDefined } from "./isDefined";
 
-describe("is-defined", async ({ assert, inspect }) => {
+describe("is-defined", ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],
@@ -23,7 +23,7 @@ describe("is-defined", async ({ assert, inspect }) => {
 });
 
 // These tests won't compile unless isDefined has the  `: a is ...` type guard
-describe("is-defined, type guard", async ({ assert, inspect }) => {
+describe("is-defined, type guard", ({ assert, inspect }) => {
   const f = (value: { a?: () => string }) =>
     isDefined(value.a) ? value.a() : "error";
 

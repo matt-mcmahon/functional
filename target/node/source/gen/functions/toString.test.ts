@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { toString } from "./toString";
 
-describe("to-string", async ({ assert, inspect }) => {
+describe("to-string", ({ assert, inspect }) => {
   const data: [unknown, string][] = [
     [1, "1"],
     [0, "0"],

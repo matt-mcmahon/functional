@@ -14,6 +14,20 @@ describe("has", ({ assert, inspect }) => {
   }
 
   {
+    const actual = ownFoo(null);
+    const expected = false;
+    const message = `null should not own "foo"`;
+    assert({ actual, expected, message });
+  }
+
+  {
+    const actual = ownFoo(undefined);
+    const expected = false;
+    const message = `undefined should not own "foo"`;
+    assert({ actual, expected, message });
+  }
+
+  {
     const actual = ownFoo({ foo: "foo" });
     const expected = true;
     const message = `{ foo: "foo"} should own "foo"`;
@@ -90,7 +104,7 @@ describe("has", ({ assert, inspect }) => {
   }
 });
 
-describe("has, type guard", async ({ assert, inspect }) => {
+describe("has, type guard", ({ assert, inspect }) => {
   const hasA = has("a");
   {
     const value = { a: "has a" } as unknown;

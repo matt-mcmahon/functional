@@ -3,7 +3,7 @@ import { both } from "./both";
 import { toString } from "./toString";
 import { isNumber } from "./isNumber";
 
-describe("both", async ({ assert, inspect }) => {
+describe("both", ({ assert, inspect }) => {
   const gt10 = (v: number) => v > 10;
   const lt20 = (v: number) => v < 20;
 
@@ -33,7 +33,7 @@ describe("both", async ({ assert, inspect }) => {
       throw new Error("both should never execute me");
     };
     both(first)(second)(true);
-  } catch (err) {
+  } catch (_) {
     assert({
       actual: false,
       expected: true,

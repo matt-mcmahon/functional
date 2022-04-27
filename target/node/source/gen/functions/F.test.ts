@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { F } from "./F";
 
-describe("f", async ({ assert, inspect }) => {
+describe("f", ({ assert, inspect }) => {
   const expected = false;
 
   assert({

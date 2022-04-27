@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { isArray } from "./isArray";
 
-describe("is-array", async ({ assert, inspect }) => {
+describe("is-array", ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],
@@ -23,7 +23,7 @@ describe("is-array", async ({ assert, inspect }) => {
 });
 
 // These tests won't compile unless isDefined has the  `: a is ...` type guard
-describe("is-array, type guard", async ({ assert }) => {
+describe("is-array, type guard", ({ assert }) => {
   const f = (value: unknown) => (isArray(value) ? "array" : "error");
 
   {

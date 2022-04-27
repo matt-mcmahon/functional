@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.merge = void 0;
-exports.merge = (a) => (b) => Object.assign({}, a, b);
+const merge = (a) => (b) => Object.assign({}, a, b);
+exports.merge = merge;
 //# sourceMappingURL=merge.js.map

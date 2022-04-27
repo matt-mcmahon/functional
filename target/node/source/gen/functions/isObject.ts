@@ -1,7 +1,7 @@
 // deno-lint-ignore-file ban-types
 
 /**
- * ```
+ * ```haskell
  * isObject :: a => boolean
  * ```
  * -----------------------------------------------------------------------------
@@ -9,12 +9,12 @@
  * For example:
  *
  * ```
- * isObject(function() {})    //> true
- * isObject(() => 'function') //> true
+ * isObject(function() {})    //=> true
+ * isObject(() => 'function') //=> true
  * const object = { method() {} }
- * isObject(object)           //> false
- * isObject(object.method)    //> true
- * isObject(object.method())  //> false
+ * isObject(object)           //=> false
+ * isObject(object.method)    //=> true
+ * isObject(object.method())  //=> false
  * ```
  */
 export const isObject = (a: unknown): a is object => typeof a === "object";

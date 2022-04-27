@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { last } from "./last";
 
-describe("last", async ({ assert, inspect }) => {
+describe("last", ({ assert, inspect }) => {
   {
     const value = ["a", "b", "c"];
     const expected = "c";

@@ -1,5 +1,5 @@
 /**
- * ```
+ * ```haskell
  * replace :: (s|r) => s => s => s
  * ```
  * -----------------------------------------------------------------------------
@@ -12,7 +12,6 @@
  * replace(/foo/gi)("bar")("foo baz foo") => "bar baz bar"
  * replace(/foo/gi)("bar")("foo baz foo") <=> "foo baz foo".replace(/foo/gi, "bar")
  * ```
- *
  */
 export const replace = (searchValue: string | RegExp) =>
   (replaceValue: string) =>

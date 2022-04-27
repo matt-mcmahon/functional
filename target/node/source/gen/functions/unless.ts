@@ -1,5 +1,5 @@
 /**
- * ```
+ * ```haskell
  * unless :: (a => boolean) => (a => b) => a => a|b
  * ```
  * -----------------------------------------------------------------------------
@@ -8,4 +8,4 @@
  * `a`.
  */
 export const unless = <X, A extends X>(p: (a: X) => a is A) =>
-  <B>(mapXB: (x: X) => B) => (a: X): A | B => (p(a) ? a : mapXB(a));
+  <B>(mapXB: (x: X) => B) => (a: X): A | B => p(a) ? a : mapXB(a);

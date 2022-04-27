@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { blackbird } from "./blackbird";
 
-describe("blackbird", async ({ assert, inspect }) => {
+describe("blackbird", ({ assert, inspect }) => {
   // the converging function:
   const converge = (a: string, b: string, c: number) =>
     `("${a}", "${b}", ${c})`;

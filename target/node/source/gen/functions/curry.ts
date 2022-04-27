@@ -2,7 +2,7 @@
 
 import { curryN } from "./curryN";
 /**
- * ```
+ * ```haskell
  * curry :: ((a¹, a²..., aⁿ) => b) => a¹ => a²... => aⁿ => b
  * ```
  * -----------------------------------------------------------------------------
@@ -10,6 +10,5 @@ import { curryN } from "./curryN";
  * produce the same final value.
  *
  * @todo add support for Variadic Tuples in TypeScript 4
- *
  */
 export const curry = <F extends Function>(f: F) => curryN(f.length)(f);

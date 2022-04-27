@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { isNumber } from "./isNumber";
 
-describe("is-number", async ({ assert, inspect }) => {
+describe("is-number", ({ assert, inspect }) => {
   const data: [unknown, boolean][] = [
     [1, true],
     [0, true],

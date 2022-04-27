@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { T } from "./T";
 
-describe("t", async ({ assert, inspect }) => {
+describe("t", ({ assert, inspect }) => {
   const expected = true;
 
   assert({

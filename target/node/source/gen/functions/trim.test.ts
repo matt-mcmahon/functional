@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { trim } from "./trim";
 
-describe("trim", async ({ assert, inspect }) => {
+describe("trim", ({ assert, inspect }) => {
   {
     const value = "  \n   foo  \n   ";
     const expected = "foo";

@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { assoc } from "./assoc";
 
-describe("assoc", async ({ assert, inspect }) => {
+describe("assoc", ({ assert, inspect }) => {
   {
     type FooBar = {
       foo: string;

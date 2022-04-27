@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.T = void 0;
-exports.T = (...ignored) => true;
+const T = (..._) => true;
+exports.T = T;
 //# sourceMappingURL=T.js.map

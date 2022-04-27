@@ -1,5 +1,5 @@
 /**
- * ```
+ * ```haskell
  * slice->beginning :: n => m => as => as
  * slice->end       ::      m => as => as
  * slice->list      ::           as => as

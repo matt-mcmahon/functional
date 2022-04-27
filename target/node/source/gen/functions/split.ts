@@ -1,5 +1,5 @@
 /**
- * ```
+ * ```haskell
  * split->at   :: (s, n) => s => ss
  * split->what ::           s => ss
  * ```

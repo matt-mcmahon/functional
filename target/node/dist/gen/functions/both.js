@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.both = void 0;
-exports.both = (first) => (second) => (a) => first(a) && second(a);
+const both = (mapAB) => (mapAC) => (a) => mapAB(a) && mapAC(a);
+exports.both = both;
 //# sourceMappingURL=both.js.map

@@ -1,7 +1,7 @@
 import { describe } from "../../lib/describe";
 import { join } from "./join";
 
-describe("join", async ({ assert, inspect }) => {
+describe("join", ({ assert, inspect }) => {
   {
     const char = "-";
     const f = join(char);
