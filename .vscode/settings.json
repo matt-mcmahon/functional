@@ -1,5 +1,8 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["combinator", "iife", "uncurry", "unreducable"],
-  "eslint.lintTask.enable": true
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.unstable": false,
+  "deno.codeLens.implementations": true,
+  "deno.codeLens.test": true,
+  "deno.suggest.completeFunctionCalls": true
 }
