@@ -1,0 +1,27 @@
+{
+	"author": "Matt McMahon <contact@matt-mcmahon.com> (http://matt-mcmahon.com/)",
+	"bugs": {
+		"url": "https://github.com/matt-mcmahon/functional/issues"
+	},
+	"description": "Extremely minimal functional library with a focus on source-code clarity.",
+	"homepage": "https://github.com/matt-mcmahon/functional#readme",
+	"keywords": [
+		"functional",
+		"experimental",
+		"tutorial",
+		"learning"
+	],
+	"license": "MIT",
+	"name": "@mwm/functional",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/matt-mcmahon/functional.git"
+	},
+	"scripts": {
+	},
+	"tap": {
+		"nyc-arg": [
+			"--exclude=**/functions.js"
+		]
+	}
+}
