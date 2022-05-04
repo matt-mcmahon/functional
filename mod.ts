@@ -1,1 +1,1 @@
-export * as functions from "./source/app/functions.ts";
+export * as functions from "./functions.ts";
