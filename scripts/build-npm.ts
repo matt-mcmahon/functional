@@ -5,9 +5,12 @@ import pack from "./package.json" assert { type: "json" };
 await emptyDir("./npm");
 
 await build({
-  entryPoints: ["./mod.ts"],
+  entryPoints: [{
+    name: ".",
+    path: "./functions.ts",
+  }],
   outDir: "./npm",
-  shims: { deno: true },
+  shims: { deno: false },
   package: { ...pack, ...{ version: await getLatestVersion() } },
   typeCheck: false,
   test: false,
