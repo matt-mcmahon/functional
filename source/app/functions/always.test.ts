@@ -1,14 +1,6 @@
-import { describe } from "../../lib/describe"
-import { always } from "./always"
+import { always } from "./always.ts";
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
-describe("always", async ({ assert, inspect }) => {
-  const expected = "bar"
-  const alwaysBar = always(expected)
-  const foo = "foo"
-  assert({
-    actual: alwaysBar(foo),
-    expected,
-    given: inspect`always(${expected})(${foo})`,
-    should: inspect`still return ${expected}`,
-  })
-})
+Deno.test("always", () => {
+  assertEquals(always("bar")("foo"), "bar");
+});

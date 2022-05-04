@@ -1,26 +1,31 @@
-import { describe } from "../../lib/describe"
-import { toArray } from "./toArray"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { toArray } from "./toArray.ts";
 
-describe("to-string", async ({ assert, inspect }) => {
-  const values: [ArrayLike<string> | Iterable<string>, Array<string>][] = [
+Deno.test("to-string", () => {
+  const data: [Iterable<string>, Array<string>][] = [
     [
       ["a", "b", "c", "d", "e"],
       ["a", "b", "c", "d", "e"],
     ],
-    ["abcde", ["a", "b", "c", "d", "e"]],
-    [new Set(["a", "b", "c", "d", "e"]), ["a", "b", "c", "d", "e"]],
-  ]
+    [
+      "abcde",
+      ["a", "b", "c", "d", "e"],
+    ],
+    [
+      new Set(["a", "b", "c", "d", "e"]),
+      ["a", "b", "c", "d", "e"],
+    ],
+  ];
 
   const test = ([value, expected]: [
-    ArrayLike<string> | Iterable<string>,
-    Array<string>
+    Iterable<string>,
+    Array<string>,
   ]) => {
-    assert({
-      given: inspect`toArray(${value})`,
-      actual: toArray(value),
+    assertEquals(
+      toArray(value),
       expected,
-    })
-  }
+    );
+  };
 
-  values.forEach(test)
-})
+  data.forEach(test);
+});

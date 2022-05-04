@@ -15,5 +15,5 @@
  * isObject(object.method())  //=> false
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const isObject = (a: unknown): a is object => typeof a === "object"
+// deno-lint-ignore ban-types
+export const isObject = (a: unknown): a is object => typeof a === "object";

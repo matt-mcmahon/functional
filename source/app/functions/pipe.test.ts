@@ -1,17 +1,12 @@
-import { pipe } from "./pipe"
-import { describe } from "../../lib/describe"
+import { pipe } from "./pipe.ts";
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
-describe("classic pipe", ({ assert, inspect }) => {
-  const double = (x: number) => x * 2
-  const numToString = (x: number) => `${x}`
-  const toCharacterArray = (x: string) => x.split("")
-  const joinWithDashes = (x: string[]) => x.join("-")
-  const value = 12345
+Deno.test("classic pipe", () => {
+  const double = (x: number) => x * 2;
+  const numToString = (x: number) => `${x}`;
+  const toCharacterArray = (x: string) => x.split("");
+  const joinWithDashes = (x: string[]) => x.join("-");
+  const f = pipe(double, numToString, toCharacterArray, joinWithDashes);
 
-  const f = pipe(double, numToString, toCharacterArray, joinWithDashes)
-  const actual = f(value)
-  const expected = "2-4-6-9-0"
-  const given = inspect`pipe(double, numToString, toCharacterArray, joinWithDashes)`
-
-  assert({ actual, expected, given })
-})
+  assertEquals(f(12345), "2-4-6-9-0");
+});

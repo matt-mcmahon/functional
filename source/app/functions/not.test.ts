@@ -1,8 +1,8 @@
-import { describe } from "../../lib/describe"
-import { not } from "./not"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { not } from "./not.ts";
 
-describe("not", async ({ assert, inspect }) => {
-  const values: [unknown, boolean][] = [
+Deno.test("not", () => {
+  const data: [unknown, boolean][] = [
     [true, false],
     [false, true],
     // truthy values
@@ -18,11 +18,9 @@ describe("not", async ({ assert, inspect }) => {
     [null, true],
     [undefined, true],
     [NaN, true],
-  ]
+  ];
 
-  values.forEach(([value, expected]: [unknown, boolean]) => {
-    const actual = not(value)
-    const given = inspect`not(${value})`
-    assert({ expected, actual, given })
-  })
-})
+  for (const [value, expected] of data) {
+    assertEquals(not(value), expected);
+  }
+});

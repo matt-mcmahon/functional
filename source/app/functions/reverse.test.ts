@@ -1,19 +1,16 @@
-import { reverse } from "./reverse"
-import { describe } from "../../lib/describe"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { reverse } from "./reverse.ts";
 
-describe("reverse", ({ assert }) => {
-  {
-    const value = [1, 2, 3, 4]
-    const actual = reverse(value)
-    const expected = [4, 3, 2, 1]
-    assert({ actual, expected, value })
-  }
+Deno.test("reverse", () => {
+  assertEquals(
+    reverse([1, 2, 3, 4]),
+    [4, 3, 2, 1],
+  );
 
-  {
-    const actual = [1, 2, 3, 4]
-    reverse(actual)
-    const expected = [1, 2, 3, 4]
-    const message = `reversing as shouldn't modify as`
-    assert({ actual, expected, message })
-  }
-})
+  const original = [1, 2, 3, 4];
+  reverse(original);
+  assertEquals(
+    original,
+    [1, 2, 3, 4],
+  );
+});

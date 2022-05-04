@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { equals } from "./equals"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { equals } from "./equals.ts";
 
-describe("equals", async ({ assert, inspect }) => {
+Deno.test("equals", () => {
   const values: [unknown, unknown, boolean][] = [
     ["a", "b", false],
     ["a", "a", true],
@@ -11,11 +11,9 @@ describe("equals", async ({ assert, inspect }) => {
     [undefined, undefined, true],
     [undefined, null, false],
     [null, null, true],
-  ]
+  ];
 
-  values.forEach(([a, b, expected]) => {
-    const actual = equals(a)(b)
-    const given = inspect`equals(${a}, ${b})`
-    assert({ expected, actual, given })
-  })
-})
+  for (const [a, b, expected] of values) {
+    assertEquals(equals(a)(b), expected);
+  }
+});

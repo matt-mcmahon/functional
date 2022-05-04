@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isObject } from "./isObject"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { isObject } from "./isObject.ts";
 
-describe("isObject", async ({ assert, inspect }) => {
+Deno.test("isObject", () => {
   const data: [unknown, boolean][] = [
     [1, false],
     [0, false],
@@ -14,15 +14,10 @@ describe("isObject", async ({ assert, inspect }) => {
     [false, false],
     [{}, true],
     [{ length: 0 }, true],
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     [() => {}, false],
-  ]
+  ];
 
-  const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = isObject(value)
-    const given = inspect`isObject(${value})`
-    assert({ given, actual, expected })
+  for (const [value, expected] of data) {
+    assertEquals(isObject(value), expected);
   }
-
-  data.forEach(test)
-})
+});

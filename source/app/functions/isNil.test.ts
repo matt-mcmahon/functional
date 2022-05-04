@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isNil } from "./isNil"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { isNil } from "./isNil.ts";
 
-describe("isNil", async ({ assert, inspect }) => {
+Deno.test("isNil", () => {
   const data: [unknown, boolean][] = [
     [null, true],
     [undefined, true],
@@ -12,13 +12,9 @@ describe("isNil", async ({ assert, inspect }) => {
     [false, false],
     [true, false],
     ["truthy", false],
-  ]
+  ];
 
-  data.forEach(([value, expected]) =>
-    assert({
-      actual: isNil(value),
-      expected,
-      given: inspect`isNil(${value})`,
-    })
-  )
-})
+  for (const [value, expected] of data) {
+    assertEquals(isNil(value), expected);
+  }
+});

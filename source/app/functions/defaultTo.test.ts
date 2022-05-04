@@ -1,47 +1,36 @@
-import { describe } from "../../lib/describe"
-import { defaultTo } from "./defaultTo"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { defaultTo } from "./defaultTo.ts";
 
-describe("defaultTo", async ({ assert, inspect }) => {
-  const defaultValue = "replaced"
-  const f = defaultTo(defaultValue)
-  {
-    const value = false
-    const given = inspect`defaultTo(${defaultValue})(${value})`
-    const expected = false
-    const actual = f(value)
-    assert({ given, actual, expected })
-  }
+Deno.test("defaultTo", () => {
+  const defaultValue = "replaced";
 
-  {
-    const value = 0
-    const expected = 0
-    const actual = f(value)
-    const given = inspect`defaultTo(${defaultValue})(${value})`
-    assert({ given, actual, expected })
-  }
+  assertEquals(
+    defaultTo(defaultValue)(false),
+    false,
+  );
 
-  {
-    const value = null
-    const expected = defaultValue
-    const actual = f(value)
-    const given = inspect`defaultTo(${defaultValue})(${value})`
-    assert({ given, actual, expected })
-  }
+  assertEquals(
+    defaultTo(defaultValue)(0),
+    0,
+  );
 
-  {
-    const value = undefined
-    const expected = defaultValue
-    const actual = f(value)
-    const given = inspect`defaultTo(${defaultValue})(${value})`
-    assert({ given, actual, expected })
-  }
+  assertEquals(
+    defaultTo(defaultValue)(""),
+    "",
+  );
 
-  {
-    const defaultValue = 1
-    const value = NaN
-    const expected = defaultValue
-    const actual = defaultTo(defaultValue)(value)
-    const given = inspect`defaultTo(${defaultValue})(${value})`
-    assert({ given, actual, expected })
-  }
-})
+  assertEquals(
+    defaultTo(defaultValue)(null),
+    defaultValue,
+  );
+
+  assertEquals(
+    defaultTo(defaultValue)(undefined),
+    defaultValue,
+  );
+
+  assertEquals(
+    defaultTo(defaultValue)(NaN),
+    defaultValue,
+  );
+});

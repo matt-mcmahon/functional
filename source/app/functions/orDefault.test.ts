@@ -1,27 +1,18 @@
-import { describe } from "../../lib/describe"
-import { orDefault } from "./orDefault"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { orDefault } from "./orDefault.ts";
 
-describe("orDefault", async ({ assert, inspect }) => {
-  const or = orDefault("default")
+Deno.test("orDefault", () => {
+  const defaultValue = "defualt";
+  const or = orDefault(defaultValue);
 
-  {
-    const given = "actual"
-    const expected = given
-    const actual = or(given)
-    assert({ expected, actual, given: inspect`${given}` })
+  const data: [string | null | undefined, string | null | undefined][] = [
+    ["actual", "actual"],
+    [null, defaultValue],
+    [undefined, defaultValue],
+    ["", ""],
+  ];
+
+  for (const [value, expected] of data) {
+    assertEquals(or(value), expected);
   }
-
-  {
-    const given = null
-    const expected = "default"
-    const actual: string | null = or(given)
-    assert({ expected, actual, given: inspect`${given}` })
-  }
-
-  {
-    const given = undefined
-    const expected = "default"
-    const actual: string | undefined = or(given)
-    assert({ expected, actual, given: inspect`${given}` })
-  }
-})
+});

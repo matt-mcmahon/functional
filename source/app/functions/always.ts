@@ -14,8 +14,4 @@
  * always('a')('b', false) //=> 'a'
  * ```
  */
-export const always =
-  <A>(a: A) =>
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (...bs: unknown[]): A =>
-    a
+export const always = <A>(a: A) => (..._bs: unknown[]): A => a;

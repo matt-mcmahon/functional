@@ -1,8 +1,4 @@
-/** @todo: delete eslint pragma */
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
-import { curryN } from "./curryN"
+import { curryN } from "./curryN.ts";
 
 /**
  * ```haskell
@@ -13,6 +9,6 @@ import { curryN } from "./curryN"
  * produce the same final value.
  *
  * @todo add support for Variadic Tuples in TypeScript 4
- *
  */
-export const curry = <F extends Function>(f: F) => curryN(f.length)(f)
+// deno-lint-ignore ban-types
+export const curry = <F extends Function>(f: F) => curryN(f.length)(f);
