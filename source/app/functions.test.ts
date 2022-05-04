@@ -1,35 +1,37 @@
-import { describe } from "../lib/describe"
-import { readdir } from "../lib/readdir"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import * as functional from "./functions.ts";
 
-import * as functional from "./functions"
+const __dirname = new URL(".", import.meta.url).pathname;
 
-const removeExtension = (fileNames: string[]) =>
-  fileNames.map((file) => file.replace(/.\w+$/, ""))
+const collectFileNames = async (path: string, paths: string[] = []) => {
+  for await (const dirEntry of Deno.readDir(path)) {
+    if (dirEntry.isFile) {
+      paths.push(dirEntry.name);
+    } else if (dirEntry.isDirectory) {
+      collectFileNames(dirEntry.name, paths);
+    }
+  }
+  return paths;
+};
 
 const filterTestFiles = (fileNames: string[]) =>
   fileNames.filter(
-    (name) => !name.includes(".test.") && !name.includes("index")
-  )
+    (name) => !name.includes(".test.") && !name.includes("index"),
+  );
 
-const sortFiles = (files: string[]) => files.sort()
+const sortFiles = (files: string[]) => files.sort();
 
 const getModuleList = () =>
-  readdir("./source/app/functions")
+  collectFileNames(__dirname + "./functions")
     .then(filterTestFiles)
-    .then(removeExtension)
     .then(sortFiles)
     .catch((reason) => {
-      throw reason
-    })
+      throw reason;
+    });
 
-describe("index", async ({ assert }) => {
-  const actual = Object.keys(functional).sort()
-  const expected = await getModuleList()
-
-  assert({
-    actual,
-    expected,
-    given: "actual module exports",
-    should: "include all public exports",
-  })
-})
+Deno.test("functions.ts", async () => {
+  assertEquals(
+    Object.keys(functional).map((file) => file + ".ts").sort(),
+    await getModuleList(),
+  );
+});

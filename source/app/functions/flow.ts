@@ -1,10 +1,10 @@
 type Flow<A, B> = {
-  (a: A): B
-  then: <C>(Fbc: (b: B) => C) => Flow<A, C>
-  invoke: (a: A) => B
-  map: <C>(Fbc: (b: B) => C) => Flow<A, C>
-  invoker: () => (a: A) => B
-}
+  (a: A): B;
+  then: <C>(Fbc: (b: B) => C) => Flow<A, C>;
+  invoke: (a: A) => B;
+  map: <C>(Fbc: (b: B) => C) => Flow<A, C>;
+  invoker: () => (a: A) => B;
+};
 
 /**
  * ```haskell
@@ -25,30 +25,30 @@ type Flow<A, B> = {
  * ```
  */
 export function flow<A, B>(f: (a: A) => B): Flow<A, B> {
-  const map = <C>(f: (b: B) => C): Flow<A, C> => next<A, B, C>(p, f)
-  const invoke = (a: A) => f(a)
-  const invoker = () => invoke
+  const map = <C>(f: (b: B) => C): Flow<A, C> => next<A, B, C>(p, f);
+  const invoke = (a: A) => f(a);
+  const invoker = () => invoke;
 
   const p: Flow<A, B> = Object.assign(invoke.bind(null), {
     invoke,
     invoker,
     map,
     then: map,
-  })
+  });
 
-  return p
+  return p;
 }
 
 function next<A, B, C>(prev: Flow<A, B>, f: (b: B) => C): Flow<A, C> {
-  const invoke = (a: A) => f(prev(a))
-  const map = <D>(f: (c: C) => D): Flow<A, D> => next<A, C, D>(p, f)
-  const invoker = () => invoke
+  const invoke = (a: A) => f(prev(a));
+  const map = <D>(f: (c: C) => D): Flow<A, D> => next<A, C, D>(p, f);
+  const invoker = () => invoke;
 
   const p: Flow<A, C> = Object.assign(invoke.bind(null), {
     invoke,
     invoker,
     map,
     then: map,
-  })
-  return p
+  });
+  return p;
 }

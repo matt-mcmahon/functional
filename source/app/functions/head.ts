@@ -5,6 +5,5 @@
  * -----------------------------------------------------------------------------
  *
  * Returns the first element of an array.
- *
  */
-export const head = <A>(as: A[]): A => as[0]
+export const head = <A>(as: A[]): A => as[0];

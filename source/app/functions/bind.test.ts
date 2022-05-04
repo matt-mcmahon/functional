@@ -1,90 +1,89 @@
-import { describe } from "../../lib/describe"
-import { bind } from "./bind"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { bind } from "./bind.ts";
 
-describe("bind", async ({ assert, inspect }) => {
+Deno.test("bind", () => {
   type Foo = {
-    method(foo?: string): string
-    foo?: string
-  }
+    method(foo?: string): string;
+    foo?: string;
+  };
 
   const methodSource: Foo = {
     foo: "original",
     method(value: string) {
-      this.foo = value
-      return `method called`
+      this.foo = value;
+      return `method called`;
     },
-  }
+  };
 
-  const bind1 = bind(methodSource.method)
+  const bind1 = bind(methodSource.method);
 
-  {
-    const actual = typeof bind1
-    const expected = "function"
-    const given = inspect`${bind1}`
-    const should = inspect`be a ${expected} (1 applied arguments)`
-    assert({ given, should, actual, expected })
-  }
+  assertEquals(
+    typeof bind1,
+    "function",
+    `should return a function (1 applied arguments)`,
+  );
 
   const bindTarget = {
     bar: "bar",
-  }
+  };
 
-  const bind2 = bind1(bindTarget)
+  const bind2 = bind1(bindTarget);
+
+  assertEquals(
+    typeof bind2,
+    "function",
+    `should return a function (2 applied arguments)`,
+  );
+
+  const methodWasInvoked = bind2("foo");
+
+  assertEquals(
+    methodWasInvoked,
+    "method called",
+    `should call method with argument "foo"`,
+  );
+
+  assertEquals(
+    bindTarget,
+    { bar: "bar", foo: "foo" },
+    `should mutate the target object`,
+  );
+
+  assertEquals(
+    methodSource.foo,
+    "original",
+    `should not mutate the original object that held the method`,
+  );
 
   {
-    const actual = typeof bind2
-    const expected = "function"
-    const given = inspect`${bind2}`
-    const should = inspect`be a ${expected} (2 applied arguments)`
-    assert({ given, should, actual, expected })
-  }
-
-  const bind3 = bind2("foo")
-
-  {
-    const actual = bind3
-    const expected = "method called"
-    const given = inspect`three applied arguments`
-    assert({ given, actual, expected })
+    const newObject = { misdirection: bind2 };
+    newObject.misdirection("BAZ");
+    assertEquals(
+      newObject,
+      { misdirection: bind2 },
+      `should not mutate new object if added as property of that object`,
+    );
   }
 
   {
-    const given = inspect`the methodSource object`
-    const should = inspect`have ${{
-      foo: "original",
-    }}`
-    const { foo: actual } = methodSource
-    const expected = "original"
-    assert({ given, should, actual, expected })
-  }
-
-  {
-    const actual = { misdirection: bind2 }
-    const expected = {
-      misdirection: bind2,
+    class Foo {
+      foo: string;
+      getFoo: () => string;
+      constructor(foo: string) {
+        this.foo = foo;
+        this.getFoo = () => this.foo;
+      }
     }
-    const given = inspect`${actual.misdirection("BAZ")} on misdirection`
-    const should = inspect`not have ${{ foo: "BAZ" }}`
-    assert({ given, should, actual, expected })
+
+    const fooIsFoo = new Foo("foo");
+    const fooIsError = new Foo("error");
+
+    const shouldFromFooIsFoo = bind(fooIsFoo.getFoo)(fooIsError);
+
+    assertEquals(
+      shouldFromFooIsFoo(),
+      "foo",
+      `should not change context of arrow functions`,
+    );
   }
-
-  {
-    const arrow = (a: string) => a
-
-    const bound = bind(arrow)
-
-    assert({
-      actual: typeof bound,
-      expected: "function",
-      given: inspect`an arrow function`,
-      should: inspect`fail, but that's not desirable`,
-    })
-
-    assert({
-      actual: bound({ foo: "arrow bound" })("arrow argument"),
-      expected: "arrow argument",
-      given: inspect`bound arrow function`,
-      should: inspect`be callable`,
-    })
-  }
-})
+});

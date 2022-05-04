@@ -1,7 +1,10 @@
-import { describe } from "../../lib/describe"
-import { isDefined } from "./isDefined"
+import {
+  assertEquals,
+  fail,
+} from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { isDefined } from "./isDefined.ts";
 
-describe("is-defined", async ({ assert, inspect }) => {
+Deno.test("is-defined", () => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],
@@ -11,36 +14,41 @@ describe("is-defined", async ({ assert, inspect }) => {
     [false, true],
     [{}, true],
     [{ length: 0 }, true],
-  ]
+  ];
 
-  const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = isDefined(value)
-    const given = inspect`isDefined(${value})`
-    assert({ given, actual, expected })
+  for (const [value, expected] of data) {
+    assertEquals(isDefined(value), expected);
   }
+});
 
-  data.forEach(test)
-})
+const never = (_: never) => {
+  fail();
+};
 
 // These tests won't compile unless isDefined has the  `: a is ...` type guard
-describe("is-defined, type guard", async ({ assert, inspect }) => {
-  const f = (value: { a?: () => string }) =>
-    isDefined(value.a) ? value.a() : "error"
-
+Deno.test("is-defined, type guard", () => {
   {
-    const expected = "I'm A!"
-    const value = { a: () => expected }
-    const actual = f(value)
-    const given = inspect`{ a: () => ${expected}}`
-    const should = "pass type guard"
-    assert({ actual, expected, given, should })
+    const a = null;
+    if (isDefined(a)) never(a);
   }
 
   {
-    const expected = "error"
-    const value = {}
-    const actual = f(value)
-    const should = "fail type guard"
-    assert({ actual, expected, value, should })
+    const a = undefined;
+    if (isDefined(a)) never(a);
   }
-})
+
+  {
+    const a = "";
+    if (!isDefined(a)) never(a);
+  }
+
+  {
+    const a = 0;
+    if (!isDefined(a)) never(a);
+  }
+
+  {
+    const a = false;
+    if (!isDefined(a)) never(a);
+  }
+});

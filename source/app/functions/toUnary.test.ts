@@ -1,25 +1,25 @@
-import { toUnary } from "./toUnary"
-import { describe } from "../../lib/describe"
+import { toUnary } from "./toUnary.ts";
 
-describe("to-unary", ({ assert, inspect }) => {
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+
+Deno.test("to-unary", (t) => {
   {
     const vf = (s: string, f: (...ns: number[]) => number, ...ns: number[]) =>
-      `${s} is ${f(...ns)}`
-    const uf = toUnary(vf)
-    const values = ["max", Math.max, 1, 2, 3]
-    const actual = uf(["max", Math.max, 1, 2, 3])
-    const expected = "max is 3"
-    const given = inspect`unary(${values})`
-    assert({ actual, expected, given })
+      `${s} is ${f(...ns)}`;
+    const uf = toUnary(vf);
+    const args: Parameters<typeof vf> = ["max", Math.max, 1, 2, 3];
+    const expected = "max is 3";
+
+    assertEquals(vf(...args), expected);
+    assertEquals(uf(args), expected);
   }
   {
-    const vf = (...ns: number[]) => `${Math.max(...ns)}`
-    const uf = toUnary(vf)
-    const values = [1, 2, 3]
-    const actual = uf(values)
-    const expected = "3"
-    const given = inspect`unary(${values})`
-    const should = inspect`evaluate to ${expected}`
-    assert({ actual, expected, given, should })
+    const vf = (...ns: number[]) => `${Math.max(...ns)}`;
+    const uf = toUnary(vf);
+    const args: Parameters<typeof vf> = [1, 2, 3];
+    const expected = "3";
+
+    assertEquals(vf(...args), expected);
+    assertEquals(uf(args), expected);
   }
-})
+});

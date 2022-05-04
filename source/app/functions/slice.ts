@@ -16,8 +16,6 @@
  * slice(1)(4)(as) <=> as.slice(1, 4) <=> [1, 2, 3]
  * ```
  */
-export const slice =
-  (n?: number) =>
+export const slice = (n?: number) =>
   (m?: number) =>
-  <A>(as: Iterable<A> | ArrayLike<A>): A[] =>
-    Array.from(as).slice(n, m)
+    <A>(as: Iterable<A> | ArrayLike<A>): A[] => Array.from(as).slice(n, m);

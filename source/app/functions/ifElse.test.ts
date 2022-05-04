@@ -1,57 +1,28 @@
-import { ifElse } from "./ifElse"
-import { describe } from "../../lib/describe"
+import { ifElse } from "./ifElse.ts";
 
-describe("if-else", ({ assert, inspect }) => {
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+
+Deno.test("if-else", () => {
   {
-    const ifEven = (x: number) => x % 2 === 0
-    const whenEven = (x: number) => `${x} is even`
-    const whenOdd = (x: number) => `${x} is odd`
-    const f = ifElse(ifEven, whenEven, whenOdd)
+    const ifEven = (x: number) => x % 2 === 0;
+    const whenEven = (x: number) => `${x} is even`;
+    const whenOdd = (x: number) => `${x} is odd`;
 
-    {
-      const given = inspect`f(${4})`
-      const actual = f(4)
-      const expected = "4 is even"
-      const should = "should run true branch"
-      assert({ actual, expected, given, should })
-    }
+    const f = ifElse(ifEven, whenEven, whenOdd);
 
-    {
-      const given = inspect`f(${3})`
-      const actual = f(3)
-      const expected = `3 is odd`
-      const should = `run false branch`
-      assert({ actual, expected, given, should })
-    }
+    assertEquals(f(4), "4 is even");
+    assertEquals(f(3), `3 is odd`);
   }
 
   {
-    const isNumber = (n: unknown) => typeof n === "number"
-    const whenTrue = (n: number) => n * 2
-    const whenFalse = (n: unknown) => `I'm a ${typeof n}`
-    const f = ifElse(isNumber, whenTrue, whenFalse)
-    {
-      const given = inspect`f(${2})`
-      const should = `run true branch`
-      const expected = 4
-      const actual = f(2)
-      assert({ given, should, actual, expected })
-    }
+    const isNumber = (n: unknown) => typeof n === "number";
+    const whenTrue = (n: number) => n * 2;
+    const whenFalse = (n: unknown) => `I'm a ${typeof n}`;
 
-    {
-      const given = inspect`f(${"foo"})`
-      const should = `run false branch`
-      const expected = "I'm a string"
-      const actual = f("foo")
-      assert({ given, should, actual, expected })
-    }
+    const f = ifElse(isNumber, whenTrue, whenFalse);
 
-    {
-      const expected = "I'm a object"
-      const actual = f({ bar: "3" })
-      const given = inspect`f({ bar: "3" })`
-      const should = `run false branch`
-      assert({ given, should, actual, expected })
-    }
+    assertEquals(4, f(2));
+    assertEquals(f("foo"), "I'm a string");
+    assertEquals(f({ bar: "3" }), "I'm a object");
   }
-})
+});

@@ -1,19 +1,14 @@
-import { describe } from "../../lib/describe"
-import { trim } from "./trim"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { trim } from "./trim.ts";
 
-describe("trim", async ({ assert, inspect }) => {
-  {
-    const value = "  \n   foo  \n   "
-    const expected = "foo"
-    const actual = trim(value)
-    const given = inspect`trim(${value})`
-    assert({ expected, actual, given })
-  }
-  {
-    const value = "  \n   foo    bar  \n   "
-    const expected = "foo    bar"
-    const actual = trim(value)
-    const given = inspect`trim(${value})`
-    assert({ expected, actual, given })
-  }
-})
+Deno.test("trim", () => {
+  assertEquals(
+    trim("  \n   foo  \n   "),
+    "foo",
+  );
+
+  assertEquals(
+    trim("  \n   foo    bar  \n   "),
+    "foo    bar",
+  );
+});

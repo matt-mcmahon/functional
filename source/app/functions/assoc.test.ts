@@ -1,47 +1,35 @@
-import { describe } from "../../lib/describe"
-import { assoc } from "./assoc"
+import { assoc } from "./assoc.ts";
+import {
+  assert,
+  assertEquals,
+} from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
-describe("assoc", async ({ assert, inspect }) => {
-  {
-    type FooBar = {
-      foo: string
-      bar?: string
-    }
-    const value: FooBar = { foo: "foo" }
-    const a1 = assoc("bar")
-    const a2 = a1("bar")
-    const actual = a2(value)
-    const expected = { foo: "foo", bar: "bar" }
-    const given = inspect`we assoc(${"bar"})(${"bar"}) on ${value}`
-    assert({ given, actual, expected })
-  }
+Deno.test("assoc", () => {
+  assertEquals(
+    assoc("bar")("bar")({ foo: "foo" }),
+    { foo: "foo", bar: "bar" },
+    `should add property { bar: "bar" }`,
+  );
 
-  {
-    type Foo = {
-      foo: string
-    }
-    const value: Foo = { foo: "foo" }
-    const a1 = assoc("foo")
-    const a2 = a1("bar")
-    const actual = a2(value)
-    const expected = { foo: "bar" }
-    const given = inspect`we assoc(${"foo"})(${"bar"}) on ${value}`
-    assert({ given, actual, expected })
-  }
+  assertEquals(
+    assoc("foo")("bar")({ foo: "foo" }),
+    { foo: "bar" },
+    `should overwrite property foo with value "bar"`,
+  );
 
   {
-    assert({
-      given: inspect`we use assoc to overwrite ${"b"}`,
-      actual: assoc("b")(3)({ a: 1, b: 2 }),
-      expected: { a: 1, b: 3 },
-    })
+    const value: number[] = [];
+    const actual = assoc(2)(1)(value);
+    assertEquals(
+      actual,
+      [, , 1],
+      `should set an index on an array`,
+    );
+    assertEquals(
+      value,
+      [],
+      "should not mutate original array",
+    );
+    assert(value !== actual);
   }
-
-  {
-    const given = inspect`an empty number[] and 2:1`
-    const actual = assoc(2)(1)([])
-    // eslint-disable-next-line no-sparse-arrays
-    const expected = [, , 1]
-    assert({ given, expected, actual })
-  }
-})
+});

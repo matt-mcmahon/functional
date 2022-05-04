@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isString } from "./isString"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { isString } from "./isString.ts";
 
-describe("is-string", async ({ assert, inspect }) => {
+Deno.test("is-string", () => {
   const data: [unknown, boolean][] = [
     [1, false],
     [0, false],
@@ -14,41 +14,19 @@ describe("is-string", async ({ assert, inspect }) => {
     [false, false],
     [{}, false],
     [{ length: 0 }, false],
-  ]
+  ];
 
-  const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = isString(value)
-    const given = inspect`isString(${value})`
-    assert({ given, actual, expected })
+  for (const [value, expected] of data) {
+    assertEquals(isString(value), expected);
   }
+});
 
-  data.forEach(test)
-})
+Deno.test("is-string: string-like object", () => {
+  const valueOf = () => "fake v";
+  const toString = () => "fake s";
+  const stringLike = { valueOf, toString };
 
-describe("is-string: string-like object", async ({ assert }) => {
-  const value = {
-    valueOf: () => "fake v",
-    toString: () => "fake s",
-  }
-
-  {
-    const actual = "" + value
-    const expected = "fake v"
-    const given = "coerce to value"
-    assert({ actual, expected, given })
-  }
-
-  {
-    const actual = `${value}`
-    const expected = "fake s"
-    const given = "coerce to string"
-    assert({ actual, expected, given })
-  }
-
-  {
-    const actual = isString(value)
-    const expected = false
-    const given = `string-like object with valueOf() => string`
-    assert({ actual, expected, value, given })
-  }
-})
+  assertEquals("" + stringLike, valueOf());
+  assertEquals(`${stringLike}`, toString());
+  assertEquals(isString(stringLike), false);
+});

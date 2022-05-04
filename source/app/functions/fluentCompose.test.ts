@@ -1,42 +1,55 @@
-import { fluentCompose } from "./fluentCompose"
-import { describe } from "../../lib/describe"
+import { fluentCompose } from "./fluentCompose.ts";
 
-describe("fluent compose", ({ assert, inspect }) => {
-  const double = (x: number) => x * 2
-  const numToString = (x: number) => `${x}`
-  const toCharacterArray = (x: string) => x.split("")
-  const joinWithDashes = (x: string[]) => x.join("-")
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
-  const c1 = fluentCompose(joinWithDashes)
-  const c2 = c1.after(toCharacterArray)
-  const c3 = c2.after(numToString)
-  const c4 = c3.after(double)
-  {
-    const value = ["1", "2", "3", "4", "5"]
-    const actual = c1(value)
-    const expected = "1-2-3-4-5"
-    const given = inspect`c1(${value})`
-    assert({ actual, expected, given })
-  }
-  {
-    const value = "12345"
-    const actual = c2.invoke(value)
-    const expected = "1-2-3-4-5"
-    const given = inspect`c2(${value})`
-    assert({ actual, expected, given })
-  }
-  {
-    const value = 12345
-    const given = inspect`c3(${value})`
-    const actual = c3(value)
-    const expected = "1-2-3-4-5"
-    assert({ actual, expected, given })
-  }
-  {
-    const value = 12345
-    const actual = c4(value)
-    const expected = "2-4-6-9-0"
-    const given = inspect`c4(${value})`
-    assert({ actual, expected, given })
-  }
-})
+Deno.test("fluent compose", () => {
+  const double = (x: number) => x * 2;
+  const numToString = (x: number) => `${x}`;
+  const toCharacterArray = (x: string) => x.split("");
+  const joinWithDashes = (x: string[]) => x.join("-");
+
+  const c1 = fluentCompose(joinWithDashes);
+  const c2 = c1.after(toCharacterArray);
+  const c3 = c2.after(numToString);
+  const c4 = c3.after(double);
+
+  assertEquals(
+    c1(["1", "2", "3", "4", "5"]),
+    "1-2-3-4-5",
+  );
+
+  assertEquals(
+    c1.invoke(["1", "2", "3", "4", "5"]),
+    "1-2-3-4-5",
+  );
+
+  assertEquals(
+    c2("12345"),
+    "1-2-3-4-5",
+  );
+
+  assertEquals(
+    c2.invoke("12345"),
+    "1-2-3-4-5",
+  );
+
+  assertEquals(
+    c3(12345),
+    "1-2-3-4-5",
+  );
+
+  assertEquals(
+    c3.invoke(12345),
+    "1-2-3-4-5",
+  );
+
+  assertEquals(
+    c4(12345),
+    "2-4-6-9-0",
+  );
+
+  assertEquals(
+    c4.invoke(12345),
+    "2-4-6-9-0",
+  );
+});

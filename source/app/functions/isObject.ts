@@ -16,4 +16,4 @@
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-export const isObject = (a: unknown): a is object => typeof a === "object"
+export const isObject = (a: unknown): a is object => typeof a === "object";

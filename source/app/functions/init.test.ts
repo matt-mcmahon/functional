@@ -1,25 +1,8 @@
-import { describe } from "../../lib/describe"
-import { init } from "./init"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { init } from "./init.ts";
 
-describe("init", async ({ assert, inspect }) => {
-  {
-    const given = inspect`init(${["a", "b", "c"]})`
-    const actual = init(["a", "b", "c"])
-    const expected = ["a", "b"]
-    assert({ given, actual, expected })
-  }
-
-  {
-    const given = inspect`init(${["a"]})`
-    const actual = init(["a"])
-    const expected: string[] = []
-    assert({ given, actual, expected })
-  }
-
-  {
-    const given = inspect`init(${[]})`
-    const expected: string[] = []
-    const actual = init([])
-    assert({ given, actual, expected })
-  }
-})
+Deno.test("init", () => {
+  assertEquals(init(["a", "b", "c"]), ["a", "b"]);
+  assertEquals(init(["a"]), []);
+  assertEquals([], []);
+});

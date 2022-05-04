@@ -1,17 +1,13 @@
-import { map } from "./map"
-import { describe } from "../../lib/describe"
+import { map } from "./map.ts";
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
-describe("map", ({ assert, inspect }) => {
-  const as = ["1", "2", "3"]
-  const bs = [1, 2, 3]
-  const ab = (a: string) => parseInt(a, 10)
+Deno.test("map", () => {
+  const as = ["1", "2", "3"];
+  const bs = [1, 2, 3];
+  const ab = (a: string) => parseInt(a, 10);
 
-  {
-    const f = map(ab)
-    const actual = f(as)
-    const expected = bs
-    const given = inspect`map(${ab})(${as})`
-    const should = `accept accept an array`
-    assert({ actual, expected, given, should })
-  }
-})
+  assertEquals(
+    map(ab)(as),
+    bs,
+  );
+});

@@ -17,7 +17,6 @@
  * pipeV(v)(f, g, h) <=> h(g(f(v)))
  * ```
  */
-export const pipeV =
-  <A>(...as: A[]) =>
+export const pipeV = <A>(...as: A[]) =>
   <F extends Function>(f: F, ...fs: Function[]) =>
-    fs.reduce((a, f) => f(a), f(...as))
+    fs.reduce((a, f) => f(a), f(...as));

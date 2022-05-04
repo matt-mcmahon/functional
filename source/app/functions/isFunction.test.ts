@@ -1,54 +1,32 @@
-import { describe } from "../../lib/describe"
-import { isFunction } from "./isFunction"
+import { assert } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { isFunction } from "./isFunction.ts";
 
-describe("isFunction", async ({ assert, inspect }) => {
-  const expected = true
-  const should = inspect`be a function`
-  {
-    const actual = isFunction(function test() {
-      "do nothing"
-    })
-    const given = inspect`normal function`
-    assert({ actual, expected, given, should })
-  }
+Deno.test("isFunction", async (t) => {
+  await t.step(`normal function`, () => {
+    function test() {
+      "do nothing";
+    }
+    assert(isFunction(test));
+  });
 
-  {
-    const actual = isFunction(function* test() {
-      yield
-    })
-    const given = inspect`generator function`
-    assert({ actual, expected, given, should })
-  }
+  await t.step(`generator function`, () => {
+    function* test() {
+      yield;
+    }
+    assert(isFunction(test));
+  });
 
-  {
-    const actual = isFunction(async function test() {
-      "do nothing"
-    })
-    const given = inspect`async function`
-    assert({ actual, expected, given, should })
-  }
+  await t.step(`async function`, () => {
+    async function test() {
+      return await Promise.resolve("do nothing");
+    }
+    assert(isFunction(test));
+  });
 
-  {
-    const actual = isFunction(() => {
-      "do nothing"
-    })
-    const given = inspect`arrow function`
-    assert({ actual, expected, given, should })
-  }
-
-  {
-    const expected = false
-    const actual = isFunction(null)
-    const given = inspect`the value ${null}`
-    const should = inspect`not be a function`
-    assert({ actual, expected, given, should })
-  }
-
-  {
-    const expected = false
-    const actual = isFunction("function")
-    const given = inspect`the string ${"function"}`
-    const should = inspect`not be a function`
-    assert({ actual, expected, given, should })
-  }
-})
+  await t.step(`arrow function`, () => {
+    const test = () => {
+      "do nothing";
+    };
+    assert(isFunction(test));
+  });
+});

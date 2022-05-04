@@ -16,4 +16,5 @@
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-export const isFunction = (a: unknown): a is Function => typeof a === "function"
+export const isFunction = (a: unknown): a is Function =>
+  typeof a === "function";

@@ -1,27 +1,8 @@
-import { describe } from "../../lib/describe"
-import { F } from "./F"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { F } from "./F.ts";
 
-describe("f", async ({ assert, inspect }) => {
-  const expected = false
-
-  assert({
-    given: inspect`no argument to ${F}`,
-    should: inspect`return ${false}`,
-    actual: F(),
-    expected,
-  })
-
-  assert({
-    given: inspect`argument ${true} to ${F}`,
-    should: inspect`ignore argument and return ${false}`,
-    actual: F(true),
-    expected,
-  })
-
-  assert({
-    given: inspect`argument ${"foo"}, ${"bar"} to ${F}`,
-    should: inspect`ignore arguments and return ${false}`,
-    actual: F("foo", "bar"),
-    expected,
-  })
-})
+Deno.test("F", () => {
+  assertEquals(F(), false);
+  assertEquals(F(true), false);
+  assertEquals(F("foo", "bar"), false);
+});
