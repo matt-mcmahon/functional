@@ -1,4 +1,4 @@
-import { First, Last } from "../types"
+import type { First, Last } from "../../index.ts";
 
 /**
  * ```haskell
@@ -29,10 +29,10 @@ import { First, Last } from "../types"
  * flow(f).then(g).then(h).invoke(a) <=> h(g(f(a)))
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// deno-lint-ignore no-explicit-any
 export function pipe<FS extends ((x: any) => any)[]>(...fs: FS) {
-  type A0 = First<Parameters<First<FS>>>
-  type AN = ReturnType<Last<FS>>
+  type A0 = First<Parameters<First<FS>>>;
+  type AN = ReturnType<Last<FS>>;
 
-  return (a: A0): AN => fs.reduce((v, f) => f(v), a) as AN
+  return (a: A0): AN => fs.reduce((v, f) => f(v), a) as AN;
 }

@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isArray } from "./isArray"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { isArray } from "./isArray.ts";
 
-describe("is-array", async ({ assert, inspect }) => {
+Deno.test("is-array", () => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],
@@ -11,34 +11,16 @@ describe("is-array", async ({ assert, inspect }) => {
     [false, false],
     [{}, false],
     [{ length: 0 }, false],
-  ]
+  ];
 
-  const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = isArray(value)
-    const given = inspect`isDefined(${value})`
-    assert({ given, actual, expected })
+  for (const [value, expected] of data) {
+    assertEquals(isArray(value), expected);
   }
 
-  data.forEach(test)
-})
+  const requiresTypeGuard = (
+    value: unknown,
+  ) => (isArray(value) ? "array" : "error");
 
-// These tests won't compile unless isDefined has the  `: a is ...` type guard
-describe("is-array, type guard", async ({ assert }) => {
-  const f = (value: unknown) => (isArray(value) ? "array" : "error")
-
-  {
-    const expected = "array"
-    const value = [0, 1, 2]
-    const actual = f(value)
-    const should = "pass type guard"
-    assert({ actual, expected, value, should })
-  }
-
-  {
-    const expected = "error"
-    const value = "012"
-    const actual = f(value)
-    const should = "fail type guard"
-    assert({ actual, expected, value, should })
-  }
-})
+  assertEquals(requiresTypeGuard([0, 1, 2]), "array");
+  assertEquals(requiresTypeGuard("012"), "error");
+});

@@ -1,48 +1,36 @@
-import { describe } from "../../lib/describe"
-import { unless } from "./unless"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { unless } from "./unless.ts";
 
-describe("unless", async ({ assert, inspect }) => {
-  type A = "A"
-  type B = "B"
-  const isA = (v: unknown): v is A => v === "A"
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const makeB = (v: unknown): B => "B"
-  const unless_isA_makeB = unless(isA)(makeB)
+Deno.test("unless", () => {
+  type A = "A";
+  type B = "B";
+  const isA = (v: unknown): v is A => v === "A";
+  const makeB = (_v: unknown): B => "B";
+  const unless_isA_makeB = unless(isA)(makeB);
 
-  {
-    const value = "C"
-    const expected = "B"
-    const actual = unless_isA_makeB(value)
-    const given = inspect`make_B_unless_is_A(${value})`
-    assert({ expected, actual, given })
-  }
+  assertEquals(
+    unless_isA_makeB("C"),
+    "B",
+  );
 
-  {
-    const value = "A"
-    const expected = "A"
-    const actual = unless_isA_makeB(value)
-    const given = inspect`make_B_unless_is_A(${value})`
-    assert({ expected, actual, given })
-  }
+  assertEquals(
+    unless_isA_makeB("A"),
+    "A",
+  );
 
-  const inc = (n: number) => n + 1
+  const inc = (n: number) => n + 1;
   const isNotSafe = (n: number): n is number =>
-    n >= Number.MAX_SAFE_INTEGER || n < Number.MIN_SAFE_INTEGER
-  const unlessNotSafe = unless(isNotSafe)
-  const saferInc = unlessNotSafe(inc)
-  {
-    const value = Number.MAX_SAFE_INTEGER
-    const expected = value
-    const actual = saferInc(value)
-    const given = inspect`saferInc(${value})`
-    assert({ expected, actual, given })
-  }
+    n >= Number.MAX_SAFE_INTEGER || n < Number.MIN_SAFE_INTEGER;
+  const unlessNotSafe = unless(isNotSafe);
+  const saferInc = unlessNotSafe(inc);
 
-  {
-    const value = 1
-    const expected = 2
-    const actual = saferInc(value)
-    const given = inspect`saferInc(${value})`
-    assert({ expected, actual, given })
-  }
-})
+  assertEquals(
+    saferInc(Number.MAX_SAFE_INTEGER),
+    Number.MAX_SAFE_INTEGER,
+  );
+
+  assertEquals(
+    saferInc(1),
+    2,
+  );
+});

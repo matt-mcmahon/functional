@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isNaN } from "./isNaN"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { isNaN } from "./isNaN.ts";
 
-describe("isNaN", async ({ assert, inspect }) => {
+Deno.test("isNaN", () => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],
@@ -12,13 +12,9 @@ describe("isNaN", async ({ assert, inspect }) => {
     [false, false],
     [true, false],
     ["truthy", false],
-  ]
+  ];
 
-  data.forEach(([value, expected]) =>
-    assert({
-      actual: isNaN(value),
-      expected,
-      given: inspect`isNil(${value})`,
-    })
-  )
-})
+  for (const [value, expected] of data) {
+    assertEquals(isNaN(value), expected);
+  }
+});

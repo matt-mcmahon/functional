@@ -1,124 +1,97 @@
-import { describe } from "../../lib/describe"
-import { clone } from "./clone"
+import {
+  assert,
+  assertEquals,
+  assertNotEquals,
+} from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { clone } from "./clone.ts";
 
-describe("clone", async ({ assert, inspect }) => {
-  const original = { foo: "foo", bar: "bar" }
-  const copy = clone(original)
-  clone(original).bar = "BAZ"
-  assert({
-    actual: original === copy,
-    expected: false,
-    given: inspect`origin === copy`,
-  })
-  assert({
-    actual: copy === original,
-    expected: false,
-    given: `original === copy`,
-  })
-})
+Deno.test("clone", async (t) => {
+  await t.step("it should clone objects", () => {
+    const original = { foo: "foo", bar: "bar" };
+    const copy = clone(original);
+    assert(original !== copy);
+  });
 
-describe("clone, shallow", async ({ assert, inspect }) => {
-  const original = { foo: "foo", bar: "bar" }
-  const copy = clone(original)
-  copy.bar = "BAZ"
-  assert({
-    actual: original === copy,
-    expected: false,
-    given: inspect`origin === copy`,
-  })
-  assert({ actual: original, expected: { foo: "foo", bar: "bar" } })
-  assert({ actual: copy, expected: { foo: "foo", bar: "BAZ" } })
-})
+  await t.step(
+    "it should not mutate original properties when the clone is mutated",
+    () => {
+      const original = { foo: "foo", bar: "bar" };
+      const copy = clone(original);
+      copy.bar = "BAZ";
 
-describe("clone, deep", async ({ assert, inspect }) => {
-  const original = { foo: "foo", bar: { baz: "baz" } }
-  const copy = clone(original)
-  copy.bar.baz = "BAZ"
-  assert({
-    actual: original === copy,
-    expected: false,
-    given: inspect`origin === copy`,
-  })
-  assert({ actual: original, expected: { foo: "foo", bar: { baz: "baz" } } })
-  assert({ actual: copy, expected: { foo: "foo", bar: { baz: "BAZ" } } })
-})
+      assert(original !== copy);
+      assertEquals(original.bar, "bar");
+      assertEquals(copy.bar, "BAZ");
+    },
+  );
 
-describe("clone, undefined", async ({ assert }) => {
-  const value = undefined
-  const original: { foo: string; bar?: string } = { foo: "foo" }
-  const copy = clone(original)
-  copy.bar = "bar"
-  assert({ actual: clone(value), expected: value })
-  assert({ actual: original, expected: { foo: "foo" } })
-  assert({ actual: copy, expected: { foo: "foo", bar: "bar" } })
-})
+  await t.step(
+    "it should not mutate original deep properties when the clone is mutated",
+    () => {
+      const original = { foo: "foo", bar: { baz: "baz" } };
+      const copy = clone(original);
+      copy.bar.baz = "BAZ";
 
-describe("clone, null", async ({ assert }) => {
-  const value = null
-  const original: { foo: string; bar: string | null } = {
-    foo: "foo",
-    bar: null,
-  }
-  const copy = clone(original)
-  copy.bar = "bar"
-  assert({ actual: clone(value), expected: value })
-  assert({ actual: original, expected: { foo: "foo", bar: null } })
-  assert({ actual: copy, expected: { foo: "foo", bar: "bar" } })
-})
+      assert(original.bar !== copy.bar);
+      assertEquals(original.bar.baz, "baz");
+      assertEquals(copy.bar.baz, "BAZ");
+    },
+  );
 
-describe("clone, date", async ({ assert, inspect }) => {
-  const original = new Date(Date.now())
-  const copy = clone(original)
-  assert({
-    actual: original === copy,
-    expected: false,
-    given: inspect`origin === copy`,
-  })
-  assert({ actual: copy, expected: original })
-  assert({
-    given: inspect`${copy} instanceof Date?`,
-    actual: copy instanceof Date,
-    expected: true,
-  })
-})
+  await t.step("it should clone properties set to undefined", () => {
+    const original = { foo: "foo", bar: undefined };
+    const copy = clone(original);
+    assertEquals(copy, original);
+    assertNotEquals(copy, { foo: "foo" });
+    assert("bar" in copy);
+    assertEquals(copy.bar, undefined);
+  });
 
-describe("clone, array", async ({ assert, inspect }) => {
-  const original = [1, 2, 3]
-  const copy = clone(original)
-  assert({
-    actual: original === copy,
-    expected: false,
-    given: inspect`origin === copy`,
-  })
-  assert({ actual: copy, expected: original })
-  assert({
-    actual: Array.isArray(copy),
-    expected: true,
-    given: `copy of array is array`,
-  })
-})
+  await t.step("it should clone null values and properties set to null", () => {
+    assertEquals(clone(null), null);
 
-describe("clone, recursive", async ({ assert, inspect }) => {
-  type A = { a?: A }
-  const a: A = {}
-  a.a = a
+    const original = { foo: "foo", bar: null };
+    const copy = clone(original);
+    assertEquals(copy, original);
+    assert("bar" in copy);
+    assertEquals(copy.bar, null);
+  });
 
-  type O = Array<A | O>
-  const original: O = [a]
-  original.push(original)
+  await t.step("it should clone undefined", () => {
+    assertEquals(clone(undefined), undefined);
+  });
 
-  const copy = clone(original)
-  assert({
-    actual: original === copy,
-    expected: false,
-    given: inspect`original === copy`,
-    should: `clone should be a new object`,
-  })
+  await t.step("it should clone dates", () => {
+    const original = new Date(Date.now());
+    const copy = clone(original);
+    assert(original !== copy);
+    assert(copy instanceof Date);
+    assertEquals(original, copy);
+  });
 
-  assert({
-    actual: copy,
-    expected: original,
-    given: `recursive structure`,
-    should: `clone`,
-  })
-})
+  await t.step("it should clone arrays", () => {
+    const original = [1, 2, 3];
+    const copy = clone(original);
+    assert(original !== copy);
+    assert(Array.isArray(copy));
+    assertEquals(original, copy);
+  });
+
+  await t.step("it should clone, recursively", () => {
+    type A = { a?: A };
+    const a: A = {};
+    a.a = a;
+
+    type O = Array<A | O>;
+    const original: O = [a];
+    original.push(original);
+
+    assert(original[0] === a);
+    assert(original[1] === original);
+
+    const copy = clone(original);
+    assert(original !== copy);
+    assert(copy[0] !== a);
+    assert(original[1] === original);
+  });
+});

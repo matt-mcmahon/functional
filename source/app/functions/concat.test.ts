@@ -1,26 +1,35 @@
-import { describe } from "../../lib/describe"
-import { concat } from "./concat"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { concat } from "./concat.ts";
 
-describe("concat", async ({ assert, inspect }) => {
-  const as = ["a", "b", "c"]
-  const bs = ["d", "e", "f"]
+Deno.test("concat", () => {
   {
-    const actual = concat(as)(bs)
-    const expected = [...as, ...bs]
-    const given = inspect`concat(${as})(${bs})`
-    assert({ actual, expected, given })
+    const as = ["a", "b", "c"];
+    const bs = ["d", "e", "f"];
+
+    const actual: string[] = concat(as)(bs);
+    const expected: string[] = [...as, ...bs];
+
+    assertEquals<typeof expected>(
+      actual,
+      expected,
+      "should concat homogeneous typeed arrays",
+    );
   }
 
   {
-    type AS = [string, number, { foo: string }]
-    type BS = [string, { bar: string }, boolean]
+    type AS = [string, number, { foo: string }];
+    type BS = [string, { bar: string }, boolean];
 
-    const as: AS = ["a", 1, { foo: "bar" }]
-    const bs: BS = ["b", { bar: "baz" }, true]
+    const as: AS = ["a", 1, { foo: "bar" }];
+    const bs: BS = ["b", { bar: "baz" }, true];
 
-    const actual: [...AS, ...BS] = concat(as)(bs)
-    const expected: [...AS, ...BS] = [...as, ...bs]
-    const given = inspect`concat(${as})(${bs})`
-    assert({ actual, expected, given })
+    const actual: [...AS, ...BS] = concat(as)(bs);
+    const expected: [...AS, ...BS] = [...as, ...bs];
+
+    assertEquals<typeof expected>(
+      actual,
+      expected,
+      "should concat mixed type arrays",
+    );
   }
-})
+});

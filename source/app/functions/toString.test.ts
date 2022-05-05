@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { toString } from "./toString"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { toString } from "./toString.ts";
 
-describe("to-string", async ({ assert, inspect }) => {
+Deno.test("to-string", () => {
   const data: [unknown, string][] = [
     [1, "1"],
     [0, "0"],
@@ -18,18 +18,16 @@ describe("to-string", async ({ assert, inspect }) => {
       {
         value: "custom toString",
         toString() {
-          return this.value
+          return this.value;
         },
       } as { value: string },
       "custom toString",
     ],
-  ]
+  ];
 
   const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = toString(value)
-    const given = inspect`toString(${value})`
-    assert({ given, actual, expected })
-  }
+    assertEquals(toString(value), expected);
+  };
 
-  data.forEach(test)
-})
+  data.forEach(test);
+});

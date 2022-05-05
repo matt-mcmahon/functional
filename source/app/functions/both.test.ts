@@ -1,57 +1,53 @@
-import { describe } from "../../lib/describe"
-import { both } from "./both"
-import { toString } from "./toString"
-import { isNumber } from "./isNumber"
+import {
+  assertEquals,
+  assertThrows,
+} from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { both } from "./both.ts";
+import { toString } from "./toString.ts";
+import { isNumber } from "./isNumber.ts";
+import { T } from "./T.ts";
+import { F } from "./F.ts";
 
-describe("both", async ({ assert, inspect }) => {
-  const gt10 = (v: number) => v > 10
-  const lt20 = (v: number) => v < 20
+Deno.test("both", () => {
+  const gt10 = (v: number) => v > 10;
+  const lt20 = (v: number) => v < 20;
 
-  const both0 = both
-  const both1 = both0(gt10)
-  const both2 = both1(lt20)
+  const both0 = both;
+  const both1 = both0(gt10);
+  const both2 = both1(lt20);
 
-  const values: [number, boolean][] = [
-    [10, false],
-    [20, false],
-    [19, true],
-    [11, true],
-  ]
-
-  values.forEach(([value, expected]) => {
-    const given = inspect`the value ${value}`
-    const should = inspect`${
-      expected ? "be" : "not be"
-    } between ${10} and ${20}`
-    const actual = both2(value)
-    assert({ given, should, actual, expected })
-  })
-
-  try {
-    const first = () => false
-    const second = () => {
-      throw new Error("both should never execute me")
-    }
-    both(first)(second)(true)
-  } catch (err) {
-    assert({
-      actual: false,
-      expected: true,
-      given: `first -> false`,
-      should: `not run second`,
-    })
+  for (
+    const [value, expected] of [
+      [10, false],
+      [20, false],
+      [19, true],
+      [11, true],
+    ] as [number, boolean][]
+  ) {
+    assertEquals(
+      both2(value),
+      expected,
+      `${value} ${expected ? "is" : "is not"} between 10 and 20`,
+    );
   }
 
-  const f = both(isNumber)(toString)
   {
-    const value = 10
-    const expected = "10"
-    assert({ actual: f(value), expected, value })
-    assert({ actual: f(10), expected, value })
+    const throwError = () => {
+      throw new Error();
+    };
+
+    assertThrows(() => both(T)(throwError)("anything"));
+
+    assertEquals(
+      both(F)(throwError)("anything"),
+      false,
+      "should never execute second condition if first condition is falsy",
+    );
   }
+
   {
-    const value = "bam"
-    const expected = false
-    assert({ actual: f(value), expected, value })
+    const f = both(isNumber)(toString);
+    assertEquals(f(10), "10", `should convert numbers to string`);
+    assertEquals(f("bam"), false, `should not convert string`);
   }
-})
+});

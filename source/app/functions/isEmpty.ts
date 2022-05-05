@@ -16,24 +16,26 @@
  * ```
  */
 export const isEmpty = (a: unknown): boolean =>
-  a instanceof Map
-    ? a.size === 0
-    : a instanceof Set
+  a instanceof Map || a instanceof Set
     ? a.size === 0
     : isCountable(a)
     ? a.length === 0
-    : typeof a === "object" && a !== null && Object.keys(a).length === 0
+    : isEmptyObject(a);
 
-/**
- * An object is countable if it has a non-enumerable length property
- * @param a
- */
+/** A value is countable if it has a non-enumerable length property */
 function isCountable(a: unknown): a is { length: number } {
   if (a != null) {
-    const descriptor = Object.getOwnPropertyDescriptor(a, "length")
+    const descriptor = Object.getOwnPropertyDescriptor(a, "length");
     if (descriptor?.enumerable === false) {
-      return true
+      return true;
     }
   }
-  return false
+  return false;
+}
+
+/** An object is empty if it has zero enumerable keys */
+function isEmptyObject(a: unknown): boolean {
+  return typeof a === "object" &&
+    a !== null &&
+    Object.keys(a).length === 0;
 }

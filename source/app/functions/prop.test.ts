@@ -1,102 +1,80 @@
-import { prop } from "./prop"
-import { describe } from "../../lib/describe"
+import { prop } from "./prop.ts";
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
-describe("prop, explicit", async ({ assert, inspect }) => {
-  const getA = prop("a")
+Deno.test("prop, explicit", () => {
+  const getA = prop("a");
 
   {
-    const value = { a: "A" }
-    const actual = getA(value)
-    const expected = "A"
-    assert({ actual, expected, value })
+    const value = { a: "A", b: "B" };
+    assertEquals(getA(value), "A");
   }
 
   {
-    const value = { a: "A", b: "B" }
-    const actual = getA(value)
-    const expected = "A"
-    assert({ actual, expected, value })
+    const value = { a: "A", b: "B" };
+    assertEquals(getA(value), "A");
   }
 
   {
-    const value = { b: "B" }
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    const value = { b: "B" };
     //@ts-ignore INTENTIONAL ERROR
-    const actual = getA(value)
-    const expected = undefined
-    const given = inspect`a ${value} without ${{ a: "A" }}`
-    const should = inspect`not compile unless @ts-ignore`
-    assert({ actual, expected, value, given, should })
+    assertEquals(getA(value), undefined);
   }
-})
+});
 
-describe("prop, inferred", async ({ assert, inspect }) => {
-  {
-    const expected = 1
-    const value = { a: expected }
-    const actual = prop("a")(value)
-    const given = inspect`get(${"a"})(${value})`
-    assert({ actual, expected, given })
-  }
+Deno.test("prop, inferred", () => {
+  assertEquals(
+    prop("a")({ a: 1 }),
+    1,
+  );
 
-  {
-    const expected = "foo"
-    const actual = prop("foo")({ foo: "foo" })
-    const given = inspect`property foo`
-    const should = inspect`${expected}`
-    assert({ actual, expected, given, should })
-  }
+  assertEquals(
+    prop("foo")({ foo: "foo" }),
+    "foo",
+  );
 
-  // Restricted by Type System:
-  // prop("toString")(null);
-  // prop("toString")(undefined);
+  assertEquals(
+    typeof prop("toString")(7),
+    "function",
+  );
 
-  {
-    const value = 7
-    const expected = "function"
-    const actual = typeof prop("toString")(value)
-    const given = inspect`primitive value ${value}`
-    const should = inspect`find prototype method \`toString\``
-    assert({ actual, expected, given, should })
-  }
+  assertEquals(
+    typeof prop("valueOf")(7),
+    "function",
+  );
 
-  {
-    const value = "7"
-    const expected = "function"
-    const actual = typeof prop("toString")(value)
-    const given = inspect`primitive value ${value}`
-    const should = inspect`find prototype method \`toString\``
-    assert({ actual, expected, given, should })
-  }
+  assertEquals(
+    typeof prop("toString")("7"),
+    "function",
+  );
 
-  {
-    const value = { is: 7 }
-    const expected = "function"
-    const actual = typeof prop("toString")(value)
-    const given = inspect`primitive value ${value}`
-    const should = inspect`find prototype method \`toString\``
-    assert({ actual, expected, given, should })
-  }
-})
+  assertEquals(
+    typeof prop("valueOf")("7"),
+    "function",
+  );
 
-describe("prop, missing propertyKey", async ({ assert, inspect }) => {
-  {
-    const value = { a: "a" }
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  const value = { is: 7 };
+  assertEquals(
+    typeof prop("toString")(value),
+    "function",
+  );
+
+  assertEquals(
+    //@ts-expect-error #todo: this may be an edge case not worth fixing
+    typeof prop("toString")({ is: 7 }),
+    "function",
+  );
+});
+
+Deno.test("prop, missing propertyKey", () => {
+  assertEquals(
     //@ts-ignore INTENTIONAL ERROR
-    const actual = prop("b")(value)
-    const expected = undefined
-    const given = inspect`get(${"b"})(${value})`
-    assert({ actual, expected, given })
-  }
+    prop("b")({ a: "a" }),
+    undefined,
+  );
 
-  {
-    const expected = undefined
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  assertEquals(
     //@ts-ignore INTENTIONAL ERROR
-    const actual = prop("foo")({ bar: "bar" })
-    const given = inspect`nonexistant property value`
-    const should = inspect`${expected}`
-    assert({ actual, expected, given, should })
-  }
-})
+    prop("foo")({ bar: "bar" }),
+    undefined,
+  );
+});

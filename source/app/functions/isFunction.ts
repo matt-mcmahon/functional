@@ -15,5 +15,6 @@
  * isFUnction(object.method())  //=> false
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const isFunction = (a: unknown): a is Function => typeof a === "function"
+// deno-lint-ignore ban-types
+export const isFunction = (a: unknown): a is Function =>
+  typeof a === "function";

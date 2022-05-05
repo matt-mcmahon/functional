@@ -1,7 +1,3 @@
-/** @todo: remove eslint-disable pragmas */
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
 /**
  * ```haskell
  * pipeV :: (...as) => ((a⁰ => a¹), (a¹ => a²), ..., (aⁿ=> b)) =>  b
@@ -17,7 +13,7 @@
  * pipeV(v)(f, g, h) <=> h(g(f(v)))
  * ```
  */
-export const pipeV =
-  <A>(...as: A[]) =>
+export const pipeV = <A>(...as: A[]) =>
+  // deno-lint-ignore ban-types
   <F extends Function>(f: F, ...fs: Function[]) =>
-    fs.reduce((a, f) => f(a), f(...as))
+    fs.reduce((a, f) => f(a), f(...as));

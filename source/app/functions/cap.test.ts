@@ -1,18 +1,8 @@
-import { cap } from "./cap"
-import { describe } from "../../lib/describe"
+import { cap } from "./cap.ts";
 
-describe("cap", ({ assert, inspect }) => {
-  {
-    const value = "uncapped"
-    const actual = cap(value)
-    const expected = "Uncapped"
-    assert({ given: inspect`${value}`, actual, expected })
-  }
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
-  {
-    const value = ""
-    const actual = cap(value)
-    const expected = ""
-    assert({ given: inspect`${value}`, actual, expected })
-  }
-})
+Deno.test("cap", () => {
+  assertEquals(cap("uncapped"), "Uncapped");
+  assertEquals(cap(""), "");
+});

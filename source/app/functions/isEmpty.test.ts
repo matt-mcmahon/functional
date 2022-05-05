@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isEmpty } from "./isEmpty"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { isEmpty } from "./isEmpty.ts";
 
-describe("is-empty", async ({ assert, inspect }) => {
+Deno.test("is-empty", () => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],
@@ -15,13 +15,9 @@ describe("is-empty", async ({ assert, inspect }) => {
     [new Set([1]), false],
     [new Map(), true],
     [new Map([["a", 1]]), false],
-  ]
+  ];
 
-  const test = ([value, expected]: [unknown, boolean]) => {
-    const actual = isEmpty(value)
-    const given = inspect`isEmpty(${value})`
-    assert({ given, actual, expected })
+  for (const [value, expected] of data) {
+    assertEquals(isEmpty(value), expected);
   }
-
-  data.forEach(test)
-})
+});

@@ -7,9 +7,8 @@
  * _sideEffect_. Ignores any value returned by the side effect function, and
  * returns the _value_ instead.
  */
-export const tap =
-  <A>(f: (a: A) => void) =>
+export const tap = <A>(f: (a: A) => void) =>
   (a: A): A => {
-    f(a)
-    return a
-  }
+    f(a);
+    return a;
+  };

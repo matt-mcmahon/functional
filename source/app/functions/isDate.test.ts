@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isDate } from "./isDate"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { isDate } from "./isDate.ts";
 
-describe("is-date", async ({ assert, inspect }) => {
+Deno.test("is-date", () => {
   const data: [unknown, boolean][] = [
     [new Date(), true],
     [undefined, false],
@@ -11,13 +11,9 @@ describe("is-date", async ({ assert, inspect }) => {
     [false, false],
     [{}, false],
     [{ length: 0 }, false],
-  ]
+  ];
 
-  const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = isDate(value)
-    const given = inspect`isDate(${value})`
-    assert({ given, actual, expected })
+  for (const [value, expected] of data) {
+    assertEquals(isDate(value), expected);
   }
-
-  data.forEach(test)
-})
+});

@@ -1,49 +1,40 @@
-import { describe } from "../../lib/describe"
-import { tail } from "./tail"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { tail } from "./tail.ts";
 
-describe("tail", async ({ assert, inspect }) => {
-  {
-    const arg = ["a", "b", "c"]
-    const expected = ["b", "c"]
-    const actual = tail(arg)
-    const given = inspect`tail(${arg})`
-    const should = inspect`${expected}`
-    assert({ actual, expected, given, should })
-  }
+Deno.test("tail", () => {
+  assertEquals<string[]>(
+    tail(["a", "b", "c"]),
+    ["b", "c"],
+  );
 
-  {
-    const arg = ["a"]
-    const expected: string[] = []
-    const actual = tail(arg)
-    const given = inspect`tail(${arg})`
-    const should = inspect`${expected}`
-    assert({ actual, expected, given, should })
-  }
+  assertEquals<string[]>(
+    tail(["a"]),
+    [],
+  );
 
   {
-    const arg: string[] = []
-    const expected: string[] = []
-    const actual = tail(arg)
-    const given = inspect`tail(${arg})`
-    const should = inspect`${expected}`
-    assert({ actual, expected, given, should })
+    const value: string[] = [];
+    assertEquals<string[]>(
+      tail(value),
+      [],
+    );
   }
 
-  {
-    const arg: Array<string[]> = [["a", "b", "c"]]
-    const expected: Array<string[]> = []
-    const actual = tail(arg)
-    const given = inspect`tail(${arg})`
-    const should = inspect`${expected}`
-    assert({ actual, expected, given, should })
-  }
+  assertEquals<string[][]>(
+    tail([["a", "b", "c"], ["d", "e"]]),
+    [["d", "e"]],
+  );
 
-  {
-    const arg = ["a", 1, "c"]
-    const expected = [1, "c"]
-    const actual = tail(arg)
-    const given = inspect`tail(${arg})`
-    const should = inspect`${expected}`
-    assert({ actual, expected, given, should })
-  }
-})
+  assertEquals<string[][]>(
+    tail([["a", "b", "c"]]),
+    [],
+  );
+
+  const tuple: [string, number, string] = ["a", 1, "c"];
+  assertEquals<[number, string]>(
+    //@ts-expect-error #TODO: fix type for tuples
+    tail(tuple),
+    [1, "c"],
+    "should work with tuple values",
+  );
+});

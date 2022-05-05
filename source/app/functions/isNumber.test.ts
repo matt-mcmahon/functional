@@ -1,7 +1,7 @@
-import { describe } from "../../lib/describe"
-import { isNumber } from "./isNumber"
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { isNumber } from "./isNumber.ts";
 
-describe("is-number", async ({ assert, inspect }) => {
+Deno.test("is-number", () => {
   const data: [unknown, boolean][] = [
     [1, true],
     [0, true],
@@ -14,13 +14,9 @@ describe("is-number", async ({ assert, inspect }) => {
     [false, false],
     [{}, false],
     [{ length: 0 }, false],
-  ]
+  ];
 
-  const test = <A, B>([value, expected]: [A, B]) => {
-    const actual = isNumber(value)
-    const given = inspect`isNumber(${value})`
-    assert({ given, actual, expected })
+  for (const [value, expected] of data) {
+    assertEquals(isNumber(value), expected);
   }
-
-  data.forEach(test)
-})
+});

@@ -10,6 +10,5 @@
  * ```
  * trim(" s ") <=> " s ".trim() <=> "s"
  * ```
- *
  */
-export const trim = (s: string): string => s.trim()
+export const trim = (s: string): string => s.trim();

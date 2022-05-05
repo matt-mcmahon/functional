@@ -1,26 +1,19 @@
-import { reduce, reduceV } from "./reduce"
-import { describe } from "../../lib/describe"
+import { reduce, reduceV } from "./reduce.ts";
 
-describe("reduce", ({ assert, inspect }) => {
-  const as = ["1", "2", "3"]
-  const b = 7
-  const bab = (b: number, a: string) => b + parseInt(a, 10)
+import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
-  {
-    const f = reduce(bab)(1)
-    const actual = f(as)
-    const expected = b
-    const given = inspect`reduce(${bab})(${1})(${as})`
-    const should = `accept accept an array`
-    assert({ actual, expected, given, should })
-  }
+Deno.test("reduce", () => {
+  const as = ["1", "2", "3"];
+  const b = 7;
+  const bab = (b: number, a: string) => b + parseInt(a, 10);
 
-  {
-    const f = reduceV(bab)(1)
-    const actual = f(...as)
-    const expected = b
-    const given = inspect`reduceV(${bab})(${1})(${1}, ${2}, ${3})`
-    const should = `accept multiple arguments`
-    assert({ actual, expected, given, should })
-  }
-})
+  assertEquals(
+    reduce(bab)(1)(as),
+    b,
+  );
+
+  assertEquals(
+    reduceV(bab)(1)(...as),
+    b,
+  );
+});
