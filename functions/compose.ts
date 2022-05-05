@@ -1,4 +1,4 @@
-import type { First, Last } from "../../index.ts";
+import type { First, Last } from "../mod.ts";
 
 /**
  * ```haskell

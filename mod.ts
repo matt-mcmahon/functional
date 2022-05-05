@@ -17,4 +17,4 @@ export type Last<AS extends unknown[]> = AS[LastIndex<AS>];
 /** Type of the first item in a tuple. */
 export type First<AS extends unknown[]> = AS[0];
 
-export * as functions from "./app/functions.ts";
+export * as functions from "./functions.ts";
