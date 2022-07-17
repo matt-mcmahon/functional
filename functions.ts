@@ -59,6 +59,7 @@ export { tail } from "./functions/tail.ts";
 export { take } from "./functions/take.ts";
 export { tap } from "./functions/tap.ts";
 export { toArray } from "./functions/toArray.ts";
+export { toNullary } from "./functions/toNullary.ts";
 export { toString } from "./functions/toString.ts";
 export { toUnary } from "./functions/toUnary.ts";
 export { toVariadic } from "./functions/toVariadic.ts";
