@@ -6,3 +6,6 @@ test:
 
 lint:
 	deno lint --ignore=npm
+
+publish:
+	cd npm && npm publish
