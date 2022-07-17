@@ -1,5 +1,5 @@
-import { build, emptyDir } from "https://deno.land/x/dnt@0.23.0/mod.ts";
 import { getLatestVersion } from "https://deno.land/x/bump_version@v0.2.1/bump.ts";
+import { build, emptyDir } from "https://deno.land/x/dnt@0.28.0/mod.ts";
 import pack from "./package.json" assert { type: "json" };
 
 await emptyDir("./npm");
