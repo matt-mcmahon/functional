@@ -1,5 +1,3 @@
-import { clone } from "./clone.ts";
-
 /**
  * ```haskell
  * assoc :: k => b => a => {...a, k: b}
@@ -17,5 +15,8 @@ import { clone } from "./clone.ts";
  * a[k] = b <=> assoc(k)(b)(a)
  * ```
  */
-export const assoc = <K extends PropertyKey>(k: K) =>
-  <B>(b: B) => <A>(a: A): A | { K: B } => Object.assign(clone(a), { [k]: b });
+
+export const assoc =
+  <K extends PropertyKey>(k: K) => <B>(b: B) => <A>(a: A): A | { K: B } => {
+    return Object.assign(structuredClone(a), { [k]: b });
+  };
