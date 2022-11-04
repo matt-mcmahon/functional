@@ -1,0 +1,10 @@
+{
+  "lint": { "files": { "exclude": ["npm"] } },
+  "fmt": { "files": { "exclude": ["npm"] } },
+  "test": { "files": { "exclude": ["npm"] } },
+  "tasks": {
+    "test": "deno test --allow-read",
+    "build": "deno lint && deno test && deno run -A scripts/build-npm.ts",
+    "publish": "deno task build && cd npm && npm publish --dry-run"
+  }
+}
