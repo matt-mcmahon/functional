@@ -1,14 +1,7 @@
 import { assertEquals } from "testing";
 import { T } from "./T.ts";
 
-Deno.test("t", () => {
-  assertEquals(
-    T(),
-    true,
-  );
-
-  assertEquals(
-    T(false),
-    true,
-  );
+Deno.test("T", () => {
+  assertEquals(T(), true);
+  assertEquals(T(false), true);
 });
