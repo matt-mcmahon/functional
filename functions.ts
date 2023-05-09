@@ -50,6 +50,7 @@ export * from "./functions/pipeV.ts";
 export * from "./functions/prop.ts";
 export * from "./functions/reduce.ts";
 export * from "./functions/reduceRight.ts";
+export * from "./functions/reduceV.ts";
 export * from "./functions/replace.ts";
 export * from "./functions/reverse.ts";
 export * from "./functions/slice.ts";
