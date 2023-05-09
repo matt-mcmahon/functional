@@ -30,6 +30,7 @@ export * from "./functions/isBoolean.ts";
 export * from "./functions/isDate.ts";
 export * from "./functions/isDefined.ts";
 export * from "./functions/isEmpty.ts";
+export * from "./functions/isFalsy.ts";
 export * from "./functions/isFunction.ts";
 export * from "./functions/isNaN.ts";
 export * from "./functions/isNil.ts";
