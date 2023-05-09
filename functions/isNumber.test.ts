@@ -1,7 +1,7 @@
 import { assertEquals } from "testing";
 import { isNumber } from "./isNumber.ts";
 
-Deno.test("is-number", () => {
+Deno.test("isNumber", () => {
   const data: [unknown, boolean][] = [
     [1, true],
     [0, true],

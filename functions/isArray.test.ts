@@ -1,7 +1,7 @@
 import { assertEquals } from "testing";
 import { isArray } from "./isArray.ts";
 
-Deno.test("is-array", () => {
+Deno.test("isArray", () => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],

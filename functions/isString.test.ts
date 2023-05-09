@@ -1,7 +1,7 @@
 import { assertEquals } from "testing";
 import { isString } from "./isString.ts";
 
-Deno.test("is-string", () => {
+Deno.test("isString", () => {
   const data: [unknown, boolean][] = [
     [1, false],
     [0, false],
@@ -21,7 +21,7 @@ Deno.test("is-string", () => {
   }
 });
 
-Deno.test("is-string: string-like object", () => {
+Deno.test("isString: string-like object", () => {
   const valueOf = () => "fake v";
   const toString = () => "fake s";
   const stringLike = { valueOf, toString };

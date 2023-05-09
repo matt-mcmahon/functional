@@ -1,7 +1,7 @@
 import { assertEquals } from "testing";
 import { isEmpty } from "./isEmpty.ts";
 
-Deno.test("is-empty", () => {
+Deno.test("isEmpty", () => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],

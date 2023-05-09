@@ -1,7 +1,7 @@
 import { assertEquals, fail } from "testing";
 import { isDefined } from "./isDefined.ts";
 
-Deno.test("is-defined", () => {
+Deno.test("isDefined", () => {
   const data: [unknown, boolean][] = [
     [null, false],
     [undefined, false],
@@ -23,7 +23,7 @@ const never = (_: never) => {
 };
 
 // These tests won't compile unless isDefined has the  `: a is ...` type guard
-Deno.test("is-defined, type guard", () => {
+Deno.test("isDefined, type guard", () => {
   {
     const a = null;
     if (isDefined(a)) never(a);
