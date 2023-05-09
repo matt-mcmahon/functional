@@ -1,14 +1,11 @@
 import { assertEquals } from "testing";
 import { toVariadic } from "./toVariadic.ts";
 
-Deno.test("to-variadic", () => {
+Deno.test("toVariadic", () => {
   {
     const uf = (ns: number[]) => `${Math.min(...ns)}`;
     const vf = toVariadic(uf);
-    assertEquals(
-      vf(...[3, 2, 1]),
-      "1",
-    );
+    assertEquals(vf(...[3, 2, 1]), "1");
   }
 
   {
@@ -19,10 +16,7 @@ Deno.test("to-variadic", () => {
       return `${s} is ${f(...ns)}`;
     };
     const variadic = toVariadic(unary);
-    assertEquals(
-      variadic("min", Math.min, 3, 2, 1),
-      "min is 1",
-    );
+    assertEquals(variadic("min", Math.min, 3, 2, 1), "min is 1");
   }
 
   {

@@ -1,13 +1,10 @@
 import { assertEquals } from "testing";
 import { toNullary } from "./toNullary.ts";
 
-Deno.test("to-nullary", () => {
+Deno.test("toNullary", () => {
   {
-    const vF = (
-      s: string,
-      f: (...ns: number[]) => number,
-      ...ns: number[]
-    ) => `${s} is ${f(...ns)}`;
+    const vF = (s: string, f: (...ns: number[]) => number, ...ns: number[]) =>
+      `${s} is ${f(...ns)}`;
 
     const nF = toNullary(vF, "max", Math.max, 1, 2, 3);
     const actual = nF();

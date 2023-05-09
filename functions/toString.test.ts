@@ -1,7 +1,7 @@
 import { assertEquals } from "testing";
 import { toString } from "./toString.ts";
 
-Deno.test("to-string", () => {
+Deno.test("toString", () => {
   const data: [unknown, string][] = [
     [1, "1"],
     [0, "0"],

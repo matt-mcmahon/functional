@@ -1,7 +1,7 @@
 import { assertEquals } from "testing";
 import { toUnary } from "./toUnary.ts";
 
-Deno.test("to-unary", () => {
+Deno.test("toUnary", () => {
   {
     const vf = (s: string, f: (...ns: number[]) => number, ...ns: number[]) =>
       `${s} is ${f(...ns)}`;
