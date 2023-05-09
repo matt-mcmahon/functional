@@ -26,8 +26,8 @@
  * split(" ", 9)(s) <=> ["one", "two", "three"]
  * ```
  */
-export const split = (separator?: string | RegExp, limit?: number) =>
-  (source: string): string[] =>
+export const split =
+  (separator?: string | RegExp, limit?: number) => (source: string): string[] =>
     separator == undefined
       ? [source]
       : separator === ""

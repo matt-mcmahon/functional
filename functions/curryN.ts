@@ -27,5 +27,5 @@ const gather = <F extends Function>(
  * @todo add support for Variadic Tuples in TypeScript 4
  */
 export const curryN = (n: number) =>
-  // deno-lint-ignore ban-types
-  <F extends Function>(f: F): Function => gather(n, f);
+// deno-lint-ignore ban-types
+<F extends Function>(f: F): Function => gather(n, f);

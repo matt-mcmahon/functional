@@ -10,5 +10,4 @@
 export const when =
   <X, A extends X>(xIsA: (x: X) => x is A) =>
   <B>(mapAB: (a: A) => B) =>
-  (x: X): B | X =>
-    xIsA(x) ? mapAB(x) : x;
+  (x: X): B | X => xIsA(x) ? mapAB(x) : x;

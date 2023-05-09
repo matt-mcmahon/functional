@@ -14,6 +14,6 @@
  * ```
  */
 export const pipeV = <A>(...as: A[]) =>
-  // deno-lint-ignore ban-types
-  <F extends Function>(f: F, ...fs: Function[]) =>
-    fs.reduce((a, f) => f(a), f(...as));
+// deno-lint-ignore ban-types
+<F extends Function>(f: F, ...fs: Function[]) =>
+  fs.reduce((a, f) => f(a), f(...as));

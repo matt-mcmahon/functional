@@ -10,5 +10,4 @@
 export const unless =
   <X, A extends X>(xIsA: (x: X) => x is A) =>
   <B>(mapXB: (x: X) => B) =>
-  (x: X): A | B =>
-    xIsA(x) ? x : mapXB(x);
+  (x: X): A | B => xIsA(x) ? x : mapXB(x);

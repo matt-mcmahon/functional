@@ -16,6 +16,7 @@
  * a.slice(6) //=> "ghijklm"
  * ```
  */
-export const invoker = <K extends PropertyKey>(k: K) =>
+export const invoker =
+  <K extends PropertyKey>(k: K) =>
   <AS extends unknown[]>(...as: AS) =>
-    <B>(c: { [k in K]: (...as: AS) => B }): B => c[k](...as);
+  <B>(c: { [k in K]: (...as: AS) => B }): B => c[k](...as);

@@ -17,5 +17,6 @@
  * incIfZero(3) //=> 3
  * ```
  */
-export const both = <A, B>(mapAB: (a: A) => B) =>
-  <C>(mapAC: (a: A) => C) => (a: A): B | C => mapAB(a) && mapAC(a);
+export const both =
+  <A, B>(mapAB: (a: A) => B) => <C>(mapAC: (a: A) => C) => (a: A): B | C =>
+    mapAB(a) && mapAC(a);

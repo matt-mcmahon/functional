@@ -13,6 +13,7 @@
  * replace(/foo/gi)("bar")("foo baz foo") <=> "foo baz foo".replace(/foo/gi, "bar")
  * ```
  */
-export const replace = (searchValue: string | RegExp) =>
+export const replace =
+  (searchValue: string | RegExp) =>
   (replaceValue: string) =>
-    (within: string): string => within.replace(searchValue, replaceValue);
+  (within: string): string => within.replace(searchValue, replaceValue);

@@ -22,6 +22,6 @@
 export const concat = <A extends readonly unknown[]>(
   as: A, //
 ) =>
-  <B extends readonly unknown[]>(
-    bs: B, //
-  ): [...A, ...B] => [...as, ...bs];
+<B extends readonly unknown[]>(
+  bs: B, //
+): [...A, ...B] => [...as, ...bs];
