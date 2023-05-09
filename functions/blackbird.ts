@@ -31,12 +31,10 @@
  * @todo add support for Variadic Tuples in TypeScript 4
  * @todo remove file allow-any pragma
  */
-// deno-lint-ignore no-explicit-any
 export const blackbird =
-  <BS extends any[], C>(converging: (...bs: BS) => C) =>
+  <BS extends unknown[], C>(converging: (...bs: BS) => C) =>
   <A>(...parts: ((a: A) => unknown)[]) =>
   (a: A): C => {
-    // deno-lint-ignore no-explicit-any
-    const bs = parts.map((part: (a: any) => any) => part(a)) as BS;
+    const bs = parts.map((part: (a: A) => unknown) => part(a)) as BS;
     return converging(...bs);
   };
