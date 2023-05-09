@@ -1,7 +1,4 @@
-import {
-  assertEquals,
-  fail,
-} from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { assertEquals, fail } from "testing";
 import { has } from "./has.ts";
 
 Deno.test("has", () => {

@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { assertEquals } from "testing";
 import * as functional from "./functions.ts";
 
 const __dirname = new URL(".", import.meta.url).pathname;
@@ -15,9 +15,7 @@ const collectFileNames = async (path: string, paths: string[] = []) => {
 };
 
 const filterTestFiles = (fileNames: string[]) =>
-  fileNames.filter(
-    (name) => !name.includes(".test.") && !name.includes("index"),
-  );
+  fileNames.filter((n) => !(n.includes(".test.") || n.includes("index")));
 
 const sortFiles = (files: string[]) => files.sort();
 
@@ -31,7 +29,9 @@ const getModuleList = () =>
 
 Deno.test("functions.ts", async () => {
   assertEquals(
-    Object.keys(functional).map((file) => file + ".ts").sort(),
+    Object.keys(functional)
+      .map((file) => file + ".ts")
+      .sort(),
     await getModuleList(),
   );
 });

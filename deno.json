@@ -6,5 +6,6 @@
     "test": "deno test --allow-read",
     "build": "deno lint && deno task test && deno run -A tasks/build_npm.ts",
     "publish": "deno task build && cd npm && npm publish --dry-run"
-  }
+  },
+  "importMap": "import_map.json"
 }

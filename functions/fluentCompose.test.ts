@@ -1,6 +1,5 @@
+import { assertEquals } from "testing";
 import { fluentCompose } from "./fluentCompose.ts";
-
-import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
 Deno.test("fluent compose", () => {
   const double = (x: number) => x * 2;

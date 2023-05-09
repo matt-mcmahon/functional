@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { assertEquals } from "testing";
 import { isString } from "./isString.ts";
 
 Deno.test("is-string", () => {

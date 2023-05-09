@@ -1,5 +1,5 @@
+import { assertEquals } from "testing";
 import { flow } from "./flow.ts";
-import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
 Deno.test("fluent pipe", () => {
   const double = (x: number) => x * 2;

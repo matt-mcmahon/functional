@@ -1,8 +1,5 @@
+import { assert, assertEquals } from "testing";
 import { assoc } from "./assoc.ts";
-import {
-  assert,
-  assertEquals,
-} from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
 Deno.test("assoc", () => {
   assertEquals(

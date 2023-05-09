@@ -1,9 +1,6 @@
-import {
-  assertEquals,
-  fail,
-} from "https://deno.land/std@0.136.0/testing/asserts.ts";
-import { either } from "./either.ts";
+import { assertEquals, fail } from "testing";
 import { T } from "./T.ts";
+import { either } from "./either.ts";
 
 Deno.test("either", () => {
   const max = 10;

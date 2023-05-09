@@ -1,5 +1,5 @@
+import { assertEquals } from "testing";
 import { prop } from "./prop.ts";
-import { assertEquals } from "https://deno.land/std@0.136.0/testing/asserts.ts";
 
 Deno.test("prop, explicit", () => {
   const getA = prop("a");

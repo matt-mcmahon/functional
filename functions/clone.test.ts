@@ -1,8 +1,4 @@
-import {
-  assert,
-  assertEquals,
-  assertNotEquals,
-} from "https://deno.land/std@0.136.0/testing/asserts.ts";
+import { assert, assertEquals, assertNotEquals } from "testing";
 import { clone } from "./clone.ts";
 
 Deno.test("clone", async (t) => {

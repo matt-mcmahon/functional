@@ -1,12 +1,9 @@
-import {
-  assertEquals,
-  assertThrows,
-} from "https://deno.land/std@0.136.0/testing/asserts.ts";
-import { both } from "./both.ts";
-import { toString } from "./toString.ts";
-import { isNumber } from "./isNumber.ts";
-import { T } from "./T.ts";
+import { assertEquals, assertThrows } from "testing";
 import { F } from "./F.ts";
+import { T } from "./T.ts";
+import { both } from "./both.ts";
+import { isNumber } from "./isNumber.ts";
+import { toString } from "./toString.ts";
 
 Deno.test("both", () => {
   const gt10 = (v: number) => v > 10;
