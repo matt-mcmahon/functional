@@ -33,6 +33,7 @@ export * from "./functions/isEmpty.ts";
 export * from "./functions/isFalsy.ts";
 export * from "./functions/isFunction.ts";
 export * from "./functions/isNaN.ts";
+export * from "./functions/isNegativeZero.ts";
 export * from "./functions/isNil.ts";
 export * from "./functions/isNumber.ts";
 export * from "./functions/isObject.ts";
