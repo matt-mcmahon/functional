@@ -1,11 +1,11 @@
 {
-  "lint": { "exclude": ["npm"] },
-  "fmt": { "exclude": ["npm"] },
-  "test": { "exclude": ["npm"] },
+  "lint": { "exclude": ["build"] },
+  "fmt": { "exclude": ["build"] },
+  "test": { "exclude": ["build"] },
   "tasks": {
     "test": "deno test --allow-read",
-    "build": "deno lint && deno task test && deno run -A tasks/build_npm.ts",
-    "publish": "deno task build && cd npm && npm publish --dry-run"
+    "build": "deno lint && deno task test --fail-fast && deno run -A tasks/build_npm.ts",
+    "publish": "deno run -A tasks/publish_npm.ts"
   },
   "importMap": "import_map.json"
 }

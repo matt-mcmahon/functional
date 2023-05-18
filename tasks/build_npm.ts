@@ -2,16 +2,30 @@ import { getLatestVersion } from "bump_version";
 import { build, emptyDir } from "dnt";
 import pack from "./package.json" assert { type: "json" };
 
-await emptyDir("./npm");
+const targetDir = "./build/npm";
+
+await emptyDir(targetDir);
 
 await build({
   entryPoints: [{ name: ".", path: "./functions.ts" }],
-  outDir: "./npm",
+  outDir: targetDir,
   shims: { deno: false },
   package: { ...pack, ...{ version: await getLatestVersion() } },
   typeCheck: false,
   test: false,
 });
 
-await Deno.copyFile("LICENSE", "npm/LICENSE");
-await Deno.copyFile("README.md", "npm/README.md");
+await Deno.copyFile("LICENSE", targetDir + "/LICENSE");
+await Deno.copyFile("README.md", targetDir + "/README.md");
+
+Deno.chdir(targetDir);
+
+const command = new Deno.Command("npm", {
+  args: ["publish", "--dry-run"],
+});
+
+const child = command.spawn();
+
+const output = await child.output();
+
+console.log({ output });

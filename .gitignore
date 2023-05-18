@@ -1,5 +1,5 @@
 # Build Artificats
-npm
+build/*
 
 # Deno Files
 # .deno/gen
