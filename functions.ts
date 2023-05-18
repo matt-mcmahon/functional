@@ -37,6 +37,7 @@ export * from "./functions/isNegativeZero.ts";
 export * from "./functions/isNil.ts";
 export * from "./functions/isNumber.ts";
 export * from "./functions/isObject.ts";
+export * from "./functions/isPositiveZero.ts";
 export * from "./functions/isString.ts";
 export * from "./functions/isTruthy.ts";
 export * from "./functions/join.ts";
