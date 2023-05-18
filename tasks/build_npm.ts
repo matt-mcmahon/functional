@@ -6,17 +6,20 @@ const targetDir = "./build/npm";
 
 await emptyDir(targetDir);
 
-await build({
-  entryPoints: [{ name: ".", path: "./functions.ts" }],
-  outDir: targetDir,
-  shims: { deno: false },
-  package: { ...pack, ...{ version: await getLatestVersion() } },
-  typeCheck: false,
-  test: false,
-});
-
-await Deno.copyFile("LICENSE", targetDir + "/LICENSE");
-await Deno.copyFile("README.md", targetDir + "/README.md");
+try {
+  await build({
+    entryPoints: [{ name: ".", path: "./functions.ts" }],
+    outDir: targetDir,
+    shims: { deno: false },
+    package: { ...pack, ...{ version: await getLatestVersion() } },
+    typeCheck: false,
+    test: false,
+  });
+  await Deno.copyFile("LICENSE", targetDir + "/LICENSE");
+  await Deno.copyFile("README.md", targetDir + "/README.md");
+} catch (error) {
+  console.error(error);
+}
 
 Deno.chdir(targetDir);
 

@@ -3,8 +3,8 @@
   "fmt": { "exclude": ["build"] },
   "test": { "exclude": ["build"] },
   "tasks": {
-    "test": "deno test --allow-read",
-    "build": "deno lint && deno task test --fail-fast && deno run -A tasks/build_npm.ts",
+    "test": "deno run -A tasks/test.ts",
+    "build": "deno lint && deno task test && deno run -A tasks/build_npm.ts",
     "publish": "deno run -A tasks/publish_npm.ts"
   },
   "importMap": "import_map.json"
