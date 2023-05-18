@@ -1,5 +1,6 @@
 # Build Artificats
 build/*
+node_modules
 
 # Deno Files
 # .deno/gen
