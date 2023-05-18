@@ -40,6 +40,7 @@ export * from "./functions/isObject.ts";
 export * from "./functions/isPositiveZero.ts";
 export * from "./functions/isString.ts";
 export * from "./functions/isTruthy.ts";
+export * from "./functions/isZero.ts";
 export * from "./functions/join.ts";
 export * from "./functions/last.ts";
 export * from "./functions/log.ts";
