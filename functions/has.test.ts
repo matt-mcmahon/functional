@@ -1,5 +1,6 @@
 import { assertEquals, fail } from "testing";
 import { has } from "./has.ts";
+import { isString } from "./isString.ts";
 
 Deno.test("has", () => {
   const ownFoo = has("foo");
@@ -33,4 +34,9 @@ Deno.test("has", () => {
 
   if (hasA(a)) assertEquals(a.a, "a");
   else unlessNever(a);
+
+  const hasStringA = has("a", isString);
+
+  assertEquals(hasStringA({ a: "string" }), true);
+  assertEquals(hasStringA({ a: 7 }), false);
 });
