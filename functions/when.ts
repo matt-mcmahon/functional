@@ -1,13 +1,12 @@
 /**
  * ```haskell
- * unless :: (a => boolean) => (a => b) => a => a|b
+ * when :: (a => boolean) => (a => b) => a => a|b
  * ```
  * -----------------------------------------------------------------------------
  *
- * Return `a => b` __unless__ the `a => boolean` is `true`, in that case return
- * `a`.
+ * Return `a => b` __when__ the `a => boolean` is `true`, otherwise return `a`.
  */
 export const when =
-  <X, A extends X>(xIsA: (x: X) => x is A) =>
+  <A>(is: (x: unknown) => x is A) =>
   <B>(mapAB: (a: A) => B) =>
-  (x: X): B | X => xIsA(x) ? mapAB(x) : x;
+  <C>(x: C | A): B | C => is(x) ? mapAB(x) : x;
